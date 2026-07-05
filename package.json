@@ -1,0 +1,12 @@
+{
+  "name": "rustudy-scraper",
+  "version": "1.0.0",
+  "description": "Compare plusieurs déploiements de RuStudy avec Puppeteer",
+  "main": "scrape-rustudy.js",
+  "scripts": {
+    "start": "node scrape-rustudy.js"
+  },
+  "dependencies": {
+    "puppeteer": "^23.11.1"
+  }
+}
