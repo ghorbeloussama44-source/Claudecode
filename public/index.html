@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rushes → Vidéo finale</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <h1>Vos rushes. Une vidéo finale.</h1>
+      <p>
+        Déposez vos clips bruts (plusieurs caméras, plusieurs prises — peu importe
+        le format). On normalise, on coupe les silences, on assemble et on
+        équilibre le volume. Vous récupérez un export prêt à partager.
+      </p>
+    </header>
+
+    <section class="dropzone-section">
+      <label for="file-input" id="dropzone" class="dropzone">
+        <div class="dropzone-content">
+          <svg viewBox="0 0 24 24" width="40" height="40" aria-hidden="true">
+            <path fill="currentColor" d="M12 3l5 5h-3v6h-4V8H7l5-5zM5 19h14v2H5v-2z"/>
+          </svg>
+          <p><strong>Glissez vos fichiers vidéo ici</strong> ou cliquez pour parcourir</p>
+          <p class="dropzone-hint">mp4, mov, mkv, webm, avi, m4v — jusqu'à 20 fichiers, 500 Mo chacun</p>
+        </div>
+        <input id="file-input" type="file" accept="video/mp4,video/quicktime,video/x-matroska,video/webm,video/x-msvideo,.mp4,.mov,.mkv,.webm,.avi,.m4v" multiple hidden />
+      </label>
+
+      <ul id="file-list" class="file-list" hidden></ul>
+
+      <button id="assemble-btn" class="primary-btn" disabled>Assembler mes rushes</button>
+    </section>
+
+    <section id="status-section" class="status-section" hidden>
+      <div id="spinner" class="spinner" aria-hidden="true"></div>
+      <p id="status-text">Traitement en cours…</p>
+    </section>
+
+    <section id="result-section" class="result-section" hidden>
+      <h2>Votre vidéo est prête</h2>
+      <video id="result-video" controls></video>
+      <div id="result-stats" class="result-stats"></div>
+      <a id="download-link" class="primary-btn" download>Télécharger la vidéo finale</a>
+    </section>
+
+    <section id="error-section" class="error-section" hidden>
+      <p id="error-text"></p>
+    </section>
+
+    <footer class="footer">
+      <p>Le silence est détecté automatiquement et retiré ; les prises sont
+        normalisées (même résolution/fps) avant d'être mises bout à bout,
+        puis le volume est équilibré sur l'ensemble.</p>
+    </footer>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
