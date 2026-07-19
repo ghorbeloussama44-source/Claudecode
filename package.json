@@ -4,9 +4,12 @@
   "description": "Compare plusieurs déploiements de RuStudy avec Puppeteer",
   "main": "scrape-rustudy.js",
   "scripts": {
-    "start": "node scrape-rustudy.js"
+    "start": "node scrape-rustudy.js",
+    "start:landing": "node server/index.js"
   },
   "dependencies": {
+    "express": "^4.22.2",
+    "multer": "^2.2.0",
     "puppeteer": "^23.11.1"
   }
 }
