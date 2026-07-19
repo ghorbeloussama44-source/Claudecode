@@ -1,0 +1,9 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "functions": {
+    "api/finalize.js": {
+      "maxDuration": 300,
+      "includeFiles": "node_modules/ff*-static/**"
+    }
+  }
+}

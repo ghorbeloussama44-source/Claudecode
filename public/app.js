@@ -1,3 +1,7 @@
+// Pinned to the same @vercel/blob version installed server-side (package.json)
+// so the client upload wire protocol matches what /api/blob-upload expects.
+import { upload } from 'https://esm.sh/@vercel/blob@2.6.1/client';
+
 (() => {
   const dropzone = document.getElementById('dropzone');
   const fileInput = document.getElementById('file-input');
@@ -26,10 +30,9 @@
     return `${m}m${String(rem).padStart(2, '0')}s`;
   }
 
-  // Every server reply goes through here so a non-JSON body (an infra-level
-  // error page from a proxy/tunnel in front of this server, e.g. a plain
-  // "Request Entity Too Large") never crashes the UI with a raw parse error
-  // — it gets translated into something the user can actually act on.
+  // Every reply from our own /api/finalize goes through here so a non-JSON
+  // body (an infra-level error page, e.g. a gateway timeout) never crashes
+  // the UI with a raw parse error — it becomes something the user can act on.
   async function parseJsonResponse(response) {
     const text = await response.text();
     let data = null;
@@ -37,12 +40,7 @@
       try {
         data = JSON.parse(text);
       } catch {
-        const looksTooLarge = response.status === 413 || /request entity too large/i.test(text);
-        throw new Error(
-          looksTooLarge
-            ? 'Ce fichier est trop volumineux pour être envoyé. Essayez avec un clip plus court ou compressé.'
-            : `Réponse inattendue du serveur (HTTP ${response.status}).`,
-        );
+        throw new Error(`Réponse inattendue du serveur (HTTP ${response.status}).`);
       }
     }
     if (!response.ok || (data && data.ok === false)) {
@@ -105,21 +103,25 @@
     }
   });
 
-  async function createJob() {
-    const response = await fetch('/api/jobs', { method: 'POST' });
-    const data = await parseJsonResponse(response);
-    return data.jobId;
+  async function uploadClipToBlob(file, onProgress) {
+    // Goes straight from the browser to Vercel Blob storage — a Vercel
+    // Function's own request body is capped at 4.5 MB, well under most video
+    // clips, so the file bytes never pass through our server at all here.
+    const result = await upload(file.name, file, {
+      access: 'public',
+      handleUploadUrl: '/api/blob-upload',
+      multipart: true,
+      onUploadProgress: onProgress,
+    });
+    return result.url;
   }
 
-  async function uploadClip(jobId, file) {
-    const formData = new FormData();
-    formData.append('clip', file);
-    const response = await fetch(`/api/jobs/${jobId}/clips`, { method: 'POST', body: formData });
-    return parseJsonResponse(response);
-  }
-
-  async function finalizeJob(jobId) {
-    const response = await fetch(`/api/jobs/${jobId}/finalize`, { method: 'POST' });
+  async function finalize(clipUrls) {
+    const response = await fetch('/api/finalize', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ clipUrls }),
+    });
     return parseJsonResponse(response);
   }
 
@@ -131,20 +133,18 @@
     assembleBtn.disabled = true;
 
     try {
-      statusText.textContent = 'Préparation de l’envoi…';
-      const jobId = await createJob();
-
-      // Uploaded one clip per request, sequentially, so no single request
-      // ever has to carry the whole batch — and so progress is visible
-      // instead of one long blind spinner.
+      const clipUrls = [];
       for (let i = 0; i < selectedFiles.length; i += 1) {
         const file = selectedFiles[i];
         statusText.textContent = `Envoi du clip ${i + 1}/${selectedFiles.length} (${file.name})…`;
-        await uploadClip(jobId, file);
+        const url = await uploadClipToBlob(file, (progress) => {
+          statusText.textContent = `Envoi du clip ${i + 1}/${selectedFiles.length} (${file.name}) — ${Math.round(progress.percentage)}%…`;
+        });
+        clipUrls.push(url);
       }
 
       statusText.textContent = `Assemblage de ${selectedFiles.length} clip${selectedFiles.length > 1 ? 's' : ''} — coupe des silences, normalisation, équilibrage du volume…`;
-      const data = await finalizeJob(jobId);
+      const data = await finalize(clipUrls);
 
       resultVideo.src = data.url;
       downloadLink.href = data.url;
