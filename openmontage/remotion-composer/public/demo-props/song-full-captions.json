@@ -1,0 +1,1014 @@
+{
+  "words": [
+    {
+      "word": "كان",
+      "startMs": 100,
+      "endMs": 300
+    },
+    {
+      "word": "يسيرُ",
+      "startMs": 360,
+      "endMs": 820
+    },
+    {
+      "word": "وحيدًا",
+      "startMs": 840,
+      "endMs": 1460
+    },
+    {
+      "word": "تحتَ",
+      "startMs": 1800,
+      "endMs": 1940
+    },
+    {
+      "word": "الأضواءِ",
+      "startMs": 1960,
+      "endMs": 2860
+    },
+    {
+      "word": "عالمٌ",
+      "startMs": 2940,
+      "endMs": 3210
+    },
+    {
+      "word": "من",
+      "startMs": 3220,
+      "endMs": 3340
+    },
+    {
+      "word": "شهرةٍ،",
+      "startMs": 3460,
+      "endMs": 3860
+    },
+    {
+      "word": "لكنْ",
+      "startMs": 3920,
+      "endMs": 4220
+    },
+    {
+      "word": "مليءٌ",
+      "startMs": 4280,
+      "endMs": 4530
+    },
+    {
+      "word": "بالبلاءِ",
+      "startMs": 4700,
+      "endMs": 5580
+    },
+    {
+      "word": "خلفَ",
+      "startMs": 5620,
+      "endMs": 5920
+    },
+    {
+      "word": "الابتسامةِ",
+      "startMs": 5930,
+      "endMs": 6660
+    },
+    {
+      "word": "قلبٌ",
+      "startMs": 6700,
+      "endMs": 7020
+    },
+    {
+      "word": "جريحٌ",
+      "startMs": 7080,
+      "endMs": 7500
+    },
+    {
+      "word": "يقاومُ",
+      "startMs": 7680,
+      "endMs": 8100
+    },
+    {
+      "word": "العواصفَ",
+      "startMs": 8280,
+      "endMs": 8750
+    },
+    {
+      "word": "ويرقصُ",
+      "startMs": 8900,
+      "endMs": 9440
+    },
+    {
+      "word": "في",
+      "startMs": 9500,
+      "endMs": 9900
+    },
+    {
+      "word": "الريحِ",
+      "startMs": 9910,
+      "endMs": 11020
+    },
+    {
+      "word": "كلُّ",
+      "startMs": 13420,
+      "endMs": 20030
+    },
+    {
+      "word": "ندبةٍ",
+      "startMs": 20100,
+      "endMs": 20560
+    },
+    {
+      "word": "تخفي",
+      "startMs": 20570,
+      "endMs": 20980
+    },
+    {
+      "word": "حكايةً",
+      "startMs": 21200,
+      "endMs": 21780
+    },
+    {
+      "word": "أليمةْ",
+      "startMs": 21840,
+      "endMs": 22390
+    },
+    {
+      "word": "صرخةٌ",
+      "startMs": 22440,
+      "endMs": 22860
+    },
+    {
+      "word": "صامتةٌ",
+      "startMs": 22880,
+      "endMs": 23280
+    },
+    {
+      "word": "وسطَ",
+      "startMs": 23460,
+      "endMs": 23720
+    },
+    {
+      "word": "الظلمةِ",
+      "startMs": 23800,
+      "endMs": 24160
+    },
+    {
+      "word": "العظيمةْ",
+      "startMs": 24170,
+      "endMs": 24980
+    },
+    {
+      "word": "لكنْ",
+      "startMs": 25020,
+      "endMs": 25300
+    },
+    {
+      "word": "في",
+      "startMs": 25340,
+      "endMs": 25430
+    },
+    {
+      "word": "الظلامِ",
+      "startMs": 25520,
+      "endMs": 25840
+    },
+    {
+      "word": "شعلةُ",
+      "startMs": 25940,
+      "endMs": 26320
+    },
+    {
+      "word": "النورِ",
+      "startMs": 26340,
+      "endMs": 26700
+    },
+    {
+      "word": "تجلَّتْ",
+      "startMs": 26740,
+      "endMs": 27320
+    },
+    {
+      "word": "صوتٌ",
+      "startMs": 27360,
+      "endMs": 27640
+    },
+    {
+      "word": "في",
+      "startMs": 27660,
+      "endMs": 27760
+    },
+    {
+      "word": "داخلهِ",
+      "startMs": 27820,
+      "endMs": 28200
+    },
+    {
+      "word": "أعلى",
+      "startMs": 28260,
+      "endMs": 43300
+    },
+    {
+      "word": "من",
+      "startMs": 43320,
+      "endMs": 43460
+    },
+    {
+      "word": "كلِّ",
+      "startMs": 43480,
+      "endMs": 43740
+    },
+    {
+      "word": "ما",
+      "startMs": 43800,
+      "endMs": 44060
+    },
+    {
+      "word": "هلَّتْ",
+      "startMs": 44100,
+      "endMs": 44680
+    },
+    {
+      "word": "لا",
+      "startMs": 44760,
+      "endMs": 45000
+    },
+    {
+      "word": "تستسلمْ",
+      "startMs": 45020,
+      "endMs": 45860
+    },
+    {
+      "word": "أبدًا",
+      "startMs": 45940,
+      "endMs": 46520
+    },
+    {
+      "word": "مهما",
+      "startMs": 46580,
+      "endMs": 47160
+    },
+    {
+      "word": "كانَ",
+      "startMs": 47200,
+      "endMs": 47620
+    },
+    {
+      "word": "الصراعْ",
+      "startMs": 47740,
+      "endMs": 49020
+    },
+    {
+      "word": "في",
+      "startMs": 49300,
+      "endMs": 49540
+    },
+    {
+      "word": "قلبِ",
+      "startMs": 49660,
+      "endMs": 50060
+    },
+    {
+      "word": "الظلالِ",
+      "startMs": 50080,
+      "endMs": 51000
+    },
+    {
+      "word": "سأجدُ",
+      "startMs": 51140,
+      "endMs": 51820
+    },
+    {
+      "word": "الضياءَ",
+      "startMs": 51960,
+      "endMs": 52720
+    },
+    {
+      "word": "والشراعْ",
+      "startMs": 52730,
+      "endMs": 53640
+    },
+    {
+      "word": "أحلامٌ",
+      "startMs": 54240,
+      "endMs": 55040
+    },
+    {
+      "word": "تكسَّرتْ",
+      "startMs": 55180,
+      "endMs": 55810
+    },
+    {
+      "word": "لكني",
+      "startMs": 56100,
+      "endMs": 56480
+    },
+    {
+      "word": "سأبقى",
+      "startMs": 56860,
+      "endMs": 57580
+    },
+    {
+      "word": "قويًا",
+      "startMs": 57600,
+      "endMs": 58540
+    },
+    {
+      "word": "الحريةُ",
+      "startMs": 58760,
+      "endMs": 59970
+    },
+    {
+      "word": "تناديني،",
+      "startMs": 59971,
+      "endMs": 61080
+    },
+    {
+      "word": "وسأعبرُ",
+      "startMs": 61160,
+      "endMs": 61920
+    },
+    {
+      "word": "كلَّ",
+      "startMs": 61960,
+      "endMs": 62340
+    },
+    {
+      "word": "شيءٍ",
+      "startMs": 62400,
+      "endMs": 62980
+    },
+    {
+      "word": "نقيًا",
+      "startMs": 63000,
+      "endMs": 64080
+    },
+    {
+      "word": "تصفيقُ",
+      "startMs": 69020,
+      "endMs": 69460
+    },
+    {
+      "word": "الجموعِ",
+      "startMs": 69520,
+      "endMs": 70120
+    },
+    {
+      "word": "كانَ",
+      "startMs": 70260,
+      "endMs": 70480
+    },
+    {
+      "word": "يثقلُ",
+      "startMs": 70540,
+      "endMs": 70980
+    },
+    {
+      "word": "خطاهُ",
+      "startMs": 71000,
+      "endMs": 71480
+    },
+    {
+      "word": "سلاسلُ",
+      "startMs": 71660,
+      "endMs": 72120
+    },
+    {
+      "word": "الذهبِ",
+      "startMs": 72180,
+      "endMs": 72700
+    },
+    {
+      "word": "لم",
+      "startMs": 72720,
+      "endMs": 72860
+    },
+    {
+      "word": "تغيِّرْ",
+      "startMs": 72880,
+      "endMs": 73320
+    },
+    {
+      "word": "درباهُ",
+      "startMs": 73360,
+      "endMs": 74100
+    },
+    {
+      "word": "حياةٌ",
+      "startMs": 74160,
+      "endMs": 74500
+    },
+    {
+      "word": "هشَّةٌ",
+      "startMs": 74600,
+      "endMs": 75080
+    },
+    {
+      "word": "والحبُّ",
+      "startMs": 75160,
+      "endMs": 75780
+    },
+    {
+      "word": "فيها",
+      "startMs": 75800,
+      "endMs": 76060
+    },
+    {
+      "word": "نادرْ",
+      "startMs": 76140,
+      "endMs": 76540
+    },
+    {
+      "word": "لكنَّ",
+      "startMs": 76580,
+      "endMs": 76900
+    },
+    {
+      "word": "حنانَهُ",
+      "startMs": 77020,
+      "endMs": 77350
+    },
+    {
+      "word": "أصبحَ",
+      "startMs": 77500,
+      "endMs": 77780
+    },
+    {
+      "word": "منارةً",
+      "startMs": 77820,
+      "endMs": 78170
+    },
+    {
+      "word": "في",
+      "startMs": 78360,
+      "endMs": 78540
+    },
+    {
+      "word": "العابرْ",
+      "startMs": 78640,
+      "endMs": 79160
+    },
+    {
+      "word": "كلُّ",
+      "startMs": 79400,
+      "endMs": 79760
+    },
+    {
+      "word": "سقوطٍ",
+      "startMs": 79820,
+      "endMs": 80350
+    },
+    {
+      "word": "زادَهُ",
+      "startMs": 80351,
+      "endMs": 80660
+    },
+    {
+      "word": "قوةً",
+      "startMs": 80760,
+      "endMs": 81150
+    },
+    {
+      "word": "وإصرارًا",
+      "startMs": 81160,
+      "endMs": 81840
+    },
+    {
+      "word": "شعلةٌ",
+      "startMs": 81920,
+      "endMs": 82180
+    },
+    {
+      "word": "في",
+      "startMs": 82400,
+      "endMs": 82500
+    },
+    {
+      "word": "القلبِ",
+      "startMs": 82580,
+      "endMs": 82860
+    },
+    {
+      "word": "تزيدُهُ",
+      "startMs": 82900,
+      "endMs": 83480
+    },
+    {
+      "word": "استنارةً",
+      "startMs": 83540,
+      "endMs": 84260
+    },
+    {
+      "word": "طريقٌ",
+      "startMs": 84300,
+      "endMs": 84840
+    },
+    {
+      "word": "حفرَهُ",
+      "startMs": 85020,
+      "endMs": 85420
+    },
+    {
+      "word": "بعزمٍ",
+      "startMs": 85500,
+      "endMs": 85930
+    },
+    {
+      "word": "وجهدٍ",
+      "startMs": 86120,
+      "endMs": 86480
+    },
+    {
+      "word": "عميقْ",
+      "startMs": 86520,
+      "endMs": 87100
+    },
+    {
+      "word": "إرثٌ",
+      "startMs": 87110,
+      "endMs": 87460
+    },
+    {
+      "word": "خالدٌ",
+      "startMs": 87500,
+      "endMs": 87900
+    },
+    {
+      "word": "يبقى",
+      "startMs": 87980,
+      "endMs": 88340
+    },
+    {
+      "word": "شاهدًا",
+      "startMs": 88400,
+      "endMs": 88840
+    },
+    {
+      "word": "للأجيالِ",
+      "startMs": 88900,
+      "endMs": 89760
+    },
+    {
+      "word": "الصديقْ",
+      "startMs": 89820,
+      "endMs": 90340
+    },
+    {
+      "word": "لا",
+      "startMs": 90360,
+      "endMs": 90450
+    },
+    {
+      "word": "تستسلمْ",
+      "startMs": 90600,
+      "endMs": 91399
+    },
+    {
+      "word": "أبدًا",
+      "startMs": 91480,
+      "endMs": 91960
+    },
+    {
+      "word": "مهما",
+      "startMs": 92440,
+      "endMs": 92680
+    },
+    {
+      "word": "كانَ",
+      "startMs": 92740,
+      "endMs": 93160
+    },
+    {
+      "word": "الصراعْ",
+      "startMs": 93260,
+      "endMs": 94780
+    },
+    {
+      "word": "في",
+      "startMs": 94840,
+      "endMs": 95080
+    },
+    {
+      "word": "قلبِ",
+      "startMs": 95220,
+      "endMs": 95640
+    },
+    {
+      "word": "الظلالِ",
+      "startMs": 95680,
+      "endMs": 96020
+    },
+    {
+      "word": "سأجدُ",
+      "startMs": 96680,
+      "endMs": 97440
+    },
+    {
+      "word": "الضياءَ",
+      "startMs": 97600,
+      "endMs": 98250
+    },
+    {
+      "word": "والشراعْ",
+      "startMs": 98251,
+      "endMs": 99760
+    },
+    {
+      "word": "أحلامٌ",
+      "startMs": 100100,
+      "endMs": 100560
+    },
+    {
+      "word": "تكسَّرتْ",
+      "startMs": 100720,
+      "endMs": 101580
+    },
+    {
+      "word": "لكني",
+      "startMs": 101680,
+      "endMs": 102250
+    },
+    {
+      "word": "سأبقى",
+      "startMs": 102400,
+      "endMs": 103370
+    },
+    {
+      "word": "قويًا",
+      "startMs": 103500,
+      "endMs": 103980
+    },
+    {
+      "word": "الحريةُ",
+      "startMs": 104160,
+      "endMs": 105700
+    },
+    {
+      "word": "تناديني،",
+      "startMs": 105780,
+      "endMs": 106620
+    },
+    {
+      "word": "وسأعبرُ",
+      "startMs": 106700,
+      "endMs": 107200
+    },
+    {
+      "word": "كلَّ",
+      "startMs": 107480,
+      "endMs": 107860
+    },
+    {
+      "word": "شيءٍ",
+      "startMs": 107980,
+      "endMs": 108500
+    },
+    {
+      "word": "نقيًا",
+      "startMs": 108540,
+      "endMs": 109460
+    },
+    {
+      "word": "حاولوا",
+      "startMs": 119460,
+      "endMs": 120010
+    },
+    {
+      "word": "كسرَهُ",
+      "startMs": 120080,
+      "endMs": 120520
+    },
+    {
+      "word": "لكنه",
+      "startMs": 120560,
+      "endMs": 121020
+    },
+    {
+      "word": "كانَ",
+      "startMs": 121320,
+      "endMs": 121560
+    },
+    {
+      "word": "كالجبالْ",
+      "startMs": 121660,
+      "endMs": 122500
+    },
+    {
+      "word": "في",
+      "startMs": 124380,
+      "endMs": 124680
+    },
+    {
+      "word": "كلِّ",
+      "startMs": 124720,
+      "endMs": 125100
+    },
+    {
+      "word": "خسارةٍ",
+      "startMs": 125160,
+      "endMs": 125740
+    },
+    {
+      "word": "وجدَ",
+      "startMs": 125760,
+      "endMs": 126180
+    },
+    {
+      "word": "درسًا",
+      "startMs": 126200,
+      "endMs": 126500
+    },
+    {
+      "word": "واحتمالْ",
+      "startMs": 126560,
+      "endMs": 127460
+    },
+    {
+      "word": "الطريقُ",
+      "startMs": 129280,
+      "endMs": 130038
+    },
+    {
+      "word": "طويلٌ",
+      "startMs": 130060,
+      "endMs": 130639
+    },
+    {
+      "word": "لكنَّ",
+      "startMs": 130699,
+      "endMs": 131100
+    },
+    {
+      "word": "قلبَهُ",
+      "startMs": 131160,
+      "endMs": 131620
+    },
+    {
+      "word": "حرُّ",
+      "startMs": 131760,
+      "endMs": 133020
+    },
+    {
+      "word": "يتبعُ",
+      "startMs": 134220,
+      "endMs": 134780
+    },
+    {
+      "word": "الحقيقةَ",
+      "startMs": 134920,
+      "endMs": 135549
+    },
+    {
+      "word": "كالنهرِ",
+      "startMs": 135660,
+      "endMs": 136340
+    },
+    {
+      "word": "لا",
+      "startMs": 136380,
+      "endMs": 136660
+    },
+    {
+      "word": "يفرُّ",
+      "startMs": 136680,
+      "endMs": 137460
+    },
+    {
+      "word": "لا",
+      "startMs": 139180,
+      "endMs": 139440
+    },
+    {
+      "word": "تستسلمْ",
+      "startMs": 139480,
+      "endMs": 140329
+    },
+    {
+      "word": "أبدًا",
+      "startMs": 140420,
+      "endMs": 141000
+    },
+    {
+      "word": "مهما",
+      "startMs": 141020,
+      "endMs": 141280
+    },
+    {
+      "word": "كانَ",
+      "startMs": 141640,
+      "endMs": 142100
+    },
+    {
+      "word": "الصراعْ",
+      "startMs": 142120,
+      "endMs": 143320
+    },
+    {
+      "word": "في",
+      "startMs": 144080,
+      "endMs": 144280
+    },
+    {
+      "word": "قلبِ",
+      "startMs": 144400,
+      "endMs": 144740
+    },
+    {
+      "word": "الظلالِ",
+      "startMs": 144820,
+      "endMs": 145860
+    },
+    {
+      "word": "سأجدُ",
+      "startMs": 145900,
+      "endMs": 146680
+    },
+    {
+      "word": "الضياءَ",
+      "startMs": 146740,
+      "endMs": 147420
+    },
+    {
+      "word": "والشراعْ",
+      "startMs": 147480,
+      "endMs": 148980
+    },
+    {
+      "word": "أحلامٌ",
+      "startMs": 149060,
+      "endMs": 149800
+    },
+    {
+      "word": "تكسَّرتْ",
+      "startMs": 149940,
+      "endMs": 150780
+    },
+    {
+      "word": "لكني",
+      "startMs": 150860,
+      "endMs": 151580
+    },
+    {
+      "word": "سأبقى",
+      "startMs": 151640,
+      "endMs": 152650
+    },
+    {
+      "word": "قويًا",
+      "startMs": 152660,
+      "endMs": 153560
+    },
+    {
+      "word": "الحريةُ",
+      "startMs": 153680,
+      "endMs": 154900
+    },
+    {
+      "word": "تناديني،",
+      "startMs": 154920,
+      "endMs": 155900
+    },
+    {
+      "word": "وسأعبرُ",
+      "startMs": 155940,
+      "endMs": 156520
+    },
+    {
+      "word": "كلَّ",
+      "startMs": 156720,
+      "endMs": 157100
+    },
+    {
+      "word": "شيءٍ",
+      "startMs": 157200,
+      "endMs": 157720
+    },
+    {
+      "word": "نقيًا",
+      "startMs": 157760,
+      "endMs": 158459
+    },
+    {
+      "word": "لا",
+      "startMs": 158540,
+      "endMs": 158800
+    },
+    {
+      "word": "تستسلمْ",
+      "startMs": 158880,
+      "endMs": 159710
+    },
+    {
+      "word": "أبدًا،",
+      "startMs": 159780,
+      "endMs": 160520
+    },
+    {
+      "word": "هذا",
+      "startMs": 160680,
+      "endMs": 161190
+    },
+    {
+      "word": "كانَ",
+      "startMs": 161340,
+      "endMs": 162080
+    },
+    {
+      "word": "شعارَهْ",
+      "startMs": 162240,
+      "endMs": 163360
+    },
+    {
+      "word": "وسطَ",
+      "startMs": 163780,
+      "endMs": 164280
+    },
+    {
+      "word": "الصراعِ",
+      "startMs": 164290,
+      "endMs": 164730
+    },
+    {
+      "word": "أبقى",
+      "startMs": 164731,
+      "endMs": 165480
+    },
+    {
+      "word": "الأملَ",
+      "startMs": 165500,
+      "endMs": 166020
+    },
+    {
+      "word": "في",
+      "startMs": 166120,
+      "endMs": 166360
+    },
+    {
+      "word": "مسارِهْ",
+      "startMs": 166380,
+      "endMs": 167179
+    },
+    {
+      "word": "الرجلُ",
+      "startMs": 168680,
+      "endMs": 169440
+    },
+    {
+      "word": "الذي",
+      "startMs": 169500,
+      "endMs": 170240
+    },
+    {
+      "word": "صمدَ",
+      "startMs": 170540,
+      "endMs": 170930
+    },
+    {
+      "word": "رغمَ",
+      "startMs": 171160,
+      "endMs": 171640
+    },
+    {
+      "word": "اللهبِ",
+      "startMs": 171720,
+      "endMs": 172400
+    },
+    {
+      "word": "قصةُ",
+      "startMs": 173340,
+      "endMs": 173870
+    },
+    {
+      "word": "أملٍ",
+      "startMs": 173940,
+      "endMs": 174460
+    },
+    {
+      "word": "وقوةٍ",
+      "startMs": 174520,
+      "endMs": 174980
+    },
+    {
+      "word": "لكلِّ",
+      "startMs": 175200,
+      "endMs": 176020
+    },
+    {
+      "word": "قلبٍ",
+      "startMs": 176100,
+      "endMs": 176640
+    },
+    {
+      "word": "حيٍّ",
+      "startMs": 176700,
+      "endMs": 177260
+    },
+    {
+      "word": "في",
+      "startMs": 177320,
+      "endMs": 177580
+    },
+    {
+      "word": "دربِ",
+      "startMs": 177620,
+      "endMs": 178220
+    }
+  ],
+  "wordsPerPage": 3,
+  "fontSize": 64,
+  "highlightColor": "#FACC15",
+  "backgroundColor": "rgba(15, 23, 42, 0.75)",
+  "rtl": true
+}
