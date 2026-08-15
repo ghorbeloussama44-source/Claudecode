@@ -266,6 +266,7 @@ export const Root: React.FC = () => {
           fontSize: 58,
           highlightColor: "#FACC15",
           backgroundColor: "rgba(15, 23, 42, 0.75)",
+          rtl: false,
         }}
       />
       <Composition

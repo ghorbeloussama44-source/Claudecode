@@ -6,6 +6,11 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
+import { loadFont as loadNotoSansArabic } from "@remotion/google-fonts/NotoSansArabic";
+
+const { fontFamily: notoSansArabicFamily } = loadNotoSansArabic("normal", {
+  weights: ["700"],
+});
 
 // Word-level caption for TikTok-style highlight display
 export interface WordCaption {
@@ -23,6 +28,9 @@ type CaptionOverlayProps = {
   highlightColor?: string;
   backgroundColor?: string;
   fontFamily?: string;
+  // Right-to-left script (Arabic, Hebrew, ...): keeps word order correct
+  // within a page instead of the browser's default LTR paragraph flow.
+  rtl?: boolean;
 };
 
 interface CaptionPage {
@@ -52,7 +60,8 @@ const PageRenderer: React.FC<{
   highlightColor: string;
   backgroundColor: string;
   fontFamily: string;
-}> = ({ page, fontSize, color, highlightColor, backgroundColor, fontFamily }) => {
+  rtl: boolean;
+}> = ({ page, fontSize, color, highlightColor, backgroundColor, fontFamily, rtl }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -91,6 +100,8 @@ const PageRenderer: React.FC<{
             fontFamily,
             lineHeight: 1.4,
             whiteSpace: "pre-wrap",
+            direction: rtl ? "rtl" : "ltr",
+            unicodeBidi: "plaintext",
           }}
         >
           {page.words.map((w, i) => {
@@ -124,10 +135,13 @@ export const CaptionOverlay: React.FC<CaptionOverlayProps> = ({
   color = "#F8FAFC",
   highlightColor = "#22D3EE",
   backgroundColor = "rgba(15, 23, 42, 0.75)",
-  fontFamily = "Space Grotesk, Inter, system-ui, sans-serif",
+  fontFamily,
+  rtl = false,
 }) => {
   const { fps } = useVideoConfig();
   const pages = buildPages(words, wordsPerPage);
+  const resolvedFontFamily =
+    fontFamily ?? (rtl ? notoSansArabicFamily : "Space Grotesk, Inter, system-ui, sans-serif");
 
   return (
     <AbsoluteFill>
@@ -147,7 +161,8 @@ export const CaptionOverlay: React.FC<CaptionOverlayProps> = ({
               color={color}
               highlightColor={highlightColor}
               backgroundColor={backgroundColor}
-              fontFamily={fontFamily}
+              fontFamily={resolvedFontFamily}
+              rtl={rtl}
             />
           </Sequence>
         );
