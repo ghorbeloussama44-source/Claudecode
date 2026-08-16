@@ -8,11 +8,15 @@ import {
 } from "remotion";
 import React from "react";
 import { loadFont as loadPlayfair } from "@remotion/google-fonts/PlayfairDisplay";
+import { loadFont as loadNotoNaskhArabic } from "@remotion/google-fonts/NotoNaskhArabic";
 import { resolveAsset } from "./lib/resolveAsset";
 
 const { fontFamily: playfairItalic } = loadPlayfair("italic", {
   weights: ["400", "700"],
   subsets: ["latin"],
+});
+const { fontFamily: notoNaskhArabic } = loadNotoNaskhArabic("normal", {
+  weights: ["500", "700"],
 });
 
 export interface Lyric {
@@ -22,12 +26,20 @@ export interface Lyric {
 }
 
 export type LyricOverlayProps = {
-  videoSrc: string;
+  // Optional: when omitted, renders lyrics only (transparent background) so
+  // this can be exported as an alpha overlay and composited onto footage
+  // that was cut/graded separately (e.g. via ffmpeg), instead of baking the
+  // video into this Remotion render.
+  videoSrc?: string;
   lyrics: Lyric[];
   bottomY?: number; // 0..1, vertical center of subtitle band
+  // Right-to-left script (Arabic, Hebrew, ...): switches to a Naskh Arabic
+  // serif and correct paragraph direction instead of the Latin-only
+  // Playfair Display italic.
+  rtl?: boolean;
 };
 
-const LyricLine: React.FC<{ lyric: Lyric; bottomY: number }> = ({ lyric, bottomY }) => {
+const LyricLine: React.FC<{ lyric: Lyric; bottomY: number; rtl: boolean }> = ({ lyric, bottomY, rtl }) => {
   const frame = useCurrentFrame();
   const { fps, width, height } = useVideoConfig();
   const inFrame = lyric.inSeconds * fps;
@@ -95,13 +107,15 @@ const LyricLine: React.FC<{ lyric: Lyric; bottomY: number }> = ({ lyric, bottomY
       >
         <div
           style={{
-            fontFamily: playfairItalic,
-            fontStyle: "italic",
-            fontWeight: 400,
-            fontSize: 54,
+            fontFamily: rtl ? notoNaskhArabic : playfairItalic,
+            fontStyle: rtl ? "normal" : "italic",
+            fontWeight: rtl ? 700 : 400,
+            fontSize: rtl ? 50 : 54,
             lineHeight: 1.15,
             color: cream,
             letterSpacing: "0.01em",
+            direction: rtl ? "rtl" : "ltr",
+            unicodeBidi: "plaintext",
             textShadow: "0 2px 18px rgba(0,0,0,0.85), 0 0 22px rgba(0,0,0,0.5)",
           }}
         >
@@ -151,13 +165,13 @@ export const LyricOverlay: React.FC<LyricOverlayProps> = ({
   videoSrc,
   lyrics,
   bottomY = 0.88,
+  rtl = false,
 }) => {
-  const { durationInFrames } = useVideoConfig();
   return (
-    <AbsoluteFill style={{ backgroundColor: "#000" }}>
-      <OffthreadVideo src={resolveAsset(videoSrc)} />
+    <AbsoluteFill style={{ backgroundColor: videoSrc ? "#000" : "transparent" }}>
+      {videoSrc ? <OffthreadVideo src={resolveAsset(videoSrc)} /> : null}
       {lyrics.map((l, i) => (
-        <LyricLine key={i} lyric={l} bottomY={bottomY} />
+        <LyricLine key={i} lyric={l} bottomY={bottomY} rtl={rtl} />
       ))}
     </AbsoluteFill>
   );

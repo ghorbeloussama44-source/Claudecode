@@ -298,6 +298,19 @@ export const Root: React.FC = () => {
         } as LyricOverlayProps}
       />
       <Composition
+        id="LyricOverlayOnly"
+        component={LyricOverlay}
+        durationInFrames={30 * 300}
+        fps={30}
+        width={1920}
+        height={1080}
+        defaultProps={{
+          lyrics: [],
+          bottomY: 0.88,
+          rtl: false,
+        } as LyricOverlayProps}
+      />
+      <Composition
         id="EndTag"
         component={EndTag}
         // 5.5s at 30fps = 165 frames. Render CLI can override via --props.

@@ -39,29 +39,50 @@ interface CaptionPage {
   endMs: number;
 }
 
+// Gap between two words beyond which we treat it as silence (instrumental
+// break, breath, line change) rather than normal speech pacing. A page
+// never spans a gap this large — it ends before the gap and a new page
+// starts after it, so the caption box isn't left sitting on screen with
+// nothing being said.
+const SILENCE_GAP_MS = 700;
+
 function buildPages(words: WordCaption[], wordsPerPage: number): CaptionPage[] {
   const pages: CaptionPage[] = [];
-  for (let i = 0; i < words.length; i += wordsPerPage) {
-    const pageWords = words.slice(i, i + wordsPerPage);
-    if (pageWords.length === 0) continue;
+  let current: WordCaption[] = [];
+
+  const flush = () => {
+    if (current.length === 0) return;
     pages.push({
-      words: pageWords,
-      startMs: pageWords[0].startMs,
-      endMs: pageWords[pageWords.length - 1].endMs,
+      words: current,
+      startMs: current[0].startMs,
+      endMs: current[current.length - 1].endMs,
     });
+    current = [];
+  };
+
+  for (const w of words) {
+    const prev = current[current.length - 1];
+    const isSilenceBreak = prev !== undefined && w.startMs - prev.endMs > SILENCE_GAP_MS;
+    if (isSilenceBreak || current.length >= wordsPerPage) {
+      flush();
+    }
+    current.push(w);
   }
+  flush();
+
   return pages;
 }
 
 const PageRenderer: React.FC<{
   page: CaptionPage;
+  durationInFrames: number;
   fontSize: number;
   color: string;
   highlightColor: string;
   backgroundColor: string;
   fontFamily: string;
   rtl: boolean;
-}> = ({ page, fontSize, color, highlightColor, backgroundColor, fontFamily, rtl }) => {
+}> = ({ page, durationInFrames, fontSize, color, highlightColor, backgroundColor, fontFamily, rtl }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -73,6 +94,15 @@ const PageRenderer: React.FC<{
     fps,
     config: { damping: 18, stiffness: 120 },
   });
+  // Fade out over the last few frames instead of a hard cut when the page ends.
+  const exitFrames = Math.min(8, durationInFrames - 1);
+  const exit = interpolate(
+    frame,
+    [durationInFrames - exitFrames, durationInFrames],
+    [1, 0],
+    { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
+  );
+  const opacity = entrance * exit;
 
   return (
     <AbsoluteFill
@@ -84,7 +114,7 @@ const PageRenderer: React.FC<{
     >
       <div
         style={{
-          opacity: entrance,
+          opacity,
           transform: `translateY(${interpolate(entrance, [0, 1], [20, 0])}px)`,
           backgroundColor,
           borderRadius: 12,
@@ -147,16 +177,20 @@ export const CaptionOverlay: React.FC<CaptionOverlayProps> = ({
     <AbsoluteFill>
       {pages.map((page, i) => {
         const fromFrame = Math.round((page.startMs / 1000) * fps);
-        const nextStart = pages[i + 1]?.startMs ?? page.endMs + 500;
+        // Hold each page for its own words plus a short trailing beat for
+        // readability — never until the next page starts. That's what let
+        // the box sit frozen through a silence before this fix.
+        const holdMs = 450;
         const duration = Math.max(
           1,
-          Math.round(((nextStart - page.startMs) / 1000) * fps)
+          Math.round(((page.endMs - page.startMs + holdMs) / 1000) * fps)
         );
 
         return (
           <Sequence key={i} from={fromFrame} durationInFrames={duration}>
             <PageRenderer
               page={page}
+              durationInFrames={duration}
               fontSize={fontSize}
               color={color}
               highlightColor={highlightColor}
