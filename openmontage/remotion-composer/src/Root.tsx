@@ -14,6 +14,7 @@ import { EndTag, EndTagProps } from "./components/EndTag";
 import { HeroTitle } from "./components/HeroTitle";
 import { ProductReveal, ProductRevealProps } from "./components/ProductReveal";
 import { CaptionOverlay, WordCaption } from "./components/CaptionOverlay";
+import { NeonWordOverlay, NeonWordOverlayProps, NeonWord } from "./components/NeonWordOverlay";
 import { CollageBurst, CollageBurstProps } from "./CollageBurst";
 import { LyricOverlay, LyricOverlayProps } from "./LyricOverlay";
 
@@ -309,6 +310,20 @@ export const Root: React.FC = () => {
           bottomY: 0.88,
           rtl: false,
         } as LyricOverlayProps}
+      />
+      <Composition
+        id="NeonWordOverlayOnly"
+        component={NeonWordOverlay}
+        durationInFrames={30 * 300}
+        fps={30}
+        width={1920}
+        height={1080}
+        defaultProps={{
+          words: [] as NeonWord[],
+          fontSize: 140,
+          neonColor: "#FFC94A",
+          rtl: false,
+        } as NeonWordOverlayProps}
       />
       <Composition
         id="EndTag"
