@@ -1,0 +1,227 @@
+{
+  "words": [
+    {
+      "word": "لا",
+      "startMs": 0,
+      "endMs": 139
+    },
+    {
+      "word": "تستسلم",
+      "startMs": 197,
+      "endMs": 639
+    },
+    {
+      "word": "أبدًا.",
+      "startMs": 673,
+      "endMs": 1207
+    },
+    {
+      "word": "كل",
+      "startMs": 1533,
+      "endMs": 1707
+    },
+    {
+      "word": "تحدٍّ",
+      "startMs": 1811,
+      "endMs": 2241
+    },
+    {
+      "word": "تواجهه",
+      "startMs": 2264,
+      "endMs": 2786
+    },
+    {
+      "word": "اليوم،",
+      "startMs": 2856,
+      "endMs": 3460
+    },
+    {
+      "word": "يصنع",
+      "startMs": 3704,
+      "endMs": 4005
+    },
+    {
+      "word": "القوة",
+      "startMs": 4051,
+      "endMs": 4505
+    },
+    {
+      "word": "التي",
+      "startMs": 4551,
+      "endMs": 4841
+    },
+    {
+      "word": "تحتاجها",
+      "startMs": 4911,
+      "endMs": 5515
+    },
+    {
+      "word": "غدًا.",
+      "startMs": 5573,
+      "endMs": 6037
+    },
+    {
+      "word": "الطريق",
+      "startMs": 6374,
+      "endMs": 6780
+    },
+    {
+      "word": "ليس",
+      "startMs": 6873,
+      "endMs": 7070
+    },
+    {
+      "word": "سهلاً،",
+      "startMs": 7175,
+      "endMs": 7721
+    },
+    {
+      "word": "لكن",
+      "startMs": 7906,
+      "endMs": 8162
+    },
+    {
+      "word": "كل",
+      "startMs": 8208,
+      "endMs": 8382
+    },
+    {
+      "word": "خطوة",
+      "startMs": 8487,
+      "endMs": 8905
+    },
+    {
+      "word": "تقربك",
+      "startMs": 9125,
+      "endMs": 9810
+    },
+    {
+      "word": "من",
+      "startMs": 9915,
+      "endMs": 10008
+    },
+    {
+      "word": "حلمك.",
+      "startMs": 10077,
+      "endMs": 10751
+    },
+    {
+      "word": "آمن",
+      "startMs": 11029,
+      "endMs": 11331
+    },
+    {
+      "word": "بنفسك،",
+      "startMs": 11401,
+      "endMs": 12040
+    },
+    {
+      "word": "فأنت",
+      "startMs": 12086,
+      "endMs": 12423
+    },
+    {
+      "word": "أقوى",
+      "startMs": 12481,
+      "endMs": 12852
+    },
+    {
+      "word": "مما",
+      "startMs": 12899,
+      "endMs": 13084
+    },
+    {
+      "word": "تتخيل.",
+      "startMs": 13154,
+      "endMs": 13909
+    },
+    {
+      "word": "النجاح",
+      "startMs": 14187,
+      "endMs": 14594
+    },
+    {
+      "word": "ليس",
+      "startMs": 14698,
+      "endMs": 14872
+    },
+    {
+      "word": "صدفة،",
+      "startMs": 14977,
+      "endMs": 15430
+    },
+    {
+      "word": "بل",
+      "startMs": 15569,
+      "endMs": 15720
+    },
+    {
+      "word": "نتيجة",
+      "startMs": 15790,
+      "endMs": 16265
+    },
+    {
+      "word": "إصرار",
+      "startMs": 16347,
+      "endMs": 16939
+    },
+    {
+      "word": "لا",
+      "startMs": 17090,
+      "endMs": 17241
+    },
+    {
+      "word": "يعرف",
+      "startMs": 17299,
+      "endMs": 17624
+    },
+    {
+      "word": "الاستسلام.",
+      "startMs": 17682,
+      "endMs": 18495
+    },
+    {
+      "word": "انهض،",
+      "startMs": 18646,
+      "endMs": 19273
+    },
+    {
+      "word": "وواصل،",
+      "startMs": 19389,
+      "endMs": 20190
+    },
+    {
+      "word": "فالمستقبل",
+      "startMs": 20317,
+      "endMs": 21165
+    },
+    {
+      "word": "ينتظر",
+      "startMs": 21351,
+      "endMs": 21966
+    },
+    {
+      "word": "من",
+      "startMs": 22094,
+      "endMs": 22221
+    },
+    {
+      "word": "يجرؤ",
+      "startMs": 22314,
+      "endMs": 22686
+    },
+    {
+      "word": "على",
+      "startMs": 22767,
+      "endMs": 22953
+    },
+    {
+      "word": "الحلم.",
+      "startMs": 22988,
+      "endMs": 23684
+    }
+  ],
+  "fontSize": 130,
+  "neonColor": "#FFC94A",
+  "rtl": true
+}
