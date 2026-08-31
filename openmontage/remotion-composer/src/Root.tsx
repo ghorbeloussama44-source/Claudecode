@@ -17,6 +17,7 @@ import { CaptionOverlay, WordCaption } from "./components/CaptionOverlay";
 import { NeonWordOverlay, NeonWordOverlayProps, NeonWord } from "./components/NeonWordOverlay";
 import { CollageBurst, CollageBurstProps } from "./CollageBurst";
 import { LyricOverlay, LyricOverlayProps } from "./LyricOverlay";
+import { MahdiaTitleCard, MahdiaTitleCardProps } from "./components/MahdiaTitleCard";
 
 // ---------------------------------------------------------------------------
 // Theme System — prevents every video from looking like dark fintech
@@ -324,6 +325,24 @@ export const Root: React.FC = () => {
           neonColor: "#FFC94A",
           rtl: false,
         } as NeonWordOverlayProps}
+      />
+      <Composition
+        id="MahdiaTitleCard"
+        component={MahdiaTitleCard}
+        durationInFrames={30 * 8}
+        fps={30}
+        width={1920}
+        height={1080}
+        defaultProps={{ variant: "title" } as MahdiaTitleCardProps}
+      />
+      <Composition
+        id="MahdiaClosingCard"
+        component={MahdiaTitleCard}
+        durationInFrames={30 * 8}
+        fps={30}
+        width={1920}
+        height={1080}
+        defaultProps={{ variant: "closing" } as MahdiaTitleCardProps}
       />
       <Composition
         id="EndTag"
