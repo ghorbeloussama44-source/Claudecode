@@ -63,7 +63,7 @@ const Waves: React.FC<{ frame: number }> = ({ frame }) => {
 };
 
 export type MahdiaTitleCardProps = {
-  variant: "title" | "closing";
+  variant: "title" | "closing" | "credits";
 };
 
 export const MahdiaTitleCard: React.FC<MahdiaTitleCardProps> = ({ variant }) => {
@@ -76,6 +76,120 @@ export const MahdiaTitleCard: React.FC<MahdiaTitleCardProps> = ({ variant }) => 
   const subtitleIn = spring({ frame: frame - 18, fps, config: { damping: 20 } });
   const taglineIn = spring({ frame: frame - 34, fps, config: { damping: 20 } });
   const ruleIn = interpolate(frame, [8, 26], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+
+  if (variant === "credits") {
+    const lines = [
+      "وزارة التعليم العالي والبحث العلمي",
+      "ديوان الخدمات الجامعية للوسط",
+      "الادارة الجهوية للخدمات الجامعية بالمنستير",
+    ];
+    const labelIn = interpolate(frame, [0, 12], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+    const ruleWidth = interpolate(frame, [10, 26], [0, 140], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+    const orgIn = spring({ frame: frame - 62, fps, config: { damping: 16 } });
+    const exitStart = 108;
+    const exitOpacity = interpolate(frame, [exitStart, exitStart + 12], [1, 0], {
+      extrapolateLeft: "clamp",
+      extrapolateRight: "clamp",
+    });
+
+    return (
+      <AbsoluteFill style={{ opacity: exitOpacity }}>
+        {BG}
+        <Waves frame={frame} />
+        <AbsoluteFill
+          style={{
+            alignItems: "center",
+            justifyContent: "center",
+            flexDirection: "column",
+            padding: "0 160px",
+          }}
+        >
+          <div
+            style={{
+              opacity: labelIn,
+              fontFamily: marcellus,
+              fontSize: 22,
+              letterSpacing: "0.22em",
+              textTransform: "uppercase",
+              color: GOLD,
+              marginBottom: 18,
+            }}
+          >
+            تحت إشراف
+          </div>
+
+          <div style={{ width: ruleWidth, height: 1, background: `linear-gradient(90deg, transparent, ${GOLD}, transparent)`, marginBottom: 28 }} />
+
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 14,
+              alignItems: "center",
+            }}
+          >
+            {lines.map((line, i) => {
+              const lineIn = spring({ frame: frame - (16 + i * 12), fps, config: { damping: 18 } });
+              return (
+                <div
+                  key={line}
+                  style={{
+                    opacity: Math.min(1, lineIn),
+                    transform: `translateY(${(1 - Math.min(1, lineIn)) * 10}px)`,
+                    fontFamily: tajawal,
+                    fontWeight: 500,
+                    fontSize: 30,
+                    color: PARCHMENT,
+                    direction: "rtl",
+                    textAlign: "center",
+                  }}
+                >
+                  {line}
+                </div>
+              );
+            })}
+          </div>
+
+          <div
+            style={{
+              marginTop: 40,
+              opacity: Math.min(1, orgIn),
+              transform: `translateY(${(1 - Math.min(1, orgIn)) * 12}px)`,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 8,
+            }}
+          >
+            <div
+              style={{
+                fontFamily: marcellus,
+                fontSize: 20,
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                color: TEAL,
+              }}
+            >
+              ينظم
+            </div>
+            <div
+              style={{
+                fontFamily: tajawal,
+                fontWeight: 500,
+                fontSize: 34,
+                color: PARCHMENT,
+                direction: "rtl",
+                textAlign: "center",
+                textShadow: `0 0 30px rgba(58,168,154,0.3)`,
+              }}
+            >
+              المركز الجامعي للتنشيط الثقافي والرياضي
+            </div>
+          </div>
+        </AbsoluteFill>
+      </AbsoluteFill>
+    );
+  }
 
   if (variant === "title") {
     return (

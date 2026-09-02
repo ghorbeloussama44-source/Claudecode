@@ -327,6 +327,15 @@ export const Root: React.FC = () => {
         } as NeonWordOverlayProps}
       />
       <Composition
+        id="MahdiaCreditsCard"
+        component={MahdiaTitleCard}
+        durationInFrames={30 * 5}
+        fps={30}
+        width={1920}
+        height={1080}
+        defaultProps={{ variant: "credits" } as MahdiaTitleCardProps}
+      />
+      <Composition
         id="MahdiaTitleCard"
         component={MahdiaTitleCard}
         durationInFrames={30 * 8}
