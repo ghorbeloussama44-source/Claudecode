@@ -78,15 +78,16 @@ export const MahdiaTitleCard: React.FC<MahdiaTitleCardProps> = ({ variant }) => 
   const ruleIn = interpolate(frame, [8, 26], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
 
   if (variant === "credits") {
-    const lines = [
-      "وزارة التعليم العالي والبحث العلمي",
-      "ديوان الخدمات الجامعية للوسط",
-      "الادارة الجهوية للخدمات الجامعية بالمنستير",
+    // One line on screen at a time, timed to the credits voice-over
+    // (see projects/mahdia-festival/assets/audio/vo_credits_transcript.json).
+    const beats: { label?: string; text: string; from: number; to: number; emphasize?: boolean }[] = [
+      { label: "تحت إشراف", text: "وزارة التعليم العالي والبحث العلمي", from: 0, to: 95 },
+      { text: "ديوان الخدمات الجامعية للوسط", from: 95, to: 195 },
+      { text: "الإدارة الجهوية للخدمات الجامعية بالمنستير", from: 195, to: 305 },
+      { label: "ينظم", text: "المركز الجامعي للتنشيط الثقافي والرياضي", from: 305, to: 440, emphasize: true },
     ];
-    const labelIn = interpolate(frame, [0, 12], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-    const ruleWidth = interpolate(frame, [10, 26], [0, 140], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-    const orgIn = spring({ frame: frame - 62, fps, config: { damping: 16 } });
-    const exitStart = 108;
+
+    const exitStart = 440;
     const exitOpacity = interpolate(frame, [exitStart, exitStart + 12], [1, 0], {
       extrapolateLeft: "clamp",
       extrapolateRight: "clamp",
@@ -96,96 +97,58 @@ export const MahdiaTitleCard: React.FC<MahdiaTitleCardProps> = ({ variant }) => 
       <AbsoluteFill style={{ opacity: exitOpacity }}>
         {BG}
         <Waves frame={frame} />
-        <AbsoluteFill
-          style={{
-            alignItems: "center",
-            justifyContent: "center",
-            flexDirection: "column",
-            padding: "0 160px",
-          }}
-        >
-          <div
-            style={{
-              opacity: labelIn,
-              fontFamily: marcellus,
-              fontSize: 22,
-              letterSpacing: "0.22em",
-              textTransform: "uppercase",
-              color: GOLD,
-              marginBottom: 18,
-            }}
-          >
-            تحت إشراف
-          </div>
-
-          <div style={{ width: ruleWidth, height: 1, background: `linear-gradient(90deg, transparent, ${GOLD}, transparent)`, marginBottom: 28 }} />
-
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: 14,
-              alignItems: "center",
-            }}
-          >
-            {lines.map((line, i) => {
-              const lineIn = spring({ frame: frame - (16 + i * 12), fps, config: { damping: 18 } });
-              return (
+        <AbsoluteFill style={{ alignItems: "center", justifyContent: "center", padding: "0 160px" }}>
+          {beats.map((beat, i) => {
+            const holdFrames = 10;
+            const localIn = spring({ frame: frame - beat.from, fps, config: { damping: 18, stiffness: 140 } });
+            const localOut = interpolate(frame, [beat.to - holdFrames, beat.to], [1, 0], {
+              extrapolateLeft: "clamp",
+              extrapolateRight: "clamp",
+            });
+            const opacity = frame < beat.from ? 0 : Math.min(1, localIn) * localOut;
+            if (opacity <= 0.001) return null;
+            return (
+              <AbsoluteFill
+                key={i}
+                style={{
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexDirection: "column",
+                  opacity,
+                  transform: `translateY(${(1 - Math.min(1, localIn)) * 12}px)`,
+                }}
+              >
+                {beat.label && (
+                  <div
+                    style={{
+                      fontFamily: marcellus,
+                      fontSize: 22,
+                      letterSpacing: "0.22em",
+                      textTransform: "uppercase",
+                      color: beat.emphasize ? TEAL : GOLD,
+                      marginBottom: 18,
+                    }}
+                  >
+                    {beat.label}
+                  </div>
+                )}
                 <div
-                  key={line}
                   style={{
-                    opacity: Math.min(1, lineIn),
-                    transform: `translateY(${(1 - Math.min(1, lineIn)) * 10}px)`,
                     fontFamily: tajawal,
                     fontWeight: 500,
-                    fontSize: 30,
+                    fontSize: beat.emphasize ? 44 : 34,
                     color: PARCHMENT,
                     direction: "rtl",
                     textAlign: "center",
+                    maxWidth: 1400,
+                    textShadow: beat.emphasize ? `0 0 30px rgba(58,168,154,0.35)` : undefined,
                   }}
                 >
-                  {line}
+                  {beat.text}
                 </div>
-              );
-            })}
-          </div>
-
-          <div
-            style={{
-              marginTop: 40,
-              opacity: Math.min(1, orgIn),
-              transform: `translateY(${(1 - Math.min(1, orgIn)) * 12}px)`,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: 8,
-            }}
-          >
-            <div
-              style={{
-                fontFamily: marcellus,
-                fontSize: 20,
-                letterSpacing: "0.18em",
-                textTransform: "uppercase",
-                color: TEAL,
-              }}
-            >
-              ينظم
-            </div>
-            <div
-              style={{
-                fontFamily: tajawal,
-                fontWeight: 500,
-                fontSize: 34,
-                color: PARCHMENT,
-                direction: "rtl",
-                textAlign: "center",
-                textShadow: `0 0 30px rgba(58,168,154,0.3)`,
-              }}
-            >
-              المركز الجامعي للتنشيط الثقافي والرياضي
-            </div>
-          </div>
+              </AbsoluteFill>
+            );
+          })}
         </AbsoluteFill>
       </AbsoluteFill>
     );
