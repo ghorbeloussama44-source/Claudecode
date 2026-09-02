@@ -228,7 +228,7 @@ export const MahdiaTitleCard: React.FC<MahdiaTitleCardProps> = ({ variant }) => 
               direction: "rtl",
             }}
           >
-            فنٌ بلا حدود · إبداعٌ بلا حدود
+            فنٌ بلا حدود · إبداعٌ بلا قيود
           </div>
         </AbsoluteFill>
       </AbsoluteFill>
