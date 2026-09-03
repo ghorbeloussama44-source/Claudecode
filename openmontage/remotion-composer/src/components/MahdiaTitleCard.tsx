@@ -81,13 +81,13 @@ export const MahdiaTitleCard: React.FC<MahdiaTitleCardProps> = ({ variant }) => 
     // One line on screen at a time, timed to the credits voice-over
     // (see projects/mahdia-festival/assets/audio/vo_credits_transcript.json).
     const beats: { label?: string; text: string; from: number; to: number; emphasize?: boolean }[] = [
-      { label: "تحت إشراف", text: "وزارة التعليم العالي والبحث العلمي", from: 0, to: 95 },
-      { text: "ديوان الخدمات الجامعية للوسط", from: 95, to: 182 },
-      { text: "الإدارة الجهوية للخدمات الجامعية بالمنستير", from: 182, to: 309 },
-      { label: "ينظم", text: "المركز الجامعي للتنشيط الثقافي والرياضي", from: 326, to: 444, emphasize: true },
+      { label: "تحت إشراف", text: "وزارة التعليم العالي والبحث العلمي", from: 0, to: 99 },
+      { text: "ديوان الخدمات الجامعية للوسط", from: 107, to: 190 },
+      { text: "الإدارة الجهوية للخدمات الجامعية بالمنستير", from: 190, to: 320 },
+      { label: "ينظم", text: "المركز الجامعي للتنشيط الثقافي والرياضي بالمهدية", from: 332, to: 480, emphasize: true },
     ];
 
-    const exitStart = 444;
+    const exitStart = 480;
     const exitOpacity = interpolate(frame, [exitStart, exitStart + 12], [1, 0], {
       extrapolateLeft: "clamp",
       extrapolateRight: "clamp",

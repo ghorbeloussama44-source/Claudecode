@@ -329,7 +329,7 @@ export const Root: React.FC = () => {
       <Composition
         id="MahdiaCreditsCard"
         component={MahdiaTitleCard}
-        durationInFrames={460}
+        durationInFrames={500}
         fps={30}
         width={1920}
         height={1080}
