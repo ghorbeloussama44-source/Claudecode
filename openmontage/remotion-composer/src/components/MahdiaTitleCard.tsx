@@ -114,11 +114,11 @@ const CreditsOverlay: React.FC<{ frame: number; fps: number }> = ({ frame, fps }
               <div
                 style={{
                   fontFamily: marcellus,
-                  fontSize: 15,
-                  letterSpacing: "0.2em",
+                  fontSize: 22,
+                  letterSpacing: "0.18em",
                   textTransform: "uppercase",
                   color: beat.emphasize ? TEAL_ON_LIGHT : GOLD_ON_LIGHT,
-                  marginBottom: 10,
+                  marginBottom: 14,
                 }}
               >
                 {beat.label}
@@ -127,13 +127,13 @@ const CreditsOverlay: React.FC<{ frame: number; fps: number }> = ({ frame, fps }
             <div
               style={{
                 fontFamily: tajawal,
-                fontWeight: 600,
-                fontSize: beat.emphasize ? 27 : 21,
+                fontWeight: 700,
+                fontSize: beat.emphasize ? 40 : 32,
                 color: INK_DARK,
                 direction: "rtl",
                 textAlign: "center",
-                maxWidth: 820,
-                lineHeight: 1.35,
+                maxWidth: 1000,
+                lineHeight: 1.4,
               }}
             >
               {beat.text}
