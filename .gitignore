@@ -2,3 +2,4 @@ node_modules/
 rustudy-report/
 tmp/
 OpenChatCut/
+.env
