@@ -27,6 +27,14 @@ tests/qa/output/
 
 # Project workspaces (generated assets, renders — all regenerable)
 projects/
+# Except: final client deliverables worth persisting past a container reset
+# (everything upstream of these — source clips, intermediate renders,
+# transcripts — stays regenerable and gitignored; only the finished video).
+!projects/mahdia-festival/
+projects/mahdia-festival/*
+!projects/mahdia-festival/renders/
+projects/mahdia-festival/renders/*
+!projects/mahdia-festival/renders/mahdia_final_montage_v8.mp4
 
 # Corpus directories (downloaded stock clips, thumbnails, embeddings —
 # regenerable from source APIs via corpus_builder). Explicit rule even
