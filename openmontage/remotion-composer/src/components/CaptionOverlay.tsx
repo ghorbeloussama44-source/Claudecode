@@ -179,12 +179,18 @@ export const CaptionOverlay: React.FC<CaptionOverlayProps> = ({
         const fromFrame = Math.round((page.startMs / 1000) * fps);
         // Hold each page for its own words plus a short trailing beat for
         // readability — never until the next page starts. That's what let
-        // the box sit frozen through a silence before this fix.
+        // the box sit frozen through a silence before this fix. Also never
+        // past the next page's own start frame: back-to-back pages with no
+        // silence gap between them (continuous speech) would otherwise have
+        // this page's exit-fade hold overlap the next page's entrance,
+        // rendering both boxes on top of each other for a few frames.
         const holdMs = 450;
-        const duration = Math.max(
-          1,
-          Math.round(((page.endMs - page.startMs + holdMs) / 1000) * fps)
-        );
+        const nextPage = pages[i + 1];
+        const uncappedEndFrame = Math.round(((page.endMs + holdMs) / 1000) * fps);
+        const endFrame = nextPage
+          ? Math.min(uncappedEndFrame, Math.round((nextPage.startMs / 1000) * fps))
+          : uncappedEndFrame;
+        const duration = Math.max(1, endFrame - fromFrame);
 
         return (
           <Sequence key={i} from={fromFrame} durationInFrames={duration}>
