@@ -14,6 +14,7 @@ import { EndTag, EndTagProps } from "./components/EndTag";
 import { HeroTitle } from "./components/HeroTitle";
 import { ProductReveal, ProductRevealProps } from "./components/ProductReveal";
 import { CaptionOverlay, WordCaption } from "./components/CaptionOverlay";
+import { MahdiaWordBloom } from "./components/MahdiaWordBloom";
 import { NeonWordOverlay, NeonWordOverlayProps, NeonWord } from "./components/NeonWordOverlay";
 import { CollageBurst, CollageBurstProps } from "./CollageBurst";
 import { LyricOverlay, LyricOverlayProps } from "./LyricOverlay";
@@ -399,18 +400,14 @@ export const Root: React.FC = () => {
       />
       <Composition
         id="MahdiaScriptCaptions"
-        component={CaptionOverlay}
+        component={MahdiaWordBloom}
         durationInFrames={1131}
         fps={24}
         width={1280}
         height={720}
         defaultProps={{
           words: mahdiaScriptWords,
-          wordsPerPage: 4,
-          fontSize: 36,
-          color: "#f5efdc",
-          highlightColor: "#3aa89a",
-          backgroundColor: "rgba(13, 39, 51, 0.72)",
+          fontSize: 76,
           rtl: true,
         }}
       />
