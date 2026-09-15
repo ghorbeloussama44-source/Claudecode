@@ -345,6 +345,15 @@ export const Root: React.FC = () => {
         defaultProps={{ variant: "creditsOverlay" } as MahdiaTitleCardProps}
       />
       <Composition
+        id="MahdiaMainOverlay"
+        component={MahdiaTitleCard}
+        durationInFrames={1117}
+        fps={24}
+        width={1280}
+        height={720}
+        defaultProps={{ variant: "mainOverlay" } as MahdiaTitleCardProps}
+      />
+      <Composition
         id="MahdiaTitleCard"
         component={MahdiaTitleCard}
         durationInFrames={30 * 8}
