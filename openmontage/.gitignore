@@ -87,6 +87,10 @@ remotion-composer/projects/
 remotion-composer/public/*
 # But keep demo props (shipped with the project for zero-key demos)
 !remotion-composer/public/demo-props/
+# Keep client-supplied brand assets (logos, etc.) — irreplaceable uploads,
+# not regenerable, previously lost to this same ignore rule on a reset.
+!remotion-composer/public/mahdia/
+!remotion-composer/public/mahdia/*
 # Ignore test/scratch compositions in demo-props (keep only curated demos)
 remotion-composer/public/demo-props/test-*
 remotion-composer/public/demo-props/talking-head-*
