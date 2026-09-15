@@ -63,7 +63,7 @@ const Waves: React.FC<{ frame: number }> = ({ frame }) => {
 };
 
 export type MahdiaTitleCardProps = {
-  variant: "title" | "closing" | "credits" | "creditsOverlay" | "mainOverlay";
+  variant: "title" | "closing" | "credits" | "creditsOverlay";
 };
 
 // Same copy/timing as the "credits" variant, but transparent (no dark BG/Waves)
@@ -145,85 +145,6 @@ const CreditsOverlay: React.FC<{ frame: number; fps: number }> = ({ frame, fps }
   );
 };
 
-// Transparent lower-third overlay for the AI-generated main footage (clip2/clip3,
-// t≈20s-46.5s of the final montage). Two beats: the festival title + tagline over
-// the fortress/paint-splash segment, then the dates over the collage segment —
-// timed to end before the closing medallion (last ~3s) so that area stays clean
-// for the logo. Frame numbers below are at 24fps, local to this overlay's own
-// composition (which spans the full post-crossfade main-content duration).
-const MainOverlay: React.FC<{ frame: number; fps: number }> = ({ frame, fps }) => {
-  const beats: { lines: string[]; from: number; to: number; rtl?: boolean }[] = [
-    {
-      lines: ["المهرجان الدولي الجامعي للفنون التشكيلية بالمهدية", "فنٌ بلا حدود · إبداعٌ بلا قيود"],
-      from: 504,
-      to: 672,
-      rtl: true,
-    },
-    {
-      lines: ["26 — 31 OCTOBRE 2026", "المهدية، تونس · الدورة الأولى"],
-      from: 912,
-      to: 1020,
-    },
-  ];
-
-  return (
-    <AbsoluteFill style={{ alignItems: "center", justifyContent: "flex-end", paddingBottom: 90 }}>
-      {beats.map((beat, i) => {
-        const holdFrames = 16;
-        const localIn = spring({ frame: frame - beat.from, fps, config: { damping: 18, stiffness: 140 } });
-        const localOut = interpolate(frame, [beat.to - holdFrames, beat.to], [1, 0], {
-          extrapolateLeft: "clamp",
-          extrapolateRight: "clamp",
-        });
-        const opacity = frame < beat.from ? 0 : Math.min(1, localIn) * localOut;
-        if (opacity <= 0.001) return null;
-        return (
-          <AbsoluteFill
-            key={i}
-            style={{
-              alignItems: "center",
-              justifyContent: "flex-end",
-              paddingBottom: 90,
-              opacity,
-              transform: `translateY(${(1 - Math.min(1, localIn)) * 14}px)`,
-            }}
-          >
-            <div
-              style={{
-                padding: "18px 46px",
-                borderRadius: 14,
-                background: "linear-gradient(180deg, rgba(5,15,20,0) 0%, rgba(5,15,20,0.55) 40%, rgba(5,15,20,0.55) 100%)",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              {beat.lines.map((line, li) => (
-                <div
-                  key={li}
-                  style={{
-                    fontFamily: li === 0 ? tajawal : jost,
-                    fontWeight: li === 0 ? 700 : 500,
-                    fontSize: li === 0 ? 34 : 24,
-                    color: li === 0 ? PARCHMENT : GOLD,
-                    direction: beat.rtl ? "rtl" : "ltr",
-                    textAlign: "center",
-                    letterSpacing: li === 0 ? undefined : "0.05em",
-                    textShadow: "0 2px 12px rgba(0,0,0,0.65)",
-                    marginTop: li === 0 ? 0 : 10,
-                  }}
-                >
-                  {line}
-                </div>
-              ))}
-            </div>
-          </AbsoluteFill>
-        );
-      })}
-    </AbsoluteFill>
-  );
-};
-
 export const MahdiaTitleCard: React.FC<MahdiaTitleCardProps> = ({ variant }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -237,10 +158,6 @@ export const MahdiaTitleCard: React.FC<MahdiaTitleCardProps> = ({ variant }) => 
 
   if (variant === "creditsOverlay") {
     return <CreditsOverlay frame={frame} fps={fps} />;
-  }
-
-  if (variant === "mainOverlay") {
-    return <MainOverlay frame={frame} fps={fps} />;
   }
 
   if (variant === "credits") {

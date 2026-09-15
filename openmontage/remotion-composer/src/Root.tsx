@@ -19,6 +19,54 @@ import { CollageBurst, CollageBurstProps } from "./CollageBurst";
 import { LyricOverlay, LyricOverlayProps } from "./LyricOverlay";
 import { MahdiaTitleCard, MahdiaTitleCardProps } from "./components/MahdiaTitleCard";
 
+// Word-level timestamps for the main VO script ("في مدينة المهدية..." through
+// "...من كل أنحاء العالم"), transcribed via faster-whisper from
+// projects/mahdia-festival/assets/audio/clip2_vo_final.wav (offset +19400ms,
+// the point in the final montage where clip2's local time 0 lands after the
+// 20s crossfade) and clip3_vo_final.wav (offset +29417ms, where clip3 starts
+// after the concat). Typos from ASR ("يلتق", "بالمهدي", "ابداع") are corrected
+// for on-screen display; timings are left as transcribed.
+const mahdiaScriptWords: WordCaption[] = [
+  { word: "في", startMs: 19400, endMs: 19560 },
+  { word: "مدينة", startMs: 19560, endMs: 20040 },
+  { word: "المهدية", startMs: 20040, endMs: 20700 },
+  { word: "حيث", startMs: 20700, endMs: 21320 },
+  { word: "يلتقي", startMs: 21320, endMs: 21700 },
+  { word: "البحر", startMs: 21700, endMs: 22100 },
+  { word: "بالتاريخ", startMs: 22100, endMs: 22880 },
+  { word: "تنطلق", startMs: 22880, endMs: 23580 },
+  { word: "الدورة", startMs: 23580, endMs: 24080 },
+  { word: "الأولى", startMs: 24080, endMs: 24540 },
+  { word: "من", startMs: 24540, endMs: 24660 },
+  { word: "المهرجان", startMs: 24660, endMs: 25260 },
+  { word: "الدولي", startMs: 25260, endMs: 25800 },
+  { word: "الجامعي", startMs: 25800, endMs: 26800 },
+  { word: "للفنون", startMs: 26800, endMs: 27280 },
+  { word: "التشكيلية", startMs: 27280, endMs: 28040 },
+  { word: "بالمهدية", startMs: 28040, endMs: 28900 },
+  { word: "فن", startMs: 29417, endMs: 30337 },
+  { word: "بلا", startMs: 30337, endMs: 30717 },
+  { word: "حدود", startMs: 30717, endMs: 31217 },
+  { word: "إبداع", startMs: 31217, endMs: 32057 },
+  { word: "بلا", startMs: 32057, endMs: 32357 },
+  { word: "قيود", startMs: 32357, endMs: 32877 },
+  { word: "من", startMs: 32877, endMs: 33517 },
+  { word: "26", startMs: 33517, endMs: 34337 },
+  { word: "إلى", startMs: 34337, endMs: 34977 },
+  { word: "31", startMs: 34977, endMs: 35757 },
+  { word: "أكتوبر", startMs: 35757, endMs: 36657 },
+  { word: "المهدية", startMs: 36657, endMs: 37737 },
+  { word: "تفتح", startMs: 37737, endMs: 38317 },
+  { word: "أبوابها", startMs: 38317, endMs: 38977 },
+  { word: "للفن", startMs: 38977, endMs: 39417 },
+  { word: "والإبداع", startMs: 39417, endMs: 40037 },
+  { word: "القادم", startMs: 40037, endMs: 40857 },
+  { word: "من", startMs: 40857, endMs: 41017 },
+  { word: "كل", startMs: 41017, endMs: 41317 },
+  { word: "أنحاء", startMs: 41317, endMs: 41797 },
+  { word: "العالم", startMs: 41797, endMs: 42297 },
+];
+
 // ---------------------------------------------------------------------------
 // Theme System — prevents every video from looking like dark fintech
 // ---------------------------------------------------------------------------
@@ -345,13 +393,21 @@ export const Root: React.FC = () => {
         defaultProps={{ variant: "creditsOverlay" } as MahdiaTitleCardProps}
       />
       <Composition
-        id="MahdiaMainOverlay"
-        component={MahdiaTitleCard}
+        id="MahdiaScriptCaptions"
+        component={CaptionOverlay}
         durationInFrames={1117}
         fps={24}
         width={1280}
         height={720}
-        defaultProps={{ variant: "mainOverlay" } as MahdiaTitleCardProps}
+        defaultProps={{
+          words: mahdiaScriptWords,
+          wordsPerPage: 4,
+          fontSize: 36,
+          color: "#f5efdc",
+          highlightColor: "#3aa89a",
+          backgroundColor: "rgba(13, 39, 51, 0.72)",
+          rtl: true,
+        }}
       />
       <Composition
         id="MahdiaTitleCard"
