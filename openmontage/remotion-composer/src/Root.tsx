@@ -21,53 +21,55 @@ import { MahdiaTitleCard, MahdiaTitleCardProps } from "./components/MahdiaTitleC
 
 // Word-level timestamps for the main VO script ("في مدينة المهدية..." through
 // "...من كل أنحاء العالم"), transcribed via faster-whisper from
-// projects/mahdia-festival/assets/audio/clip2_vo_final.wav (offset +19000ms,
-// the point in the final montage where clip2's local time 0 lands after the
-// black-fade transition) and clip3_vo_final.wav (offset +29000ms, where
-// clip3 starts after the concat). The clip3 video window was also shifted
-// 1s earlier at the source (19.0s-36.1s instead of 20.0s-37.1s) so the
-// paint-explosion beat lands under "إبداع بلا قيود" instead of before it.
+// projects/mahdia-festival/assets/audio/clip2_vo_final.wav (offset +20000ms,
+// the point in the final montage where clip2's local time 0 lands — a plain
+// hard concat at exactly 20s, no crossfade/fade-to-black, so the wave
+// transition inside opening_ai.mp4's own 19s-20s plays fully intact) and
+// clip3_vo_final.wav (offset +30000ms, where clip3 starts after the concat,
+// using the original unshifted 20.0s-37.1s video window — the paint-explosion
+// beat still lands close to "إبداع بلا قيود" because the +1s later clip2/clip3
+// start offsets from removing the crossfade compensate for it).
 // Typos from ASR ("يلتق", "بالمهدي", "ابداع") are corrected for on-screen
 // display; timings are left as transcribed.
 const mahdiaScriptWords: WordCaption[] = [
-  { word: "في", startMs: 19000, endMs: 19160 },
-  { word: "مدينة", startMs: 19160, endMs: 19640 },
-  { word: "المهدية", startMs: 19640, endMs: 20300 },
-  { word: "حيث", startMs: 20300, endMs: 20920 },
-  { word: "يلتقي", startMs: 20920, endMs: 21300 },
-  { word: "البحر", startMs: 21300, endMs: 21700 },
-  { word: "بالتاريخ", startMs: 21700, endMs: 22480 },
-  { word: "تنطلق", startMs: 22480, endMs: 23180 },
-  { word: "الدورة", startMs: 23180, endMs: 23680 },
-  { word: "الأولى", startMs: 23680, endMs: 24140 },
-  { word: "من", startMs: 24140, endMs: 24260 },
-  { word: "المهرجان", startMs: 24260, endMs: 24860 },
-  { word: "الدولي", startMs: 24860, endMs: 25400 },
-  { word: "الجامعي", startMs: 25400, endMs: 26400 },
-  { word: "للفنون", startMs: 26400, endMs: 26880 },
-  { word: "التشكيلية", startMs: 26880, endMs: 27640 },
-  { word: "بالمهدية", startMs: 27640, endMs: 28500 },
-  { word: "فن", startMs: 29000, endMs: 29920 },
-  { word: "بلا", startMs: 29920, endMs: 30300 },
-  { word: "حدود", startMs: 30300, endMs: 30800 },
-  { word: "إبداع", startMs: 30800, endMs: 31640 },
-  { word: "بلا", startMs: 31640, endMs: 31940 },
-  { word: "قيود", startMs: 31940, endMs: 32460 },
-  { word: "من", startMs: 32460, endMs: 33100 },
-  { word: "26", startMs: 33100, endMs: 33920 },
-  { word: "إلى", startMs: 33920, endMs: 34560 },
-  { word: "31", startMs: 34560, endMs: 35340 },
-  { word: "أكتوبر", startMs: 35340, endMs: 36240 },
-  { word: "المهدية", startMs: 36240, endMs: 37320 },
-  { word: "تفتح", startMs: 37320, endMs: 37900 },
-  { word: "أبوابها", startMs: 37900, endMs: 38560 },
-  { word: "للفن", startMs: 38560, endMs: 39000 },
-  { word: "والإبداع", startMs: 39000, endMs: 39620 },
-  { word: "القادم", startMs: 39620, endMs: 40440 },
-  { word: "من", startMs: 40440, endMs: 40600 },
-  { word: "كل", startMs: 40600, endMs: 40900 },
-  { word: "أنحاء", startMs: 40900, endMs: 41380 },
-  { word: "العالم", startMs: 41380, endMs: 41880 },
+  { word: "في", startMs: 20000, endMs: 20160 },
+  { word: "مدينة", startMs: 20160, endMs: 20640 },
+  { word: "المهدية", startMs: 20640, endMs: 21300 },
+  { word: "حيث", startMs: 21300, endMs: 21920 },
+  { word: "يلتقي", startMs: 21920, endMs: 22300 },
+  { word: "البحر", startMs: 22300, endMs: 22700 },
+  { word: "بالتاريخ", startMs: 22700, endMs: 23480 },
+  { word: "تنطلق", startMs: 23480, endMs: 24180 },
+  { word: "الدورة", startMs: 24180, endMs: 24680 },
+  { word: "الأولى", startMs: 24680, endMs: 25140 },
+  { word: "من", startMs: 25140, endMs: 25260 },
+  { word: "المهرجان", startMs: 25260, endMs: 25860 },
+  { word: "الدولي", startMs: 25860, endMs: 26400 },
+  { word: "الجامعي", startMs: 26400, endMs: 27400 },
+  { word: "للفنون", startMs: 27400, endMs: 27880 },
+  { word: "التشكيلية", startMs: 27880, endMs: 28640 },
+  { word: "بالمهدية", startMs: 28640, endMs: 29500 },
+  { word: "فن", startMs: 30000, endMs: 30920 },
+  { word: "بلا", startMs: 30920, endMs: 31300 },
+  { word: "حدود", startMs: 31300, endMs: 31800 },
+  { word: "إبداع", startMs: 31800, endMs: 32640 },
+  { word: "بلا", startMs: 32640, endMs: 32940 },
+  { word: "قيود", startMs: 32940, endMs: 33460 },
+  { word: "من", startMs: 33460, endMs: 34100 },
+  { word: "26", startMs: 34100, endMs: 34920 },
+  { word: "إلى", startMs: 34920, endMs: 35560 },
+  { word: "31", startMs: 35560, endMs: 36340 },
+  { word: "أكتوبر", startMs: 36340, endMs: 37240 },
+  { word: "المهدية", startMs: 37240, endMs: 38320 },
+  { word: "تفتح", startMs: 38320, endMs: 38900 },
+  { word: "أبوابها", startMs: 38900, endMs: 39560 },
+  { word: "للفن", startMs: 39560, endMs: 40000 },
+  { word: "والإبداع", startMs: 40000, endMs: 40620 },
+  { word: "القادم", startMs: 40620, endMs: 41440 },
+  { word: "من", startMs: 41440, endMs: 41600 },
+  { word: "كل", startMs: 41600, endMs: 41900 },
+  { word: "أنحاء", startMs: 41900, endMs: 42380 },
+  { word: "العالم", startMs: 42380, endMs: 42880 },
 ];
 
 // ---------------------------------------------------------------------------
@@ -398,7 +400,7 @@ export const Root: React.FC = () => {
       <Composition
         id="MahdiaScriptCaptions"
         component={CaptionOverlay}
-        durationInFrames={1107}
+        durationInFrames={1131}
         fps={24}
         width={1280}
         height={720}
