@@ -415,7 +415,7 @@ export const Root: React.FC = () => {
       <Composition
         id="MediLearnConcept"
         component={MediLearnConcept}
-        durationInFrames={2880}
+        durationInFrames={7217}
         fps={24}
         width={1280}
         height={720}
