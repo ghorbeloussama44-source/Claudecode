@@ -1,0 +1,543 @@
+{
+  "words": [
+    {
+      "word": "La",
+      "startMs": 0,
+      "endMs": 180
+    },
+    {
+      "word": "pluie",
+      "startMs": 180,
+      "endMs": 460
+    },
+    {
+      "word": "tombe",
+      "startMs": 460,
+      "endMs": 800
+    },
+    {
+      "word": "sur",
+      "startMs": 800,
+      "endMs": 980
+    },
+    {
+      "word": "la",
+      "startMs": 980,
+      "endMs": 1140
+    },
+    {
+      "word": "ville,",
+      "startMs": 1140,
+      "endMs": 1420
+    },
+    {
+      "word": "et",
+      "startMs": 1920,
+      "endMs": 2080
+    },
+    {
+      "word": "pour",
+      "startMs": 2080,
+      "endMs": 2240
+    },
+    {
+      "word": "un",
+      "startMs": 2240,
+      "endMs": 2380
+    },
+    {
+      "word": "instant,",
+      "startMs": 2380,
+      "endMs": 2760
+    },
+    {
+      "word": "tout",
+      "startMs": 3080,
+      "endMs": 3140
+    },
+    {
+      "word": "ralentit.",
+      "startMs": 3140,
+      "endMs": 3700
+    },
+    {
+      "word": "Les",
+      "startMs": 4540,
+      "endMs": 4680
+    },
+    {
+      "word": "rues",
+      "startMs": 4680,
+      "endMs": 4920
+    },
+    {
+      "word": "se",
+      "startMs": 4920,
+      "endMs": 5080
+    },
+    {
+      "word": "transforment",
+      "startMs": 5080,
+      "endMs": 5640
+    },
+    {
+      "word": "en",
+      "startMs": 5640,
+      "endMs": 5800
+    },
+    {
+      "word": "miroir",
+      "startMs": 5800,
+      "endMs": 6240
+    },
+    {
+      "word": "sombre,",
+      "startMs": 6240,
+      "endMs": 6720
+    },
+    {
+      "word": "reflétant",
+      "startMs": 7040,
+      "endMs": 7620
+    },
+    {
+      "word": "des",
+      "startMs": 7620,
+      "endMs": 7740
+    },
+    {
+      "word": "lumières",
+      "startMs": 7740,
+      "endMs": 8220
+    },
+    {
+      "word": "que",
+      "startMs": 8220,
+      "endMs": 8500
+    },
+    {
+      "word": "plus",
+      "startMs": 8500,
+      "endMs": 8660
+    },
+    {
+      "word": "personne",
+      "startMs": 8660,
+      "endMs": 9020
+    },
+    {
+      "word": "ne",
+      "startMs": 9020,
+      "endMs": 9280
+    },
+    {
+      "word": "remarque.",
+      "startMs": 9280,
+      "endMs": 9760
+    },
+    {
+      "word": "Sous",
+      "startMs": 10380,
+      "endMs": 10580
+    },
+    {
+      "word": "les",
+      "startMs": 10580,
+      "endMs": 10700
+    },
+    {
+      "word": "parapluies,",
+      "startMs": 10700,
+      "endMs": 11340
+    },
+    {
+      "word": "des",
+      "startMs": 11620,
+      "endMs": 11700
+    },
+    {
+      "word": "vies",
+      "startMs": 11700,
+      "endMs": 11880
+    },
+    {
+      "word": "pressées",
+      "startMs": 11880,
+      "endMs": 12280
+    },
+    {
+      "word": "se",
+      "startMs": 12280,
+      "endMs": 12460
+    },
+    {
+      "word": "croisent",
+      "startMs": 12460,
+      "endMs": 12960
+    },
+    {
+      "word": "sans",
+      "startMs": 12960,
+      "endMs": 13260
+    },
+    {
+      "word": "se",
+      "startMs": 13260,
+      "endMs": 13460
+    },
+    {
+      "word": "voir.",
+      "startMs": 13460,
+      "endMs": 13720
+    },
+    {
+      "word": "Les",
+      "startMs": 14480,
+      "endMs": 14620
+    },
+    {
+      "word": "voitures",
+      "startMs": 14620,
+      "endMs": 15060
+    },
+    {
+      "word": "glissent",
+      "startMs": 15060,
+      "endMs": 15460
+    },
+    {
+      "word": "sur",
+      "startMs": 15460,
+      "endMs": 15840
+    },
+    {
+      "word": "l",
+      "startMs": 15840,
+      "endMs": 15960
+    },
+    {
+      "word": "'asphalte",
+      "startMs": 15960,
+      "endMs": 16400
+    },
+    {
+      "word": "mouillée,",
+      "startMs": 16400,
+      "endMs": 16900
+    },
+    {
+      "word": "traces",
+      "startMs": 17400,
+      "endMs": 17620
+    },
+    {
+      "word": "des",
+      "startMs": 17620,
+      "endMs": 17880
+    },
+    {
+      "word": "sillons",
+      "startMs": 17880,
+      "endMs": 18160
+    },
+    {
+      "word": "de",
+      "startMs": 18160,
+      "endMs": 18280
+    },
+    {
+      "word": "lumière",
+      "startMs": 18280,
+      "endMs": 18620
+    },
+    {
+      "word": "qui",
+      "startMs": 18620,
+      "endMs": 18960
+    },
+    {
+      "word": "s",
+      "startMs": 18960,
+      "endMs": 19080
+    },
+    {
+      "word": "'effacent",
+      "startMs": 19080,
+      "endMs": 19420
+    },
+    {
+      "word": "aussitôt.",
+      "startMs": 19420,
+      "endMs": 19980
+    },
+    {
+      "word": "Derrière",
+      "startMs": 20660,
+      "endMs": 21020
+    },
+    {
+      "word": "une",
+      "startMs": 21020,
+      "endMs": 21200
+    },
+    {
+      "word": "vitre,",
+      "startMs": 21200,
+      "endMs": 21560
+    },
+    {
+      "word": "les",
+      "startMs": 21940,
+      "endMs": 22000
+    },
+    {
+      "word": "gouttes",
+      "startMs": 22000,
+      "endMs": 22280
+    },
+    {
+      "word": "dessinent",
+      "startMs": 22280,
+      "endMs": 22720
+    },
+    {
+      "word": "leur",
+      "startMs": 22720,
+      "endMs": 22920
+    },
+    {
+      "word": "propre",
+      "startMs": 22920,
+      "endMs": 23220
+    },
+    {
+      "word": "carte",
+      "startMs": 23220,
+      "endMs": 23720
+    },
+    {
+      "word": "et",
+      "startMs": 23720,
+      "endMs": 24140
+    },
+    {
+      "word": "floutent",
+      "startMs": 24140,
+      "endMs": 24480
+    },
+    {
+      "word": "la",
+      "startMs": 24480,
+      "endMs": 24640
+    },
+    {
+      "word": "ville",
+      "startMs": 24640,
+      "endMs": 24880
+    },
+    {
+      "word": "en",
+      "startMs": 24880,
+      "endMs": 25040
+    },
+    {
+      "word": "un",
+      "startMs": 25040,
+      "endMs": 25220
+    },
+    {
+      "word": "songe.",
+      "startMs": 25220,
+      "endMs": 25680
+    },
+    {
+      "word": "Dans",
+      "startMs": 26280,
+      "endMs": 26440
+    },
+    {
+      "word": "les",
+      "startMs": 26440,
+      "endMs": 26600
+    },
+    {
+      "word": "flacques,",
+      "startMs": 26600,
+      "endMs": 27260
+    },
+    {
+      "word": "les",
+      "startMs": 27360,
+      "endMs": 27440
+    },
+    {
+      "word": "néons",
+      "startMs": 27440,
+      "endMs": 27700
+    },
+    {
+      "word": "se",
+      "startMs": 27700,
+      "endMs": 27900
+    },
+    {
+      "word": "répètent,",
+      "startMs": 27900,
+      "endMs": 28420
+    },
+    {
+      "word": "doublant",
+      "startMs": 28420,
+      "endMs": 29100
+    },
+    {
+      "word": "chaque",
+      "startMs": 29100,
+      "endMs": 29260
+    },
+    {
+      "word": "enseigne,",
+      "startMs": 29260,
+      "endMs": 29880
+    },
+    {
+      "word": "chaque",
+      "startMs": 30140,
+      "endMs": 30300
+    },
+    {
+      "word": "promesse.",
+      "startMs": 30300,
+      "endMs": 30900
+    },
+    {
+      "word": "On",
+      "startMs": 31660,
+      "endMs": 31760
+    },
+    {
+      "word": "attend",
+      "startMs": 31760,
+      "endMs": 31980
+    },
+    {
+      "word": "sous",
+      "startMs": 31980,
+      "endMs": 32240
+    },
+    {
+      "word": "un",
+      "startMs": 32240,
+      "endMs": 32439
+    },
+    {
+      "word": "abri",
+      "startMs": 32439,
+      "endMs": 32780
+    },
+    {
+      "word": "le",
+      "startMs": 32780,
+      "endMs": 33120
+    },
+    {
+      "word": "regard",
+      "startMs": 33120,
+      "endMs": 33420
+    },
+    {
+      "word": "ailleurs.",
+      "startMs": 33420,
+      "endMs": 33940
+    },
+    {
+      "word": "Puis",
+      "startMs": 34660,
+      "endMs": 35000
+    },
+    {
+      "word": "les",
+      "startMs": 35000,
+      "endMs": 35160
+    },
+    {
+      "word": "vitrines",
+      "startMs": 35160,
+      "endMs": 35580
+    },
+    {
+      "word": "s",
+      "startMs": 35580,
+      "endMs": 35780
+    },
+    {
+      "word": "'allument,",
+      "startMs": 35780,
+      "endMs": 36100
+    },
+    {
+      "word": "indifférentes",
+      "startMs": 36400,
+      "endMs": 37120
+    },
+    {
+      "word": "à",
+      "startMs": 37120,
+      "endMs": 37200
+    },
+    {
+      "word": "la",
+      "startMs": 37200,
+      "endMs": 37280
+    },
+    {
+      "word": "pluie,",
+      "startMs": 37280,
+      "endMs": 37780
+    },
+    {
+      "word": "comme",
+      "startMs": 37920,
+      "endMs": 38040
+    },
+    {
+      "word": "si",
+      "startMs": 38040,
+      "endMs": 38200
+    },
+    {
+      "word": "la",
+      "startMs": 38200,
+      "endMs": 38340
+    },
+    {
+      "word": "ville",
+      "startMs": 38340,
+      "endMs": 38540
+    },
+    {
+      "word": "refusait",
+      "startMs": 38540,
+      "endMs": 39060
+    },
+    {
+      "word": "de",
+      "startMs": 39060,
+      "endMs": 39160
+    },
+    {
+      "word": "s",
+      "startMs": 39160,
+      "endMs": 39260
+    },
+    {
+      "word": "'arrêter.",
+      "startMs": 39260,
+      "endMs": 39600
+    }
+  ],
+  "wordsPerPage": 3,
+  "fontSize": 58,
+  "highlightColor": "#FACC15",
+  "backgroundColor": "rgba(15, 23, 42, 0.75)"
+}
