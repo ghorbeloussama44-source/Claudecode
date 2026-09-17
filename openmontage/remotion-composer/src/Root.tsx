@@ -16,6 +16,7 @@ import { ProductReveal, ProductRevealProps } from "./components/ProductReveal";
 import { CaptionOverlay, WordCaption } from "./components/CaptionOverlay";
 import { MahdiaWordBloom } from "./components/MahdiaWordBloom";
 import { MediLearnConcept } from "./components/MediLearnConcept";
+import { MediLearnTV } from "./components/MediLearnTV";
 import { NeonWordOverlay, NeonWordOverlayProps, NeonWord } from "./components/NeonWordOverlay";
 import { CollageBurst, CollageBurstProps } from "./CollageBurst";
 import { LyricOverlay, LyricOverlayProps } from "./LyricOverlay";
@@ -415,6 +416,14 @@ export const Root: React.FC = () => {
       <Composition
         id="MediLearnConcept"
         component={MediLearnConcept}
+        durationInFrames={7217}
+        fps={24}
+        width={1280}
+        height={720}
+      />
+      <Composition
+        id="MediLearnTV"
+        component={MediLearnTV}
         durationInFrames={7217}
         fps={24}
         width={1280}
