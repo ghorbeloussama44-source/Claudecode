@@ -3,8 +3,8 @@ import {
   Img,
   Loop,
   OffthreadVideo,
-  Sequence,
   staticFile,
+  useCurrentFrame,
   useVideoConfig,
 } from "remotion";
 
@@ -16,11 +16,18 @@ import {
 const CIRCLE = { cx: 308, cy: 321, r: 240 };
 const DIAPO = { left: 548, top: 65, width: 683, height: 559 };
 const SLIDE_BG = "#1b252f"; // sampled from the slide deck's own background
+const RING =
+  "0 0 0 7px #4fc3f7, 0 0 46px 10px rgba(79,195,247,0.5), 0 20px 55px rgba(0,0,0,0.55)";
 
 const FEMME_LOOP = "medilearn/avatar/loop_femme.mp4";
 const HOMME_LOOP = "medilearn/avatar/loop_homme.mp4";
 const FEMME_LOOP_FRAMES = Math.round(9.041667 * 24);
 const HOMME_LOOP_FRAMES = Math.round(5.041667 * 24);
+
+const loopFor = (speaker: "F" | "H") => ({
+  src: speaker === "F" ? FEMME_LOOP : HOMME_LOOP,
+  frames: speaker === "F" ? FEMME_LOOP_FRAMES : HOMME_LOOP_FRAMES,
+});
 
 // Speaker turns for topic 1 (0:00-5:00.7), from pitch (F0) classification
 // of the real audio per transcript line, merged into continuous turns.
@@ -78,31 +85,45 @@ const SLIDES: Slide[] = [
   { from: 193.0, to: 300.7, src: "medilearn/slides/slide_04.jpg" }, // seuils ESC 2024
 ];
 
-const PresenterCircle: React.FC<{ speaker: "F" | "H" }> = ({ speaker }) => {
-  const src = speaker === "F" ? FEMME_LOOP : HOMME_LOOP;
-  const loopFrames = speaker === "F" ? FEMME_LOOP_FRAMES : HOMME_LOOP_FRAMES;
-  const { durationInFrames } = useVideoConfig();
-  const size = CIRCLE.r * 2;
+// Shot grammar: which visual treatment is on screen. Cut points are snapped
+// to speaker-turn boundaries so cuts always land between sentences, never
+// mid-word. Kinds never repeat back-to-back.
+// - tv_duo:      standard podium — TV background, diapo panel, one circle
+// - tv_solo_big: podium, diapo panel behind, ONE large pulsing circle
+// - tv_duo_both: podium, diapo panel, both presenters together (small pair)
+// - diapo_full:  slide fills the whole frame, no presenter visible
+// - diapo_pip:   slide fills the frame, small presenter circle bottom-right
+// - avatar_wide: the raw AI-generated presenter clip, full-bleed — a
+//                different "set" entirely, for visual variety
+type ShotKind = "tv_duo" | "tv_solo_big" | "tv_duo_both" | "diapo_full" | "diapo_pip" | "avatar_wide";
+type Shot = { from: number; to: number; kind: ShotKind };
+const SHOTS: Shot[] = [
+  { from: 0.0, to: 28.1, kind: "diapo_full" },
+  { from: 28.1, to: 61.3, kind: "tv_duo" },
+  { from: 61.3, to: 90.3, kind: "diapo_full" },
+  { from: 90.3, to: 119.8, kind: "tv_solo_big" },
+  { from: 119.8, to: 149.8, kind: "avatar_wide" },
+  { from: 149.8, to: 175.7, kind: "tv_duo_both" },
+  { from: 175.7, to: 204.2, kind: "diapo_pip" },
+  { from: 204.2, to: 234.5, kind: "diapo_full" },
+  { from: 234.5, to: 256.7, kind: "tv_duo" },
+  { from: 256.7, to: 283.8, kind: "tv_solo_big" },
+  { from: 283.8, to: 300.7, kind: "tv_duo_both" },
+];
 
-  return (
-    <div
-      style={{
-        position: "absolute",
-        left: CIRCLE.cx - CIRCLE.r,
-        top: CIRCLE.cy - CIRCLE.r,
-        width: size,
-        height: size,
-        borderRadius: "50%",
-        overflow: "hidden",
-        boxShadow: "0 0 0 6px rgba(255,255,255,0.85), 0 20px 50px rgba(0,0,0,0.5)",
-      }}
-    >
-      <Loop durationInFrames={loopFrames} times={Math.ceil(durationInFrames / loopFrames)}>
-        <OffthreadVideo src={staticFile(src)} muted style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-      </Loop>
-    </div>
-  );
-};
+const activeAt = <T extends { from: number; to: number }>(list: T[], t: number): T =>
+  list.find((x) => t >= x.from && t < x.to) ?? list[list.length - 1];
+
+const TvBackground: React.FC = () => (
+  <Img
+    src={staticFile("medilearn/tv/podium_bg.jpg")}
+    style={{ position: "absolute", width: "100%", height: "100%", objectFit: "cover" }}
+  />
+);
+
+const SlideImage: React.FC<{ src: string; style?: React.CSSProperties }> = ({ src, style }) => (
+  <Img src={staticFile(src)} style={{ width: "100%", height: "auto", objectFit: "contain", ...style }} />
+);
 
 const DiapoPanel: React.FC<{ src: string }> = ({ src }) => (
   <div
@@ -120,29 +141,111 @@ const DiapoPanel: React.FC<{ src: string }> = ({ src }) => (
       boxShadow: "0 10px 30px rgba(0,0,0,0.4)",
     }}
   >
-    <Img src={staticFile(src)} style={{ width: "100%", height: "auto", objectFit: "contain" }} />
+    <SlideImage src={src} />
   </div>
 );
 
-export const MediLearnTV: React.FC = () => {
-  const { fps } = useVideoConfig();
-  const f = (seconds: number) => Math.round(seconds * fps);
+const DiapoFullscreen: React.FC<{ src: string }> = ({ src }) => (
+  <AbsoluteFill style={{ background: SLIDE_BG, alignItems: "center", justifyContent: "center" }}>
+    <SlideImage src={src} />
+  </AbsoluteFill>
+);
+
+const Circle: React.FC<{
+  speaker: "F" | "H";
+  cx: number;
+  cy: number;
+  r: number;
+  pulse?: number; // amplitude of the breathing scale animation, 0 = static
+}> = ({ speaker, cx, cy, r, pulse = 0 }) => {
+  const frame = useCurrentFrame();
+  const { durationInFrames } = useVideoConfig();
+  const { src, frames } = loopFor(speaker);
+  const scale = pulse ? 1 + pulse * Math.sin(frame / 18) : 1;
+  const size = r * 2;
 
   return (
+    <div
+      style={{
+        position: "absolute",
+        left: cx - r,
+        top: cy - r,
+        width: size,
+        height: size,
+        borderRadius: "50%",
+        overflow: "hidden",
+        transform: `scale(${scale})`,
+        boxShadow: RING,
+      }}
+    >
+      <Loop durationInFrames={frames} times={Math.ceil(durationInFrames / frames)}>
+        <OffthreadVideo src={staticFile(src)} muted style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+      </Loop>
+    </div>
+  );
+};
+
+const AvatarWideFullscreen: React.FC<{ speaker: "F" | "H" }> = ({ speaker }) => {
+  const { durationInFrames } = useVideoConfig();
+  const { src, frames } = loopFor(speaker);
+  return (
     <AbsoluteFill style={{ background: "#000" }}>
-      <Img src={staticFile("medilearn/tv/podium_bg.jpg")} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+      <Loop durationInFrames={frames} times={Math.ceil(durationInFrames / frames)}>
+        <OffthreadVideo src={staticFile(src)} muted style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+      </Loop>
+    </AbsoluteFill>
+  );
+};
 
-      {SLIDES.map((s, i) => (
-        <Sequence key={`slide-${i}`} from={f(s.from)} durationInFrames={f(s.to - s.from)}>
-          <DiapoPanel src={s.src} />
-        </Sequence>
-      ))}
+export const MediLearnTV: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const t = frame / fps;
 
-      {TURNS.map((t, i) => (
-        <Sequence key={`turn-${i}`} from={f(t.from)} durationInFrames={f(t.to - t.from)}>
-          <PresenterCircle speaker={t.speaker} />
-        </Sequence>
-      ))}
+  const slide = activeAt(SLIDES, t);
+  const turn = activeAt(TURNS, t);
+  const shot = activeAt(SHOTS, t).kind;
+
+  if (shot === "diapo_full") {
+    return <DiapoFullscreen src={slide.src} />;
+  }
+
+  if (shot === "diapo_pip") {
+    return (
+      <AbsoluteFill>
+        <DiapoFullscreen src={slide.src} />
+        <Circle speaker={turn.speaker} cx={1130} cy={600} r={110} />
+      </AbsoluteFill>
+    );
+  }
+
+  if (shot === "avatar_wide") {
+    return <AvatarWideFullscreen speaker={turn.speaker} />;
+  }
+
+  // tv_duo / tv_solo_big / tv_duo_both — always keep the TV background fully
+  // covered (diapo panel + circle(s)) so the reference photo's own
+  // placeholder art is never left visible underneath.
+  return (
+    <AbsoluteFill style={{ background: "#000" }}>
+      <TvBackground />
+      <DiapoPanel src={slide.src} />
+      {shot === "tv_duo" && <Circle speaker={turn.speaker} cx={CIRCLE.cx} cy={CIRCLE.cy} r={CIRCLE.r} />}
+      {shot === "tv_solo_big" && (
+        <Circle speaker={turn.speaker} cx={340} cy={340} r={290} pulse={0.045} />
+      )}
+      {shot === "tv_duo_both" && (
+        <>
+          <Circle
+            speaker={turn.speaker}
+            cx={250}
+            cy={300}
+            r={195}
+            pulse={0.03}
+          />
+          <Circle speaker={turn.speaker === "F" ? "H" : "F"} cx={455} cy={505} r={145} />
+        </>
+      )}
     </AbsoluteFill>
   );
 };
