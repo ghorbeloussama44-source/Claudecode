@@ -35,6 +35,14 @@ projects/mahdia-festival/*
 !projects/mahdia-festival/renders/
 projects/mahdia-festival/renders/*
 !projects/mahdia-festival/renders/mahdia_final_montage_v8.mp4
+!projects/medilearn/
+projects/medilearn/*
+!projects/medilearn/renders/
+projects/medilearn/renders/*
+!projects/medilearn/renders/concept_topic1_compressed.mp4
+!projects/medilearn/assets/
+projects/medilearn/assets/*
+!projects/medilearn/assets/originals/
 
 # Corpus directories (downloaded stock clips, thumbnails, embeddings —
 # regenerable from source APIs via corpus_builder). Explicit rule even
@@ -99,6 +107,12 @@ remotion-composer/public/*
 # not regenerable, previously lost to this same ignore rule on a reset.
 !remotion-composer/public/mahdia/
 !remotion-composer/public/mahdia/*
+!remotion-composer/public/medilearn/
+!remotion-composer/public/medilearn/*
+!remotion-composer/public/medilearn/avatar/
+!remotion-composer/public/medilearn/avatar/*
+!remotion-composer/public/medilearn/broll/
+!remotion-composer/public/medilearn/broll/*
 # Ignore test/scratch compositions in demo-props (keep only curated demos)
 remotion-composer/public/demo-props/test-*
 remotion-composer/public/demo-props/talking-head-*
