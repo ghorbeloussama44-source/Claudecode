@@ -41,6 +41,7 @@ projects/medilearn/*
 projects/medilearn/renders/*
 !projects/medilearn/renders/concept_topic1_compressed.mp4
 !projects/medilearn/renders/tv_topic1_v1_compressed.mp4
+!projects/medilearn/renders/topic1_v2_dialogue_intro_plus_tv.mp4
 !projects/medilearn/assets/
 projects/medilearn/assets/*
 !projects/medilearn/assets/originals/
