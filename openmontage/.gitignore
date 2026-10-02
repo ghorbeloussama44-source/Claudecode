@@ -37,6 +37,9 @@ projects/mahdia-festival/renders/*
 !projects/mahdia-festival/renders/mahdia_final_montage_v8.mp4
 !projects/medilearn/
 projects/medilearn/*
+!projects/medilearn/HANDOFF.md
+!projects/medilearn/scripts/
+!projects/medilearn/scripts/*
 !projects/medilearn/renders/
 projects/medilearn/renders/*
 !projects/medilearn/renders/concept_topic1_compressed.mp4
