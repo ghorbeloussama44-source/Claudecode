@@ -48,7 +48,7 @@ chaque format existe aussi en **version 60 s au rythme moins accéléré** (le m
   (`git fetch origin claude/install-openmontage-263px9 && git checkout claude/install-openmontage-263px9`).
 - Versions livrées : **v2** (37 s, vertical) = commit `c6acc34` ; **v3** (40 s, transfert +
   YouTube 16:9) = commit `8fc0899` ; **v4** (+ versions 60 s au rythme ralenti) = commit
-  `e819e3a`.
+  `e819e3a` ; **v5** (arrivée à Moscou, transfert, prix « non inclus ») = commit `c091c3e`.
   Revoir une version telle quelle : `git checkout <commit> -- openmontage/projects/russtudy-parcours` ;
   voir ce qui a changé depuis : `git diff <commit> -- openmontage/projects/russtudy-parcours`.
 - Dossier : `openmontage/projects/russtudy-parcours/`. Kit de marque :
