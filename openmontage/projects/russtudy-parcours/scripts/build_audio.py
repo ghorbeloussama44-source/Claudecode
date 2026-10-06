@@ -1,12 +1,12 @@
-"""Build the 37 s "parcours" soundtrack: bar-aligned music edit + timed SFX + loudness.
+"""Build the 40 s "parcours" soundtrack: bar-aligned music edit + timed SFX + loudness.
 
 Music: Pixabay "Funky" (11_funky.mp3), measured at 120.00 BPM (beat = 0.5 s).
 Attack transients sit ~18 ms before the librosa beat grid; every cut is placed
 ~10 ms before an attack so transients stay intact.
 
   video  0 - 17 <- track 15.026 - 32.026  (end of build, drop A at video 1.0, groove)
-  video 17 - 31 <- track 76.025 - 90.025  (drum break 17, bass build 19, drop B at 21)
-  video 31 - 37 <- track 62.025 - 68.025  (fill, band stops on an E chord at video 33.0)
+  video 17 - 35 <- track 76.025 - 94.025  (drum break 17, bass build 19, drop B at 21, groove)
+  video 35 - 40 <- track 62.025 - 67.025  (fill, band stops on an E chord at video 37.0)
 
 Usage: python build_audio.py [--no-sfx]
 """
@@ -28,12 +28,12 @@ MUSIC_SRC = ROOT / "assets/music/11_funky.mp3"
 SFX_DIR = ROOT.parents[1] / ".agents/skills/hyperframes-media/assets/sfx"
 OUT_DIR = ROOT / "assets/audio"
 SR = 48000
-DURATION = 37.0
+DURATION = 40.0
 
 SEGMENTS = [  # (video_start, track_start, length)
     (0.0, 15.026, 17.0),
-    (17.0, 76.025, 14.0),
-    (31.0, 62.025, 6.0),
+    (17.0, 76.025, 18.0),
+    (35.0, 62.025, 5.0),
 ]
 XFADE = 0.008
 
@@ -295,6 +295,20 @@ def riser(rng, dur: float = 2.0) -> np.ndarray:
     return norm(x * shape)
 
 
+def horn(dur: float = 0.95) -> np.ndarray:
+    """Two-blast train horn on an A major chord (in key with the track)."""
+    n = int(dur * SR)
+    t = np.arange(n) / SR
+    vib = 1 + 0.004 * np.sin(2 * np.pi * 5.5 * t)
+    x = np.zeros(n)
+    for f in (220.0, 277.18, 329.63):
+        ph = 2 * np.pi * np.cumsum(f * vib) / SR
+        x += np.sign(np.sin(ph)) * 0.5 + np.sin(ph)  # reedy square + fundamental
+    x = signal.sosfilt(signal.butter(2, 2400, btype="low", fs=SR, output="sos"), x)
+    blast = lambda a, b: np.clip((t - a) / 0.04, 0, 1) * np.clip((b - t) / 0.08, 0, 1)
+    return norm(x * (blast(0.0, 0.36) + blast(0.46, dur)))
+
+
 def synth_all(sfx_dir: Path) -> None:
     sfx_dir.mkdir(parents=True, exist_ok=True)
     rng = np.random.default_rng(7)
@@ -385,9 +399,30 @@ def synth_all(sfx_dir: Path) -> None:
         d = 0.07
         add_at(arp, pulse(f, d) * np.exp(-np.arange(int(d * SR)) / (0.035 * SR)), k * 0.12)
     save("pixel_arp", arp, -3.0)
-    # end card typing: phone number (15 chars, 26 ms) and URL (16 chars, 20 ms)
-    save("tel_ticks", ticks_at(np.arange(15) * 0.026, 1250 + rng.uniform(-150, 150, 15), rng.uniform(0.5, 0.9, 15), 0.45, 61))
-    save("url_ticks", ticks_at(np.arange(16) * 0.02, 1450 + rng.uniform(-150, 150, 16), rng.uniform(0.5, 0.9, 16), 0.4, 51))
+    # end card typing: phone number (15 chars, 22 ms) and URL (16 chars, 18 ms)
+    save("tel_ticks", ticks_at(np.arange(15) * 0.022, 1250 + rng.uniform(-150, 150, 15), rng.uniform(0.5, 0.9, 15), 0.45, 61))
+    save("url_ticks", ticks_at(np.arange(16) * 0.018, 1450 + rng.uniform(-150, 150, 16), rng.uniform(0.5, 0.9, 16), 0.4, 51))
+    # transfer: horn, rail joints "ta-dum" on every beat (fading as the train brakes),
+    # car engine revving as it overtakes, pneumatic coach door
+    save("horn", horn(), -2.0)
+    rails = np.zeros(int(4.2 * SR), dtype=np.float32)
+    for k in range(8):
+        g = 1.0 if k < 6 else 0.75 - 0.2 * (k - 6)
+        for dt, gg in ((0.0, 1.0), (0.09, 0.8)):
+            n = int(0.06 * SR)
+            thump = tone(95, 0.06, d=0.02) * 0.9 + 0.5 * norm(bandnoise(n, 2000, 6500, rng)) * env_ad(n, 0.0005, 0.006)
+            add_at(rails, thump.astype(np.float32), k * 0.5 + dt, g * gg)
+    save("rails", rails)
+    n = int(3.6 * SR)
+    tt = np.arange(n) / SR
+    f0 = 68 + 26 * np.clip(tt / 3.0, 0, 1) ** 1.5
+    ph = 2 * np.pi * np.cumsum(f0) / SR
+    eng = sum(np.sin(k * ph) / k for k in range(1, 7)) * (0.75 + 0.25 * np.sin(2 * np.pi * 24 * tt))
+    eng = signal.sosfilt(signal.butter(2, 900, btype="low", fs=SR, output="sos"), eng)
+    save("engine", norm(eng * np.minimum(1, tt / 0.4) * np.minimum(1, (3.6 - tt) / 0.5)))
+    n = int(0.32 * SR)
+    hiss = signal.sosfilt(signal.butter(2, 1500, btype="high", fs=SR, output="sos"), rng.standard_normal(n))
+    save("pshh", norm(hiss * env_ad(n, 0.01, 0.09)), -3.0)
 
 
 def sfx_layer(cues: list[dict]) -> np.ndarray:
@@ -421,10 +456,10 @@ def main() -> None:
     # music gain automation (piecewise-linear in dB):
     # - the flight (17-21) sits on a sparse drum break then a bass build: lift it so the
     #   scene breathes without sagging, and land back at 0 dB just before drop B (21.0);
-    # - the band stops at 33.0 and only an E chord rings: lift it +14 dB, then keep
-    #   opening the gain to +19 dB by the end so the decay does not fade under the CTA.
+    # - the band stops at 37.0 and only an E chord rings: lift it +14 dB, then keep
+    #   opening the gain to +18 dB by the end so the decay does not fade under the CTA.
     auto = [(0.0, 0.0), (16.995, 0.0), (17.03, 6.0), (19.0, 6.0), (20.8, 3.0), (20.985, 0.0),
-            (33.02, 0.0), (33.12, 14.0), (DURATION, 19.0)]
+            (37.02, 0.0), (37.12, 14.0), (DURATION, 18.0)]
     tt = np.arange(music.shape[1]) / SR
     g_db = np.interp(tt, [a for a, _ in auto], [b for _, b in auto])
     music = music * (10 ** (g_db / 20)).astype(np.float32)[None, :]

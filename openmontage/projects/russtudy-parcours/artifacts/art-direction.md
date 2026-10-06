@@ -1,10 +1,14 @@
-# RusStudy — « Le parcours » (37 s) — Direction artistique
+# RusStudy — « Le parcours » (40 s) — Direction artistique
 
 Suite du spot 15 s (`../russtudy-motion-15s`). Même marque, même système visuel, nouvelle
 histoire : **du premier message WhatsApp jusqu'au premier jour à l'université**, en suivant
 les 5 étapes du site (Consultation gratuite → Dossier → Admission → Visa & assurance →
 Accueil & installation). Le film est lui-même un tunnel de conversion : il commence par un
 message WhatsApp et finit par « Écris-nous sur WhatsApp ».
+
+**v3** (demande du client) : après l'aéroport, le **transport interne de Moscou vers la ville
+de l'université, en train ou en voiture** (scène TR, 4 s), puis une **version YouTube 16:9**
+dérivée de la composition verticale (voir « Version YouTube 16:9 » plus bas).
 
 ## Prix (corrigé par le client)
 
@@ -44,11 +48,11 @@ mouvement continu sur un groove funk. Confiant, joueur, concret, rassurant.
 |---|---|---|
 | 0–17 | 15,026–32,026 | fin de build, **drop A à 1,0**, groove |
 | 17–21 | 76,025–80,025 | break de batterie (17) puis montée de basse (19) |
-| 21–31 | 80,025–90,025 | **drop B à 21,0**, groove |
-| 31–33 | 62,025–64,025 | fill avant l'arrêt |
-| 33–37 | 64,025–68,025 | **arrêt + accord tenu** (+14 dB) |
+| 21–35 | 80,025–94,025 | **drop B à 21,0**, groove (2 mesures de plus pour le transfert) |
+| 35–37 | 62,025–64,025 | fill avant l'arrêt |
+| 37–40 | 64,025–67,025 | **arrêt + accord tenu** (+14 dB) |
 
-## Storyboard final (1080×1920, 37 s)
+## Storyboard final (1080×1920, 40 s)
 
 | # | Temps | Étape | Objet / technique | Texte |
 |---|---|---|---|---|
@@ -60,7 +64,27 @@ mouvement continu sur un groove funk. Confiant, joueur, concret, rassurant.
 | 6 | 15–17 | Départ | la carte d'embarquement se déchire et ouvre le ciel, avion pixel qui décolle, mur de nuages | « Bon voyage ! » |
 | 7 | 17–21 | En vol | carte en pixels (masque terre/mer réel) Tunis → Moscou, sillage doré, nuages en parallaxe, notification RusStudy, plongée sur Moscou | « Cap sur Moscou. » + « Ton tuteur t'attend à l'arrivée. Bon vol ! » |
 | 8 | 21–23 | 05 · Accueil | iris vert sur le **drop B** ; panneau à volets BIENVENUE EN RUSSIE, pancarte RusStudy | « Un tuteur bilingue t'attend à l'aéroport. » |
-| 9 | 23–25 | 05 · Foyer | flip 3D plein écran ; carte-clé, LED verte, porte 412 en 3D sur la chambre pixel, travelling dans la fenêtre | « Foyer universitaire. » + « 1 an inclus » |
-| 10 | 25–27 | Université | flash blanc ; photo de l'amphi en Ken Burns, typo lettre à lettre, carte d'étudiant en 3D avec reflet, étoiles pixel ; barre « Objectif atteint » | « Premier jour à l'université. » |
-| 11 | 27–33 | Prix | cut ; odomètre 3 500 €, pastille « tout compris », ticket imprimé ligne à ligne, tampon SANS FRAIS CACHÉS | « Budget 1ère année · dès 3 500 € » |
-| 12 | 33–37 | CTA | logo sur l'accord final, ville pixel de nuit (rappel du spot 15 s), bouton WhatsApp, numéro et site tapés, tap | « Écris-nous sur WhatsApp · +7 996 433 4489 · russieetudes.com · 1ère consultation gratuite » |
+| 9 | 23–27 | 05 · Transfert | flip 3D plein écran ; canvas pixel en parallaxe (étoiles, soleil couchant, collines, forêt, poteaux de caténaire) : le **train** (passagers aux fenêtres) et une **voiture** orange qui le double phares allumés ; jauge MOSCOU → KAZAN, panneau КАЗАНЬ / KAZAN, freinage, la porte du wagon s'ouvre | « Train ou voiture, jusqu'à ta ville. » + « Transfert organisé depuis Moscou. » |
+| 10 | 27–29 | 05 · Foyer | la scène s'ouvre **dans la porte du wagon** ; carte-clé, LED verte, porte 412 en 3D sur la chambre pixel, travelling dans la fenêtre | « Foyer universitaire. » + « 1 an inclus » |
+| 11 | 29–31 | Université | flash blanc ; photo de l'amphi en Ken Burns, typo lettre à lettre, carte d'étudiant en 3D avec reflet, étoiles pixel ; barre « Objectif atteint » | « Premier jour à l'université. » |
+| 12 | 31–37 | Prix | cut ; odomètre 3 500 €, pastille « tout compris », ticket imprimé ligne à ligne, tampon SANS FRAIS CACHÉS | « Budget 1ère année · dès 3 500 € » |
+| 13 | 37–40 | CTA | logo sur l'accord final, ville pixel de nuit (rappel du spot 15 s), bouton WhatsApp, numéro et site tapés, tap | « Écris-nous sur WhatsApp · +7 996 433 4489 · russieetudes.com · 1ère consultation gratuite » |
+
+Ville universitaire d'exemple : **Kazan** (une des villes citées dans l'analyse de profil,
+« Moscou, Saint-Pétersbourg, Kazan… »). Comme « Médecine générale », c'est un cas illustratif.
+
+## Version YouTube 16:9 (1920×1080)
+
+Même film, même bande-son, même timing ; mise en page repensée pour l'horizontal :
+
+- titres à gauche (112 px, marge 120 px), illustration de la scène à droite ;
+- barre de progression en **bandeau haut** (libellé de l'étape à gauche, 5 segments au
+  centre, logo à droite) ;
+- les objets verticaux (téléphone, fiches, dossier, enveloppe, passeport, porte du foyer)
+  sont repris tels quels dans des « zones portrait » mises à l'échelle (0,78–0,95) ;
+- scènes plein cadre recomposées : carte du vol (grille 96 × 54, Tunis → Moscou),
+  transfert (horizon plus large, voiture qui dépasse le train), amphithéâtre recadré 16:9,
+  ticket de prix à droite du chiffre, ville de nuit élargie (tour à gauche, cathédrale à droite).
+
+La version 16:9 n'est jamais retouchée à la main : `scripts/make_landscape.py` la régénère
+depuis la verticale.
