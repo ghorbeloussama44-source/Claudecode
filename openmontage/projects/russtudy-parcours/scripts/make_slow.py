@@ -2,8 +2,9 @@
 """Build the 60 s "slower pace" versions from the 40 s compositions.
 
 The film is not re-timed by hand: the 40 s timeline is played 1.5x slower. For each 40 s
-HyperFrames project (vertical `hyperframes/`, YouTube `hyperframes-16x9/`) this script
-writes a 60 s project (`hyperframes-60s/`, `hyperframes-60s-16x9/`) where
+HyperFrames project (vertical `hyperframes/`, YouTube `hyperframes-16x9/`, and their derja
+versions `hyperframes-ar/`, `hyperframes-ar-16x9/`) this script writes a 60 s project
+(`hyperframes-60s/`, `hyperframes-60s-16x9/`, `hyperframes-ar-60s/`, `hyperframes-ar-60s-16x9/`) where
   - every data-start / data-duration (scenes, root, soundtrack) is multiplied by 1.5;
   - the timeline handed to the renderer is a 60 s root timeline that scrubs the original
     40 s one (time = t / 1.5): every animation, transition and canvas scene keeps its
@@ -11,7 +12,7 @@ writes a 60 s project (`hyperframes-60s/`, `hyperframes-60s-16x9/`) where
   - the soundtrack is the 60 s mix from `python3 scripts/build_audio.py --slow` (same
     music re-edited so the drops and the final chord still land on the slowed cuts).
 
-    python3 scripts/make_landscape.py && python3 scripts/make_slow.py
+    python3 scripts/make_landscape.py && python3 scripts/make_arabic.py && python3 scripts/make_slow.py
 """
 import json
 import pathlib
@@ -21,7 +22,12 @@ import sys
 
 K = 1.5
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-PAIRS = [("hyperframes", "hyperframes-60s"), ("hyperframes-16x9", "hyperframes-60s-16x9")]
+PAIRS = [
+    ("hyperframes", "hyperframes-60s"),
+    ("hyperframes-16x9", "hyperframes-60s-16x9"),
+    ("hyperframes-ar", "hyperframes-ar-60s"),  # derja versions (scripts/make_arabic.py)
+    ("hyperframes-ar-16x9", "hyperframes-ar-60s-16x9"),
+]
 SOUND = ROOT / "assets/audio-60s/soundtrack.wav"
 
 

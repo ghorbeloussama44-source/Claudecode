@@ -15,6 +15,18 @@ dérivée de la composition verticale (voir « Version YouTube 16:9 » plus bas)
 **1ère année dès 3 500 €, tout compris** : frais universitaires (dès 2 200 €) + consulting /
 orientation + dossier visa + accueil aéroport + foyer 1 an + assurance médicale.
 (Lecture retenue du brief : 2 200 € = frais universitaires minimum, inclus dans les 3 500 €.)
+v5 : « tout compris » retiré, les options non incluses sont listées sur le ticket.
+**v6 : prix affiché en dinars tunisiens**, « dès 12 000 DT » (équivalent donné par le client),
+frais universitaires « dès 7 500 DT » (même taux, arrondi, à confirmer) ; en derja « 12 000 د.ت ».
+
+## Version en arabe tunisien (v6)
+
+Même film, mêmes plans et même musique, textes en derja (écriture arabe, tutoiement comme en
+français), police Cairo à côté de Space Grotesk, lecture de droite à gauche : titres et
+légendes calés à droite, cartes et téléphone en miroir, barre de progression qui se remplit
+depuis la droite ; la géographie (Tunis → Moscou → Kazan) reste de gauche à droite.
+Généré par `scripts/make_arabic.py` depuis les compositions françaises (détails dans
+HANDOFF.md).
 
 ## Design read
 
@@ -67,7 +79,7 @@ mouvement continu sur un groove funk. Confiant, joueur, concret, rassurant.
 | 9 | 23–27 | 05 · Transfert | le travelling arrive sur un canvas pixel en parallaxe (étoiles, soleil couchant, collines, forêt, poteaux de caténaire, neige) : le **train** (passagers aux fenêtres) et une **voiture** orange qui le double phares allumés ; la ville universitaire (bâtiment à colonnes et coupole) se lève à l'horizon ; jauge MOSCOU → KAZAN, panneau КАЗАНЬ / KAZAN, freinage, la porte du wagon s'ouvre | « Train ou voiture, jusqu'à ta ville. » + « Organisé sur demande · en option » |
 | 10 | 27–29 | 05 · Foyer | la scène s'ouvre **dans la porte du wagon** ; carte-clé, LED verte, porte 412 en 3D sur la chambre pixel, travelling dans la fenêtre | « Foyer universitaire. » + « 1 an inclus » |
 | 11 | 29–31 | Université | flash blanc ; photo de l'amphi en Ken Burns, typo lettre à lettre, carte d'étudiant en 3D avec reflet, étoiles pixel ; barre « Objectif atteint » | « Premier jour à l'université. » |
-| 12 | 31–37 | Prix | cut ; odomètre 3 500 €, pastille « études + installation », ticket imprimé ligne à ligne : 6 postes inclus, total, puis « NON INCLUS · EN OPTION SUR DEMANDE » (billet d'avion, train ou voiture, hôtel & visites à Moscou : sur devis), tampon SANS FRAIS CACHÉS | « Budget 1ère année · dès 3 500 € » |
+| 12 | 31–37 | Prix | cut ; odomètre 12 000 DT, pastille « études + installation », ticket imprimé ligne à ligne : 6 postes inclus, total, puis « NON INCLUS · EN OPTION SUR DEMANDE » (billet d'avion, train ou voiture, hôtel & visites à Moscou : sur devis), tampon SANS FRAIS CACHÉS | « Budget 1ère année · dès 12 000 DT » |
 | 13 | 37–40 | CTA | logo sur l'accord final, ville pixel de nuit (rappel du spot 15 s), bouton WhatsApp, numéro et site tapés, tap | « Écris-nous sur WhatsApp · +7 996 433 4489 · russieetudes.com · 1ère consultation gratuite » |
 
 Ville universitaire d'exemple : **Kazan** (une des villes citées dans l'analyse de profil,

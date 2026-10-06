@@ -2260,7 +2260,7 @@
       .odo-sp {
         width: 0.22em;
       }
-      #s11-eur {
+      #s11-cur {
         font-size: 124px;
         margin-left: 14px;
         margin-top: 20px;
@@ -3040,7 +3040,7 @@
         </div>
       </section>
 
-      <!-- ================= S11 — PRIX : dès 3 500 € (1ère année) ================= -->
+      <!-- ================= S11 — PRIX : dès 12 000 DT (1ère année) ================= -->
       <section id="s11" class="clip" data-start="46.5" data-duration="9.075" data-track-index="13" style="z-index: 95">
         <svg width="0" height="0" style="position: absolute">
           <filter id="f-odo" x="0" y="-30%" width="100%" height="160%" color-interpolation-filters="sRGB">
@@ -3050,29 +3050,30 @@
         <div id="s11-wrap" class="fill">
           <div class="fill" style="background: #0a0a0a"></div>
           <div class="fill" style="background: radial-gradient(55% 24% at 36% 26%, rgba(251, 187, 33, 0.17), rgba(251, 187, 33, 0) 70%)"></div>
-          <div id="s11-deco" data-layout-ignore>€</div>
+          <div id="s11-deco" data-layout-ignore>DT</div>
           <div id="s11-k" class="kicker">Budget 1ère année</div>
           <div id="s11-des" class="h">dès</div>
           <div id="s11-num" data-layout-allow-overflow>
+            <div class="odo"><div class="odo-col"></div></div>
             <div class="odo"><div class="odo-col"></div></div>
             <div class="odo-sp"></div>
             <div class="odo"><div class="odo-col"></div></div>
             <div class="odo"><div class="odo-col"></div></div>
             <div class="odo"><div class="odo-col"></div></div>
-            <div id="s11-eur">€</div>
+            <div id="s11-cur">DT</div>
           </div>
           <div id="s11-pill">études + installation</div>
           <div id="rc-mask">
             <div id="rc-paper">
               <div class="rc-h"><span class="wm">Rus<span class="acc">Study</span>.</span><span>1ÈRE ANNÉE</span></div>
-              <div class="rc-l"><span>Frais universitaires</span><i class="dt"></i><span class="v">dès 2 200 €</span></div>
+              <div class="rc-l"><span>Frais universitaires</span><i class="dt"></i><span class="v">dès 7 500 DT</span></div>
               <div class="rc-l"><span>Consulting &amp; orientation</span><i class="dt"></i><span class="v">inclus<i class="ok"></i></span></div>
               <div class="rc-l"><span>Dossier visa</span><i class="dt"></i><span class="v">inclus<i class="ok"></i></span></div>
               <div class="rc-l"><span>Accueil aéroport</span><i class="dt"></i><span class="v">inclus<i class="ok"></i></span></div>
               <div class="rc-l"><span>Foyer universitaire · 1 an</span><i class="dt"></i><span class="v">inclus<i class="ok"></i></span></div>
               <div class="rc-l"><span>Assurance médicale</span><i class="dt"></i><span class="v">inclus<i class="ok"></i></span></div>
               <div class="rc-div"></div>
-              <div class="rc-tot"><span class="a">TOTAL 1ÈRE ANNÉE</span><span class="b">dès 3 500 €</span></div>
+              <div class="rc-tot"><span class="a">TOTAL 1ÈRE ANNÉE</span><span class="b">dès 12 000 DT</span></div>
               <div class="rc-div"></div>
               <div class="rc-oh">NON INCLUS · EN OPTION SUR DEMANDE</div>
               <div class="rc-l rc-o"><span>Billet d’avion</span><i class="dt"></i><span class="v">sur devis</span></div>
@@ -4645,14 +4646,14 @@
       }
 
       // ================================================================ S11 — PRIX (T11 = 31.0 – 37.0)
-      // hard cut on T11; odometer lands on T11 + 1; the receipt prints what the 3 500 € include,
+      // hard cut on T11; odometer lands on T11 + 1; the receipt prints what the 12 000 DT include,
       // then what they do not (flight, transfer to the university city, hotel & visits: options on request)
       tl.fromTo("#s11-k", { opacity: 0, y: -24 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, T11 + 0.05);
       tl.fromTo("#s11-des", { opacity: 0, x: -50 }, { opacity: 1, x: 0, duration: 0.45, ease: "expo.out" }, T11 + 0.1);
       tl.fromTo("#s11-deco", { rotation: -30, opacity: 0 }, { rotation: -12, opacity: 1, duration: 2.0, ease: "power2.out" }, T11);
-      tl.fromTo("#s11-eur", { opacity: 0, rotation: -40, scale: 0.4 }, { opacity: 1, rotation: 0, scale: 1, duration: 0.5, ease: "back.out(2)" }, T11 + 0.6);
-      const ODO_TARGET = [3, 5, 0, 0];
-      const ODO_LAND = [T11 + 0.82, T11 + 0.88, T11 + 0.94, T11 + 1];
+      tl.fromTo("#s11-cur", { opacity: 0, rotation: -40, scale: 0.4 }, { opacity: 1, rotation: 0, scale: 1, duration: 0.5, ease: "back.out(2)" }, T11 + 0.6);
+      const ODO_TARGET = [1, 2, 0, 0, 0];
+      const ODO_LAND = [T11 + 0.76, T11 + 0.82, T11 + 0.88, T11 + 0.94, T11 + 1];
       $$("#s11-num .odo-col").forEach((col, i) => {
         let html = "";
         for (let k = 0; k < 40; k++) html += `<div>${k % 10}</div>`;

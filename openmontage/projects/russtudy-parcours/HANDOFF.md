@@ -1,4 +1,4 @@
-# RusStudy — « Le parcours » (40 s et 60 s, vertical + YouTube 16:9) — notes de reprise
+# RusStudy — « Le parcours » (40 s et 60 s, vertical + YouTube 16:9, français + derja) — notes de reprise
 
 Deuxième spot RusStudy (russieetudes.com), suite du 15 s (`../russtudy-motion-15s`).
 Le film suit le prospect **du premier message WhatsApp jusqu'au premier jour à
@@ -7,7 +7,10 @@ Moscou vers la ville de l'université en train ou en voiture** — puis donne le
 1ère année et renvoie vers WhatsApp. Deux formats, une seule composition à retoucher :
 le vertical 9:16 (master) et la version **YouTube 16:9** qui en est générée. Depuis la v4,
 chaque format existe aussi en **version 60 s au rythme moins accéléré** (le même film joué
-1,5 fois plus lentement, sur une bande-son de 60 s).
+1,5 fois plus lentement, sur une bande-son de 60 s). Depuis la v6, **le prix est en dinars
+tunisiens** (« dès 12 000 DT ») et le film existe aussi **en arabe tunisien (derja)**, généré
+depuis les compositions françaises. Le client garde les **versions 60 s** : ce sont elles qui
+sont rendues en v6 (les rendus 40 s du dépôt sont ceux de la v5, prix en euros).
 
 ## Livrables (versionnés)
 
@@ -18,16 +21,25 @@ chaque format existe aussi en **version 60 s au rythme moins accéléré** (le m
 | `renders/russtudy_parcours_40s_youtube_16x9_60fps.mp4` | **YouTube** 1920×1080, 60 fps, même bande-son |
 | `renders/russtudy_parcours_60s_60fps.mp4` | **Rythme ralenti** (v4) vertical 1080×1920, 60 s, 60 fps |
 | `renders/russtudy_parcours_60s_youtube_16x9_60fps.mp4` | **Rythme ralenti** (v4) YouTube 1920×1080, 60 s, 60 fps |
-| `renders/thumbnail_youtube.jpg` | Miniature YouTube 1280×720 (plan du prix) |
-| `renders/cover_hook.png`, `cover_transfert.png`, `cover_prix.png`, `cover_fin_cta.png` | Couvertures verticales (accroche, transfert, prix + ticket, plan final) |
+| `renders/russtudy_parcours_60s_derja_60fps.mp4` | **Arabe tunisien** (v6) vertical 1080×1920, 60 s, 60 fps |
+| `renders/russtudy_parcours_60s_derja_youtube_16x9_60fps.mp4` | **Arabe tunisien** (v6) YouTube 1920×1080, 60 s, 60 fps |
+| `renders/thumbnail_youtube.jpg`, `thumbnail_youtube_ar.jpg` | Miniatures YouTube 1280×720 (plan du prix), français et derja |
+| `renders/cover_hook.png`, `cover_transfert.png`, `cover_prix.png`, `cover_fin_cta.png` | Couvertures verticales (accroche, transfert, prix + ticket, plan final), tirées de la version 60 s |
 | `renders/cover_16x9_transfert.png`, `cover_16x9_prix.png`, `cover_16x9_fin_cta.png` | Les mêmes plans en 16:9 |
+| `renders/cover_ar_*.png`, `cover_ar_16x9_*.png` | Les mêmes couvertures en derja |
+
+Les rendus `russtudy_parcours_40s_*` datent de la v5 (prix en euros) : relancer
+`bash scripts/render_all.sh` pour les mettre à jour si on en a de nouveau besoin.
 
 ## À valider par le client avant diffusion payante
 
-- **Prix (v5, précisé par le client)** : « 1ère année dès 3 500 € » + pastille « études +
-  installation ». **Inclus** (lignes cochées du ticket) : frais universitaires (dès
-  2 200 €), consulting / orientation, dossier visa, accueil aéroport, foyer 1 an,
-  assurance médicale. **Non inclus**, imprimés en bas du ticket sous « NON INCLUS · EN
+- **Prix (v6, en dinars tunisiens)** : « 1ère année dès 12 000 DT » (montant donné par le
+  client, équivalent de 3 500 €) + pastille « études + installation ». **Inclus** (lignes
+  cochées du ticket) : frais universitaires « dès 7 500 DT » (**conversion à confirmer** :
+  2 200 € au même taux que le total = 7 543 DT, arrondi), consulting / orientation, dossier
+  visa, accueil aéroport, foyer 1 an, assurance médicale. « DT » est l'abréviation courante en
+  Tunisie (« TND » si le client préfère : `#s11-cur`, `.rc-l .v`, `.rc-tot .b` et `#s11-deco`) ;
+  en derja : « د.ت ». **Non inclus**, imprimés en bas du ticket sous « NON INCLUS · EN
   OPTION SUR DEMANDE » avec la mention « sur devis » : billet d'avion, train ou voiture
   jusqu'à la ville universitaire, hôtel & visites à Moscou. « Tout compris » a été retiré.
 - **Prix des options** : aucun prix moyen n'est affiché (le billet d'avion varie selon la
@@ -41,6 +53,10 @@ chaque format existe aussi en **version 60 s au rythme moins accéléré** (le m
 - Le cas montré (Médecine générale à **Kazan**, chambre 412, dossier RS-2026-0412, vol
   RS 2026) est **illustratif**, comme l'exemple de profil. Kazan fait partie des villes
   citées dans l'analyse de profil (« Moscou, Saint-Pétersbourg, Kazan… »).
+- **Textes en derja** (v6) : à faire relire par un locuteur tunisien avant diffusion (liste
+  complète dans `scripts/make_arabic.py`, `TEXTS`). Choix à confirmer : « tuteur bilingue » →
+  « مرافق يحكي لغتين » (accompagnateur qui parle deux langues), « sur devis » → « حسب الديفي »,
+  « études + installation » → « القراية + الاستقرار », tutoiement comme en français.
 
 ## Retrouver le projet
 
@@ -70,9 +86,12 @@ chaque format existe aussi en **version 60 s au rythme moins accéléré** (le m
 4. Livrer : `bash scripts/render_all.sh` → bande-son, 16:9, lint des deux compositions,
    rendus 9:16 60 et 30 fps + 16:9 60 fps, remux du son master, couvertures, miniature
    YouTube, artefacts (≈ 15 min).
-5. Versions 60 s : `bash scripts/render_all.sh --60s` → bande-son 60 s, `make_slow.py`,
-   rendus 9:16 et 16:9 à 60 fps (≈ 15 min). Rien à retoucher à part : elles reprennent
-   la composition 40 s telle quelle.
+5. Versions 60 s : `bash scripts/render_all.sh --60s` → bande-son 60 s, 16:9,
+   `make_arabic.py`, `make_slow.py`, rendus des **quatre** versions 60 s (français et derja,
+   9:16 et 16:9, 60 fps), couvertures et miniatures. Rien à retoucher à part : elles
+   reprennent la composition 40 s telle quelle.
+6. Un texte français modifié ? `make_arabic.py` s'arrête en citant l'extrait : mettre à jour
+   la paire français → derja correspondante dans `TEXTS` (voir plus bas).
 
 Prérequis d'un conteneur neuf : Node 22 + ffmpeg ; le script installe les dépendances
 Python (`scripts/requirements.txt`) et le Chrome de HyperFrames si besoin. Dans le dépôt,
@@ -98,7 +117,7 @@ dans le script).
 | 23–27 | `#tr` 05 Transfert | canvas pixel en parallaxe (fonction pure du temps) : train + voiture qui le double, neige, ville universitaire qui se lève à l'horizon, panneau КАЗАНЬ / KAZAN, jauge MOSCOU → KAZAN, freinage | la porte du wagon s'ouvre sur le foyer (clip-path) |
 | 27–29 | `#s9` 05 Foyer | carte-clé, porte 412 en 3D, chambre pixel, « 1 an inclus » | travelling dans la fenêtre + flash |
 | 29–31 | `#s10` Université | photo d'amphi, typo lettre à lettre, carte d'étudiant | cut |
-| 31–37 | `#s11` Prix | odomètre 3 500 €, ticket imprimé ligne à ligne : inclus, total, puis « non inclus · en option », tampon | chute |
+| 31–37 | `#s11` Prix | odomètre 12 000 DT, ticket imprimé ligne à ligne : inclus, total, puis « non inclus · en option », tampon | chute |
 | 37–40 | `#s12` CTA | ville pixel, **logo sur l'accord final (37,0)**, WhatsApp, numéro, site | fin |
 
 `#hud` (2,95–31 s) = barre de progression en 5 segments aux couleurs des étapes du site.
@@ -142,6 +161,33 @@ Pour un autre facteur (par ex. 1,25 → 50 s) : changer `K` dans `make_slow.py` 
 que le drop A, le drop B et l'accord final tombent toujours sur 1,0 × K, 21,0 × K et
 37,0 × K, et adapter l'automation `auto` (`if SLOW:`).
 
+## Version en arabe tunisien (`scripts/make_arabic.py`, v6)
+
+Le script lit les compositions françaises 40 s (`hyperframes/` et `hyperframes-16x9/`,
+donc lancer `make_landscape.py` avant) et écrit `hyperframes-ar/` et `hyperframes-ar-16x9/`,
+que `make_slow.py` passe ensuite en 60 s (`hyperframes-ar-60s*/`). Même animation, même
+timing, même bande-son ; seuls changent :
+
+1. **les textes** : liste `TEXTS` (paires français → derja, chacune doit exister telle quelle
+   dans la version française, sinon le script s'arrête ; il vérifie aussi qu'aucun texte
+   accentué français ne reste à l'écran) ;
+2. **la typographie** : police **Cairo** (`hyperframes/assets/fonts/Cairo-arabic.woff2`,
+   OFL) pour les glyphes arabes ; le latin, les chiffres et le logo restent en Space
+   Grotesk. Pas d'espacement des lettres sur l'arabe (il casse les liaisons), interligne
+   numérique 1,28 sur les libellés (Cairo a des métriques très hautes), masques de titres
+   plus hauts (points et descendantes) et départ à `yPercent: 180` ;
+3. **les animations lettre par lettre** (titre de l'université, slogan sous le logo) passent
+   **mot par mot** ; le **panneau à volets** garde ses 18 cases et leur timing (le bruitage
+   reste juste) mais chaque ligne est une phrase arabe révélée colonne par colonne (fenêtres
+   `.fw`), de droite à gauche ;
+4. **le sens de lecture** : titres, légendes et colonne du prix calés à droite (9:16) ou sur
+   le bord droit de la colonne de texte (16:9, x = 840) ; téléphone, cartes, lettre, carte
+   d'assurance, notification et ticket en miroir ; la barre de progression se remplit depuis
+   la droite. Restent de gauche à droite : carte d'embarquement, carte du vol et jauge
+   Moscou → Kazan (géographie), numéro de téléphone, site, codes et montants. Les milliers
+   s'écrivent avec une espace insécable (`NB`) : une espace simple inverserait « 12 000 » au
+   milieu d'un texte arabe.
+
 ## Où modifier quoi (`hyperframes/index.html` sauf mention)
 
 Repères : bannières `/* === S1 — … */` (CSS), `<!-- === S1 — … -->` (HTML) et
@@ -159,13 +205,13 @@ Repères : bannières `/* === S1 — … */` (CSS), `<!-- === S1 — … -->` (H
 | Visa / assurance / billet | HTML `#visa-*`, `#ins-*`, `#bp-*` | |
 | Villes et trajet du vol | JS `MAP_ROWS` (régénérer avec `scripts/make_dotmap.py`), `R0…R3` + chemin `M220,1320 C420,1150 600,720 845,698` (3 occurrences) + épingles `#pin-*`, étiquettes `#lb-tun`, `#lb-mow` | la caméra (`#s7-cam`) vise Tunis puis Moscou : recalculer ses x/y si une ville bouge ; 16:9 : mêmes éléments dans `make_landscape.py` |
 | Notification en vol | HTML `#nt-b` | |
-| Panneau à volets | JS `FLAP` (2 mots de 9 cases) | le cue `s8-split-flap` est resynthétisé avec le même timing (`build_audio.py`) |
+| Panneau à volets | JS `FLAP` (2 mots de 9 cases) | le cue `s8-split-flap` est resynthétisé avec le même timing (`build_audio.py`) ; derja : `FLAP` dans `make_arabic.py` (2 phrases) |
 | **Transfert** (textes) | HTML `#tr-t .tw`, `#tr-a` (MOSCOU), `#tr-b` (KAZAN), `#tr-sub` | `#tr-sub` ≤ ~40 caractères |
 | **Ville de l'université** | `#tr-b`, `#s2-pm`, carte d'étudiant `.sc-f .v2`, panneau du transfert : JS `word("КАЗАНЬ", 8)` et `word("KAZAN", 26)` dans `signSpr` | lettres pixel 5×7 dans `PXF` : ajouter celles qui manquent pour un autre nom (ex. « Т », « О », « M ») ; ≤ 13 lettres par ligne |
 | Mise en page du transfert | JS `TRL` (horizon, rails, route, positions du train et de la voiture, entrée du panneau) | 16:9 : `TRL` dans `make_landscape.py` |
 | Foyer | HTML `#d-plate`, `#kc-n`, puce `#s9-chip` | |
 | Carte d'étudiant | HTML `#scard` (`.sc-f`) | |
-| **Prix (gros chiffre)** | JS `ODO_TARGET` (chiffres) + `ODO_LAND` (arrivée) | 4 chiffres ; sinon ajouter une colonne `.odo` et recalculer ; mettre aussi à jour `odo_ticks` dans `build_audio.py` |
+| **Prix (gros chiffre)** | JS `ODO_TARGET` (chiffres) + `ODO_LAND` (arrivée), devise `#s11-cur` | 5 chiffres (12 000) ; pour un autre nombre de chiffres, ajouter/retirer une colonne `.odo` et mettre aussi à jour `odo_ticks` dans `build_audio.py` ; 16:9 : le chiffre est réduit à 92 % (`zoom`, `make_landscape.py`) pour laisser la place au ticket |
 | **Ticket** (postes, montants, total) | HTML `#rc-paper .rc-l`, `.rc-tot` | 6 lignes de 66 px ; si on en ajoute, allonger `#rc-paper`/`#rc-mask` et les pas d'avance (`paper feed`) |
 | **Options non incluses** | HTML `.rc-oh` (titre) et `#rc-paper .rc-o` (3 lignes de 56 px, valeur « sur devis ») | pour un prix : remplacer « sur devis » ; une ligne de plus = +56 px à `#rc-paper`/`#rc-mask`, un pas d'avance de plus, et une rafale de plus dans `feeds` (`build_audio.py`) |
 | Pastille / tampon prix | HTML `#s11-pill`, `#st-tc` | pastille ≤ ~22 caractères à 44 px (le tampon est à sa droite) |
@@ -208,7 +254,7 @@ klaxon du train en la majeur) ; rails, moteur et souffle de porte accompagnent l
 - Photo de l'amphithéâtre : celle du site (Unsplash) ; recadrage 16:9 de la même photo.
   Carte : masque terre/mer GLOBE (via `global-land-mask`, MIT) converti en grille
   embarquée — aucune donnée chargée au rendu.
-- Licences : Space Grotesk (OFL), musique et SFX Pixabay Content License (contester une
+- Licences : Space Grotesk et Cairo (OFL), musique et SFX Pixabay Content License (contester une
   éventuelle réclamation Content ID avec la licence Pixabay — utile surtout sur YouTube).
 
 ## Pièges rencontrés

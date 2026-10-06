@@ -381,10 +381,10 @@ def synth_all(sfx_dir: Path) -> None:
                 k += 1
             add_at(clat, tick(1300, tau=0.006, noise=0.9, rng=rng), (settle - t0) * K, 0.85)
     save("flap_clatter", clat)
-    # odometer 3 500: a click each time a digit column crosses a digit
-    t_start, land, target = 27.15, [27.82, 27.88, 27.94, 28.0], [3, 5, 0, 0]
+    # odometer 12 000 (DT): a click each time a digit column crosses a digit
+    t_start, land, target = 27.15, [27.76, 27.82, 27.88, 27.94, 28.0], [1, 2, 0, 0, 0]
     tt, ff = [], []
-    for i in range(4):
+    for i in range(len(target)):
         a_, b_ = 3 + i * 2, 20 + target[i] + (i % 2) * 10
         x = np.linspace(0, 1, 4000)
         pos = a_ + (b_ - a_) * bezier_ease(ODO_ROLL, x)

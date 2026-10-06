@@ -1,4 +1,4 @@
-"""Write the canonical OpenMontage artifacts for RusStudy "Le parcours" (40 s, 9:16 + YouTube 16:9) and validate them."""
+"""Write the canonical OpenMontage artifacts for RusStudy "Le parcours" (40 s / 60 s, 9:16 + YouTube 16:9, French + derja) and validate them."""
 
 import json
 from pathlib import Path
@@ -13,6 +13,8 @@ NAME = "russtudy_parcours_40s"
 NAME16 = "russtudy_parcours_40s_youtube_16x9"
 NAME60 = "russtudy_parcours_60s"  # v4: same film 1.5x slower (scripts/make_slow.py)
 NAME60_16 = "russtudy_parcours_60s_youtube_16x9"
+NAME60_AR = "russtudy_parcours_60s_derja"  # v6: Tunisian Arabic (scripts/make_arabic.py)
+NAME60_AR16 = "russtudy_parcours_60s_derja_youtube_16x9"
 DUR = 40.0
 
 brief = {
@@ -23,6 +25,7 @@ brief = {
         "Les 5 étapes du site : 01 consultation gratuite (appel de 15 min) · 02 dossier (traduction assermentée + légalisation) · 03 admission (lettre d'invitation d'État) · 04 visa & assurance · 05 accueil & installation (tuteur bilingue à l'aéroport, transfert, foyer)",
         "v3 (demande client) : transport interne de Moscou vers la ville de l'université, en train ou en voiture, avec le tuteur (exemple illustratif : Kazan)",
         "Prix fourni par le client : 1ère année dès 3 500 € = frais universitaires dès 2 200 € + consulting/orientation + dossier visa + accueil aéroport + foyer 1 an + assurance médicale",
+        "v6 (demande client) : prix affiché en dinars tunisiens, dès 12 000 DT (frais universitaires dès 7 500 DT, convertis au même taux), et version en arabe tunisien (derja) 9:16 + 16:9",
         "Non inclus (précision du client, v5) : billet d'avion, transport Moscou → ville universitaire (train ou voiture, au choix), hôtel et visites à Moscou — en option, sur devis",
         "Sans frais cachés (engagement « Transparence sur les coûts » du site)",
         "CTA : Écris-nous sur WhatsApp · +7 996 433 4489 · russieetudes.com · 1ère consultation gratuite",
@@ -46,7 +49,7 @@ SECTIONS = [
     ("tr", "05 Transfert", "Train ou voiture, jusqu'à ta ville. — MOSCOU → KAZAN — Organisé sur demande · en option — panneau КАЗАНЬ / KAZAN", 23.0, 27.0),
     ("s9", "05 Foyer", "Foyer universitaire. — 1 an inclus — Chambre 412", 27.0, 29.0),
     ("s10", "Université", "Premier jour à l'université. — Carte d'étudiant · Médecine générale · Université d'État · Kazan · Objectif atteint", 29.0, 31.0),
-    ("s11", "Prix", "Budget 1ère année : dès 3 500 € · études + installation — Frais universitaires dès 2 200 € · Consulting & orientation · Dossier visa · Accueil aéroport · Foyer universitaire 1 an · Assurance médicale : inclus — Total 1ère année dès 3 500 € — Non inclus · en option sur demande : billet d'avion, train ou voiture jusqu'à ta ville, hôtel & visites à Moscou (sur devis) — Sans frais cachés", 31.0, 37.0),
+    ("s11", "Prix", "Budget 1ère année : dès 12 000 DT · études + installation — Frais universitaires dès 7 500 DT · Consulting & orientation · Dossier visa · Accueil aéroport · Foyer universitaire 1 an · Assurance médicale : inclus — Total 1ère année dès 12 000 DT — Non inclus · en option sur demande : billet d'avion, train ou voiture jusqu'à ta ville, hôtel & visites à Moscou (sur devis) — Sans frais cachés", 31.0, 37.0),
     ("s12", "CTA", "RusStudy. Études en Russie — Écris-nous sur WhatsApp — +7 996 433 4489 — russieetudes.com — 1ère consultation gratuite", 37.0, 40.0),
 ]
 script = {
@@ -69,7 +72,7 @@ SCENES = [
     ("tr", "animation", "Étape 05 (v3, enrichie en v5) : transfert Moscou → ville universitaire, en option. Canvas pixel en parallaxe (étoiles, soleil couchant, collines, forêt, caténaire, neige) : le train (passagers aux fenêtres) et une voiture orange qui le double, la ville universitaire qui se lève à l'horizon, panneau КАЗАНЬ / KAZAN, jauge MOSCOU → KAZAN ; freinage, la porte du wagon s'ouvre", 23.0, 27.05, "travelling latéral depuis le hall d'arrivée", "la scène suivante s'ouvre dans la porte du wagon (clip-path) + lumière chaude", "build_tension"),
     ("s9", "animation", "Étape 05 : carte-clé sur le lecteur (LED verte), porte 412 qui s'ouvre en 3D sur une chambre pixel (lampe, neige à la fenêtre), puce « 1 an inclus »", 26.72, 29.1, "porte du wagon (clip-path)", "travelling avant dans la fenêtre + flash blanc", "deliver_payload"),
     ("s10", "broll", "Premier jour : photo d'amphithéâtre (site) en Ken Burns, typo cinétique lettre par lettre, carte d'étudiant en 3D avec reflet, étoiles pixel ; la barre de progression se complète", 28.98, 31.0, "flash blanc", "cut sec", "resolution"),
-    ("s11", "animation", "Prix : odomètre 3 500 € (flou directionnel), pastille « études + installation », ticket de caisse imprimé ligne par ligne (6 postes inclus, total, puis « non inclus · en option sur demande » : billet d'avion, train ou voiture, hôtel & visites à Moscou — sur devis), tampon SANS FRAIS CACHÉS", 31.0, 37.05, "cut sec", "chute avant l'arrêt de l'orchestre", "deliver_payload"),
+    ("s11", "animation", "Prix : odomètre 12 000 DT (flou directionnel), pastille « études + installation », ticket de caisse imprimé ligne par ligne (6 postes inclus, total, puis « non inclus · en option sur demande » : billet d'avion, train ou voiture, hôtel & visites à Moscou — sur devis), tampon SANS FRAIS CACHÉS", 31.0, 37.05, "cut sec", "chute avant l'arrêt de l'orchestre", "deliver_payload"),
     ("s12", "text_card", "Ville pixel de nuit (rappel du spot 15 s), logo RusStudy. sur l'accord final, CTA WhatsApp, numéro et site tapés, tap de la main pixel", 37.0, 40.0, "cut sur l'accord final (37,0 s)", "fin", "call_to_action"),
 ]
 scene_plan = {
@@ -95,6 +98,8 @@ asset_manifest = {
               original_url="https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0",
               generation_summary="Original 2400 x 3600, recadré 2400 x 1350 (y = 700) puis 1920 x 1080 (lanczos)"),
         asset("font-space-grotesk", "font", "hyperframes/assets/fonts/SpaceGrotesk-latin.woff2", "Google Fonts", "all", license="SIL Open Font License 1.1"),
+        asset("font-cairo", "font", "hyperframes/assets/fonts/Cairo-arabic.woff2", "Google Fonts (Cairo, sous-ensemble arabe, graisses 400-900)", "all", license="SIL Open Font License 1.1",
+              generation_summary="Glyphes arabes des versions derja ; le latin, les chiffres et le logo restent en Space Grotesk"),
         asset("map-land-mask", "diagram", "scripts/make_dotmap.py", "global-land-mask 1.0.0 (NOAA GLOBE 1 km)", "s7", license="MIT (package) / public domain (GLOBE data)",
               generation_summary="Grille 54 x 96 terre/mer embarquée dans index.html (MAP_ROWS) ; 96 x 54 pour le 16:9 (scripts/map_rows_16x9.js) ; régénérables avec scripts/make_dotmap.py"),
         asset("music-funky", "music", "assets/music/11_funky.mp3", "pixabay_music", "all", provider="pixabay", license="Pixabay Content License",
@@ -111,6 +116,8 @@ asset_manifest = {
               generation_summary="Version YouTube 1920 x 1080 dérivée de la composition verticale : remplacements vérifiés, zones portrait mises à l'échelle à droite, titres à gauche, HUD en barre haute"),
         asset("composition-60s", "animation", "hyperframes-60s/index.html", "scripts/make_slow.py", "all",
               generation_summary="Version 60 s au rythme ralenti (v4) : la timeline de 40 s est rejouée 1,5 fois plus lentement par une timeline racine qui la parcourt ; data-start / data-duration x 1,5 ; idem pour hyperframes-60s-16x9/"),
+        asset("composition-ar", "animation", "hyperframes-ar/index.html", "scripts/make_arabic.py", "all",
+              generation_summary="Version en arabe tunisien (derja, v6) dérivée des compositions françaises 9:16 et 16:9 : textes traduits (remplacements vérifiés), police Cairo, mise en page de droite à gauche, animations lettre par lettre remplacées par des mots ; même timing et même bande-son ; idem hyperframes-ar-16x9/, puis hyperframes-ar-60s*/ par make_slow.py"),
         asset("soundtrack-60s", "audio", "assets/audio-60s/soundtrack.wav", "scripts/build_audio.py --slow", "all", duration_seconds=DUR * 1.5, format="wav",
               generation_summary="Même musique remontée sur 60 s (piste 14,526–40,026 puis 74,025–102,025 puis 62,025–68,525 : drop A à 1,5 s, drop B à 31,5 s, accord final à 55,5 s) ; cues SFX et sons synthétisés étirés x 1,5 ; -14 LUFS"),
     ],
@@ -140,7 +147,9 @@ for o in [out(f"renders/{NAME}_60fps.mp4", "mp4", 60, "TikTok / YouTube Shorts /
           out(f"renders/{NAME}_30fps.mp4", "mp4", 30, "Instagram Reels / Facebook / Stories"),
           out(f"renders/{NAME16}_60fps.mp4", "mp4", 60, "YouTube (16:9)", "1920x1080"),
           out(f"renders/{NAME60}_60fps.mp4", "mp4", 60, "Rythme ralenti 60 s — TikTok / Shorts / Reels", duration=DUR * 1.5),
-          out(f"renders/{NAME60_16}_60fps.mp4", "mp4", 60, "Rythme ralenti 60 s — YouTube (16:9)", "1920x1080", DUR * 1.5)]:
+          out(f"renders/{NAME60_16}_60fps.mp4", "mp4", 60, "Rythme ralenti 60 s — YouTube (16:9)", "1920x1080", DUR * 1.5),
+          out(f"renders/{NAME60_AR}_60fps.mp4", "mp4", 60, "60 s en arabe tunisien — TikTok / Shorts / Reels", duration=DUR * 1.5),
+          out(f"renders/{NAME60_AR16}_60fps.mp4", "mp4", 60, "60 s en arabe tunisien — YouTube (16:9)", "1920x1080", DUR * 1.5)]:
     if o["file_size_bytes"]:  # list only the renders that exist
         render_report["outputs"].append({k: v for k, v in o.items() if v is not None})
 
@@ -217,6 +226,16 @@ decision_log = {
             [opt("hall-travelling", "Hall d'arrivée avec vue sur Moscou + travelling latéral vers le train", 0.85, "situe l'arrivée à Moscou, humanise l'accueil (tuteur), transition continue dans le sens du voyage"),
              opt("flip-3d", "Garder le retournement 3D", 0.3, "déjà en place", "laissait voir un vide noir, surtout dans la version 60 s (remarque du client)")],
             "hall-travelling", "Retour du client : la transition vers 33–34 s (version 60 s) n'était pas bonne et l'arrivée / le transport devaient être plus travaillés.", False, 0.8),
+        dec("d14", "compose", "visual_accuracy_check", "Prix en dinars tunisiens (v6)",
+            [opt("dt", "« dès 12 000 DT », montant donné par le client", 0.85, "devise de la cible ; « DT » est l'abréviation courante en Tunisie"),
+             opt("dt-eur", "« 12 000 DT ≈ 3 500 € »", 0.4, "garde la référence en euros", "deux montants à lire en quelques secondes ; le client demande le prix en dinars"),
+             opt("tnd", "« 12 000 TND » (code ISO)", 0.5, "terme employé par le client", "abréviation bancaire, moins familière que « DT » sur une affiche")],
+            "dt", "Demande du client : « le prix en dinars tunisien soit équivalent 12000 tnd ». Compteur à 5 chiffres ; frais universitaires convertis au même taux (2 200 € x 12 000 / 3 500 ≈ 7 543 DT, affiché « dès 7 500 DT », à confirmer par le client) ; en derja « 12 000 د.ت ». Seules les versions 60 s sont rendues (« on garde les versions 60 s »).", False, 0.75),
+        dec("d15", "compose", "capability_extension", "Version en arabe tunisien (v6)",
+            [opt("derja-script", "Derja en écriture arabe, générée par script depuis les compositions françaises", 0.85, "même animation, même timing, même bande-son ; une retouche faite en français se propage ; le script s'arrête si un texte français a changé"),
+             opt("arabe-standard", "Arabe standard (fusha)", 0.4, "registre neutre", "le client demande l'arabe tunisien ; la derja parle directement aux bacheliers et aux familles"),
+             opt("miroir-complet", "Miroir complet de la mise en page 16:9", 0.3, "lecture de droite à gauche partout", "inverserait la géographie Tunis → Moscou et le sens des trajets")],
+            "derja-script", "scripts/make_arabic.py : police Cairo pour l'arabe, textes alignés à droite, cartes et téléphone en miroir, HUD qui se remplit depuis la droite, tableau des arrivées révélé colonne par colonne ; numéro, site, codes et chiffres en écriture latine. Textes à faire relire par un locuteur tunisien avant diffusion.", False, 0.75),
     ],
 }
 
