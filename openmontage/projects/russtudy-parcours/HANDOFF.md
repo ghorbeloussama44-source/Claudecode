@@ -24,17 +24,20 @@ chaque format existe aussi en **version 60 s au rythme moins accéléré** (le m
 
 ## À valider par le client avant diffusion payante
 
-- **Prix** : affiché « 1ère année dès 3 500 € tout compris ». Lecture retenue du brief :
-  les 3 500 € **incluent** les frais universitaires (dès 2 200 €), le consulting /
-  orientation, le dossier visa, l'accueil aéroport, le foyer 1 an et l'assurance
-  médicale (c'est exactement la liste du ticket). Si les 3 500 € s'ajoutent aux frais
-  universitaires, modifier le ticket et le total (voir tableau ci-dessous).
-- « Tout compris » = les postes du ticket ; billet d'avion et vie courante non inclus.
-- « Sans frais cachés » reprend l'engagement « Transparence sur les coûts » du site.
-- **Transfert (v3)** : les textes reprennent la demande du client — « Train ou voiture,
-  jusqu'à ta ville. » et « Transfert organisé depuis Moscou. ». Le transfert n'apparaît pas
-  dans le ticket du prix : s'il est inclus dans les 3 500 €, on peut ajouter une ligne ;
-  si le tuteur accompagne l'étudiant pendant le trajet, on peut l'écrire dans `#tr-sub`.
+- **Prix (v5, précisé par le client)** : « 1ère année dès 3 500 € » + pastille « études +
+  installation ». **Inclus** (lignes cochées du ticket) : frais universitaires (dès
+  2 200 €), consulting / orientation, dossier visa, accueil aéroport, foyer 1 an,
+  assurance médicale. **Non inclus**, imprimés en bas du ticket sous « NON INCLUS · EN
+  OPTION SUR DEMANDE » avec la mention « sur devis » : billet d'avion, train ou voiture
+  jusqu'à la ville universitaire, hôtel & visites à Moscou. « Tout compris » a été retiré.
+- **Prix des options** : aucun prix moyen n'est affiché (le billet d'avion varie selon la
+  date ; un montant dans une pub se lit comme une promesse). Pour en afficher un, remplacer
+  « sur devis » par « dès … € » ou « ≈ … € » dans les lignes `.rc-o` du ticket (montants
+  fournis et tenus par le client).
+- « Sans frais cachés » reprend l'engagement « Transparence sur les coûts » du site : les
+  options non incluses sont désormais listées à l'écran.
+- **Transfert** : « Train ou voiture, jusqu'à ta ville. » + « Organisé sur demande · en
+  option » (`#tr-sub`), cohérent avec le ticket.
 - Le cas montré (Médecine générale à **Kazan**, chambre 412, dossier RS-2026-0412, vol
   RS 2026) est **illustratif**, comme l'exemple de profil. Kazan fait partie des villes
   citées dans l'analyse de profil (« Moscou, Saint-Pétersbourg, Kazan… »).
@@ -91,11 +94,11 @@ dans le script).
 | 11–15 | `#s5` 04 Visa & assurance | passeport 3D, vignette visa, carte d'assurance ; carte d'embarquement (`#pl`) | déchirure du billet |
 | 15–17 | `#s6` Départ | décollage sur MotionPath, nuages pixel | mur de nuages (`#cw`) |
 | 17–21 | `#s7` En vol | carte en pixels Tunis → Moscou, notification RusStudy | plongée + iris vert sur le **drop B (21,0)** |
-| 21–23 | `#s8` 05 Accueil | panneau à volets BIENVENUE EN RUSSIE, pancarte du tuteur | flip 3D plein écran |
-| 23–27 | `#tr` 05 Transfert | canvas pixel en parallaxe (fonction pure du temps) : train + voiture qui le double, panneau КАЗАНЬ / KAZAN, jauge MOSCOU → KAZAN, freinage | la porte du wagon s'ouvre sur le foyer (clip-path) |
+| 21–23 | `#s8` 05 Accueil | hall d'arrivée : baie vitrée sur Moscou de nuit (tour Spasskaïa, dômes de Saint-Basile, avion qui atterrit, neige, balisage), panneau à volets BIENVENUE EN RUSSIE, tuteur pixel derrière la barrière avec la pancarte (saut sur le temps, salut, « par ici ») | travelling vers la droite (23,0) : le hall sort à gauche avec parallaxe, le transfert entre à droite |
+| 23–27 | `#tr` 05 Transfert | canvas pixel en parallaxe (fonction pure du temps) : train + voiture qui le double, neige, ville universitaire qui se lève à l'horizon, panneau КАЗАНЬ / KAZAN, jauge MOSCOU → KAZAN, freinage | la porte du wagon s'ouvre sur le foyer (clip-path) |
 | 27–29 | `#s9` 05 Foyer | carte-clé, porte 412 en 3D, chambre pixel, « 1 an inclus » | travelling dans la fenêtre + flash |
 | 29–31 | `#s10` Université | photo d'amphi, typo lettre à lettre, carte d'étudiant | cut |
-| 31–37 | `#s11` Prix | odomètre 3 500 €, ticket imprimé ligne à ligne, tampon | chute |
+| 31–37 | `#s11` Prix | odomètre 3 500 €, ticket imprimé ligne à ligne : inclus, total, puis « non inclus · en option », tampon | chute |
 | 37–40 | `#s12` CTA | ville pixel, **logo sur l'accord final (37,0)**, WhatsApp, numéro, site | fin |
 
 `#hud` (2,95–31 s) = barre de progression en 5 segments aux couleurs des étapes du site.
@@ -164,7 +167,10 @@ Repères : bannières `/* === S1 — … */` (CSS), `<!-- === S1 — … -->` (H
 | Carte d'étudiant | HTML `#scard` (`.sc-f`) | |
 | **Prix (gros chiffre)** | JS `ODO_TARGET` (chiffres) + `ODO_LAND` (arrivée) | 4 chiffres ; sinon ajouter une colonne `.odo` et recalculer ; mettre aussi à jour `odo_ticks` dans `build_audio.py` |
 | **Ticket** (postes, montants, total) | HTML `#rc-paper .rc-l`, `.rc-tot` | 6 lignes de 66 px ; si on en ajoute, allonger `#rc-paper`/`#rc-mask` et les pas d'avance (`paper feed`) |
-| Pastille / tampon prix | HTML `#s11-pill`, `#st-tc` | |
+| **Options non incluses** | HTML `.rc-oh` (titre) et `#rc-paper .rc-o` (3 lignes de 56 px, valeur « sur devis ») | pour un prix : remplacer « sur devis » ; une ligne de plus = +56 px à `#rc-paper`/`#rc-mask`, un pas d'avance de plus, et une rafale de plus dans `feeds` (`build_audio.py`) |
+| Pastille / tampon prix | HTML `#s11-pill`, `#st-tc` | pastille ≤ ~22 caractères à 44 px (le tampon est à sa droite) |
+| Hall d'arrivée (vue de Moscou) | JS `S8L` (baie vitrée, sol, positions de la tour, des dômes et de l'atterrissage) ; tuteur `TUTOR_HEAD` / `HAND` ; barrière `#s8-rail` | 16:9 : `S8L` et CSS dans `make_landscape.py` |
+| Travelling hall → transfert | JS bloc TR : `PAN_D` et les tweens `#s8-pan`, `#s8-cv`, `#sign-pos`, `#tr` à `T_TR` | cue `s8-pan` (whoosh) |
 | CTA, numéro, site | HTML `#wa-t`, `#cta-chip` ; JS `TEL_TXT`, `URL_TXT`, `TAG_TXT` | CTA ≤ ~700 px à 50 px |
 | Ville de nuit (fin) | JS `CITY`, `DOMES`, `TENT` | 16:9 : mêmes noms dans `make_landscape.py` |
 | Timings | positions GSAP (secondes) sous chaque bannière JS ; `T_TR`…`T12` | rester sur la grille de 0,5 s ; reporter dans `sfx_cues.json` |

@@ -63,11 +63,11 @@ mouvement continu sur un groove funk. Confiant, joueur, concret, rassurant.
 | 5 | 11–15 | 04 · Visa & assurance | whip-pan flouté ; passeport 3D, vignette visa claquée, carte d'assurance, carte d'embarquement TUN → MOW | « Visa d'études + assurance. » |
 | 6 | 15–17 | Départ | la carte d'embarquement se déchire et ouvre le ciel, avion pixel qui décolle, mur de nuages | « Bon voyage ! » |
 | 7 | 17–21 | En vol | carte en pixels (masque terre/mer réel) Tunis → Moscou, sillage doré, nuages en parallaxe, notification RusStudy, plongée sur Moscou | « Cap sur Moscou. » + « Ton tuteur t'attend à l'arrivée. Bon vol ! » |
-| 8 | 21–23 | 05 · Accueil | iris vert sur le **drop B** ; panneau à volets BIENVENUE EN RUSSIE, pancarte RusStudy | « Un tuteur bilingue t'attend à l'aéroport. » |
-| 9 | 23–27 | 05 · Transfert | flip 3D plein écran ; canvas pixel en parallaxe (étoiles, soleil couchant, collines, forêt, poteaux de caténaire) : le **train** (passagers aux fenêtres) et une **voiture** orange qui le double phares allumés ; jauge MOSCOU → KAZAN, panneau КАЗАНЬ / KAZAN, freinage, la porte du wagon s'ouvre | « Train ou voiture, jusqu'à ta ville. » + « Transfert organisé depuis Moscou. » |
+| 8 | 21–23 | 05 · Accueil | iris vert sur le **drop B** ; hall d'arrivée : par la baie vitrée, Moscou de nuit (tour Spasskaïa, dômes de Saint-Basile, fenêtres allumées, neige) et un avion qui atterrit ; panneau à volets BIENVENUE EN RUSSIE ; le tuteur (pixel art) se lève derrière la barrière avec la pancarte RusStudy, saute sur le temps, salue et la penche vers la sortie ; **travelling vers la droite** jusqu'au train | « Un tuteur bilingue t'attend à l'aéroport. » |
+| 9 | 23–27 | 05 · Transfert | le travelling arrive sur un canvas pixel en parallaxe (étoiles, soleil couchant, collines, forêt, poteaux de caténaire, neige) : le **train** (passagers aux fenêtres) et une **voiture** orange qui le double phares allumés ; la ville universitaire (bâtiment à colonnes et coupole) se lève à l'horizon ; jauge MOSCOU → KAZAN, panneau КАЗАНЬ / KAZAN, freinage, la porte du wagon s'ouvre | « Train ou voiture, jusqu'à ta ville. » + « Organisé sur demande · en option » |
 | 10 | 27–29 | 05 · Foyer | la scène s'ouvre **dans la porte du wagon** ; carte-clé, LED verte, porte 412 en 3D sur la chambre pixel, travelling dans la fenêtre | « Foyer universitaire. » + « 1 an inclus » |
 | 11 | 29–31 | Université | flash blanc ; photo de l'amphi en Ken Burns, typo lettre à lettre, carte d'étudiant en 3D avec reflet, étoiles pixel ; barre « Objectif atteint » | « Premier jour à l'université. » |
-| 12 | 31–37 | Prix | cut ; odomètre 3 500 €, pastille « tout compris », ticket imprimé ligne à ligne, tampon SANS FRAIS CACHÉS | « Budget 1ère année · dès 3 500 € » |
+| 12 | 31–37 | Prix | cut ; odomètre 3 500 €, pastille « études + installation », ticket imprimé ligne à ligne : 6 postes inclus, total, puis « NON INCLUS · EN OPTION SUR DEMANDE » (billet d'avion, train ou voiture, hôtel & visites à Moscou : sur devis), tampon SANS FRAIS CACHÉS | « Budget 1ère année · dès 3 500 € » |
 | 13 | 37–40 | CTA | logo sur l'accord final, ville pixel de nuit (rappel du spot 15 s), bouton WhatsApp, numéro et site tapés, tap | « Écris-nous sur WhatsApp · +7 996 433 4489 · russieetudes.com · 1ère consultation gratuite » |
 
 Ville universitaire d'exemple : **Kazan** (une des villes citées dans l'analyse de profil,
@@ -88,6 +88,17 @@ Même film, même bande-son, même timing ; mise en page repensée pour l'horizo
 
 La version 16:9 n'est jamais retouchée à la main : `scripts/make_landscape.py` la régénère
 depuis la verticale.
+
+## v5 : arrivée, transfert et prix précisés
+
+- L'arrivée à Moscou devient un vrai hall d'arrivée (vue sur la ville de nuit, avion qui
+  atterrit, tuteur derrière la barrière) et le retournement 3D vers le transfert, qui
+  laissait voir un vide noir, est remplacé par un travelling latéral : le hall sort à
+  gauche, le train entre à droite, dans le sens du voyage.
+- Le transfert gagne de la neige et la ville universitaire qui se lève à l'horizon quand
+  le train freine.
+- Le prix dit clairement ce qui n'est pas inclus (billet d'avion, train ou voiture, hôtel
+  et visites à Moscou : en option, sur devis) ; « tout compris » est retiré.
 
 ## Version 60 s au rythme moins accéléré (v4)
 

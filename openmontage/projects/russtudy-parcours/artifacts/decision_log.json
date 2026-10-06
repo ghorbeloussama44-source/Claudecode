@@ -153,7 +153,7 @@
         }
       ],
       "selected": "bundled+synth",
-      "reason": "114 cues calés sur les événements GSAP ; sons tonals accordés en la mixolydien / mi.",
+      "reason": "115 cues calés sur les événements GSAP ; sons tonals accordés en la mixolydien / mi.",
       "user_visible": true,
       "user_approved": false,
       "confidence": 0.8
@@ -179,7 +179,7 @@
         }
       ],
       "selected": "client-price",
-      "reason": "À faire confirmer par le client avant diffusion payante ; « tout compris » = les postes listés sur le ticket (billet d'avion et vie courante non inclus). Interface façon WhatsApp sans logo ; promesses reprises du site (appel 15 min, traduction assermentée, lettre d'invitation d'État, tuteur bilingue, sans frais cachés).",
+      "reason": "Confirmé et précisé par le client (v5) : billet d'avion, transport interne (train ou voiture), hôtel et visites à Moscou non inclus — listés sur le ticket en option, sur devis ; « tout compris » retiré. Interface façon WhatsApp sans logo ; promesses reprises du site (appel 15 min, traduction assermentée, lettre d'invitation d'État, tuteur bilingue, sans frais cachés).",
       "user_visible": true,
       "user_approved": false,
       "confidence": 0.7
@@ -305,6 +305,65 @@
       ],
       "selected": "ralenti-x1.5",
       "reason": "Demande du client : « une version où le rythme est moins accéléré ». scripts/make_slow.py + build_audio.py --slow ; drop A à 1,5 s, drop B à 31,5 s, logo sur l'accord final à 55,5 s.",
+      "user_visible": true,
+      "user_approved": false,
+      "confidence": 0.8
+    },
+    {
+      "decision_id": "d12",
+      "stage": "compose",
+      "category": "visual_accuracy_check",
+      "subject": "Ce que le prix n'inclut pas (v5)",
+      "options_considered": [
+        {
+          "option_id": "ticket-options",
+          "label": "Section « Non inclus · en option sur demande » en bas du ticket, valeurs « sur devis »",
+          "score": 0.85,
+          "reason": "le spectateur voit au même endroit ce qui est inclus et ce qui ne l'est pas ; cohérent avec « sans frais cachés »"
+        },
+        {
+          "option_id": "prix-moyen",
+          "label": "Afficher un prix moyen par option",
+          "score": 0.4,
+          "reason": "plus concret",
+          "rejected_because": "le billet d'avion varie selon la date ; un montant dans une pub se lit comme une promesse — à ajouter seulement avec des montants fournis et tenus par le client"
+        },
+        {
+          "option_id": "asterisque",
+          "label": "Astérisque et mention en petits caractères",
+          "score": 0.3,
+          "reason": "discret",
+          "rejected_because": "illisible sur mobile"
+        }
+      ],
+      "selected": "ticket-options",
+      "reason": "Le client précise que les 3 500 € n'incluent ni le billet d'avion, ni le transport interne (train ou voiture), ni l'hôtel et les visites à Moscou ; pastille « études + installation » à la place de « tout compris » ; sous-titre du transfert « Organisé sur demande · en option ».",
+      "user_visible": true,
+      "user_approved": false,
+      "confidence": 0.85
+    },
+    {
+      "decision_id": "d13",
+      "stage": "compose",
+      "category": "motion_commitment",
+      "subject": "Arrivée à Moscou et transition vers le transfert (v5)",
+      "options_considered": [
+        {
+          "option_id": "hall-travelling",
+          "label": "Hall d'arrivée avec vue sur Moscou + travelling latéral vers le train",
+          "score": 0.85,
+          "reason": "situe l'arrivée à Moscou, humanise l'accueil (tuteur), transition continue dans le sens du voyage"
+        },
+        {
+          "option_id": "flip-3d",
+          "label": "Garder le retournement 3D",
+          "score": 0.3,
+          "reason": "déjà en place",
+          "rejected_because": "laissait voir un vide noir, surtout dans la version 60 s (remarque du client)"
+        }
+      ],
+      "selected": "hall-travelling",
+      "reason": "Retour du client : la transition vers 33–34 s (version 60 s) n'était pas bonne et l'arrivée / le transport devaient être plus travaillés.",
       "user_visible": true,
       "user_approved": false,
       "confidence": 0.8

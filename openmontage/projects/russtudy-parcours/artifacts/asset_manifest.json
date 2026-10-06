@@ -74,7 +74,7 @@
       "scene_id": "all",
       "duration_seconds": 40.0,
       "format": "wav",
-      "generation_summary": "Musique + 114 cues SFX, automation de gain (vol, accord final), ducking 3 dB, limiteur suréchantillonné, -14 LUFS / -2,5 dBTP ; même bande-son pour les deux formats"
+      "generation_summary": "Musique + 115 cues SFX, automation de gain (vol, accord final), ducking 3 dB, limiteur suréchantillonné, -14 LUFS / -2,5 dBTP ; même bande-son pour les deux formats"
     },
     {
       "id": "composition",

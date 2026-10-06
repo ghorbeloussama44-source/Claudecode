@@ -64,16 +64,16 @@
       "id": "s8",
       "source": "hyperframes/index.html#s8",
       "in_seconds": 20.88,
-      "out_seconds": 23.05,
+      "out_seconds": 23.5,
       "transition_in": "iris",
-      "transition_out": "flip 3D plein écran"
+      "transition_out": "travelling latéral avec parallaxe vers le transfert"
     },
     {
       "id": "tr",
       "source": "hyperframes/index.html#tr",
       "in_seconds": 23.0,
       "out_seconds": 27.05,
-      "transition_in": "flip 3D plein écran",
+      "transition_in": "travelling latéral depuis le hall d'arrivée",
       "transition_out": "la scène suivante s'ouvre dans la porte du wagon (clip-path) + lumière chaude"
     },
     {

@@ -1737,27 +1737,38 @@
         background: #0a0a0a;
         display: block;
       }
-      #sign-pos {
-        position: absolute;
-        left: 230px;
-        top: 860px;
-        width: 620px;
-        height: 560px;
-        transform-origin: 50% 100%;
-      }
-      #sign-stick {
-        position: absolute;
-        left: 290px;
-        top: 270px;
-        width: 40px;
-        height: 290px;
-        border-radius: 8px;
-        background: #0a0a0a;
-      }
-      #sign-board {
+      #s8-cv {
         position: absolute;
         left: 0;
         top: 0;
+        image-rendering: pixelated;
+      }
+      #sign-pos {
+        position: absolute;
+        left: 206px;
+        top: 1080px;
+        width: 668px;
+        height: 470px;
+        transform-origin: 50% 100%;
+      }
+      #tutor-clip {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1080px;
+        height: 1700px;
+        overflow: hidden;
+      }
+      #tutor,
+      #tutor-hands {
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+      #sign-board {
+        position: absolute;
+        left: 24px;
+        top: 104px;
         width: 620px;
         height: 290px;
         border-radius: 26px;
@@ -1783,10 +1794,21 @@
         letter-spacing: 0.22em;
         color: #6b6b6b;
       }
+      #s8-rail {
+        position: absolute;
+        left: 40px;
+        top: 1500px;
+        width: 1000px;
+        height: 200px;
+        border-radius: 8px 8px 0 0;
+        border-top: 16px solid #e4e4e7;
+        background: linear-gradient(180deg, rgba(236, 253, 243, 0.78), rgba(220, 252, 231, 0.6));
+        box-shadow: 0 -2px 0 #a1a1aa, inset 0 0 0 3px rgba(255, 255, 255, 0.5);
+      }
       #s8-cap {
         position: absolute;
         left: 0;
-        top: 1462px;
+        top: 1742px;
         width: 1080px;
         text-align: center;
         font-size: 40px;
@@ -2252,7 +2274,7 @@
         border-radius: 999px;
         background: var(--gold);
         color: #0a0a0a;
-        font-size: 50px;
+        font-size: 44px;
         font-weight: 700;
         letter-spacing: -0.03em;
         display: flex;
@@ -2264,15 +2286,15 @@
         left: 100px;
         top: 786px;
         width: 880px;
-        height: 650px;
+        height: 900px;
         overflow: hidden;
       }
       #rc-paper {
         position: absolute;
         left: 0;
-        top: 650px;
+        top: 900px;
         width: 880px;
-        height: 640px;
+        height: 890px;
         background: #fff;
         padding: 12px 44px 0;
       }
@@ -2342,10 +2364,30 @@
         font-size: 52px;
         letter-spacing: -0.035em;
       }
+      /* what the price does not include: options quoted on request */
+      .rc-oh {
+        height: 56px;
+        display: flex;
+        align-items: flex-end;
+        padding-bottom: 6px;
+        font-size: 22px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        color: #c2410c;
+        white-space: nowrap;
+      }
+      .rc-l.rc-o {
+        height: 56px;
+        font-size: 30px;
+        color: #52525b;
+      }
+      .rc-o .v {
+        font-weight: 600;
+      }
       #rc-slot {
         position: absolute;
         left: 70px;
-        top: 1432px;
+        top: 1682px;
         width: 940px;
         height: 36px;
         border-radius: 18px;
@@ -2353,7 +2395,7 @@
         box-shadow: inset 0 -10px 0 #121212;
       }
       #st-tc {
-        left: 604px;
+        left: 648px;
         top: 628px;
         height: auto;
         flex-direction: column;
@@ -2577,15 +2619,25 @@
       }
       #flap {
         left: 120px;
-        top: 330px;
+        top: 190px;
+      }
+      #tutor-clip {
+        width: 1920px;
+        height: 1080px;
       }
       #sign-pos {
-        left: 1180px;
-        top: 310px;
+        left: 1140px;
+        top: 560px;
+      }
+      #s8-rail {
+        left: 1060px;
+        top: 960px;
+        width: 820px;
+        height: 120px;
       }
       #s8-cap {
         left: 120px;
-        top: 790px;
+        top: 850px;
         width: auto;
         text-align: left;
       }
@@ -2648,14 +2700,6 @@
       #st-tc {
         left: 130px;
         top: 770px;
-      }
-      #rc-mask {
-        left: 940px;
-        top: 190px;
-      }
-      #rc-slot {
-        left: 910px;
-        top: 836px;
       }
       #logo-lg {
         top: 140px;
@@ -3075,21 +3119,28 @@
       </section>
 
       <!-- ================= S8 — 05 ACCUEIL (iris vert sur le drop) ================= -->
-      <section id="s8" class="clip" data-start="20.88" data-duration="2.17" data-track-index="10" style="z-index: 80; clip-path: circle(0px at 960px 540px)">
-        <div class="fill" style="background: var(--green)"></div>
-        <div class="deco" data-layout-ignore id="s8-deco">05</div>
-        <div id="flap">
-          <div id="flap-h1">ARRIVÉES</div>
-          <div id="flap-h2">RS 2026 · À L’HEURE</div>
-        </div>
-        <div id="sign-pos">
-          <div id="sign-stick"></div>
-          <div id="sign-board">
-            <div id="sign-wm" class="wm">Rus<span class="acc">Study</span>.</div>
-            <div id="sign-sub">ACCUEIL ÉTUDIANTS</div>
+      <section id="s8" class="clip" data-start="20.88" data-duration="2.62" data-track-index="10" style="z-index: 80; clip-path: circle(0px at 960px 540px)">
+        <div id="s8-pan" class="fill">
+          <div class="fill" style="background: var(--green)"></div>
+          <canvas id="s8-cv" width="1920" height="1080"></canvas>
+          <div class="deco" data-layout-ignore id="s8-deco">05</div>
+          <div id="flap">
+            <div id="flap-h1">ARRIVÉES</div>
+            <div id="flap-h2">RS 2026 · À L’HEURE</div>
           </div>
+          <div id="tutor-clip">
+            <div id="sign-pos">
+              <div id="tutor"></div>
+              <div id="sign-board">
+                <div id="sign-wm" class="wm">Rus<span class="acc">Study</span>.</div>
+                <div id="sign-sub">ACCUEIL ÉTUDIANTS</div>
+              </div>
+              <div id="tutor-hands"></div>
+            </div>
+          </div>
+          <div id="s8-rail"></div>
+          <div id="s8-cap">Un tuteur bilingue t’attend à l’aéroport.</div>
         </div>
-        <div id="s8-cap">Un tuteur bilingue t’attend à l’aéroport.</div>
       </section>
 
       <!-- ================= TR — TRANSFERT Moscou -> ville universitaire (train ou voiture) ================= -->
@@ -3106,7 +3157,7 @@
           <div id="tr-ic"></div>
           <div id="tr-b">KAZAN<span id="tr-ok"></span></div>
         </div>
-        <div id="tr-sub">Transfert organisé depuis Moscou.</div>
+        <div id="tr-sub">Organisé sur demande · en option</div>
       </section>
 
       <!-- ================= S9 — 05 FOYER (flip 3D plein écran) ================= -->
@@ -3211,8 +3262,8 @@
             <div class="odo"><div class="odo-col"></div></div>
             <div id="s11-eur">€</div>
           </div>
-          <div id="s11-pill">tout compris</div>
-          <div id="rc-mask">
+          <div id="s11-pill">études + installation</div>
+          <div class="pz" style="transform: translate(924px, -556px) scale(0.86)"><div id="rc-mask">
             <div id="rc-paper">
               <div class="rc-h"><span class="wm">Rus<span class="acc">Study</span>.</span><span>1ÈRE ANNÉE</span></div>
               <div class="rc-l"><span>Frais universitaires</span><i class="dt"></i><span class="v">dès 2 200 €</span></div>
@@ -3223,9 +3274,14 @@
               <div class="rc-l"><span>Assurance médicale</span><i class="dt"></i><span class="v">inclus<i class="ok"></i></span></div>
               <div class="rc-div"></div>
               <div class="rc-tot"><span class="a">TOTAL 1ÈRE ANNÉE</span><span class="b">dès 3 500 €</span></div>
+              <div class="rc-div"></div>
+              <div class="rc-oh">NON INCLUS · EN OPTION SUR DEMANDE</div>
+              <div class="rc-l rc-o"><span>Billet d’avion</span><i class="dt"></i><span class="v">sur devis</span></div>
+              <div class="rc-l rc-o"><span>Train ou voiture jusqu’à ta ville</span><i class="dt"></i><span class="v">sur devis</span></div>
+              <div class="rc-l rc-o"><span>Hôtel &amp; visites à Moscou</span><i class="dt"></i><span class="v">sur devis</span></div>
             </div>
           </div>
-          <div id="rc-slot"></div>
+          <div id="rc-slot"></div></div>
           <div id="st-tc" class="stamp"><span>SANS FRAIS</span><span>CACHÉS</span></div>
         </div>
       </section>
@@ -4030,6 +4086,10 @@
       tl.to("#s7-notif", { y: 260, opacity: 0, duration: 0.35, ease: "power2.in" }, 19.85);
 
       // ================================================================ S8 — 05 ACCUEIL (iris vert sur le drop B, 21.0)
+      // Arrivals hall in Moscow. Behind the split-flap board, the terminal window shows the city at
+      // night (Spasskaya tower, St Basil's domes, lit windows, snow) and a plane landing; the tutor
+      // stands up behind the barrier with the RusStudy sign, hops on the 22.0 beat, waves it and tilts
+      // it towards the exit; the camera then pans right into the transfer (23.0, see TR).
       tl.fromTo("#s8", { clipPath: "circle(0px at 960px 540px)" }, { clipPath: "circle(1150px at 960px 540px)", duration: 0.17, ease: "power2.in", immediateRender: false }, 20.88);
       tl.fromTo("#s8-deco", { y: 120 }, { y: 0, duration: 2.0, ease: "power2.out" }, 21.0);
       tl.fromTo("#flap", { y: -80, scale: 0.92 }, { y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 20.95);
@@ -4075,21 +4135,203 @@
         });
       }
       renderFlap();
-      tl.fromTo(s8c, { t: 20.88 }, { t: 23.05, duration: 2.17, ease: "none", immediateRender: false, onUpdate: renderFlap }, 20.88);
-      // the tutor's sign pops up, then the caption
-      tl.fromTo("#sign-pos", { y: 900, rotation: -10 }, { y: 0, rotation: 0, duration: 0.5, ease: "back.out(1.5)" }, 21.85);
-      tl.to("#sign-pos", { keyframes: [{ rotation: 4, duration: 0.18, ease: "sine.inOut" }, { rotation: -3, duration: 0.2, ease: "sine.inOut" }, { rotation: 0, duration: 0.2, ease: "sine.out" }] }, 22.35);
+      tl.fromTo(s8c, { t: 20.88 }, { t: 23.5, duration: 2.62, ease: "none", immediateRender: false, onUpdate: renderFlap }, 20.88);
+      // terminal window + hall floor: one canvas drawn as a pure function of time
+      // layout of the hall (the 16:9 version swaps this line): window rect, floor line, landmark and
+      // landing positions as fractions of the window width
+      const S8L = { W: 1920, H: 1080, win: [80, 150, 1760, 650], floorY: 816, tower: 0.42, domes: 0.56, land: [0.5, 0.3] };
+      const s8g = $("#s8-cv").getContext("2d");
+      s8g.imageSmoothingEnabled = false;
+      const [S8X, S8Y, S8W, S8H] = S8L.win;
+      const S8HZ = S8Y + S8H - 90; // horizon: the city stands on it, the runway lies in front
+      const S8_TOWER = [
+        "...R...",
+        "..RGR..",
+        "...R...",
+        "...N...",
+        "..NNN..",
+        ".NNNNN.",
+        ".RRRRR.",
+        ".RGRGR.",
+        "RRRRRRR",
+        "RRGGGRR",
+        "RRRRRRR",
+        "RRRRRRR",
+        "RRGRGRR",
+        "RRRRRRR",
+        "RRRRRRR",
+        "RRRRRRR",
+      ];
+      const S8_DOME = [0, 0, 1, 2, 2, 3, 3, 2, 1]; // half-widths (6 px cells) of a mini onion dome
+      const s8Plane = sprite(22, 12, (R) =>
+        ICONS.plane.forEach((row, y) => {
+          for (let x = 0; x < row.length; x++) if (row[x] !== ".") R(21 - x, y, 1, 1, PAL[row[x]]); // facing left
+        }),
+      );
+      const s8Rng = mulberry32(2112);
+      const s8Stars = [],
+        s8Snow = [],
+        s8Bld = [];
+      for (let i = 0; i < 28; i++) s8Stars.push({ x: S8X + Math.round(s8Rng() * (S8W - 8)), y: S8Y + Math.round(s8Rng() * S8H * 0.55), s: s8Rng() < 0.3 ? 6 : 4, ph: s8Rng() * 6.28 });
+      for (let i = 0; i < 70; i++) s8Snow.push({ x: s8Rng() * S8W, y: s8Rng() * S8H, v: 70 + s8Rng() * 90, ph: s8Rng() * 6.28, s: 4 + Math.floor(s8Rng() * 2) * 2, a: 0.45 + s8Rng() * 0.45 });
+      {
+        let x = S8X - 10;
+        while (x < S8X + S8W) {
+          const w = 36 + Math.round(s8Rng() * 50);
+          const mid = (x + w / 2 - S8X) / S8W;
+          let h = 50 + Math.round(s8Rng() * 100);
+          if (Math.abs(mid - S8L.tower) < 0.06 || Math.abs(mid - S8L.domes) < 0.1) h = 24 + Math.round(s8Rng() * 26); // low in front of the landmarks
+          const wins = [];
+          for (let yy = 10; yy < h - 10; yy += 16) for (let xx = 6; xx < w - 10; xx += 14) if (s8Rng() < 0.45) wins.push([xx, yy, s8Rng()]);
+          s8Bld.push({ x, w, h, wins });
+          x += w + 4;
+        }
+      }
+      const s8Ease = gsap.parseEase("power2.out");
+      function s8Cell(c, x, y) {
+        s8g.fillStyle = PAL[c];
+        s8g.fillRect(x, y, 6, 6);
+      }
+      function drawS8(lt) {
+        const g = s8g;
+        const { W, H, floorY } = S8L;
+        g.clearRect(0, 0, W, H);
+        // polished hall floor with reflections
+        g.fillStyle = "#4ade80";
+        g.fillRect(0, floorY, W, H - floorY);
+        g.fillStyle = "#16a34a";
+        g.fillRect(0, floorY, W, 6);
+        g.fillStyle = "rgba(255,255,255,0.16)";
+        for (let k = 0; k < 7; k++) g.fillRect(0, floorY + 26 + k * 30 + k * k * 4, W, 4);
+        // window frame, then the view (clipped to the glass)
+        g.fillStyle = "#15803d";
+        g.fillRect(S8X - 16, S8Y - 16, S8W + 32, S8H + 32);
+        g.save();
+        g.beginPath();
+        g.rect(S8X, S8Y, S8W, S8H);
+        g.clip();
+        const sky = g.createLinearGradient(0, S8Y, 0, S8HZ);
+        sky.addColorStop(0, "#0b1638");
+        sky.addColorStop(0.65, "#1d2f6f");
+        sky.addColorStop(1, "#4c2a85");
+        g.fillStyle = sky;
+        g.fillRect(S8X, S8Y, S8W, S8H);
+        s8Stars.forEach((st) => {
+          g.fillStyle = `rgba(255,255,255,${(0.35 + 0.45 * (0.5 + 0.5 * Math.sin(st.ph + lt * 4))).toFixed(3)})`;
+          g.fillRect(st.x, st.y, st.s, st.s);
+        });
+        // Moscow skyline: Spasskaya tower and St Basil's domes behind lit buildings
+        const tx = S8X + Math.round(S8W * S8L.tower) - 21;
+        S8_TOWER.forEach((row, r) => {
+          for (let c = 0; c < row.length; c++) if (row[c] !== ".") s8Cell(row[c], tx + c * 6, S8HZ - (S8_TOWER.length - r) * 6);
+        });
+        [
+          [-60, 64, "P", "G", "#b91c1c"],
+          [0, 92, "B", "W", "#c2410c"],
+          [60, 70, "N", "G", "#b91c1c"],
+        ].forEach(([dx, drumH, A, B, drum]) => {
+          const cx = S8X + Math.round(S8W * S8L.domes) + dx;
+          const top = S8HZ - drumH - S8_DOME.length * 6;
+          S8_DOME.forEach((hw, r) => {
+            for (let k = -hw; k <= hw; k++) {
+              if (r < 2 && k !== 0) continue;
+              s8Cell(r < 3 ? "G" : (k + r) & 1 ? A : B, cx + k * 6 - 3, top + r * 6);
+            }
+          });
+          g.fillStyle = drum;
+          g.fillRect(cx - 15, S8HZ - drumH, 30, drumH);
+        });
+        s8Bld.forEach((b) => {
+          g.fillStyle = "#0b1225";
+          g.fillRect(b.x, S8HZ - b.h, b.w, b.h);
+          b.wins.forEach(([wx, wy, f]) => {
+            g.fillStyle = f > 0.85 ? "rgba(156,192,255,0.85)" : Math.sin(lt * 3 + f * 40) > -0.92 ? "rgba(214,178,92,0.95)" : "rgba(214,178,92,0.3)";
+            g.fillRect(b.x + wx, S8HZ - b.h + wy, 6, 8);
+          });
+        });
+        // runway, centre line, approach lights chasing towards the touchdown zone
+        g.fillStyle = "#0a0f1f";
+        g.fillRect(S8X, S8HZ, S8W, S8Y + S8H - S8HZ);
+        g.fillStyle = "#cbd5e1";
+        for (let x = S8X + 10; x < S8X + S8W; x += 70) g.fillRect(x, S8HZ + 54, 36, 4);
+        for (let i = 0; i < 16; i++) {
+          const on = (((lt * 9 - i) % 16) + 16) % 16 < 1.5;
+          g.fillStyle = on ? "#ffffff" : "#60a5fa";
+          g.fillRect(S8X + S8W - 40 - i * Math.round((S8W - 80) / 15), S8HZ + 14, on ? 8 : 6, on ? 8 : 6);
+        }
+        // the plane comes in from the right, touches down at lt = 1.0 and rolls out to the left
+        const [l0, l1] = S8L.land;
+        let px, py;
+        if (lt < 1.0) {
+          const u = s8Ease(clamp01((lt - 0.05) / 0.95));
+          px = S8X + S8W + 80 + (S8W * l0 - S8W - 80) * u;
+          py = S8Y + S8H * 0.66 + (S8HZ + 26 - S8Y - S8H * 0.66) * u;
+        } else {
+          px = S8X + S8W * (l0 + (l1 - l0) * s8Ease(clamp01((lt - 1.0) / 1.3)));
+          py = S8HZ + 26;
+        }
+        g.drawImage(s8Plane, Math.round(px - 66), Math.round(py - 36), 132, 72);
+        // snow falling in front of the view
+        g.fillStyle = "#ffffff";
+        s8Snow.forEach((f) => {
+          const y = S8Y + ((f.y + f.v * lt) % S8H);
+          const x = S8X + ((((f.x + 14 * Math.sin(f.ph + lt * 1.3)) % S8W) + S8W) % S8W);
+          g.globalAlpha = f.a;
+          g.fillRect(Math.round(x), Math.round(y), f.s, f.s);
+        });
+        g.globalAlpha = 1;
+        g.restore();
+        // mullions in front of the view
+        g.fillStyle = "#15803d";
+        [1 / 3, 2 / 3].forEach((f) => g.fillRect(S8X + Math.round(S8W * f) - 6, S8Y, 12, S8H));
+      }
+      const s8v = { t: 0 };
+      drawS8(0);
+      tl.fromTo(s8v, { t: 0 }, { t: 2.62, duration: 2.62, ease: "none", immediateRender: false, onUpdate: () => drawS8(s8v.t) }, 20.88);
+      // the tutor: generic pixel figure (beanie, scarf, coat) holding the sign, hands on its edges
+      function pixRects(map, ox, oy, px) {
+        let r = "";
+        map.forEach((row, y) => {
+          for (let x = 0; x < row.length; x++) if (row[x] !== ".") r += `<rect x="${ox + x * px}" y="${oy + y * px}" width="${px + 0.2}" height="${px + 0.2}" fill="${PAL[row[x]]}"/>`;
+        });
+        return r;
+      }
+      const TUTOR_HEAD = [
+        "......W......",
+        ".....WWW.....",
+        "....PPPPP....",
+        "..PPPPPPPPP..",
+        ".PPPPPPPPPPP.",
+        ".PWPWPWPWPWP.",
+        ".KKKKKKKKKKK.",
+        ".KCCCCCCCCCK.",
+        ".CCKCCCCCKCC.",
+        ".CCCCCCCCCCC.",
+        "..CCCCCCCCC..",
+        "...CCCCCCC...",
+        "..GGGGGGGGG..",
+        ".GGGGGGGGGGG.",
+      ];
+      const HAND = ["BBCCC", "BBCCC", "BBCCC"];
+      const svg668 = (inner) => `<svg width="668" height="470" viewBox="0 0 668 470" shape-rendering="crispEdges">${inner}</svg>`;
+      $("#tutor").innerHTML = svg668(`<rect x="254" y="300" width="160" height="170" fill="#2460e8"/>${pixRects(TUTOR_HEAD, 282, 0, 8)}`);
+      $("#tutor-hands").innerHTML = svg668(pixRects(HAND, 0, 236, 8) + pixRects(HAND.map((r) => r.split("").reverse().join("")), 628, 236, 8));
+      // the tutor stands up behind the barrier, hops on the 22.0 beat and waves the sign
+      tl.fromTo("#sign-pos", { y: 760, rotation: -5 }, { y: 0, rotation: 0, duration: 0.45, ease: "back.out(1.4)" }, 21.5);
+      tl.to("#sign-pos", { keyframes: [{ y: -28, duration: 0.12, ease: "power2.out" }, { y: 0, duration: 0.24, ease: "bounce.out" }] }, 22.0);
+      tl.to("#sign-pos", { keyframes: [{ rotation: 4, duration: 0.16, ease: "sine.inOut" }, { rotation: -3, duration: 0.18, ease: "sine.inOut" }, { rotation: 0, duration: 0.16, ease: "sine.out" }] }, 22.2);
       tl.fromTo("#s8-cap", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 22.15);
-      // full-screen card flip into the transfer (edge-on at 23.0)
-      tl.to("#s8", { rotationY: 90, transformPerspective: 2400, transformOrigin: "50% 50%", duration: 0.2, ease: "power2.in" }, 22.8);
+      // "par ici !": the sign tilts towards the exit just before the camera pans
+      tl.to("#sign-pos", { rotation: 7, duration: 0.24, ease: "power2.out" }, 22.74);
 
       // ================================================================ TR — TRANSFERT MOSCOU -> KAZAN (T_TR = 23.0 – 27.0)
-      // From Moscow the student travels on to the university city, by train or by car (transfer
-      // organised by RusStudy). One canvas drawn as a pure function of time: dusk sky, setting sun, parallax hills,
-      // forest and catenary poles, the train, the road with a car overtaking it, the city sign.
+      // From Moscow the student travels on to the university city, by train or by car (an option,
+      // organised on request). One canvas drawn as a pure function of time: dusk sky, setting sun,
+      // parallax hills, the university city rising on the horizon, forest and catenary poles, the
+      // train, the road with a car overtaking it, the city sign, light snow.
       // Sprites are drawn once at quarter resolution and scaled x4 (crisp pixels).
       // layout of the transfer scene (the 16:9 version swaps this line)
-      const TRL = { W: 1920, H: 1080, horizon: 640, railY: 885, roadTop: 955, roadH: 86, trainX: 470, sunX: 1480, poleTop: 640, starY0: 30, starY1: 480, fenceY: 1052, tuftY: 2000, carX0: 240, carX1: 1360, signX0: 1960, signT: 2.3 };
+      const TRL = { W: 1920, H: 1080, horizon: 640, railY: 885, roadTop: 955, roadH: 86, trainX: 470, sunX: 1480, poleTop: 640, starY0: 30, starY1: 480, fenceY: 1052, tuftY: 2000, carX0: 240, carX1: 1360, signX0: 1960, signT: 2.3, cityX: 1200, cityW: 640 };
       const TRAIN_ICON = [
         "..KKKKKKKK..",
         ".KWWWWWWWWK.",
@@ -4252,6 +4494,45 @@
         const sr = mulberry32(2309);
         for (let i = 0; i < 34 * Math.round(TRL.W / 1080); i++) trStars.push({ x: Math.round(sr() * (TRL.W - 4)), y: Math.round(TRL.starY0 + sr() * (TRL.starY1 - TRL.starY0)), ph: sr() * 6.28, s: sr() < 0.25 ? 6 : 4 });
       }
+      // the university city: lit buildings, a colonnaded main building with a dome, a slim tower
+      const citySpr = sprite(Math.round(TRL.cityW / 4), 64, (R) => {
+        const cw = Math.round(TRL.cityW / 4);
+        const cr = mulberry32(2311);
+        const SIL = "#2e1065";
+        const lit = (x, y, w, h) => {
+          for (let yy = y + 2; yy < y + h - 2; yy += 4) for (let xx = x + 2; xx < x + w - 2; xx += 3) if (cr() < 0.5) R(xx, yy, 1, 2, cr() < 0.15 ? "#c4b5fd" : "#fbbb21");
+        };
+        let x = 0;
+        while (x < cw) {
+          const w = 7 + Math.floor(cr() * 9);
+          const h = 14 + Math.floor(cr() * 22);
+          R(x, 64 - h, w, h, SIL);
+          lit(x, 64 - h, w, h);
+          x += w + 1;
+        }
+        const u = Math.round(cw * 0.42); // university main building
+        R(u - 22, 40, 44, 24, SIL);
+        for (let k = 0; k < 9; k++) R(u - 19 + k * 5, 46, 2, 16, "#5b3aa0");
+        for (let k = 0; k < 6; k++) R(u - 22 + k * 3, 39 - k, 44 - k * 6, 1, SIL);
+        for (let k = 0; k < 7; k++) {
+          const hw = Math.round(7 * Math.sqrt(1 - (k / 7) ** 2));
+          R(u - hw, 28 - k, hw * 2, 1, SIL);
+        }
+        R(u - 8, 29, 16, 5, SIL);
+        R(u, 18, 1, 5, "#fbbb21");
+        R(u - 20, 62, 40, 2, "#fbbb21");
+        const t = Math.round(cw * 0.82); // slim tower
+        R(t, 10, 4, 54, SIL);
+        R(t - 1, 20, 6, 2, SIL);
+        R(t + 1, 4, 2, 6, SIL);
+        R(t + 1, 3, 2, 1, "#ef4444");
+      });
+      const trSnow = [];
+      {
+        const nr = mulberry32(2312);
+        for (let i = 0; i < 70; i++) trSnow.push({ x: nr() * TRL.W, y: nr() * TRL.H, v: 80 + nr() * 110, k: 40 + nr() * 140, s: 4 + Math.floor(nr() * 2) * 2, a: 0.35 + nr() * 0.45 });
+      }
+      const trRise = gsap.parseEase("power3.out");
       // travelled distance (s at full speed): full speed, then gentle braking into town
       const trDist = (lt) => (lt <= 3.2 ? lt : 3.2 + (lt - 3.2) - 0.234375 * (lt - 3.2) ** 3);
       const trTrainX = (lt) => TRL.trainX + Math.round(10 * lt);
@@ -4286,6 +4567,12 @@
         for (let i = 0; i <= Math.ceil(W / 8); i++) {
           const hh = hillH[(i + Math.floor(ho / 8)) % 240];
           g.fillRect(i * 8 - (ho % 8), horizon - hh, 8, hh + 2);
+        }
+        // the university city rises on the horizon as the train slows down
+        const rise = trRise(clamp01((lt - 2.2) / 1.0));
+        if (rise > 0) {
+          const cx = Math.round(TRL.cityX - 40 * (d - trDist(2.2)));
+          g.drawImage(citySpr, cx, horizon - 256 + Math.round((1 - rise) * 280), citySpr.width * 4, 256);
         }
         // snowy ground lit by the sunset
         const gr = g.createLinearGradient(0, horizon, 0, H);
@@ -4368,6 +4655,15 @@
           g.fillRect(x + 12, ty2, 40, 12);
           g.fillRect(x + 150, ty2 + 44, 48, 10);
         }
+        // light snow drifting past (nearer flakes faster)
+        trSnow.forEach((f) => {
+          const y = ((f.y + f.v * lt) % (H + 40)) - 20;
+          let x = (f.x - d * f.k) % (W + 40);
+          if (x < -20) x += W + 40;
+          g.globalAlpha = f.a;
+          g.fillRect(Math.round(x), Math.round(y), f.s, f.s);
+        });
+        g.globalAlpha = 1;
       }
       // where the open coach door sits (the dorm scene opens through it)
       function trDoorInset(lt) {
@@ -4378,15 +4674,20 @@
       const trc = { t: 0 };
       drawTransfer(0);
       tl.fromTo(trc, { t: 0 }, { t: 4.05, duration: 4.05, ease: "none", immediateRender: false, onUpdate: () => drawTransfer(trc.t) }, T_TR);
-      // S8 flips out at 22.8; the transfer flips in (edge-on at 23.0)
-      tl.fromTo("#tr", { rotationY: -90 }, { rotationY: 0, transformPerspective: 2400, transformOrigin: "50% 50%", duration: 0.22, ease: "power2.out" }, T_TR);
-      titleIn("#tr-t", T_TR + 0.08);
+      // the camera pans right out of the arrivals hall into the transfer (on the 23.0 downbeat):
+      // the barrier and the tutor slide faster, the window view slower, the transfer comes in
+      const PAN_D = 0.45;
+      tl.fromTo("#s8-pan", { x: 0 }, { x: -TRL.W, duration: PAN_D, ease: "power3.inOut", immediateRender: false }, T_TR);
+      tl.fromTo("#s8-cv", { x: 0 }, { x: 0.25 * TRL.W, duration: PAN_D, ease: "power3.inOut", immediateRender: false }, T_TR);
+      tl.fromTo(["#sign-pos", "#s8-rail"], { x: 0 }, { x: -0.18 * TRL.W, duration: PAN_D, ease: "power3.inOut", immediateRender: false }, T_TR);
+      tl.fromTo("#tr", { x: TRL.W }, { x: 0, duration: PAN_D, ease: "power3.inOut" }, T_TR);
+      titleIn("#tr-t", T_TR + 0.3);
       $("#tr-ic").innerHTML = pixelSVG(TRAIN_ICON, 4);
       $("#tr-ok").innerHTML = CHECK("#0a0a0a", 22);
-      tl.fromTo("#tr-trip", { y: -30, scale: 0.9, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.8)" }, T_TR + 0.22);
-      tl.fromTo("#tr-sub", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, T_TR + 0.45);
-      tl.fromTo("#tr-fill", { scaleX: 0 }, { scaleX: 1, duration: 3.3, ease: "power1.inOut" }, T_TR + 0.3);
-      tl.fromTo("#tr-ic", { x: 0 }, { x: 500, duration: 3.3, ease: "power1.inOut" }, T_TR + 0.3);
+      tl.fromTo("#tr-trip", { y: -30, scale: 0.9, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.8)" }, T_TR + 0.42);
+      tl.fromTo("#tr-sub", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, T_TR + 0.6);
+      tl.fromTo("#tr-fill", { scaleX: 0 }, { scaleX: 1, duration: 3.15, ease: "power1.inOut" }, T_TR + 0.45);
+      tl.fromTo("#tr-ic", { x: 0 }, { x: 500, duration: 3.15, ease: "power1.inOut" }, T_TR + 0.45);
       tl.fromTo("#tr-ok", { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(3)" }, T_TR + 3.6);
 
       // ================================================================ S9 — 05 FOYER UNIVERSITAIRE (T9 = 27.0 – 29.0)
@@ -4503,7 +4804,8 @@
       }
 
       // ================================================================ S11 — PRIX (T11 = 31.0 – 37.0)
-      // hard cut on T11; odometer lands on T11 + 1; the receipt prints what the 3 500 € include
+      // hard cut on T11; odometer lands on T11 + 1; the receipt prints what the 3 500 € include,
+      // then what they do not (flight, transfer to the university city, hotel & visits: options on request)
       tl.fromTo("#s11-k", { opacity: 0, y: -24 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, T11 + 0.05);
       tl.fromTo("#s11-des", { opacity: 0, x: -50 }, { opacity: 1, x: 0, duration: 0.45, ease: "expo.out" }, T11 + 0.1);
       tl.fromTo("#s11-deco", { rotation: -30, opacity: 0 }, { rotation: -12, opacity: 1, duration: 2.0, ease: "power2.out" }, T11);
@@ -4526,10 +4828,11 @@
       {
         let pts = "0px 12px";
         for (let x = 20; x <= 880; x += 20) pts += `, ${x}px ${(x / 20) % 2 ? 0 : 12}px`;
-        $("#rc-paper").style.clipPath = `polygon(${pts}, 880px 640px, 0px 640px)`;
+        $("#rc-paper").style.clipPath = `polygon(${pts}, 880px 890px, 0px 890px)`;
         $$(".rc-l .ok").forEach((o) => (o.innerHTML = CHECK("#0a0a0a", 23, 4.5)));
       }
-      // paper feed (px emerged above the slot): header T11 + 1.5, one line per 8th note, total T11 + 3.5
+      // paper feed (px emerged above the slot): header T11 + 1.5, one line per 8th note, total T11 + 3.25,
+      // then the "not included" options T11 + 3.5 - 4.25
       tl.fromTo("#rc-paper", { y: 0 }, { y: -108, duration: 0.14, ease: "power1.out" }, T11 + 1.5);
       tl.to("#rc-paper", { y: -174, duration: 0.12, ease: "power1.out" }, T11 + 1.75);
       tl.to("#rc-paper", { y: -240, duration: 0.12, ease: "power1.out" }, T11 + 2);
@@ -4537,11 +4840,15 @@
       tl.to("#rc-paper", { y: -372, duration: 0.12, ease: "power1.out" }, T11 + 2.5);
       tl.to("#rc-paper", { y: -438, duration: 0.12, ease: "power1.out" }, T11 + 2.75);
       tl.to("#rc-paper", { y: -504, duration: 0.12, ease: "power1.out" }, T11 + 3);
-      tl.to("#rc-paper", { y: -624, duration: 0.12, ease: "power1.out" }, T11 + 3.5);
-      tl.to("#rc-paper", { y: -640, duration: 0.1, ease: "power1.out" }, T11 + 3.62);
-      stampIn("#st-tc", T11 + 4, -8);
-      shake("#s11-wrap", T11 + 4, 10);
-      tl.to("#s11-pill", { keyframes: [{ scale: 1.08, duration: 0.07 }, { scale: 1, duration: 0.3, ease: "back.out(3)" }] }, T11 + 4);
+      tl.to("#rc-paper", { y: -624, duration: 0.12, ease: "power1.out" }, T11 + 3.25);
+      tl.to("#rc-paper", { y: -700, duration: 0.12, ease: "power1.out" }, T11 + 3.5);
+      tl.to("#rc-paper", { y: -756, duration: 0.12, ease: "power1.out" }, T11 + 3.75);
+      tl.to("#rc-paper", { y: -812, duration: 0.12, ease: "power1.out" }, T11 + 4);
+      tl.to("#rc-paper", { y: -868, duration: 0.12, ease: "power1.out" }, T11 + 4.25);
+      tl.to("#rc-paper", { y: -890, duration: 0.1, ease: "power1.out" }, T11 + 4.37);
+      stampIn("#st-tc", T11 + 4.5, -8);
+      shake("#s11-wrap", T11 + 4.5, 10);
+      tl.to("#s11-pill", { keyframes: [{ scale: 1.08, duration: 0.07 }, { scale: 1, duration: 0.3, ease: "back.out(3)" }] }, T11 + 4.5);
       // everything drops away before the band stops (T12)
       tl.to(["#s11-k", "#s11-des", "#s11-num", "#s11-pill", "#rc-mask", "#rc-slot", "#st-tc"], { y: "+=260", opacity: 0, duration: 0.24, ease: "power2.in", stagger: 0.012 }, T11 + 5.74);
 

@@ -85,6 +85,7 @@ Z_S3 = (895, -421, 0.9)  # documents + folder
 Z_S4 = (863, -397, 0.92)  # envelope + letter
 Z_S5 = (810, -400, 0.95)  # passport + insurance card
 Z_S9 = (800, -364.8, 0.82)  # door, room, key card
+Z_RC = (924, -556, 0.86)  # price receipt (with the "non inclus" options it is 900 px tall)
 
 # ---------------------------------------------------------------- frame
 sub('<html lang="fr" data-resolution="portrait">', '<html lang="fr" data-resolution="landscape">')
@@ -202,13 +203,18 @@ sub('tl.to("#s7-notif", { y: -260, opacity: 0,', 'tl.to("#s7-notif", { y: 260, o
 # ---------------------------------------------------------------- S8
 sub("circle(0px at 540px 960px)", "circle(0px at 960px 540px)", 2)
 sub('{ clipPath: "circle(1300px at 540px 960px)",', '{ clipPath: "circle(1150px at 960px 540px)",')
-sub('tl.fromTo("#sign-pos", { y: 1200, rotation: -10 }', 'tl.fromTo("#sign-pos", { y: 900, rotation: -10 }')
+# arrivals hall: the terminal window spans the frame, the tutor stands on the right
+sub('<canvas id="s8-cv" width="1080" height="1920"></canvas>', '<canvas id="s8-cv" width="1920" height="1080"></canvas>')
+sub(
+    "const S8L = { W: 1080, H: 1920, win: [40, 320, 1000, 740], floorY: 1700, tower: 0.2, domes: 0.74, land: [0.55, 0.25] };",
+    "const S8L = { W: 1920, H: 1080, win: [80, 150, 1760, 650], floorY: 816, tower: 0.42, domes: 0.56, land: [0.5, 0.3] };",
+)
 
 # ---------------------------------------------------------------- TR (transfer)
-TRL = dict(W=1920, H=1080, horizon=640, railY=885, roadTop=955, roadH=86, trainX=470, sunX=1480, poleTop=640, starY0=30, starY1=480, fenceY=1052, tuftY=2000, carX0=240, carX1=1360, signX0=1960, signT=2.3)
+TRL = dict(W=1920, H=1080, horizon=640, railY=885, roadTop=955, roadH=86, trainX=470, sunX=1480, poleTop=640, starY0=30, starY1=480, fenceY=1052, tuftY=2000, carX0=240, carX1=1360, signX0=1960, signT=2.3, cityX=1200, cityW=640)
 sub('<canvas id="tr-cv" width="1080" height="1920"></canvas>', '<canvas id="tr-cv" width="1920" height="1080"></canvas>')
 sub(
-    "const TRL = { W: 1080, H: 1920, horizon: 1180, railY: 1462, roadTop: 1592, roadH: 108, trainX: 60, sunX: 770, poleTop: 1210, starY0: 40, starY1: 800, fenceY: 1730, tuftY: 1846, carX0: 20, carX1: 620, signX0: 1100, signT: 2.75 };",
+    "const TRL = { W: 1080, H: 1920, horizon: 1180, railY: 1462, roadTop: 1592, roadH: 108, trainX: 60, sunX: 770, poleTop: 1210, starY0: 40, starY1: 800, fenceY: 1730, tuftY: 1846, carX0: 20, carX1: 620, signX0: 1100, signT: 2.75, cityX: 590, cityW: 480 };",
     "const TRL = { " + ", ".join(f"{k}: {v}" for k, v in TRL.items()) + " };",
 )
 sub("for (let i = 0; i < 135; i++) {", "for (let i = 0; i < 240; i++) {")
@@ -252,6 +258,7 @@ sub(
 )
 
 # ---------------------------------------------------------------- S11
+zone('<div id="rc-mask">', '<div id="rc-slot"></div>', Z_RC, after=True)
 sub(
     'style="background: radial-gradient(55% 24% at 36% 26%, rgba(251, 187, 33, 0.17), rgba(251, 187, 33, 0) 70%)"',
     'style="background: radial-gradient(34% 44% at 24% 46%, rgba(251, 187, 33, 0.17), rgba(251, 187, 33, 0) 70%)"',
@@ -363,15 +370,25 @@ CSS = f"""
       }}
       #flap {{
         left: 120px;
-        top: 330px;
+        top: 190px;
+      }}
+      #tutor-clip {{
+        width: 1920px;
+        height: 1080px;
       }}
       #sign-pos {{
-        left: 1180px;
-        top: 310px;
+        left: 1140px;
+        top: 560px;
+      }}
+      #s8-rail {{
+        left: 1060px;
+        top: 960px;
+        width: 820px;
+        height: 120px;
       }}
       #s8-cap {{
         left: 120px;
-        top: 790px;
+        top: 850px;
         width: auto;
         text-align: left;
       }}
@@ -434,14 +451,6 @@ CSS = f"""
       #st-tc {{
         left: 130px;
         top: 770px;
-      }}
-      #rc-mask {{
-        left: 940px;
-        top: 190px;
-      }}
-      #rc-slot {{
-        left: 910px;
-        top: 836px;
       }}
       #logo-lg {{
         top: 140px;

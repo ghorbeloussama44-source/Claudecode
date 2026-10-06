@@ -81,22 +81,22 @@
     {
       "id": "s8",
       "type": "animation",
-      "description": "Étape 05 : panneau d'arrivées à volets (split-flap) BIENVENUE EN RUSSIE, pancarte RusStudy du tuteur",
+      "description": "Étape 05 : hall d'arrivée à Moscou — baie vitrée sur la ville de nuit (tour Spasskaïa, dômes de Saint-Basile, neige, balisage) et avion qui atterrit (canvas), panneau d'arrivées à volets BIENVENUE EN RUSSIE, tuteur en pixel art qui se lève derrière la barrière avec la pancarte RusStudy, saute sur le temps et la penche vers la sortie",
       "start_seconds": 20.88,
-      "end_seconds": 23.05,
+      "end_seconds": 23.5,
       "script_section_id": "s8",
       "transition_in": "iris",
-      "transition_out": "flip 3D plein écran",
+      "transition_out": "travelling latéral avec parallaxe vers le transfert",
       "narrative_role": "emotional_beat"
     },
     {
       "id": "tr",
       "type": "animation",
-      "description": "Étape 05 (v3) : transfert Moscou → ville universitaire. Canvas pixel en parallaxe (étoiles, soleil couchant, collines, forêt, caténaire) : le train (passagers aux fenêtres) et une voiture orange qui le double, panneau КАЗАНЬ / KAZAN, jauge MOSCOU → KAZAN ; freinage, la porte du wagon s'ouvre",
+      "description": "Étape 05 (v3, enrichie en v5) : transfert Moscou → ville universitaire, en option. Canvas pixel en parallaxe (étoiles, soleil couchant, collines, forêt, caténaire, neige) : le train (passagers aux fenêtres) et une voiture orange qui le double, la ville universitaire qui se lève à l'horizon, panneau КАЗАНЬ / KAZAN, jauge MOSCOU → KAZAN ; freinage, la porte du wagon s'ouvre",
       "start_seconds": 23.0,
       "end_seconds": 27.05,
       "script_section_id": "tr",
-      "transition_in": "flip 3D plein écran",
+      "transition_in": "travelling latéral depuis le hall d'arrivée",
       "transition_out": "la scène suivante s'ouvre dans la porte du wagon (clip-path) + lumière chaude",
       "narrative_role": "build_tension"
     },
@@ -125,7 +125,7 @@
     {
       "id": "s11",
       "type": "animation",
-      "description": "Prix : odomètre 3 500 € (flou directionnel), pastille « tout compris », ticket de caisse imprimé ligne par ligne, tampon SANS FRAIS CACHÉS",
+      "description": "Prix : odomètre 3 500 € (flou directionnel), pastille « études + installation », ticket de caisse imprimé ligne par ligne (6 postes inclus, total, puis « non inclus · en option sur demande » : billet d'avion, train ou voiture, hôtel & visites à Moscou — sur devis), tampon SANS FRAIS CACHÉS",
       "start_seconds": 31.0,
       "end_seconds": 37.05,
       "script_section_id": "s11",

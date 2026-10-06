@@ -393,9 +393,11 @@ def synth_all(sfx_dir: Path) -> None:
         ff += [2600 + i * 180] * len(crossings)
     order = np.argsort(tt)
     save("odo_ticks", ticks_at(np.array(tt)[order], np.array(ff)[order], np.full(len(tt), 0.8), 0.95 * K, 21))
-    # thermal printer: one feed burst per receipt line (relative to 28.5)
-    pr = np.zeros(int(2.4 * K * SR), dtype=np.float32)
-    for u, d in ((0, 0.14), (0.25, 0.12), (0.5, 0.12), (0.75, 0.12), (1.0, 0.12), (1.25, 0.12), (1.5, 0.12), (2.0, 0.12), (2.12, 0.1)):
+    # thermal printer: one feed burst per receipt line, from T11 + 1.5: header, 6 lines, total,
+    # "non inclus" header, 3 option lines, end of paper (same steps as the #rc-paper tweens)
+    pr = np.zeros(int(3.2 * K * SR), dtype=np.float32)
+    feeds = [(0, 0.14)] + [(0.25 * k, 0.12) for k in range(1, 12)] + [(2.87, 0.1)]
+    for u, d in feeds:
         u, d = u * K, d * K
         n = int(d * SR)
         tt_ = np.arange(n) / SR

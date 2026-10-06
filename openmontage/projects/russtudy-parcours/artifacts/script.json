@@ -55,14 +55,14 @@
     {
       "id": "s8",
       "label": "05 Accueil",
-      "text": "BIENVENUE EN RUSSIE — Un tuteur bilingue t'attend à l'aéroport.",
+      "text": "ARRIVÉES · BIENVENUE EN RUSSIE — pancarte RusStudy · ACCUEIL ÉTUDIANTS — Un tuteur bilingue t'attend à l'aéroport.",
       "start_seconds": 21.0,
       "end_seconds": 23.0
     },
     {
       "id": "tr",
       "label": "05 Transfert",
-      "text": "Train ou voiture, jusqu'à ta ville. — MOSCOU → KAZAN — Transfert organisé depuis Moscou. — panneau КАЗАНЬ / KAZAN",
+      "text": "Train ou voiture, jusqu'à ta ville. — MOSCOU → KAZAN — Organisé sur demande · en option — panneau КАЗАНЬ / KAZAN",
       "start_seconds": 23.0,
       "end_seconds": 27.0
     },
@@ -83,7 +83,7 @@
     {
       "id": "s11",
       "label": "Prix",
-      "text": "Budget 1ère année : dès 3 500 € tout compris — Frais universitaires dès 2 200 € · Consulting & orientation · Dossier visa · Accueil aéroport · Foyer universitaire 1 an · Assurance médicale : inclus — Total 1ère année dès 3 500 € — Sans frais cachés",
+      "text": "Budget 1ère année : dès 3 500 € · études + installation — Frais universitaires dès 2 200 € · Consulting & orientation · Dossier visa · Accueil aéroport · Foyer universitaire 1 an · Assurance médicale : inclus — Total 1ère année dès 3 500 € — Non inclus · en option sur demande : billet d'avion, train ou voiture jusqu'à ta ville, hôtel & visites à Moscou (sur devis) — Sans frais cachés",
       "start_seconds": 31.0,
       "end_seconds": 37.0
     },
