@@ -1,0 +1,137 @@
+{
+  "version": "1.0",
+  "scenes": [
+    {
+      "id": "s1",
+      "type": "animation",
+      "description": "Téléphone en conversation façon WhatsApp (sans logo) : frappe caractère par caractère, envoi sur le drop (1,0 s), coches lues, « écrit… », réponse, carte d'appel ; la main pixel tape « Réserver un appel gratuit »",
+      "start_seconds": 0.0,
+      "end_seconds": 3.25,
+      "script_section_id": "s1",
+      "transition_in": "cut (lisible dès la frame 0)",
+      "transition_out": "ripple circulaire depuis le bouton tapé + poussée caméra",
+      "narrative_role": "introduce_subject"
+    },
+    {
+      "id": "s2",
+      "type": "animation",
+      "description": "Étape 01 : carte d'appel (anneaux, onde vocale, chrono accéléré 00:00 → 15:00), fiche profil scannée ligne par ligne avec coches tracées en SVG, bandeau vert « Ton plan »",
+      "start_seconds": 2.88,
+      "end_seconds": 7.1,
+      "script_section_id": "s2",
+      "transition_in": "ripple circulaire",
+      "transition_out": "push vertical de la scène violette",
+      "narrative_role": "establish_context"
+    },
+    {
+      "id": "s3",
+      "type": "animation",
+      "description": "Étape 02 : quatre documents en arcs (x et y à easings différents), classés dans la pochette, tampons TRADUIT et LÉGALISÉ en squash & stretch",
+      "start_seconds": 6.8,
+      "end_seconds": 9.1,
+      "script_section_id": "s3",
+      "transition_in": "push vertical",
+      "transition_out": "rideau or qui tombe",
+      "narrative_role": "deliver_payload"
+    },
+    {
+      "id": "s4",
+      "type": "animation",
+      "description": "Étape 03 : enveloppe qui tombe et s'écrase, rabat 3D (deux faces permutées), lettre d'invitation qui monte, signature tracée, tampon ADMIS + confettis pixel physiques",
+      "start_seconds": 8.84,
+      "end_seconds": 11.1,
+      "script_section_id": "s4",
+      "transition_in": "rideau or",
+      "transition_out": "whip-pan horizontal avec flou directionnel SVG",
+      "narrative_role": "deliver_payload"
+    },
+    {
+      "id": "s5",
+      "type": "animation",
+      "description": "Étape 04 : passeport dont la couverture s'ouvre en 3D, vignette visa claquée, carte d'assurance qui glisse, carte d'embarquement TUN → MOW avec code-barres",
+      "start_seconds": 10.86,
+      "end_seconds": 15.4,
+      "script_section_id": "s5",
+      "transition_in": "whip-pan",
+      "transition_out": "déchirure de la carte d'embarquement (bande dentelée)",
+      "narrative_role": "deliver_payload"
+    },
+    {
+      "id": "s6",
+      "type": "animation",
+      "description": "Départ : ciel révélé par la déchirure, « Bon voyage ! », avion pixel qui décolle sur MotionPath avec traînée pointillée, nuages pixel",
+      "start_seconds": 14.98,
+      "end_seconds": 17.06,
+      "script_section_id": "s6",
+      "transition_in": "déchirure",
+      "transition_out": "mur de nuages pixel (couverture totale à 17,0 s)",
+      "narrative_role": "emotional_beat"
+    },
+    {
+      "id": "s7",
+      "type": "animation",
+      "description": "En vol : carte en pixels générée depuis un masque terre/mer (Tunis → Moscou), caméra qui dézoome puis plonge sur Moscou, sillage doré, nuages en parallaxe, notification RusStudy",
+      "start_seconds": 17.0,
+      "end_seconds": 21.2,
+      "script_section_id": "s7",
+      "transition_in": "mur de nuages",
+      "transition_out": "iris vert depuis Moscou sur le drop B (21,0 s)",
+      "narrative_role": "build_tension"
+    },
+    {
+      "id": "s8",
+      "type": "animation",
+      "description": "Étape 05 : panneau d'arrivées à volets (split-flap) BIENVENUE EN RUSSIE, pancarte RusStudy du tuteur",
+      "start_seconds": 20.88,
+      "end_seconds": 23.05,
+      "script_section_id": "s8",
+      "transition_in": "iris",
+      "transition_out": "flip 3D plein écran",
+      "narrative_role": "emotional_beat"
+    },
+    {
+      "id": "s9",
+      "type": "animation",
+      "description": "Étape 05 : carte-clé sur le lecteur (LED verte), porte 412 qui s'ouvre en 3D sur une chambre pixel (lampe, neige à la fenêtre), puce « 1 an inclus »",
+      "start_seconds": 23.0,
+      "end_seconds": 25.1,
+      "script_section_id": "s9",
+      "transition_in": "flip 3D",
+      "transition_out": "travelling avant dans la fenêtre + flash blanc",
+      "narrative_role": "deliver_payload"
+    },
+    {
+      "id": "s10",
+      "type": "broll",
+      "description": "Premier jour : photo d'amphithéâtre (site) en Ken Burns, typo cinétique lettre par lettre, carte d'étudiant en 3D avec reflet, étoiles pixel ; la barre de progression se complète",
+      "start_seconds": 24.98,
+      "end_seconds": 27.0,
+      "script_section_id": "s10",
+      "transition_in": "flash blanc",
+      "transition_out": "cut sec",
+      "narrative_role": "resolution"
+    },
+    {
+      "id": "s11",
+      "type": "animation",
+      "description": "Prix : odomètre 3 500 € (flou directionnel), pastille « tout compris », ticket de caisse imprimé ligne par ligne, tampon SANS FRAIS CACHÉS",
+      "start_seconds": 27.0,
+      "end_seconds": 33.05,
+      "script_section_id": "s11",
+      "transition_in": "cut sec",
+      "transition_out": "chute avant l'arrêt de l'orchestre",
+      "narrative_role": "deliver_payload"
+    },
+    {
+      "id": "s12",
+      "type": "text_card",
+      "description": "Ville pixel de nuit (rappel du spot 15 s), logo RusStudy. sur l'accord final, CTA WhatsApp, numéro et site tapés, tap de la main pixel",
+      "start_seconds": 33.0,
+      "end_seconds": 37.0,
+      "script_section_id": "s12",
+      "transition_in": "cut sur l'accord final (33,0 s)",
+      "transition_out": "fin",
+      "narrative_role": "call_to_action"
+    }
+  ]
+}

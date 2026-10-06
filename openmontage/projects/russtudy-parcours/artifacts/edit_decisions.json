@@ -1,0 +1,104 @@
+{
+  "version": "1.0",
+  "render_runtime": "hyperframes",
+  "composition_mode": "atelier",
+  "renderer_family": "animation-first",
+  "cuts": [
+    {
+      "id": "s1",
+      "source": "hyperframes/index.html#s1",
+      "in_seconds": 0.0,
+      "out_seconds": 3.25,
+      "transition_in": "cut (lisible dès la frame 0)",
+      "transition_out": "ripple circulaire depuis le bouton tapé + poussée caméra"
+    },
+    {
+      "id": "s2",
+      "source": "hyperframes/index.html#s2",
+      "in_seconds": 2.88,
+      "out_seconds": 7.1,
+      "transition_in": "ripple circulaire",
+      "transition_out": "push vertical de la scène violette"
+    },
+    {
+      "id": "s3",
+      "source": "hyperframes/index.html#s3",
+      "in_seconds": 6.8,
+      "out_seconds": 9.1,
+      "transition_in": "push vertical",
+      "transition_out": "rideau or qui tombe"
+    },
+    {
+      "id": "s4",
+      "source": "hyperframes/index.html#s4",
+      "in_seconds": 8.84,
+      "out_seconds": 11.1,
+      "transition_in": "rideau or",
+      "transition_out": "whip-pan horizontal avec flou directionnel SVG"
+    },
+    {
+      "id": "s5",
+      "source": "hyperframes/index.html#s5",
+      "in_seconds": 10.86,
+      "out_seconds": 15.4,
+      "transition_in": "whip-pan",
+      "transition_out": "déchirure de la carte d'embarquement (bande dentelée)"
+    },
+    {
+      "id": "s6",
+      "source": "hyperframes/index.html#s6",
+      "in_seconds": 14.98,
+      "out_seconds": 17.06,
+      "transition_in": "déchirure",
+      "transition_out": "mur de nuages pixel (couverture totale à 17,0 s)"
+    },
+    {
+      "id": "s7",
+      "source": "hyperframes/index.html#s7",
+      "in_seconds": 17.0,
+      "out_seconds": 21.2,
+      "transition_in": "mur de nuages",
+      "transition_out": "iris vert depuis Moscou sur le drop B (21,0 s)"
+    },
+    {
+      "id": "s8",
+      "source": "hyperframes/index.html#s8",
+      "in_seconds": 20.88,
+      "out_seconds": 23.05,
+      "transition_in": "iris",
+      "transition_out": "flip 3D plein écran"
+    },
+    {
+      "id": "s9",
+      "source": "hyperframes/index.html#s9",
+      "in_seconds": 23.0,
+      "out_seconds": 25.1,
+      "transition_in": "flip 3D",
+      "transition_out": "travelling avant dans la fenêtre + flash blanc"
+    },
+    {
+      "id": "s10",
+      "source": "hyperframes/index.html#s10",
+      "in_seconds": 24.98,
+      "out_seconds": 27.0,
+      "transition_in": "flash blanc",
+      "transition_out": "cut sec"
+    },
+    {
+      "id": "s11",
+      "source": "hyperframes/index.html#s11",
+      "in_seconds": 27.0,
+      "out_seconds": 33.05,
+      "transition_in": "cut sec",
+      "transition_out": "chute avant l'arrêt de l'orchestre"
+    },
+    {
+      "id": "s12",
+      "source": "hyperframes/index.html#s12",
+      "in_seconds": 33.0,
+      "out_seconds": 37.0,
+      "transition_in": "cut sur l'accord final (33,0 s)",
+      "transition_out": "fin"
+    }
+  ]
+}

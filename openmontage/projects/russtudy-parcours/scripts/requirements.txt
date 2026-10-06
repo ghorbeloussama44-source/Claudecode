@@ -1,0 +1,6 @@
+# Python deps for scripts/build_audio.py and scripts/write_artifacts.py
+numpy>=1.24
+scipy>=1.10
+librosa>=0.10
+soundfile>=0.12
+jsonschema>=4.20

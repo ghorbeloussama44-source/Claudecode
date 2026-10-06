@@ -1,0 +1,214 @@
+{
+  "version": "1.0",
+  "project_id": "russtudy-parcours",
+  "decisions": [
+    {
+      "decision_id": "d1",
+      "stage": "proposal",
+      "category": "pipeline_selection",
+      "subject": "Pipeline OpenMontage",
+      "options_considered": [
+        {
+          "option_id": "animation",
+          "label": "animation (motion graphics / typo cinétique)",
+          "score": 0.95,
+          "reason": "spot musical non narré où la motion porte le récit"
+        },
+        {
+          "option_id": "animated-explainer",
+          "label": "animated-explainer",
+          "score": 0.45,
+          "reason": "récit par étapes",
+          "rejected_because": "pensé pour une narration voix off ; pas de TTS demandé"
+        }
+      ],
+      "selected": "animation",
+      "reason": "Suite du spot 15 s ; l'utilisateur a demandé « travail à fond », 30–40 s, du premier message WhatsApp jusqu'à l'université.",
+      "user_visible": true,
+      "user_approved": true,
+      "confidence": 0.9
+    },
+    {
+      "decision_id": "d2",
+      "stage": "proposal",
+      "category": "concept_selection",
+      "subject": "Concept",
+      "options_considered": [
+        {
+          "option_id": "parcours-objets",
+          "label": "Le parcours : un objet et une technique d'animation par étape, fil WhatsApp de bout en bout",
+          "score": 0.9,
+          "reason": "montre le processus demandé ET la palette de techniques motion (3D, split-flap, carte, typo, physique)"
+        },
+        {
+          "option_id": "telephone-continu",
+          "label": "Tout dans l'interface du téléphone",
+          "score": 0.55,
+          "reason": "cohérent avec WhatsApp",
+          "rejected_because": "monotone visuellement sur 37 s, ne montre pas l'étendue du motion design"
+        },
+        {
+          "option_id": "carte-seule",
+          "label": "Trajet sur carte animée",
+          "score": 0.4,
+          "reason": "lisible",
+          "rejected_because": "ne montre pas les étapes administratives (dossier, admission, visa)"
+        }
+      ],
+      "selected": "parcours-objets",
+      "reason": "Voir artifacts/art-direction.md (storyboard en 12 scènes calé sur la grille musicale).",
+      "user_visible": true,
+      "user_approved": false,
+      "confidence": 0.85
+    },
+    {
+      "decision_id": "d3",
+      "stage": "proposal",
+      "category": "render_runtime_selection",
+      "subject": "Moteur de composition",
+      "options_considered": [
+        {
+          "option_id": "hyperframes",
+          "label": "HyperFrames (HTML/CSS/GSAP)",
+          "score": 0.9,
+          "reason": "même moteur que la v1 : réutilisation de la ville pixel, retouche identique"
+        },
+        {
+          "option_id": "remotion",
+          "label": "Remotion (React)",
+          "score": 0.7,
+          "reason": "disponible",
+          "rejected_because": "réécriture complète sans gain pour ce concept"
+        }
+      ],
+      "selected": "hyperframes",
+      "reason": "Continuité avec la v1 (scripts de rendu et de retouche identiques).",
+      "user_visible": true,
+      "user_approved": false,
+      "confidence": 0.85
+    },
+    {
+      "decision_id": "d4",
+      "stage": "proposal",
+      "category": "composition_mode",
+      "subject": "Mode d'écriture",
+      "options_considered": [
+        {
+          "option_id": "atelier",
+          "label": "atelier (composition écrite à la main)",
+          "score": 0.95,
+          "reason": "pièce vitrine de marque"
+        },
+        {
+          "option_id": "templated",
+          "label": "scènes types",
+          "score": 0.2,
+          "reason": "rapide",
+          "rejected_because": "rendu générique"
+        }
+      ],
+      "selected": "atelier",
+      "reason": "Une seule timeline GSAP déterministe, scènes en <section> horodatées.",
+      "user_visible": true,
+      "user_approved": false,
+      "confidence": 0.9
+    },
+    {
+      "decision_id": "d5",
+      "stage": "assets",
+      "category": "music_source",
+      "subject": "Musique",
+      "options_considered": [
+        {
+          "option_id": "pixabay-funky",
+          "label": "Pixabay « Funky » réutilisée et remontée à 37 s",
+          "score": 0.85,
+          "reason": "signature sonore commune aux deux spots ; la structure (build, drop A, break, drop B, arrêt sur accord) colle au récit"
+        },
+        {
+          "option_id": "autre-piste",
+          "label": "Autre piste Pixabay",
+          "score": 0.5,
+          "reason": "variété",
+          "rejected_because": "perd la continuité de marque entre les deux spots"
+        }
+      ],
+      "selected": "pixabay-funky",
+      "reason": "Drop A à 1,0 s (envoi du message), break pendant le vol, drop B à 21,0 s (arrivée), arrêt + accord à 33,0 s (logo).",
+      "user_visible": true,
+      "user_approved": false,
+      "confidence": 0.8
+    },
+    {
+      "decision_id": "d6",
+      "stage": "assets",
+      "category": "provider_selection",
+      "subject": "Sound design",
+      "options_considered": [
+        {
+          "option_id": "bundled+synth",
+          "label": "SFX HyperFrames (Pixabay) + synthèse maison",
+          "score": 0.85,
+          "reason": "gratuit, déterministe, accordé à la musique, timing exact des volets et de l'odomètre"
+        }
+      ],
+      "selected": "bundled+synth",
+      "reason": "106 cues calés sur les événements GSAP ; sons tonals accordés en la mixolydien / mi.",
+      "user_visible": true,
+      "user_approved": false,
+      "confidence": 0.8
+    },
+    {
+      "decision_id": "d7",
+      "stage": "compose",
+      "category": "visual_accuracy_check",
+      "subject": "Prix et promesses",
+      "options_considered": [
+        {
+          "option_id": "client-price",
+          "label": "Prix donné par le client : dès 3 500 € la 1ère année, tout compris (frais universitaires dès 2 200 € inclus)",
+          "score": 0.8,
+          "reason": "lecture la plus naturelle du message du client"
+        },
+        {
+          "option_id": "price-plus-fees",
+          "label": "3 500 € d'accompagnement en plus des 2 200 € de frais",
+          "score": 0.2,
+          "reason": "autre lecture possible",
+          "rejected_because": "le client écrit que les 3 500 € incluent consulting, accueil, foyer, assurance et visa, et que 2 200 € est le minimum universitaire"
+        }
+      ],
+      "selected": "client-price",
+      "reason": "À faire confirmer par le client avant diffusion payante ; « tout compris » = les postes listés sur le ticket (billet d'avion et vie courante non inclus). Interface façon WhatsApp sans logo ; promesses reprises du site (appel 15 min, traduction assermentée, lettre d'invitation d'État, tuteur bilingue, sans frais cachés).",
+      "user_visible": true,
+      "user_approved": false,
+      "confidence": 0.7
+    },
+    {
+      "decision_id": "d8",
+      "stage": "compose",
+      "category": "motion_commitment",
+      "subject": "Cadence de rendu",
+      "options_considered": [
+        {
+          "option_id": "60fps",
+          "label": "Master 60 fps",
+          "score": 0.85,
+          "reason": "mouvements rapides plus nets (whip-pan, volets, odomètre)"
+        },
+        {
+          "option_id": "30fps",
+          "label": "Variante 30 fps",
+          "score": 0.75,
+          "reason": "cadence la plus sûre pour Instagram/Facebook",
+          "rejected_because": "fournie en variante, pas en master"
+        }
+      ],
+      "selected": "60fps",
+      "reason": "Les deux versions sont livrées.",
+      "user_visible": true,
+      "user_approved": false,
+      "confidence": 0.85
+    }
+  ]
+}

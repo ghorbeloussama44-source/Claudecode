@@ -1,0 +1,78 @@
+{
+  "version": "1.0",
+  "assets": [
+    {
+      "id": "img-amphitheatre",
+      "type": "image",
+      "path": "hyperframes/assets/img/amphitheatre.jpg",
+      "source_tool": "russieetudes.com (Unsplash)",
+      "scene_id": "s10",
+      "license": "Unsplash License",
+      "original_url": "https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0"
+    },
+    {
+      "id": "font-space-grotesk",
+      "type": "font",
+      "path": "hyperframes/assets/fonts/SpaceGrotesk-latin.woff2",
+      "source_tool": "Google Fonts",
+      "scene_id": "all",
+      "license": "SIL Open Font License 1.1"
+    },
+    {
+      "id": "map-land-mask",
+      "type": "diagram",
+      "path": "scripts/make_dotmap.py",
+      "source_tool": "global-land-mask 1.0.0 (NOAA GLOBE 1 km)",
+      "scene_id": "s7",
+      "license": "MIT (package) / public domain (GLOBE data)",
+      "generation_summary": "Grille 54 x 96 terre/mer embarquée dans index.html (MAP_ROWS), régénérable avec scripts/make_dotmap.py"
+    },
+    {
+      "id": "music-funky",
+      "type": "music",
+      "path": "assets/music/11_funky.mp3",
+      "source_tool": "pixabay_music",
+      "scene_id": "all",
+      "provider": "pixabay",
+      "license": "Pixabay Content License",
+      "original_url": "https://cdn.pixabay.com/audio/2026/01/06/audio_437fcd7b2d.mp3",
+      "duration_seconds": 139.8,
+      "generation_summary": "120 BPM ; montage sur mesures : piste 15,026–32,026 s (drop A à 1,0 s) puis 76,025–90,025 s (break 17, montée 19, drop B à 21,0 s) puis 62,025–68,025 s (break de fin, arrêt + accord de mi à 33,0 s)"
+    },
+    {
+      "id": "sfx-bundled",
+      "type": "sfx",
+      "path": "../../.agents/skills/hyperframes-media/assets/sfx",
+      "source_tool": "hyperframes-media bundled library",
+      "scene_id": "all",
+      "provider": "pixabay",
+      "license": "Pixabay Content License"
+    },
+    {
+      "id": "sfx-synth",
+      "type": "sfx",
+      "path": "assets/audio/sfx",
+      "source_tool": "scripts/build_audio.py",
+      "scene_id": "all",
+      "generation_summary": "Frappe clavier, papier, tampons, déchirure, décollage, carillon d'aéroport, vent, panneau à volets (timing identique à la composition), bip de badge, odomètre, imprimante — synthèse numpy déterministe"
+    },
+    {
+      "id": "soundtrack",
+      "type": "audio",
+      "path": "hyperframes/assets/audio/soundtrack.wav",
+      "source_tool": "scripts/build_audio.py",
+      "scene_id": "all",
+      "duration_seconds": 37.0,
+      "format": "wav",
+      "generation_summary": "Musique + 106 cues SFX, automation de gain (vol, accord final), ducking 3 dB, limiteur suréchantillonné, -14 LUFS / -2,4 dBTP"
+    },
+    {
+      "id": "composition",
+      "type": "animation",
+      "path": "hyperframes/index.html",
+      "source_tool": "hyperframes (atelier, GSAP 3.14)",
+      "scene_id": "all",
+      "generation_summary": "Composition écrite à la main, une seule timeline GSAP déterministe, 12 scènes + HUD de progression"
+    }
+  ]
+}

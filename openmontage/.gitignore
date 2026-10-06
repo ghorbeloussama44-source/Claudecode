@@ -67,6 +67,23 @@ projects/russtudy-motion-15s/assets/music/*
 !projects/russtudy-motion-15s/assets/music/candidates/
 projects/russtudy-motion-15s/assets/music/candidates/*
 !projects/russtudy-motion-15s/assets/music/candidates/11_funky.mp3
+# RusStudy « Le parcours » 37 s: same policy as the 15 s spot (drafts and snapshots stay local).
+!projects/russtudy-parcours/
+projects/russtudy-parcours/*
+!projects/russtudy-parcours/HANDOFF.md
+!projects/russtudy-parcours/project.json
+!projects/russtudy-parcours/artifacts/
+!projects/russtudy-parcours/scripts/
+!projects/russtudy-parcours/hyperframes/
+projects/russtudy-parcours/hyperframes/snapshots/
+!projects/russtudy-parcours/renders/
+projects/russtudy-parcours/renders/draft.mp4
+projects/russtudy-parcours/renders/_hf_*
+!projects/russtudy-parcours/assets/
+projects/russtudy-parcours/assets/*
+!projects/russtudy-parcours/assets/music/
+projects/russtudy-parcours/assets/music/*
+!projects/russtudy-parcours/assets/music/11_funky.mp3
 
 # Corpus directories (downloaded stock clips, thumbnails, embeddings —
 # regenerable from source APIs via corpus_builder). Explicit rule even
