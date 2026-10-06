@@ -31,6 +31,9 @@ et renvoie vers WhatsApp.
 
 - Branche Git : `claude/install-openmontage-263px9`
   (`git fetch origin claude/install-openmontage-263px9 && git checkout claude/install-openmontage-263px9`).
+- Version livrée **v2 = commit `c6acc34`** (vidéo + outils de retouche). Revoir cette
+  version telle quelle : `git checkout c6acc34 -- openmontage/projects/russtudy-parcours` ;
+  voir ce qui a changé depuis : `git diff c6acc34 -- openmontage/projects/russtudy-parcours`.
 - Dossier : `openmontage/projects/russtudy-parcours/`. Kit de marque :
   `../russtudy-motion-15s/artifacts/brand-kit.md`. Direction artistique et storyboard :
   `artifacts/art-direction.md`.
