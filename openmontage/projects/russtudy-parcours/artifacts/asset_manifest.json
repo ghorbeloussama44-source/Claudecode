@@ -11,6 +11,16 @@
       "original_url": "https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0"
     },
     {
+      "id": "img-amphitheatre-16x9",
+      "type": "image",
+      "path": "hyperframes-16x9/assets/img/amphitheatre_16x9.jpg",
+      "source_tool": "Unsplash (même photo, recadrage 16:9)",
+      "scene_id": "s10",
+      "license": "Unsplash License",
+      "original_url": "https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0",
+      "generation_summary": "Original 2400 x 3600, recadré 2400 x 1350 (y = 700) puis 1920 x 1080 (lanczos)"
+    },
+    {
       "id": "font-space-grotesk",
       "type": "font",
       "path": "hyperframes/assets/fonts/SpaceGrotesk-latin.woff2",
@@ -25,7 +35,7 @@
       "source_tool": "global-land-mask 1.0.0 (NOAA GLOBE 1 km)",
       "scene_id": "s7",
       "license": "MIT (package) / public domain (GLOBE data)",
-      "generation_summary": "Grille 54 x 96 terre/mer embarquée dans index.html (MAP_ROWS), régénérable avec scripts/make_dotmap.py"
+      "generation_summary": "Grille 54 x 96 terre/mer embarquée dans index.html (MAP_ROWS) ; 96 x 54 pour le 16:9 (scripts/map_rows_16x9.js) ; régénérables avec scripts/make_dotmap.py"
     },
     {
       "id": "music-funky",
@@ -37,7 +47,7 @@
       "license": "Pixabay Content License",
       "original_url": "https://cdn.pixabay.com/audio/2026/01/06/audio_437fcd7b2d.mp3",
       "duration_seconds": 139.8,
-      "generation_summary": "120 BPM ; montage sur mesures : piste 15,026–32,026 s (drop A à 1,0 s) puis 76,025–90,025 s (break 17, montée 19, drop B à 21,0 s) puis 62,025–68,025 s (break de fin, arrêt + accord de mi à 33,0 s)"
+      "generation_summary": "120 BPM ; montage sur mesures : piste 15,026–32,026 s (drop A à 1,0 s) puis 76,025–94,025 s (break 17, montée 19, drop B à 21,0 s, groove pendant le transfert) puis 62,025–67,025 s (break de fin, arrêt + accord de mi à 37,0 s)"
     },
     {
       "id": "sfx-bundled",
@@ -54,7 +64,7 @@
       "path": "assets/audio/sfx",
       "source_tool": "scripts/build_audio.py",
       "scene_id": "all",
-      "generation_summary": "Frappe clavier, papier, tampons, déchirure, décollage, carillon d'aéroport, vent, panneau à volets (timing identique à la composition), bip de badge, odomètre, imprimante — synthèse numpy déterministe"
+      "generation_summary": "Frappe clavier, papier, tampons, déchirure, décollage, carillon d'aéroport, vent, panneau à volets (timing identique à la composition), rails, moteur, klaxon de train, bip de badge, odomètre, imprimante — synthèse numpy déterministe"
     },
     {
       "id": "soundtrack",
@@ -62,9 +72,9 @@
       "path": "hyperframes/assets/audio/soundtrack.wav",
       "source_tool": "scripts/build_audio.py",
       "scene_id": "all",
-      "duration_seconds": 37.0,
+      "duration_seconds": 40.0,
       "format": "wav",
-      "generation_summary": "Musique + 106 cues SFX, automation de gain (vol, accord final), ducking 3 dB, limiteur suréchantillonné, -14 LUFS / -2,4 dBTP"
+      "generation_summary": "Musique + 114 cues SFX, automation de gain (vol, accord final), ducking 3 dB, limiteur suréchantillonné, -14 LUFS / -2,5 dBTP ; même bande-son pour les deux formats"
     },
     {
       "id": "composition",
@@ -72,7 +82,15 @@
       "path": "hyperframes/index.html",
       "source_tool": "hyperframes (atelier, GSAP 3.14)",
       "scene_id": "all",
-      "generation_summary": "Composition écrite à la main, une seule timeline GSAP déterministe, 12 scènes + HUD de progression"
+      "generation_summary": "Composition écrite à la main (9:16, source unique), une seule timeline GSAP déterministe, 13 scènes + HUD de progression"
+    },
+    {
+      "id": "composition-16x9",
+      "type": "animation",
+      "path": "hyperframes-16x9/index.html",
+      "source_tool": "scripts/make_landscape.py",
+      "scene_id": "all",
+      "generation_summary": "Version YouTube 1920 x 1080 dérivée de la composition verticale : remplacements vérifiés, zones portrait mises à l'échelle à droite, titres à gauche, HUD en barre haute"
     }
   ]
 }

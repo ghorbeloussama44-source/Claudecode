@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "title": "RusStudy — Le parcours : du premier message WhatsApp au premier jour à l'université (37 s)",
-  "total_duration_seconds": 37.0,
+  "title": "RusStudy — Le parcours : du premier message WhatsApp au premier jour à l'université (40 s)",
+  "total_duration_seconds": 40.0,
   "sections": [
     {
       "id": "s1",
@@ -13,7 +13,7 @@
     {
       "id": "s2",
       "label": "01 Consultation gratuite",
-      "text": "On analyse ton profil. — Appel d'orientation · 15 min · Zoom, téléphone ou WhatsApp · GRATUIT — Notes du Bac · Projet : Médecine · Ville & budget — Ton plan : Médecine générale · Moscou · Université d'État partenaire",
+      "text": "On analyse ton profil. — Appel d'orientation · 15 min · Zoom, téléphone ou WhatsApp · GRATUIT — Notes du Bac · Projet : Médecine · Ville & budget — Ton plan : Médecine générale · Kazan · Université d'État partenaire",
       "start_seconds": 3.0,
       "end_seconds": 7.0
     },
@@ -60,32 +60,39 @@
       "end_seconds": 23.0
     },
     {
+      "id": "tr",
+      "label": "05 Transfert",
+      "text": "Train ou voiture, jusqu'à ta ville. — MOSCOU → KAZAN — Transfert organisé depuis Moscou. — panneau КАЗАНЬ / KAZAN",
+      "start_seconds": 23.0,
+      "end_seconds": 27.0
+    },
+    {
       "id": "s9",
       "label": "05 Foyer",
       "text": "Foyer universitaire. — 1 an inclus — Chambre 412",
-      "start_seconds": 23.0,
-      "end_seconds": 25.0
+      "start_seconds": 27.0,
+      "end_seconds": 29.0
     },
     {
       "id": "s10",
       "label": "Université",
-      "text": "Premier jour à l'université. — Carte d'étudiant · Médecine générale · Objectif atteint",
-      "start_seconds": 25.0,
-      "end_seconds": 27.0
+      "text": "Premier jour à l'université. — Carte d'étudiant · Médecine générale · Université d'État · Kazan · Objectif atteint",
+      "start_seconds": 29.0,
+      "end_seconds": 31.0
     },
     {
       "id": "s11",
       "label": "Prix",
       "text": "Budget 1ère année : dès 3 500 € tout compris — Frais universitaires dès 2 200 € · Consulting & orientation · Dossier visa · Accueil aéroport · Foyer universitaire 1 an · Assurance médicale : inclus — Total 1ère année dès 3 500 € — Sans frais cachés",
-      "start_seconds": 27.0,
-      "end_seconds": 33.0
+      "start_seconds": 31.0,
+      "end_seconds": 37.0
     },
     {
       "id": "s12",
       "label": "CTA",
       "text": "RusStudy. Études en Russie — Écris-nous sur WhatsApp — +7 996 433 4489 — russieetudes.com — 1ère consultation gratuite",
-      "start_seconds": 33.0,
-      "end_seconds": 37.0
+      "start_seconds": 37.0,
+      "end_seconds": 40.0
     }
   ]
 }

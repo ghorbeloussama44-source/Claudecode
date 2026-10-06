@@ -3,26 +3,37 @@
   "render_grammar": "animation-first",
   "outputs": [
     {
-      "path": "renders/russtudy_parcours_37s_60fps.mp4",
+      "path": "renders/russtudy_parcours_40s_60fps.mp4",
       "format": "mp4",
       "codec": "h264",
       "audio_codec": "aac",
       "resolution": "1080x1920",
       "fps": 60,
-      "duration_seconds": 37.0,
-      "file_size_bytes": 22967041,
+      "duration_seconds": 40.0,
+      "file_size_bytes": 24704696,
       "platform_target": "TikTok / YouTube Shorts / Reels (master)"
     },
     {
-      "path": "renders/russtudy_parcours_37s_30fps.mp4",
+      "path": "renders/russtudy_parcours_40s_30fps.mp4",
       "format": "mp4",
       "codec": "h264",
       "audio_codec": "aac",
       "resolution": "1080x1920",
       "fps": 30,
-      "duration_seconds": 37.0,
-      "file_size_bytes": 19049064,
+      "duration_seconds": 40.0,
+      "file_size_bytes": 20475519,
       "platform_target": "Instagram Reels / Facebook / Stories"
+    },
+    {
+      "path": "renders/russtudy_parcours_40s_youtube_16x9_60fps.mp4",
+      "format": "mp4",
+      "codec": "h264",
+      "audio_codec": "aac",
+      "resolution": "1920x1080",
+      "fps": 60,
+      "duration_seconds": 40.0,
+      "file_size_bytes": 24210264,
+      "platform_target": "YouTube (16:9)"
     }
   ]
 }

@@ -45,7 +45,7 @@
           "label": "Tout dans l'interface du téléphone",
           "score": 0.55,
           "reason": "cohérent avec WhatsApp",
-          "rejected_because": "monotone visuellement sur 37 s, ne montre pas l'étendue du motion design"
+          "rejected_because": "monotone visuellement sur 40 s, ne montre pas l'étendue du motion design"
         },
         {
           "option_id": "carte-seule",
@@ -56,7 +56,7 @@
         }
       ],
       "selected": "parcours-objets",
-      "reason": "Voir artifacts/art-direction.md (storyboard en 12 scènes calé sur la grille musicale).",
+      "reason": "Voir artifacts/art-direction.md (storyboard en 13 scènes calé sur la grille musicale).",
       "user_visible": true,
       "user_approved": false,
       "confidence": 0.85
@@ -121,7 +121,7 @@
       "options_considered": [
         {
           "option_id": "pixabay-funky",
-          "label": "Pixabay « Funky » réutilisée et remontée à 37 s",
+          "label": "Pixabay « Funky » réutilisée et remontée à 40 s",
           "score": 0.85,
           "reason": "signature sonore commune aux deux spots ; la structure (build, drop A, break, drop B, arrêt sur accord) colle au récit"
         },
@@ -134,7 +134,7 @@
         }
       ],
       "selected": "pixabay-funky",
-      "reason": "Drop A à 1,0 s (envoi du message), break pendant le vol, drop B à 21,0 s (arrivée), arrêt + accord à 33,0 s (logo).",
+      "reason": "Drop A à 1,0 s (envoi du message), break pendant le vol, drop B à 21,0 s (arrivée), groove prolongé de 2 mesures pour le transfert, arrêt + accord à 37,0 s (logo).",
       "user_visible": true,
       "user_approved": false,
       "confidence": 0.8
@@ -153,7 +153,7 @@
         }
       ],
       "selected": "bundled+synth",
-      "reason": "106 cues calés sur les événements GSAP ; sons tonals accordés en la mixolydien / mi.",
+      "reason": "114 cues calés sur les événements GSAP ; sons tonals accordés en la mixolydien / mi.",
       "user_visible": true,
       "user_approved": false,
       "confidence": 0.8
@@ -206,6 +206,72 @@
       ],
       "selected": "60fps",
       "reason": "Les deux versions sont livrées.",
+      "user_visible": true,
+      "user_approved": false,
+      "confidence": 0.85
+    },
+    {
+      "decision_id": "d9",
+      "stage": "compose",
+      "category": "concept_selection",
+      "subject": "Transport interne (v3)",
+      "options_considered": [
+        {
+          "option_id": "train+voiture",
+          "label": "Un seul plan en parallaxe : le train (passagers aux fenêtres) et une voiture qui le double",
+          "score": 0.85,
+          "reason": "le client a écrit « train ou voiture » : les deux modes sont montrés sans choisir"
+        },
+        {
+          "option_id": "train",
+          "label": "Train seul",
+          "score": 0.6,
+          "reason": "plus simple",
+          "rejected_because": "laisse croire que le transfert se fait toujours en train"
+        },
+        {
+          "option_id": "carte",
+          "label": "Trajet sur la carte de vol",
+          "score": 0.4,
+          "reason": "réutilise la scène S7",
+          "rejected_because": "redondant avec le vol, pas de sentiment de voyage terrestre"
+        }
+      ],
+      "selected": "train+voiture",
+      "reason": "Scène TR de 4 s (2 mesures) entre l'accueil et le foyer ; ville d'exemple Kazan (illustratif, comme Médecine générale) ; la musique gagne 2 mesures de groove et la fin passe de 4 à 3 s pour rester à 40 s.",
+      "user_visible": true,
+      "user_approved": false,
+      "confidence": 0.8
+    },
+    {
+      "decision_id": "d10",
+      "stage": "compose",
+      "category": "capability_extension",
+      "subject": "Version YouTube 16:9 (v3)",
+      "options_considered": [
+        {
+          "option_id": "generateur",
+          "label": "Dériver le 16:9 de la composition verticale par script (remplacements vérifiés + zones portrait)",
+          "score": 0.85,
+          "reason": "une seule source à retoucher : textes, couleurs et timings se propagent ; même bande-son"
+        },
+        {
+          "option_id": "copie",
+          "label": "Copier et adapter la composition à la main",
+          "score": 0.5,
+          "reason": "liberté totale de mise en page",
+          "rejected_because": "deux fichiers à maintenir, les retouches divergent"
+        },
+        {
+          "option_id": "recadrage",
+          "label": "Recadrer / encadrer la vidéo verticale (bandes floues)",
+          "score": 0.2,
+          "reason": "immédiat",
+          "rejected_because": "rendu amateur sur YouTube, texte trop petit"
+        }
+      ],
+      "selected": "generateur",
+      "reason": "scripts/make_landscape.py produit hyperframes-16x9/index.html ; le script s'arrête si un élément attendu a changé dans la version verticale.",
       "user_visible": true,
       "user_approved": false,
       "confidence": 0.85
