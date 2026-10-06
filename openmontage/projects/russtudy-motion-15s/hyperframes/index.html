@@ -1,0 +1,1672 @@
+<!doctype html>
+<html lang="fr" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>RusStudy — Motion 15s</title>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/vendor/CustomEase.min.js"></script>
+    <script src="assets/vendor/MotionPathPlugin.min.js"></script>
+    <style>
+      @font-face {
+        font-family: "Space Grotesk";
+        src: url("assets/fonts/SpaceGrotesk-latin.woff2") format("woff2");
+        font-weight: 300 700;
+        font-display: block;
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+          U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+          U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: "Space Grotesk";
+        src: url("assets/fonts/SpaceGrotesk-latin-ext.woff2") format("woff2");
+        font-weight: 300 700;
+        font-display: block;
+        unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+          U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB,
+          U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+      }
+      :root {
+        --bg: #f0ebe3;
+        --ink: #0a0a0a;
+        --accent: #a855f7;
+        --blue: #2460e8;
+        --gold: #fbbb21;
+        --orange: #f97316;
+        --green: #22c55e;
+        --red: #ef4444;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #f0ebe3;
+      }
+      #root {
+        position: relative;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        font-family: "Space Grotesk", sans-serif;
+        color: var(--ink);
+        font-kerning: normal;
+      }
+      .clip {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+      }
+      .fill {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1080px;
+        height: 1920px;
+      }
+      .cam {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1080px;
+        height: 1920px;
+        transform-origin: 785px 1030px;
+      }
+      .h {
+        font-weight: 700;
+        letter-spacing: -0.04em;
+        line-height: 1;
+        white-space: nowrap;
+      }
+      .mask {
+        display: inline-block;
+        overflow: hidden;
+        vertical-align: top;
+        padding: 0.04em 0.03em 0.12em;
+        margin: -0.04em -0.03em -0.12em;
+      }
+      .mask > span {
+        display: inline-block;
+      }
+      .kicker {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        height: 62px;
+        padding: 0 28px;
+        border: 2.5px solid rgba(10, 10, 10, 0.3);
+        border-radius: 999px;
+        font-weight: 600;
+        font-size: 27px;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+      .dot {
+        display: inline-block;
+        width: 0.19em;
+        height: 0.19em;
+        border-radius: 50%;
+        margin-left: 0.035em;
+        vertical-align: baseline;
+      }
+      /* ---------- S0 hook ---------- */
+      #s0-logo {
+        position: absolute;
+        left: 72px;
+        top: 236px;
+      }
+      .wm {
+        font-weight: 700;
+        letter-spacing: -0.05em;
+        line-height: 1;
+        white-space: nowrap;
+      }
+      .acc {
+        color: var(--accent);
+      }
+      #s0-logo .wm {
+        font-size: 58px;
+      }
+      #s0-logo .tag {
+        margin-top: 6px;
+        font-size: 13.5px;
+        font-weight: 500;
+        letter-spacing: 0.2em;
+        opacity: 0.55;
+      }
+      #s0-q {
+        position: absolute;
+        left: 0;
+        top: 420px;
+        width: 1080px;
+        text-align: center;
+        font-size: 112px;
+      }
+      #reel {
+        position: absolute;
+        left: 60px;
+        top: 600px;
+        width: 960px;
+        height: 330px;
+        border-radius: 48px;
+        overflow: hidden;
+        box-shadow: 0 30px 60px rgba(10, 10, 10, 0.18);
+      }
+      #reel-inner {
+        position: absolute;
+        inset: 0;
+        filter: url(#f-reel);
+      }
+      #reel-strip {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 960px;
+      }
+      .rblock {
+        width: 960px;
+        height: 330px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 158px;
+        font-weight: 700;
+        letter-spacing: -0.04em;
+        white-space: nowrap;
+      }
+      #reel-shade {
+        position: absolute;
+        inset: 0;
+        border-radius: 48px;
+        background: linear-gradient(
+          180deg,
+          rgba(10, 10, 10, 0.32) 0%,
+          rgba(10, 10, 10, 0) 24%,
+          rgba(255, 255, 255, 0.06) 50%,
+          rgba(10, 10, 10, 0) 76%,
+          rgba(10, 10, 10, 0.32) 100%
+        );
+        pointer-events: none;
+      }
+      #s0-ru {
+        position: absolute;
+        left: 0;
+        top: 985px;
+        width: 1080px;
+        text-align: center;
+        font-size: 196px;
+      }
+      #dot0 {
+        background: var(--gold);
+      }
+      .ticker {
+        position: absolute;
+        left: -360px;
+        width: 1800px;
+        height: 92px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+      }
+      .ticker .tk-track {
+        display: flex;
+        white-space: nowrap;
+        font-size: 34px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+      }
+      .tk-track span {
+        padding: 0 18px;
+      }
+      #tk-a {
+        top: 1380px;
+        background: var(--blue);
+        color: #fff;
+        transform: rotate(-6deg);
+      }
+      #tk-b {
+        top: 1380px;
+        background: var(--gold);
+        color: var(--ink);
+        transform: rotate(5deg);
+      }
+      /* ---------- S1 price ---------- */
+      #gold-bg {
+        background: var(--gold);
+        clip-path: inset(0px 0px 0px 0px round 0px);
+      }
+      #pr-deco {
+        position: absolute;
+        left: 300px;
+        top: 960px;
+        font-size: 1300px;
+        font-weight: 700;
+        line-height: 1;
+        color: transparent;
+        -webkit-text-stroke: 5px rgba(10, 10, 10, 0.12);
+        transform: rotate(-12deg);
+      }
+      #price-group {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1080px;
+        height: 1920px;
+        transform-origin: 0 0;
+      }
+      #pr-kicker {
+        left: 84px;
+        top: 520px;
+      }
+      #pr-des {
+        position: absolute;
+        left: 84px;
+        top: 640px;
+        font-size: 104px;
+      }
+      #pr-num {
+        position: absolute;
+        left: 70px;
+        top: 770px;
+        height: 300px;
+        display: flex;
+        align-items: flex-start;
+        font-size: 300px;
+        font-weight: 700;
+        letter-spacing: -0.04em;
+        line-height: 1;
+      }
+      .odo {
+        position: relative;
+        height: 300px;
+        overflow: hidden;
+        font-variant-numeric: tabular-nums;
+      }
+      .odo-col {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        filter: url(#f-odo);
+      }
+      .odo-col div {
+        height: 300px;
+        text-align: center;
+      }
+      .odo-sp {
+        width: 0.22em;
+      }
+      #pr-euro {
+        font-size: 150px;
+        margin-left: 18px;
+        margin-top: 22px;
+      }
+      #pr-an {
+        position: absolute;
+        left: 640px;
+        top: 1095px;
+        height: 118px;
+        padding: 0 40px;
+        border-radius: 999px;
+        background: var(--ink);
+        color: var(--gold);
+        display: flex;
+        align-items: center;
+        font-size: 76px;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+      }
+      #pr-sub {
+        position: absolute;
+        left: 84px;
+        top: 1270px;
+        font-size: 50px;
+        font-weight: 500;
+        letter-spacing: -0.02em;
+        line-height: 1.15;
+        white-space: nowrap;
+      }
+      #pr-sub b {
+        font-weight: 700;
+      }
+      /* ---------- S2 bento ---------- */
+      #bn-kicker {
+        left: 60px;
+        top: 300px;
+      }
+      #bn-title {
+        position: absolute;
+        left: 56px;
+        top: 392px;
+        font-size: 118px;
+      }
+      .hl {
+        color: var(--blue);
+      }
+      .card {
+        position: absolute;
+        border-radius: 36px;
+        overflow: hidden;
+        padding: 30px 32px;
+      }
+      .card .ic {
+        position: absolute;
+        left: 30px;
+        top: 30px;
+      }
+      .card .arrow {
+        position: absolute;
+        right: 26px;
+        top: 26px;
+        width: 58px;
+        height: 58px;
+        border-radius: 50%;
+        background: rgba(10, 10, 10, 0.14);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .card .ct {
+        position: absolute;
+        left: 32px;
+        bottom: 30px;
+      }
+      .card .t1 {
+        font-size: 54px;
+        font-weight: 700;
+        letter-spacing: -0.035em;
+        line-height: 1.02;
+        white-space: nowrap;
+      }
+      .card .t2 {
+        margin-top: 8px;
+        font-size: 29px;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        opacity: 0.75;
+        white-space: nowrap;
+      }
+      #card-visa {
+        left: 550px;
+        top: 560px;
+        width: 470px;
+        height: 300px;
+        background: var(--accent);
+      }
+      #card-logement {
+        left: 60px;
+        top: 880px;
+        width: 470px;
+        height: 300px;
+        background: var(--orange);
+      }
+      #card-accueil {
+        left: 550px;
+        top: 880px;
+        width: 470px;
+        height: 300px;
+        background: var(--green);
+      }
+      #card-diplome {
+        left: 60px;
+        top: 1200px;
+        width: 960px;
+        height: 300px;
+        background: var(--blue);
+        color: #fff;
+      }
+      #card-diplome .t1 {
+        font-size: 62px;
+      }
+      #card-diplome .ic {
+        left: auto;
+        right: 116px;
+        top: 70px;
+      }
+      #card-diplome .arrow {
+        background: rgba(255, 255, 255, 0.16);
+      }
+      /* ---------- S3 journey ---------- */
+      .grid {
+        background-image: linear-gradient(rgba(10, 10, 10, 0.07) 2px, transparent 2px),
+          linear-gradient(90deg, rgba(10, 10, 10, 0.07) 2px, transparent 2px);
+        background-size: 60px 60px;
+        background-position: 0 0;
+      }
+      #j-title {
+        position: absolute;
+        left: 64px;
+        top: 278px;
+        font-size: 104px;
+        line-height: 1.04;
+      }
+      #route {
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+      .pinlabel {
+        position: absolute;
+        height: 76px;
+        padding: 0 30px;
+        border-radius: 999px;
+        background: var(--ink);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        font-size: 38px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        white-space: nowrap;
+      }
+      #lbl-tun {
+        left: 250px;
+        top: 1310px;
+      }
+      #lbl-mow {
+        left: 520px;
+        top: 740px;
+      }
+      .chk {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: var(--green);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #plane-pos {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 198px;
+        height: 108px;
+      }
+      #j-sub {
+        position: absolute;
+        left: 64px;
+        top: 1440px;
+        font-size: 40px;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        white-space: nowrap;
+      }
+      /* ---------- S4 proof ---------- */
+      #s4-wrap {
+        clip-path: polygon(-6000px 0px, -6000px 0px, -6000px 0px, -6000px 0px);
+      }
+      #pf-kicker {
+        left: 60px;
+        top: 270px;
+      }
+      .photo {
+        position: absolute;
+        border-radius: 32px;
+        overflow: hidden;
+        background: #d9d2c5;
+      }
+      .photo img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .photo .lbl {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 60px 24px 20px;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
+        color: #fff;
+        font-size: 26px;
+        font-weight: 600;
+        letter-spacing: -0.005em;
+        white-space: nowrap;
+      }
+      #ph-a {
+        left: 60px;
+        top: 360px;
+        width: 600px;
+        height: 750px;
+      }
+      #ph-b {
+        left: 680px;
+        top: 360px;
+        width: 340px;
+        height: 365px;
+      }
+      #ph-c {
+        left: 680px;
+        top: 745px;
+        width: 340px;
+        height: 365px;
+      }
+      .stat {
+        position: absolute;
+        top: 1130px;
+        width: 470px;
+        height: 330px;
+        border-radius: 36px;
+        background: var(--ink);
+        color: #fff;
+        padding: 38px 36px;
+      }
+      .stat .num {
+        font-size: 128px;
+        font-weight: 700;
+        letter-spacing: -0.05em;
+        line-height: 1;
+        font-variant-numeric: tabular-nums;
+        white-space: nowrap;
+      }
+      .stat .lab {
+        position: absolute;
+        left: 38px;
+        bottom: 36px;
+        font-size: 29px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        line-height: 1.25;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.6);
+      }
+      #st-a {
+        left: 60px;
+      }
+      #st-a .num {
+        color: var(--accent);
+      }
+      #st-b {
+        left: 550px;
+      }
+      #st-b .num {
+        color: var(--gold);
+      }
+      #wipe-band {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 4200px;
+        height: 240px;
+        display: flex;
+        flex-direction: column;
+      }
+      #wipe-band div {
+        flex: 1;
+      }
+      /* ---------- S5 night ---------- */
+      #sky {
+        background: radial-gradient(70% 38% at 50% 58%, rgba(72, 112, 255, 0.28), rgba(72, 112, 255, 0) 70%),
+          linear-gradient(180deg, #0b1638 0%, #10215a 34%, #173385 64%, #1c3c96 78%, #142a6a 100%);
+      }
+      #city {
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+      .wh {
+        color: #fff;
+        text-shadow: 0 4px 30px rgba(0, 0, 0, 0.45);
+      }
+      #hl1,
+      #hl2 {
+        position: absolute;
+        left: 0;
+        width: 1080px;
+        text-align: center;
+        font-size: 116px;
+      }
+      #hl1 {
+        top: 600px;
+      }
+      #hl2 {
+        top: 735px;
+      }
+      #dot5 {
+        opacity: 0;
+      }
+      #urg {
+        position: absolute;
+        left: 50%;
+        top: 318px;
+        height: 70px;
+        padding: 0 34px;
+        border-radius: 999px;
+        background: var(--ink);
+        color: var(--gold);
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        font-size: 28px;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        white-space: nowrap;
+        transform: translateX(-50%);
+        box-shadow: 0 0 0 2px rgba(251, 187, 33, 0.25);
+      }
+      #urg-wrap {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1080px;
+        height: 420px;
+      }
+      #logo-lg {
+        position: absolute;
+        left: 0;
+        top: 520px;
+        width: 1080px;
+        text-align: center;
+        font-size: 176px;
+        color: #fff;
+      }
+      #logo-lg span {
+        display: inline-block;
+      }
+      #lg-study {
+        color: var(--accent);
+      }
+      #lg-dot {
+        opacity: 0;
+      }
+      #lg-tag {
+        position: absolute;
+        left: 0;
+        top: 722px;
+        width: 1080px;
+        text-align: center;
+        font-size: 33px;
+        font-weight: 500;
+        letter-spacing: 0.34em;
+        color: rgba(255, 255, 255, 0.6);
+        white-space: nowrap;
+      }
+      #cta {
+        position: absolute;
+        left: 100px;
+        top: 850px;
+        width: 880px;
+        height: 140px;
+        border-radius: 999px;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 22px 0 52px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      }
+      #cta .ctt {
+        font-size: 54px;
+        font-weight: 700;
+        letter-spacing: -0.035em;
+        white-space: nowrap;
+      }
+      #cta .ctc {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: var(--accent);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #url {
+        position: absolute;
+        left: 0;
+        top: 1030px;
+        width: 1080px;
+        text-align: center;
+        font-size: 66px;
+        font-weight: 700;
+        letter-spacing: -0.025em;
+        color: #fff;
+        white-space: nowrap;
+      }
+      #url span {
+        display: inline-block;
+      }
+      #fdot-pos {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 40px;
+        height: 40px;
+      }
+      #fdot {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--accent);
+      }
+      #ring {
+        position: absolute;
+        left: 440px;
+        top: 508px;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border: 6px solid rgba(255, 255, 255, 0.85);
+        opacity: 0;
+      }
+      #cursor {
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+      #click-ring {
+        position: absolute;
+        left: 848px;
+        top: 860px;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        border: 5px solid #fff;
+        opacity: 0;
+      }
+      /* ---------- pixel transition ---------- */
+      #px-grid {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1080px;
+        height: 1920px;
+      }
+      .pxc {
+        position: absolute;
+        width: 91px;
+        height: 89px;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="15"
+      data-width="1080"
+      data-height="1920"
+      data-fps="60"
+    >
+      <audio
+        id="soundtrack"
+        src="assets/audio/soundtrack.wav"
+        data-start="0"
+        data-duration="15"
+        data-track-index="0"
+        data-volume="1"
+      ></audio>
+
+      <!-- ================= S0 — HOOK : la machine à filières ================= -->
+      <section id="s0" class="clip" data-start="0" data-duration="3.62" data-track-index="1" style="z-index: 1">
+        <div class="fill" style="background: var(--bg)"></div>
+        <svg width="0" height="0" style="position: absolute">
+          <filter id="f-reel" x="0" y="-30%" width="100%" height="160%" color-interpolation-filters="sRGB">
+            <feGaussianBlur id="fe-reel" stdDeviation="0 0" />
+          </filter>
+          <filter id="f-odo" x="0" y="-30%" width="100%" height="160%" color-interpolation-filters="sRGB">
+            <feGaussianBlur id="fe-odo" stdDeviation="0 0" />
+          </filter>
+        </svg>
+        <div id="s0-logo">
+          <div class="wm">Rus<span class="acc">Study</span>.</div>
+          <div class="tag">ÉTUDES EN RUSSIE</div>
+        </div>
+        <div id="s0-q" class="h">
+          <span class="mask"><span id="q1">Bac</span></span>
+          <span class="mask"><span id="q2">en</span></span>
+          <span class="mask"><span id="q3">poche</span></span><span class="mask"><span id="q4">&#8239;?</span></span>
+        </div>
+        <div id="reel">
+          <div id="reel-inner"><div id="reel-strip"></div></div>
+          <div id="reel-shade"></div>
+        </div>
+        <div id="s0-ru" class="h">
+          <span class="mask"><span id="ru1">en</span></span>
+          <span class="mask"><span id="ru2">Russie</span></span><span id="dot0" class="dot"></span>
+        </div>
+        <div id="tk-a" class="ticker"><div class="tk-track" id="tk-a-track"></div></div>
+        <div id="tk-b" class="ticker"><div class="tk-track" id="tk-b-track"></div></div>
+      </section>
+
+      <!-- ================= S2 — BENTO (fond + titre) ================= -->
+      <section id="s2bg" class="clip" data-start="4.9" data-duration="2.62" data-track-index="2" style="z-index: 2">
+        <div class="cam" id="cam2">
+          <div class="fill" style="background: var(--bg)"></div>
+          <div id="bn-kicker" class="kicker">Accompagnement total</div>
+          <div id="bn-title" class="h">
+            <span class="mask"><span id="bt1">On</span></span>
+            <span class="mask"><span id="bt2">gère</span></span>
+            <span class="mask"><span id="bt3" class="hl">tout.</span></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= S1 — PRIX : l'odomètre (devient la carte or du bento) ================= -->
+      <section id="s1" class="clip" data-start="3.15" data-duration="4.37" data-track-index="3" style="z-index: 3; clip-path: circle(0px at 958.2px 1132.4px)">
+        <div class="cam" id="cam1">
+          <div id="gold-bg" class="fill"></div>
+          <div id="pr-deco">€</div>
+          <div id="price-group">
+            <div id="pr-kicker" class="kicker">Frais de scolarité</div>
+            <div id="pr-des" class="h">dès</div>
+            <div id="pr-num">
+              <div class="odo" id="odo0"><div class="odo-col"></div></div>
+              <div class="odo-sp"></div>
+              <div class="odo" id="odo1"><div class="odo-col"></div></div>
+              <div class="odo" id="odo2"><div class="odo-col"></div></div>
+              <div class="odo" id="odo3"><div class="odo-col"></div></div>
+              <div id="pr-euro">€</div>
+            </div>
+            <div id="pr-an">/an</div>
+            <div id="pr-sub">jusqu’à <b>4× moins cher</b> qu’en Europe</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= S2 — BENTO (cartes) ================= -->
+      <section id="s2cards" class="clip" data-start="5" data-duration="2.52" data-track-index="4" style="z-index: 4">
+        <div class="cam" id="cam3">
+          <div id="card-visa" class="card">
+            <div class="ic" id="ic-visa"></div>
+            <div class="arrow"></div>
+            <div class="ct"><div class="t1">Visa garanti</div><div class="t2">par contrat</div></div>
+          </div>
+          <div id="card-logement" class="card">
+            <div class="ic" id="ic-house"></div>
+            <div class="arrow"></div>
+            <div class="ct"><div class="t1">Logement</div><div class="t2">garanti à 100&#8239;%</div></div>
+          </div>
+          <div id="card-accueil" class="card">
+            <div class="ic" id="ic-plane"></div>
+            <div class="arrow"></div>
+            <div class="ct"><div class="t1">Accueil</div><div class="t2">à l’aéroport</div></div>
+          </div>
+          <div id="card-diplome" class="card">
+            <div class="ic" id="ic-cap"></div>
+            <div class="arrow"></div>
+            <div class="ct"><div class="t1">Diplômes d’État</div><div class="t2">reconnus · OMS &amp; Tunisie</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= S3 — TRAJET Tunis → Moscou ================= -->
+      <section id="s3" class="clip" data-start="7.2" data-duration="2.1" data-track-index="5" style="z-index: 5">
+        <div class="fill" style="background: var(--green)"></div>
+        <div class="fill grid"></div>
+        <div id="j-title" class="h">
+          <div><span class="mask"><span id="jt1">On t’accueille</span></span></div>
+          <div><span class="mask"><span id="jt2">à l’arrivée.</span></span></div>
+        </div>
+        <svg id="route" width="1080" height="1920" viewBox="0 0 1080 1920">
+          <defs>
+            <mask id="trail-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1080" height="1920">
+              <path id="trail-reveal" d="M210,1300 C240,810 600,510 850,680" fill="none" stroke="#fff" stroke-width="40" />
+            </mask>
+          </defs>
+          <path
+            id="trail"
+            d="M210,1300 C240,810 600,510 850,680"
+            fill="none"
+            stroke="#0a0a0a"
+            stroke-width="8"
+            stroke-linecap="round"
+            stroke-dasharray="2 26"
+            mask="url(#trail-mask)"
+          />
+          <g id="pin-tun-g">
+            <circle id="pin-tun-ring" cx="210" cy="1300" r="30" fill="none" stroke="#0a0a0a" stroke-width="5" />
+            <circle cx="210" cy="1300" r="24" fill="#0a0a0a" />
+            <circle cx="210" cy="1300" r="9" fill="#fff" />
+          </g>
+          <g id="pin-mow-g">
+            <circle id="pin-mow-ring" cx="850" cy="680" r="30" fill="none" stroke="#0a0a0a" stroke-width="5" />
+            <circle cx="850" cy="680" r="24" fill="#0a0a0a" />
+            <circle cx="850" cy="680" r="9" fill="#fff" />
+          </g>
+          <path id="motion" d="M210,1300 C240,810 600,510 850,680" fill="none" stroke="none" />
+        </svg>
+        <div id="lbl-tun" class="pinlabel">TUNIS</div>
+        <div id="lbl-mow" class="pinlabel">
+          MOSCOU
+          <div class="chk" id="mow-chk">
+            <svg width="26" height="26" viewBox="0 0 26 26"><path d="M5 13.5l5 5L21 7.5" fill="none" stroke="#0a0a0a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          </div>
+        </div>
+        <div id="plane-pos"><div id="plane"></div></div>
+        <div id="j-sub">Un tuteur bilingue t’attend sur place.</div>
+      </section>
+
+      <!-- ================= S4 — PREUVE : la Russie en vrai ================= -->
+      <section id="s4" class="clip" data-start="8.8" data-duration="2.6" data-track-index="6" style="z-index: 6">
+        <div id="s4-wrap" class="fill">
+          <div class="fill" style="background: var(--bg)"></div>
+          <div id="pf-kicker" class="kicker">La Russie en vrai</div>
+          <div id="ph-a" class="photo">
+            <img id="img-a" src="assets/img/saint_basile.jpg" alt="Cathédrale Saint-Basile, Moscou" />
+            <div class="lbl">Moscou — Place Rouge</div>
+          </div>
+          <div id="ph-b" class="photo">
+            <img id="img-b" src="assets/img/amphitheatre.jpg" alt="Amphithéâtre universitaire" />
+            <div class="lbl">Amphithéâtre</div>
+          </div>
+          <div id="ph-c" class="photo">
+            <img id="img-c" src="assets/img/diplomes_toques.jpg" alt="Diplômés lançant leurs toques" style="object-position: 62% 50%" />
+            <div class="lbl">Objectif : ton diplôme</div>
+          </div>
+          <div id="st-a" class="stat">
+            <div class="num" id="num-a">+0</div>
+            <div class="lab">étudiants placés<br />en Russie</div>
+          </div>
+          <div id="st-b" class="stat">
+            <div class="num" id="num-b">0</div>
+            <div class="lab">universités d’État<br />partenaires</div>
+          </div>
+        </div>
+        <div id="wipe-band">
+          <div style="background: var(--accent)"></div>
+          <div style="background: var(--gold)"></div>
+          <div style="background: var(--blue)"></div>
+        </div>
+      </section>
+
+      <!-- ================= S5 — VILLE PIXEL + LOGO + CTA ================= -->
+      <section id="s5" class="clip" data-start="11.02" data-duration="3.98" data-track-index="7" style="z-index: 7">
+        <div id="sky" class="fill"></div>
+        <canvas id="city" width="1080" height="1920"></canvas>
+        <div id="hl1" class="h wh">
+          <span class="mask"><span id="h1a">Étudie</span></span>
+          <span class="mask"><span id="h1b">en</span></span>
+          <span class="mask"><span id="h1c">Russie.</span></span>
+        </div>
+        <div id="hl2" class="h wh"><span id="hl2-txt"></span><span id="dot5" class="dot"></span></div>
+        <div id="urg-wrap">
+          <div id="urg"><span id="urg-ic"></span>Places limitées · Session 2026–2027</div>
+        </div>
+        <div id="ring"></div>
+        <div id="logo-lg" class="wm"><span id="lg-rus">Rus</span><span id="lg-study">Study</span><span id="lg-dot" class="dot"></span></div>
+        <div id="lg-tag"></div>
+        <div id="cta">
+          <div class="ctt">1<sup style="font-size: 0.55em; vertical-align: 0.62em; letter-spacing: 0">ère</sup> consultation gratuite</div>
+          <div class="ctc" id="cta-arrow"></div>
+        </div>
+        <div id="url"></div>
+        <div id="fdot-pos"><div id="fdot"></div></div>
+        <div id="click-ring"></div>
+        <div id="cursor"></div>
+      </section>
+
+      <!-- ================= Transition pixel (PIXEL SYSTEM) ================= -->
+      <section id="px" class="clip" data-start="10.72" data-duration="0.7" data-track-index="8" style="z-index: 8">
+        <div id="px-grid"></div>
+      </section>
+    </div>
+
+    <script>
+      gsap.registerPlugin(CustomEase, MotionPathPlugin);
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // ---------------------------------------------------------------- helpers
+      function mulberry32(a) {
+        return function () {
+          a |= 0;
+          a = (a + 0x6d2b79f5) | 0;
+          let t = Math.imul(a ^ (a >>> 15), 1 | a);
+          t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+          return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+        };
+      }
+      const PAL = {
+        K: "#0a0a0a",
+        W: "#ffffff",
+        G: "#fbbb21",
+        B: "#2460e8",
+        P: "#a855f7",
+        O: "#f97316",
+        N: "#22c55e",
+        R: "#ef4444",
+        C: "#f0ebe3",
+        Y: "#9cc0ff",
+      };
+      // pixel-art map (array of strings) -> crisp SVG
+      function pixelSVG(map, px) {
+        const h = map.length;
+        const w = map[0].length;
+        let r = "";
+        for (let y = 0; y < h; y++) {
+          for (let x = 0; x < w; x++) {
+            const c = map[y][x];
+            if (c !== ".") r += `<rect x="${x}" y="${y}" width="1.02" height="1.02" fill="${PAL[c]}"/>`;
+          }
+        }
+        return `<svg width="${w * px}" height="${h * px}" viewBox="0 0 ${w} ${h}" shape-rendering="crispEdges">${r}</svg>`;
+      }
+      const ARROW = (c, s) =>
+        `<svg width="${s}" height="${s}" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" fill="none" stroke="${c}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+      const ICONS = {
+        plane: [
+          "KK....................",
+          "KWK...................",
+          "KWWK..................",
+          "KWWWKKKKKKKKKKKKKKK...",
+          "KWWWWWWWWWWWWWWWWWWKK.",
+          ".KWWBWWBWWBWWBWWBWWWWK",
+          "..KKKKKWWWWWWWWWWWWWK.",
+          ".......KWWWWWKKKKKKK..",
+          "........KWWWWK........",
+          ".........KWWWK........",
+          "..........KWWK........",
+          "...........KK.........",
+        ],
+        house: [
+          "......K......",
+          ".....KKK.....",
+          "....KKKKK....",
+          "...KKKKKKK...",
+          "..KKKKKKKKK..",
+          ".KKKKKKKKKKK.",
+          "..KWWWWWWWK..",
+          "..KWGGWGGWK..",
+          "..KWGGWGGWK..",
+          "..KWWWWWWWK..",
+          "..KWWKKKWWK..",
+          "..KWWKKKWWK..",
+          "..KKKKKKKKK..",
+        ],
+        shield: [
+          "....KKKKK....",
+          "..KKWWWWWKK..",
+          ".KWWWWWWWWWK.",
+          ".KWWWWWWWWWK.",
+          ".KWWWWWWWKWK.",
+          ".KWWWWWWKKWK.",
+          ".KWKWWWKKWWK.",
+          ".KWKKWKKWWWK.",
+          ".KWWKKKWWWWK.",
+          "..KWWKWWWWK..",
+          "...KWWWWWK...",
+          "....KWWWK....",
+          ".....KKK.....",
+        ],
+        cap: [
+          "........KK........",
+          "......KKWWKK......",
+          "....KKWWWWWWKK....",
+          "..KKWWWWWWWWWWKK..",
+          "KKWWWWWWWWWWWWWWKK",
+          "..KKWWWWWWWWWWKKG.",
+          "....KKWWWWWWKK..G.",
+          "...KKKKKKKKKKKK.G.",
+          "...KKKKKKKKKKKK.GG",
+          "...KKKKKKKKKKKK.GG",
+          "....KKKKKKKKKK....",
+        ],
+        hand: [
+          "....KK......",
+          "...KWWK.....",
+          "...KWWK.....",
+          "...KWWK.....",
+          "...KWWKKK...",
+          "...KWWKWWKK.",
+          ".KKKWWKWWKWK",
+          "KWWKWWWWWKWK",
+          "KWWWWWWWWWWK",
+          ".KWWWWWWWWWK",
+          "..KWWWWWWWWK",
+          "..KWWWWWWWK.",
+          "...KWWWWWWK.",
+          "...KWWWWWK..",
+          "....KKKKKK..",
+        ],
+        hourglass: [
+          "GGGGGGG",
+          ".G...G.",
+          ".GG.GG.",
+          "..GGG..",
+          ".G.G.G.",
+          ".G...G.",
+          "GGGGGGG",
+        ],
+      };
+
+      // ---------------------------------------------------------------- build DOM (synchronous, deterministic)
+      // S0 reel strip: cycle of programme cards (site colours per programme)
+      const PROG = [
+        { w: "DENTAIRE", bg: "#22c55e", fg: "#0a0a0a" },
+        { w: "BUSINESS", bg: "#a855f7", fg: "#0a0a0a" },
+        { w: "PHARMACIE", bg: "#fbbb21", fg: "#0a0a0a" },
+        { w: "INGÉNIERIE", bg: "#f97316", fg: "#0a0a0a" },
+        { w: "MÉDECINE", bg: "#2460e8", fg: "#ffffff" },
+      ];
+      const RB = 330; // reel block height
+      const REEL_N = 26;
+      const strip = document.getElementById("reel-strip");
+      for (let i = 0; i < REEL_N; i++) {
+        const p = PROG[i % 5];
+        const d = document.createElement("div");
+        d.className = "rblock";
+        d.style.background = p.bg;
+        d.style.color = p.fg;
+        d.textContent = p.w;
+        strip.appendChild(d);
+      }
+      // tickers (site copy)
+      const TKA = ["Médecine générale OMS", "Génie informatique & IA", "Pharmacie clinique", "Aéronautique & logistique", "Business & management", "Architecture & art"];
+      const TKB = ["Visa d’études sécurisé", "Logement en dortoir inclus", "Conseil & traduction gratuits", "Accueil depuis l’aéroport", "Communauté tunisienne active"];
+      function fillTicker(id, items) {
+        const el = document.getElementById(id);
+        let html = "";
+        for (let k = 0; k < 3; k++) for (const it of items) html += `<span>${it}</span><span>✦</span>`;
+        el.innerHTML = html;
+      }
+      fillTicker("tk-a-track", TKA);
+      fillTicker("tk-b-track", TKB);
+      // odometer columns (3 cycles of 0-9)
+      const ODO_TARGET = [2, 2, 0, 0];
+      document.querySelectorAll(".odo").forEach((o, i) => {
+        const col = o.querySelector(".odo-col");
+        let html = "";
+        for (let k = 0; k < 40; k++) html += `<div>${k % 10}</div>`;
+        col.innerHTML = html;
+        o.style.width = "0.6em";
+      });
+      // pixel icons
+      document.getElementById("ic-visa").innerHTML = pixelSVG(ICONS.shield, 8);
+      document.getElementById("ic-house").innerHTML = pixelSVG(ICONS.house, 8);
+      document.getElementById("ic-plane").innerHTML = pixelSVG(ICONS.plane, 6);
+      document.getElementById("ic-cap").innerHTML = pixelSVG(ICONS.cap, 10);
+      document.getElementById("plane").innerHTML = pixelSVG(ICONS.plane, 9);
+      document.getElementById("cursor").innerHTML = pixelSVG(ICONS.hand, 9);
+      document.getElementById("urg-ic").innerHTML = pixelSVG(ICONS.hourglass, 4);
+      document.querySelectorAll(".card .arrow").forEach((a) => (a.innerHTML = ARROW("#0a0a0a", 30)));
+      document.querySelector("#card-diplome .arrow").innerHTML = ARROW("#ffffff", 30);
+      document.getElementById("cta-arrow").innerHTML = ARROW("#0a0a0a", 52);
+      // headline 2 chars + url chars
+      const HL2 = "Change ta vie";
+      document.getElementById("hl2-txt").innerHTML = HL2.split("")
+        .map((c, i) => `<span class="c2" style="display:inline-block">${c === " " ? "&nbsp;" : c}</span>`)
+        .join("");
+      const TAG_TXT = "ÉTUDES EN RUSSIE";
+      document.getElementById("lg-tag").innerHTML = TAG_TXT.split("")
+        .map((c) => `<span class="tg" style="display:inline-block">${c === " " ? "&nbsp;" : c}</span>`)
+        .join("");
+      const URL_TXT = "russieetudes.com";
+      document.getElementById("url").innerHTML = URL_TXT.split("")
+        .map((c) => `<span class="uc">${c}</span>`)
+        .join("");
+      // pixel transition grid
+      const PXC = 12,
+        PXR = 22;
+      const pxg = document.getElementById("px-grid");
+      const prng = mulberry32(2026);
+      const pxCells = [];
+      for (let r = 0; r < PXR; r++) {
+        for (let c = 0; c < PXC; c++) {
+          const d = document.createElement("div");
+          d.className = "pxc";
+          d.style.left = c * 90 + "px";
+          d.style.top = r * 88 + "px";
+          const v = prng();
+          d.style.background = v < 0.1 ? "#fbbb21" : v < 0.18 ? "#2460e8" : v < 0.23 ? "#a855f7" : "#0f1c45";
+          pxg.appendChild(d);
+          // diagonal wave from bottom-left to top-right, jittered
+          const diag = (c / (PXC - 1)) * 0.55 + (1 - r / (PXR - 1)) * 0.45;
+          pxCells.push({ el: d, d: Math.min(1, Math.max(0, diag + (prng() - 0.5) * 0.18)) });
+        }
+      }
+
+      // ---------------------------------------------------------------- eases
+      CustomEase.create("odoRoll", "M0,0 C0.08,0.42 0.24,0.86 0.5,0.97 0.7,1.01 0.86,1.003 1,1");
+      CustomEase.create("slam", "M0,0 C0.55,0 0.8,0.4 1,1");
+
+      // ================================================================ S0 — HOOK
+      // question: words rise through line masks (readable by ~0.3 s; logo, reel and tickers are already live on frame 0)
+      tl.fromTo(["#q1", "#q2", "#q3"], { yPercent: 115 }, { yPercent: 0, duration: 0.36, ease: "expo.out", stagger: 0.05 }, 0.0);
+      tl.fromTo("#q4", { yPercent: 115, rotation: -25 }, { yPercent: 0, rotation: 0, duration: 0.45, ease: "back.out(2.6)" }, 0.16);
+      // secondary action: "?" hops on the drop
+      tl.to("#q4", { keyframes: [{ y: -26, rotation: 10, duration: 0.11, ease: "power2.out" }, { y: 0, rotation: 0, duration: 0.24, ease: "bounce.out" }] }, 1.0);
+
+      // reel: constant-speed spin from frame 0, mechanical stop exactly on the drop (1.0 s)
+      const yOf = (i) => -i * RB;
+      tl.fromTo("#reel-strip", { y: yOf(24) }, { y: yOf(4), duration: 1.0, ease: "none" }, 0);
+      tl.fromTo("#fe-reel", { attr: { stdDeviation: "0 26" } }, { attr: { stdDeviation: "0 26" }, duration: 0.94, ease: "none" }, 0);
+      tl.to("#fe-reel", { attr: { stdDeviation: "0 0" }, duration: 0.06, ease: "power2.in" }, 0.94);
+      tl.to(
+        "#reel-strip",
+        {
+          keyframes: [
+            { y: yOf(4) + 46, duration: 0.05, ease: "power2.out" },
+            { y: yOf(4) - 14, duration: 0.1, ease: "power2.inOut" },
+            { y: yOf(4) + 5, duration: 0.08, ease: "sine.inOut" },
+            { y: yOf(4), duration: 0.08, ease: "sine.out" },
+          ],
+        },
+        1.0,
+      );
+      // card squash on the impact (drum "clunk")
+      tl.to("#reel", { keyframes: [{ scaleY: 0.94, scaleX: 1.02, duration: 0.05, ease: "power2.out" }, { scaleY: 1, scaleX: 1, duration: 0.3, ease: "elastic.out(1.1, 0.35)" }] }, 1.0);
+      // one programme per beat
+      [
+        [1.5, 3],
+        [2.0, 2],
+        [2.5, 1],
+      ].forEach(([t, idx]) => {
+        tl.to(
+          "#reel-strip",
+          {
+            keyframes: [
+              { y: yOf(idx) + 22, duration: 0.12, ease: "power3.in" },
+              { y: yOf(idx) - 7, duration: 0.07, ease: "power2.out" },
+              { y: yOf(idx), duration: 0.07, ease: "sine.inOut" },
+            ],
+          },
+          t - 0.12,
+        );
+        tl.fromTo("#fe-reel", { attr: { stdDeviation: "0 0" } }, { attr: { stdDeviation: "0 16" }, duration: 0.09, ease: "power2.in", immediateRender: false }, t - 0.12);
+        tl.to("#fe-reel", { attr: { stdDeviation: "0 0" }, duration: 0.05, ease: "power1.out" }, t - 0.03);
+      });
+
+      // tickers drift in opposite directions for the whole hook
+      tl.fromTo("#tk-a-track", { x: 0 }, { x: -760, duration: 3.62, ease: "none" }, 0);
+      tl.fromTo("#tk-b-track", { x: -900 }, { x: -140, duration: 3.62, ease: "none" }, 0);
+      // impact shake on the drop (whole hook layer)
+      tl.to("#s0", { keyframes: [{ x: -9, y: 5, duration: 0.03 }, { x: 7, y: -4, duration: 0.04 }, { x: -4, y: 2, duration: 0.04 }, { x: 0, y: 0, duration: 0.06 }] }, 1.0);
+
+      // "en Russie." SLAMS on the downbeat (3.0)
+      tl.fromTo(["#ru1", "#ru2"], { yPercent: 120 }, { yPercent: 0, duration: 0.2, ease: "slam", stagger: 0.04 }, 2.78);
+      tl.fromTo("#s0-ru", { scaleY: 1 }, { keyframes: [{ scaleY: 0.9, scaleX: 1.03, duration: 0.05 }, { scaleY: 1, scaleX: 1, duration: 0.28, ease: "elastic.out(1, 0.4)" }] }, 3.0);
+      tl.fromTo("#dot0", { scale: 0 }, { scale: 1, duration: 0.16, ease: "back.out(4)" }, 3.02);
+      // signature device #1 — the dot opens into the price scene: S1 is revealed through a
+      // circular portal that starts exactly at the dot (centre measured once in Chromium)
+      tl.fromTo(
+        "#s1",
+        { clipPath: "circle(18.6px at 958.2px 1132.4px)" },
+        { clipPath: "circle(2300px at 958.2px 1132.4px)", duration: 0.42, ease: "power3.in", immediateRender: false },
+        3.18,
+      );
+
+      // ================================================================ S1 — PRICE (odometer)
+      tl.fromTo("#pr-kicker", { opacity: 0, y: -24 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.4);
+      tl.fromTo("#pr-des", { opacity: 0, x: -50 }, { opacity: 1, x: 0, duration: 0.45, ease: "expo.out" }, 3.45);
+      tl.fromTo("#pr-euro", { opacity: 0, rotation: -40, scale: 0.4 }, { opacity: 1, rotation: 0, scale: 1, duration: 0.5, ease: "back.out(2)" }, 3.75);
+      tl.fromTo("#pr-deco", { rotation: -30, opacity: 0 }, { rotation: -12, opacity: 1, duration: 1.6, ease: "power2.out" }, 3.4);
+      // digits roll and land left->right, last one exactly on the beat (4.0)
+      const ODO_LAND = [3.86, 3.91, 3.96, 4.0];
+      ODO_TARGET.forEach((dgt, i) => {
+        const col = document.querySelectorAll(".odo .odo-col")[i];
+        const startIdx = 3 + i * 2;
+        const endIdx = 20 + dgt + (i % 2) * 10;
+        tl.fromTo(col, { y: -startIdx * 300 }, { y: -endIdx * 300, duration: ODO_LAND[i] - 3.4, ease: "odoRoll" }, 3.4);
+      });
+      tl.fromTo("#fe-odo", { attr: { stdDeviation: "0 22" } }, { attr: { stdDeviation: "0 0" }, duration: 0.6, ease: "power2.in" }, 3.4);
+      tl.fromTo("#pr-num", { scale: 1 }, { keyframes: [{ scale: 1.035, duration: 0.06, ease: "power2.out" }, { scale: 1, duration: 0.3, ease: "elastic.out(1, 0.45)" }] }, 4.0);
+      tl.fromTo("#pr-an", { scale: 0, rotation: 12 }, { scale: 1, rotation: -3, duration: 0.4, ease: "back.out(2.4)" }, 4.5);
+      tl.fromTo("#pr-sub", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4, ease: "circ.out" }, 4.52);
+
+      // FLIP: the full-screen gold scene retracts into the bento's gold card (5.0)
+      const CARD = { x: 60, y: 560, w: 470, h: 300 };
+      tl.to("#gold-bg", { clipPath: `inset(${CARD.y}px ${1080 - CARD.x - CARD.w}px ${1920 - CARD.y - CARD.h}px ${CARD.x}px round 36px)`, duration: 0.42, ease: "expo.inOut" }, 4.98);
+      tl.to(["#pr-kicker", "#pr-sub", "#pr-deco"], { opacity: 0, duration: 0.14, ease: "power1.in" }, 4.98);
+      tl.to("#pr-an", { rotation: 0, duration: 0.3, ease: "power2.out" }, 4.98);
+      tl.to("#price-group", { scale: 0.43, x: 58, y: 313, duration: 0.42, ease: "expo.inOut" }, 4.98);
+
+      // ================================================================ S2 — BENTO
+      tl.fromTo("#bn-kicker", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 5.12);
+      tl.fromTo(["#bt1", "#bt2", "#bt3"], { yPercent: 110 }, { yPercent: 0, duration: 0.5, ease: "expo.out", stagger: 0.06 }, 5.08);
+      [
+        ["#card-visa", 5.25, -7],
+        ["#card-logement", 5.5, 6],
+        ["#card-accueil", 5.75, -5],
+        ["#card-diplome", 6.0, 3],
+      ].forEach(([id, t, rot]) => {
+        tl.fromTo(id, { scale: 0.55, rotation: rot, y: 90, opacity: 0 }, { scale: 1, rotation: 0, y: 0, opacity: 1, duration: 0.42, ease: "back.out(1.7)" }, t);
+        tl.fromTo(`${id} .ic`, { scale: 0, rotation: -20 }, { scale: 1, rotation: 0, duration: 0.36, ease: "back.out(3)" }, t + 0.12);
+        tl.fromTo(`${id} .arrow`, { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(3)" }, t + 0.18);
+      });
+      // idle life on the icons while the grid breathes
+      tl.to("#ic-plane", { keyframes: [{ y: -8, duration: 0.25, ease: "sine.inOut" }, { y: 0, duration: 0.25, ease: "sine.inOut" }, { y: -8, duration: 0.25, ease: "sine.inOut" }] }, 6.25);
+      tl.to("#ic-house", { keyframes: [{ rotation: -6, duration: 0.12 }, { rotation: 5, duration: 0.14 }, { rotation: 0, duration: 0.2, ease: "back.out(3)" }] }, 6.5);
+      tl.to("#ic-cap", { keyframes: [{ y: -30, rotation: -12, duration: 0.2, ease: "power2.out" }, { y: 0, rotation: 0, duration: 0.35, ease: "bounce.out" }] }, 6.5);
+      // camera dives into the green card (zoom-through) -> journey
+      tl.to(["#cam1", "#cam2", "#cam3"], { scale: 7.5, filter: "blur(5px)", duration: 0.32, ease: "power3.in" }, 7.0);
+
+      // ================================================================ S3 — JOURNEY
+      tl.fromTo("#s3", { opacity: 0 }, { opacity: 1, duration: 0.1, ease: "none" }, 7.2);
+      tl.fromTo(["#jt1", "#jt2"], { xPercent: -104 }, { xPercent: 0, duration: 0.6, ease: "expo.out", stagger: 0.09 }, 7.28);
+      tl.fromTo("#pin-tun-g", { scale: 0, transformOrigin: "210px 1300px" }, { scale: 1, duration: 0.35, ease: "back.out(3)" }, 7.3);
+      tl.fromTo("#lbl-tun", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.35, ease: "power3.out" }, 7.36);
+      tl.fromTo("#pin-mow-g", { scale: 0, transformOrigin: "850px 680px" }, { scale: 1, duration: 0.35, ease: "back.out(3)" }, 7.42);
+      tl.fromTo("#lbl-mow", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.35, ease: "power3.out" }, 7.48);
+      tl.fromTo("#mow-chk", { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(3)" }, 8.62);
+      tl.fromTo("#j-sub", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 7.6);
+      // plane takes off from Tunis and flies the arc, trail drawing behind it
+      const motionLen = document.getElementById("motion").getTotalLength();
+      tl.set("#trail-reveal", { attr: { "stroke-dasharray": motionLen, "stroke-dashoffset": motionLen } }, 7.2);
+      tl.fromTo("#plane", { scale: 0 }, { scale: 1, duration: 0.25, ease: "back.out(2.5)" }, 7.3);
+      tl.fromTo(
+        "#plane-pos",
+        { motionPath: { path: "#motion", align: "#motion", alignOrigin: [0.5, 0.5], autoRotate: true, start: 0, end: 0 } },
+        { motionPath: { path: "#motion", align: "#motion", alignOrigin: [0.5, 0.5], autoRotate: true, start: 0, end: 1 }, duration: 1.15, ease: "power2.inOut" },
+        7.45,
+      );
+      tl.to("#trail-reveal", { attr: { "stroke-dashoffset": 0 }, duration: 1.15, ease: "power2.inOut" }, 7.45);
+      tl.to("#plane", { keyframes: [{ scale: 1.25, duration: 0.55, ease: "sine.inOut" }, { scale: 0.9, duration: 0.6, ease: "sine.inOut" }] }, 7.45);
+      tl.fromTo("#pin-mow-ring", { attr: { r: 30 }, opacity: 1 }, { attr: { r: 120 }, opacity: 0, duration: 0.55, ease: "power2.out" }, 8.6);
+      tl.fromTo("#pin-tun-ring", { attr: { r: 30 }, opacity: 1 }, { attr: { r: 110 }, opacity: 0, duration: 0.55, ease: "power2.out" }, 7.45);
+
+      // ================================================================ S4 — PROOF (diagonal colour-band wipe)
+      const wipe = { d: -2300 };
+      const s4wrap = document.getElementById("s4-wrap");
+      const band = document.getElementById("wipe-band");
+      function drawWipe() {
+        const D = wipe.d;
+        s4wrap.style.clipPath = `polygon(${D - 3000}px -3000px, ${D + 3000}px 3000px, ${D - 6000}px 3000px, ${D - 12000}px -3000px)`;
+        // band sits just ahead of the reveal front, perpendicular to the flight direction
+        const Dp = D + 120;
+        const cx = 540 + (Dp + 420) / 2;
+        const cy = 960 - (Dp + 420) / 2;
+        band.style.transform = `translate(${cx - 2100}px, ${cy - 120}px) rotate(45deg)`;
+      }
+      drawWipe();
+      tl.fromTo(wipe, { d: -2300 }, { d: 1500, duration: 0.42, ease: "power2.inOut", onUpdate: drawWipe }, 8.8);
+      // photos: A is revealed by the wipe; B and C open on the beat
+      tl.fromTo("#img-a", { scale: 1.22 }, { scale: 1.04, duration: 2.6, ease: "power1.out" }, 8.8);
+      tl.fromTo("#ph-b", { clipPath: "inset(100% 0% 0% 0% round 32px)" }, { clipPath: "inset(0% 0% 0% 0% round 32px)", duration: 0.45, ease: "expo.out" }, 9.1);
+      tl.fromTo("#img-b", { scale: 1.3 }, { scale: 1.05, duration: 2.0, ease: "power2.out" }, 9.1);
+      tl.fromTo("#ph-c", { clipPath: "inset(0% 0% 0% 100% round 32px)" }, { clipPath: "inset(0% 0% 0% 0% round 32px)", duration: 0.45, ease: "expo.out" }, 9.22);
+      tl.fromTo("#img-c", { scale: 1.3 }, { scale: 1.05, duration: 1.8, ease: "power2.out" }, 9.22);
+      tl.fromTo("#pf-kicker", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 9.05);
+      // stats: black cards punch up, counters land on beats
+      tl.fromTo("#st-a", { y: 140, scale: 0.85, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.45, ease: "expo.out" }, 9.34);
+      tl.fromTo("#st-b", { y: 140, scale: 0.85, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.45, ease: "expo.out" }, 10.0);
+      const ca = { v: 0 },
+        cb = { v: 0 };
+      const numA = document.getElementById("num-a"),
+        numB = document.getElementById("num-b");
+      const fmt = (n) => (n >= 1000 ? Math.floor(n / 1000) + " " + String(n % 1000).padStart(3, "0") : String(n));
+      tl.fromTo(ca, { v: 0 }, { v: 1200, duration: 0.6, ease: "power2.out", immediateRender: false, onUpdate: () => (numA.textContent = "+" + fmt(Math.round(ca.v))) }, 9.4);
+      tl.fromTo(cb, { v: 0 }, { v: 40, duration: 0.5, ease: "power2.out", immediateRender: false, onUpdate: () => (numB.textContent = Math.round(cb.v) + (cb.v >= 40 ? "+" : "")) }, 10.0);
+      tl.fromTo(["#num-a", "#num-b"], { scale: 1 }, { keyframes: [{ scale: 1.08, duration: 0.06 }, { scale: 1, duration: 0.25, ease: "back.out(3)" }], stagger: 0.5 }, 10.0);
+
+      // ================================================================ PIXEL TRANSITION (10.72 -> 11.42)
+      pxCells.forEach((c) => {
+        // cover completes by 11.02 (S5 appears underneath), reveal starts at 11.04
+        const tin = 10.7 + c.d * 0.22;
+        const tout = 11.04 + c.d * 0.26;
+        tl.fromTo(c.el, { scale: 0 }, { scale: 1.02, duration: 0.1, ease: "power2.out" }, tin);
+        tl.to(c.el, { scale: 0, duration: 0.12, ease: "power2.in" }, tout);
+      });
+
+      // ================================================================ S5 — NIGHT CITY (canvas)
+      const cv = document.getElementById("city");
+      const ctx = cv.getContext("2d");
+      const crng = mulberry32(1987);
+      const S5_START = 10.95;
+      const buildings = [];
+      // landmark zones keep their foreground buildings low so the silhouettes read
+      const TOWER_ZONE = [96, 300];
+      const CATH_ZONE = [676, 1100];
+      {
+        let x = -16;
+        let i = 0;
+        while (x < 1100) {
+          const w = Math.round(70 + crng() * 90);
+          const mid = x + w / 2;
+          const centre = Math.abs(mid - 540) / 540; // 0 centre .. 1 edge
+          let h = Math.round(190 + crng() * 220 + centre * 150);
+          const inTower = mid > TOWER_ZONE[0] && mid < TOWER_ZONE[1];
+          const inCath = mid > CATH_ZONE[0] && mid < CATH_ZONE[1];
+          if (inTower) h = Math.round(150 + crng() * 70);
+          if (inCath) h = Math.round(110 + crng() * 90);
+          buildings.push({ x, w, h, i, seed: crng() });
+          x += w + Math.round(4 + crng() * 10);
+          i++;
+        }
+      }
+      // windows
+      buildings.forEach((b) => {
+        b.wins = [];
+        const cols = Math.max(2, Math.floor((b.w - 16) / 24));
+        const rows = Math.floor((b.h - 30) / 34);
+        const ox = (b.w - cols * 24 + 8) / 2;
+        for (let r = 0; r < rows; r++)
+          for (let c = 0; c < cols; c++) {
+            const v = crng();
+            if (v < 0.62) b.wins.push({ x: ox + c * 24, y: 26 + r * 34, on: 0.42 + crng() * 1.55, flick: crng() });
+          }
+      });
+      const flakes = [];
+      for (let i = 0; i < 95; i++)
+        flakes.push({ x: crng() * 1080, y: crng() * 1980, s: 5 + Math.floor(crng() * 3) * 3, v: 50 + crng() * 90, ph: crng() * 6.28, a: 0.25 + crng() * 0.45 });
+      const pz = { t: 0 };
+      const easeOut = gsap.parseEase("power3.out");
+      const easeBack = gsap.parseEase("back.out(1.5)");
+      // Spasskaya tower (pixel map, 12 px cells)
+      const TOWER = [
+        "....R....",
+        "...RGR...",
+        "....R....",
+        "....N....",
+        "...NNN...",
+        "...NNN...",
+        "..NNNNN..",
+        "..KRRRK..",
+        "..RGRGR..",
+        "..RRRRR..",
+        ".KRRRRRK.",
+        ".RRGRGRR.",
+        ".RRRRRRR.",
+        ".RRRRRRR.",
+        "KRRRRRRRK",
+        "RRRGRGRRR",
+        "RRRRRRRRR",
+        "RRRRRRRRR",
+        "RRGGRGGRR",
+        "RRGGRGGRR",
+        "RRRRRRRRR",
+        "RRRRRRRRR",
+        "RRRRRRRRR",
+        "RRRRRRRRR",
+      ];
+      // Saint Basil's in the RusStudy palette: onion bulbs with spiral stripes
+      const BULB = [0, 0, 1, 1, 2, 3, 4, 5, 5, 4, 3, 2, 2]; // half-width per row (cells)
+      const DOMES = [
+        { x: 748, top: 1296, A: "P", B: "G", drumH: 150, drum: "#b91c1c", d: 0.0 },
+        { x: 846, top: 1250, A: "B", B: "W", drumH: 210, drum: "#c2410c", d: 0.07 },
+        { x: 952, top: 1286, A: "N", B: "G", drumH: 170, drum: "#b91c1c", d: 0.12 },
+        { x: 1048, top: 1336, A: "O", B: "W", drumH: 120, drum: "#c2410c", d: 0.18 },
+      ];
+      const TENT = { x: 900, top: 1226, h: 250 }; // central hipped spire
+      function cell(c, x, y, px) {
+        ctx.fillStyle = PAL[c] || c;
+        ctx.fillRect(Math.round(x), Math.round(y), px, px);
+      }
+      function drawMap(map, ox, oy, px) {
+        for (let y = 0; y < map.length; y++)
+          for (let x = 0; x < map[y].length; x++) {
+            const c = map[y][x];
+            if (c !== ".") cell(c, ox + x * px, oy + y * px, px);
+          }
+      }
+      function drawDome(dm, off) {
+        const px = 10;
+        for (let r = 0; r < BULB.length; r++) {
+          const hw = BULB[r];
+          for (let dx = -hw; dx <= hw; dx++) {
+            let c;
+            if (r < 2) {
+              if (dx !== 0) continue;
+              c = "G";
+            } else if (r < 4) c = "G";
+            else if (r >= 11) c = "K";
+            else c = ((dx + 10 + r) >> 1) % 2 ? dm.A : dm.B;
+            cell(c, dm.x + dx * px - px / 2, dm.top + r * px + off, px);
+          }
+        }
+        // drum with gold slit windows
+        const dTop = dm.top + BULB.length * px + off;
+        ctx.fillStyle = dm.drum;
+        ctx.fillRect(dm.x - 3.5 * px, dTop, 7 * px, dm.drumH + 600);
+        ctx.fillStyle = "#7f1d1d";
+        ctx.fillRect(dm.x - 3.5 * px, dTop, 7 * px, px);
+        ctx.fillStyle = "#fbbb21";
+        for (let yy = 2 * px; yy < dm.drumH - px; yy += 4 * px) {
+          ctx.fillRect(dm.x - 2 * px, dTop + yy, px, 2 * px);
+          ctx.fillRect(dm.x + px, dTop + yy, px, 2 * px);
+        }
+      }
+      function drawLandmarks(lt) {
+        // tower rises first
+        const riseT = easeOut(Math.min(1, Math.max(0, (lt - 0.06) / 0.6)));
+        const towerX = 140;
+        const towerBase = 1920 - 380;
+        const tOff = (1 - riseT) * 900;
+        drawMap(TOWER, towerX, towerBase - TOWER.length * 12 + tOff, 12);
+        ctx.fillStyle = "#8b1c1c";
+        ctx.fillRect(towerX, towerBase + tOff, 9 * 12, 600);
+        ctx.fillStyle = "#fbbb21";
+        ctx.fillRect(towerX + 4 * 12, towerBase + tOff + 36, 12, 24); // clock glow
+        // cathedral: base, tent spire, bulbs (staggered spring rise)
+        const rb = easeOut(Math.min(1, Math.max(0, (lt - 0.1) / 0.55)));
+        const bOff = (1 - rb) * 700;
+        ctx.fillStyle = "#991b1b";
+        ctx.fillRect(700, 1500 + bOff, 400, 500);
+        ctx.fillStyle = "#fbbb21";
+        ctx.fillRect(700, 1500 + bOff, 400, 10);
+        for (let ax = 716; ax < 1080; ax += 52) {
+          ctx.fillStyle = "#f0ebe3";
+          ctx.fillRect(ax, 1540 + bOff, 20, 40);
+          ctx.fillRect(ax + 4, 1534 + bOff, 12, 6);
+        }
+        const rt = easeBack(Math.min(1, Math.max(0, (lt - 0.16) / 0.55)));
+        const tOff2 = (1 - rt) * 900;
+        for (let k = 0; k < TENT.h / 10; k++) {
+          const hw = Math.min(5, 1 + Math.floor(k / 5));
+          for (let dx = -hw; dx <= hw; dx++) cell((dx + k) % 3 === 0 ? "G" : "N", TENT.x + dx * 10 - 5, TENT.top + k * 10 + tOff2, 10);
+        }
+        cell("G", TENT.x - 5, TENT.top - 20 + tOff2, 10);
+        cell("G", TENT.x - 5, TENT.top - 10 + tOff2, 10);
+        ctx.fillStyle = "#b91c1c";
+        ctx.fillRect(TENT.x - 50, TENT.top + TENT.h + tOff2, 100, 600);
+        DOMES.forEach((dm) => {
+          const rr = easeBack(Math.min(1, Math.max(0, (lt - 0.14 - dm.d) / 0.55)));
+          drawDome(dm, (1 - rr) * 900);
+        });
+      }
+      function drawCity() {
+        const lt = pz.t; // seconds since S5 start
+        ctx.clearRect(0, 0, 1080, 1920);
+        // snow behind
+        flakes.forEach((f, i) => {
+          if (i % 2) return;
+          const y = ((f.y + f.v * lt) % 1980) - 40;
+          const x = f.x + 16 * Math.sin(f.ph + lt * 1.2);
+          ctx.fillStyle = `rgba(150,178,255,${f.a * 0.7})`;
+          ctx.fillRect(Math.round(x), Math.round(y), f.s, f.s);
+        });
+        // chord flash (13.0) brightens everything
+        const flashT = 13.0 - S5_START;
+        const flash = lt >= flashT ? Math.exp(-(lt - flashT) * 4.5) : 0;
+        drawLandmarks(lt);
+        // buildings + windows
+        buildings.forEach((b) => {
+          const st = 0.02 + Math.abs(b.x + b.w / 2 - 540) / 540 * 0.28 + b.seed * 0.08;
+          const p = easeOut(Math.min(1, Math.max(0, (lt - st) / 0.55)));
+          const top = 1920 - b.h + (1 - p) * (b.h + 60);
+          ctx.fillStyle = "#0b0f1c";
+          ctx.fillRect(b.x, top, b.w, b.h + 80);
+          // roof details
+          ctx.fillStyle = "#121a30";
+          ctx.fillRect(b.x, top, b.w, 6);
+          b.wins.forEach((w) => {
+            const on = lt >= w.on;
+            if (!on && flash <= 0.02) return;
+            const age = lt - w.on;
+            let col;
+            if (on && age < 0.12) col = "rgba(255,214,102,1)";
+            else if (on) col = w.flick > 0.85 ? "rgba(156,192,255,0.85)" : "rgba(214,178,92,0.95)";
+            else col = `rgba(255,214,102,${flash * 0.9})`;
+            ctx.fillStyle = col;
+            ctx.fillRect(Math.round(b.x + w.x), Math.round(top + w.y), 14, 20);
+          });
+        });
+        // foreground snow
+        flakes.forEach((f, i) => {
+          if (!(i % 2)) return;
+          const y = ((f.y + f.v * 1.4 * lt) % 1980) - 40;
+          const x = f.x + 22 * Math.sin(f.ph + lt * 1.5);
+          ctx.fillStyle = `rgba(190,210,255,${f.a})`;
+          ctx.fillRect(Math.round(x), Math.round(y), f.s + 2, f.s + 2);
+        });
+        if (flash > 0) {
+          ctx.fillStyle = `rgba(168,85,247,${flash * 0.18})`;
+          ctx.fillRect(0, 0, 1080, 1920);
+        }
+      }
+      drawCity();
+      tl.fromTo(pz, { t: 0 }, { t: 4.05, duration: 4.05, ease: "none", immediateRender: false, onUpdate: drawCity }, S5_START);
+
+      // headline: "Étudie en Russie." then "Change ta vie."
+      tl.fromTo(["#h1a", "#h1b", "#h1c"], { yPercent: 115 }, { yPercent: 0, duration: 0.55, ease: "expo.out", stagger: 0.08 }, 11.12);
+      tl.fromTo(".c2", { scale: 0, y: 40, opacity: 0 }, { scale: 1, y: 0, opacity: 1, duration: 0.38, ease: "back.out(2.4)", stagger: 0.028 }, 12.0);
+      // the flying dot (signature device #2)
+      // glyph-dot centres measured once in Chromium with Space Grotesk loaded (layout-only, no runtime measuring)
+      const DOT5 = { x: 894.5, y: 822 }; // period after "Change ta vie" (116 px)
+      const LGDOT = { x: 920.9, y: 652.3 }; // period after "RusStudy" (176 px)
+      const DOTD = 0.19 * 116; // dot diameter at headline size
+      const DOTD_LG = 0.19 * 176;
+      tl.set("#fdot-pos", { x: DOT5.x - 20, y: DOT5.y - 20 }, S5_START);
+      tl.fromTo("#fdot", { scale: 0 }, { scale: DOTD / 40, duration: 0.3, ease: "back.out(4)" }, 12.34);
+      // anticipation: squash down before launch
+      tl.to("#fdot", { scaleX: (DOTD / 40) * 1.35, scaleY: (DOTD / 40) * 0.65, duration: 0.12, ease: "power2.out" }, 12.6);
+      tl.to(["#hl1", "#hl2"], { opacity: 0, y: -40, filter: "blur(8px)", duration: 0.18, ease: "power2.in", stagger: 0.03 }, 12.68);
+      const dotPath = `M${DOT5.x - 20},${DOT5.y - 20} Q${(DOT5.x + LGDOT.x) / 2 - 20},${Math.min(DOT5.y, LGDOT.y) - 330} ${LGDOT.x - 20},${LGDOT.y - 20}`;
+      tl.to("#fdot-pos", { motionPath: { path: dotPath }, duration: 0.3, ease: "power2.inOut" }, 12.72);
+      tl.to("#fdot", { scaleX: (DOTD_LG / 40) * 0.7, scaleY: (DOTD_LG / 40) * 1.45, duration: 0.15, ease: "power2.out" }, 12.72);
+      tl.to("#fdot", { keyframes: [{ scaleX: (DOTD_LG / 40) * 1.5, scaleY: (DOTD_LG / 40) * 0.6, duration: 0.05, ease: "power2.out" }, { scaleX: DOTD_LG / 40, scaleY: DOTD_LG / 40, duration: 0.42, ease: "elastic.out(1.2, 0.35)" }] }, 13.02);
+      tl.to("#fdot", { backgroundColor: "#ffffff", duration: 0.25, ease: "power1.inOut" }, 13.08);
+      // LOGO slams on the final chord (13.0)
+      tl.fromTo("#lg-rus", { x: -320, opacity: 0, skewX: 18 }, { x: 0, opacity: 1, skewX: 0, duration: 0.42, ease: "expo.out" }, 12.86);
+      tl.fromTo("#lg-study", { x: 320, opacity: 0, skewX: -18 }, { x: 0, opacity: 1, skewX: 0, duration: 0.42, ease: "expo.out" }, 12.86);
+      tl.fromTo("#ring", { scale: 0.2, opacity: 0.9 }, { scale: 6, opacity: 0, duration: 0.7, ease: "expo.out", immediateRender: false }, 13.0);
+      // tracking-in: each glyph slides toward the centre (transform-only, seek-safe)
+      document.querySelectorAll("#lg-tag .tg").forEach((g, i, all) => {
+        const k = i - (all.length - 1) / 2;
+        tl.fromTo(g, { x: k * 34, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: "expo.out" }, 13.22);
+      });
+      // CTA
+      tl.fromTo("#cta", { scale: 0.5, y: 60, opacity: 0 }, { scale: 1, y: 0, opacity: 1, duration: 0.5, ease: "back.out(1.8)" }, 13.5);
+      tl.fromTo("#cta-arrow", { rotation: -90, scale: 0 }, { rotation: 0, scale: 1, duration: 0.45, ease: "back.out(2.5)" }, 13.62);
+      tl.fromTo(".uc", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.2, ease: "power2.out", stagger: 0.022 }, 13.78);
+      tl.fromTo("#urg", { y: -110, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "back.out(2)" }, 14.0);
+      // tap cue: pixel hand taps the CTA
+      const TAP = { x: 862, y: 918 };
+      tl.fromTo("#cursor", { x: TAP.x + 260, y: TAP.y + 420, opacity: 0 }, { x: TAP.x, y: TAP.y, opacity: 1, duration: 0.38, ease: "power3.out" }, 14.0);
+      tl.to("#cursor", { keyframes: [{ scale: 0.82, duration: 0.06, ease: "power2.in" }, { scale: 1, duration: 0.2, ease: "back.out(3)" }] }, 14.42);
+      tl.fromTo("#click-ring", { scale: 0.2, opacity: 1 }, { scale: 2.2, opacity: 0, duration: 0.5, ease: "expo.out", immediateRender: false }, 14.47);
+      tl.to("#cta", { keyframes: [{ scale: 0.965, duration: 0.06, ease: "power2.in" }, { scale: 1, duration: 0.35, ease: "elastic.out(1, 0.4)" }] }, 14.44);
+      tl.to("#cta-arrow", { keyframes: [{ x: 8, y: -8, duration: 0.12, ease: "power2.out" }, { x: 0, y: 0, duration: 0.3, ease: "back.out(3)" }] }, 14.47);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

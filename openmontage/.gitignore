@@ -48,6 +48,25 @@ projects/medilearn/renders/*
 !projects/medilearn/assets/
 projects/medilearn/assets/*
 !projects/medilearn/assets/originals/
+# RusStudy 15 s motion spot: source composition, scripts, artifacts and the
+# finished renders (the other music candidates, analysis images, intermediate
+# WAVs and snapshots stay regenerable/ignored).
+!projects/russtudy-motion-15s/
+projects/russtudy-motion-15s/*
+!projects/russtudy-motion-15s/HANDOFF.md
+!projects/russtudy-motion-15s/project.json
+!projects/russtudy-motion-15s/artifacts/
+!projects/russtudy-motion-15s/scripts/
+!projects/russtudy-motion-15s/hyperframes/
+projects/russtudy-motion-15s/hyperframes/snapshots/
+!projects/russtudy-motion-15s/renders/
+!projects/russtudy-motion-15s/assets/
+projects/russtudy-motion-15s/assets/*
+!projects/russtudy-motion-15s/assets/music/
+projects/russtudy-motion-15s/assets/music/*
+!projects/russtudy-motion-15s/assets/music/candidates/
+projects/russtudy-motion-15s/assets/music/candidates/*
+!projects/russtudy-motion-15s/assets/music/candidates/11_funky.mp3
 
 # Corpus directories (downloaded stock clips, thumbnails, embeddings —
 # regenerable from source APIs via corpus_builder). Explicit rule even

@@ -1,0 +1,56 @@
+{
+  "version": "1.0",
+  "title": "RusStudy — Étudie en Russie. Change ta vie. (spot motion design 15 s)",
+  "total_duration_seconds": 15,
+  "sections": [
+    {
+      "id": "s0",
+      "label": "Hook",
+      "text": "Bac en poche ? MÉDECINE · INGÉNIERIE · PHARMACIE · BUSINESS — en Russie.",
+      "start_seconds": 0.0,
+      "end_seconds": 3.2
+    },
+    {
+      "id": "s1",
+      "label": "Prix",
+      "text": "Frais de scolarité — dès 2 200 € /an — jusqu'à 4× moins cher qu'en Europe",
+      "start_seconds": 3.2,
+      "end_seconds": 5.0
+    },
+    {
+      "id": "s2",
+      "label": "Accompagnement",
+      "text": "Accompagnement total — On gère tout. Visa garanti · Logement garanti à 100 % · Accueil à l'aéroport · Diplômes d'État reconnus",
+      "start_seconds": 5.0,
+      "end_seconds": 7.2
+    },
+    {
+      "id": "s3",
+      "label": "Trajet",
+      "text": "On t'accueille à l'arrivée. TUNIS → MOSCOU. Un tuteur bilingue t'attend sur place.",
+      "start_seconds": 7.2,
+      "end_seconds": 8.9
+    },
+    {
+      "id": "s4",
+      "label": "Preuve",
+      "text": "La Russie en vrai — +1 200 étudiants placés en Russie · 40+ universités d'État partenaires",
+      "start_seconds": 8.9,
+      "end_seconds": 11.0
+    },
+    {
+      "id": "s5",
+      "label": "Promesse",
+      "text": "Étudie en Russie. Change ta vie.",
+      "start_seconds": 11.0,
+      "end_seconds": 13.0
+    },
+    {
+      "id": "s6",
+      "label": "Logo + CTA",
+      "text": "RusStudy. ÉTUDES EN RUSSIE — 1ère consultation gratuite — russieetudes.com — Places limitées · Session 2026–2027",
+      "start_seconds": 13.0,
+      "end_seconds": 15.0
+    }
+  ]
+}
