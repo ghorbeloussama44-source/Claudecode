@@ -367,6 +367,72 @@
       "user_visible": true,
       "user_approved": false,
       "confidence": 0.8
+    },
+    {
+      "decision_id": "d14",
+      "stage": "compose",
+      "category": "visual_accuracy_check",
+      "subject": "Prix en dinars tunisiens (v6)",
+      "options_considered": [
+        {
+          "option_id": "dt",
+          "label": "« dès 12 000 DT », montant donné par le client",
+          "score": 0.85,
+          "reason": "devise de la cible ; « DT » est l'abréviation courante en Tunisie"
+        },
+        {
+          "option_id": "dt-eur",
+          "label": "« 12 000 DT ≈ 3 500 € »",
+          "score": 0.4,
+          "reason": "garde la référence en euros",
+          "rejected_because": "deux montants à lire en quelques secondes ; le client demande le prix en dinars"
+        },
+        {
+          "option_id": "tnd",
+          "label": "« 12 000 TND » (code ISO)",
+          "score": 0.5,
+          "reason": "terme employé par le client",
+          "rejected_because": "abréviation bancaire, moins familière que « DT » sur une affiche"
+        }
+      ],
+      "selected": "dt",
+      "reason": "Demande du client : « le prix en dinars tunisien soit équivalent 12000 tnd ». Compteur à 5 chiffres ; frais universitaires convertis au même taux (2 200 € x 12 000 / 3 500 ≈ 7 543 DT, affiché « dès 7 500 DT », à confirmer par le client) ; en derja « 12 000 د.ت ». Seules les versions 60 s sont rendues (« on garde les versions 60 s »).",
+      "user_visible": true,
+      "user_approved": false,
+      "confidence": 0.75
+    },
+    {
+      "decision_id": "d15",
+      "stage": "compose",
+      "category": "capability_extension",
+      "subject": "Version en arabe tunisien (v6)",
+      "options_considered": [
+        {
+          "option_id": "derja-script",
+          "label": "Derja en écriture arabe, générée par script depuis les compositions françaises",
+          "score": 0.85,
+          "reason": "même animation, même timing, même bande-son ; une retouche faite en français se propage ; le script s'arrête si un texte français a changé"
+        },
+        {
+          "option_id": "arabe-standard",
+          "label": "Arabe standard (fusha)",
+          "score": 0.4,
+          "reason": "registre neutre",
+          "rejected_because": "le client demande l'arabe tunisien ; la derja parle directement aux bacheliers et aux familles"
+        },
+        {
+          "option_id": "miroir-complet",
+          "label": "Miroir complet de la mise en page 16:9",
+          "score": 0.3,
+          "reason": "lecture de droite à gauche partout",
+          "rejected_because": "inverserait la géographie Tunis → Moscou et le sens des trajets"
+        }
+      ],
+      "selected": "derja-script",
+      "reason": "scripts/make_arabic.py : police Cairo pour l'arabe, textes alignés à droite, cartes et téléphone en miroir, HUD qui se remplit depuis la droite, tableau des arrivées révélé colonne par colonne ; numéro, site, codes et chiffres en écriture latine. Textes à faire relire par un locuteur tunisien avant diffusion.",
+      "user_visible": true,
+      "user_approved": false,
+      "confidence": 0.75
     }
   ]
 }

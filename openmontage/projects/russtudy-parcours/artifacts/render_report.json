@@ -43,7 +43,7 @@
       "resolution": "1080x1920",
       "fps": 60,
       "duration_seconds": 60.0,
-      "file_size_bytes": 35130303,
+      "file_size_bytes": 35091266,
       "platform_target": "Rythme ralenti 60 s — TikTok / Shorts / Reels"
     },
     {
@@ -54,8 +54,30 @@
       "resolution": "1920x1080",
       "fps": 60,
       "duration_seconds": 60.0,
-      "file_size_bytes": 34469581,
+      "file_size_bytes": 34517358,
       "platform_target": "Rythme ralenti 60 s — YouTube (16:9)"
+    },
+    {
+      "path": "renders/russtudy_parcours_60s_derja_60fps.mp4",
+      "format": "mp4",
+      "codec": "h264",
+      "audio_codec": "aac",
+      "resolution": "1080x1920",
+      "fps": 60,
+      "duration_seconds": 60.0,
+      "file_size_bytes": 32152413,
+      "platform_target": "60 s en arabe tunisien — TikTok / Shorts / Reels"
+    },
+    {
+      "path": "renders/russtudy_parcours_60s_derja_youtube_16x9_60fps.mp4",
+      "format": "mp4",
+      "codec": "h264",
+      "audio_codec": "aac",
+      "resolution": "1920x1080",
+      "fps": 60,
+      "duration_seconds": 60.0,
+      "file_size_bytes": 31568070,
+      "platform_target": "60 s en arabe tunisien — YouTube (16:9)"
     }
   ]
 }

@@ -29,6 +29,15 @@
       "license": "SIL Open Font License 1.1"
     },
     {
+      "id": "font-cairo",
+      "type": "font",
+      "path": "hyperframes/assets/fonts/Cairo-arabic.woff2",
+      "source_tool": "Google Fonts (Cairo, sous-ensemble arabe, graisses 400-900)",
+      "scene_id": "all",
+      "license": "SIL Open Font License 1.1",
+      "generation_summary": "Glyphes arabes des versions derja ; le latin, les chiffres et le logo restent en Space Grotesk"
+    },
+    {
       "id": "map-land-mask",
       "type": "diagram",
       "path": "scripts/make_dotmap.py",
@@ -99,6 +108,14 @@
       "source_tool": "scripts/make_slow.py",
       "scene_id": "all",
       "generation_summary": "Version 60 s au rythme ralenti (v4) : la timeline de 40 s est rejouée 1,5 fois plus lentement par une timeline racine qui la parcourt ; data-start / data-duration x 1,5 ; idem pour hyperframes-60s-16x9/"
+    },
+    {
+      "id": "composition-ar",
+      "type": "animation",
+      "path": "hyperframes-ar/index.html",
+      "source_tool": "scripts/make_arabic.py",
+      "scene_id": "all",
+      "generation_summary": "Version en arabe tunisien (derja, v6) dérivée des compositions françaises 9:16 et 16:9 : textes traduits (remplacements vérifiés), police Cairo, mise en page de droite à gauche, animations lettre par lettre remplacées par des mots ; même timing et même bande-son ; idem hyperframes-ar-16x9/, puis hyperframes-ar-60s*/ par make_slow.py"
     },
     {
       "id": "soundtrack-60s",
