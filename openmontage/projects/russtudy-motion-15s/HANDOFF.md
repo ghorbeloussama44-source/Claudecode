@@ -26,23 +26,55 @@ cliquer vers le site pour la **1ère consultation gratuite**.
 - `scripts/build_audio.py` — montage musical sur mesures + synthèse des SFX +
   mixage (ducking, limiteur, loudnorm linéaire −14 LUFS / −1,5 dBTP max).
 
-## Re-rendre
+## Retrouver le projet
 
-```bash
-cd openmontage/projects/russtudy-motion-15s
-python3 scripts/build_audio.py                      # -> assets/audio/soundtrack.wav
-cp assets/audio/soundtrack.wav hyperframes/assets/audio/
-cd hyperframes
-npx --yes hyperframes@0.8.133 lint                  # 0 erreur attendue
-npx --yes hyperframes@0.8.133 snapshot --at 1,3.5,6.3,8.2,9.8,11.6,14.9
-npx --yes hyperframes@0.8.133 render --quality high --fps 60 --output ../renders/_hf.mp4
-cd .. && ffmpeg -y -i renders/_hf.mp4 -i assets/audio/soundtrack.wav -map 0:v:0 -map 1:a:0 \
-  -c:v copy -c:a aac -b:a 256k -ar 48000 -movflags +faststart -t 15 renders/russtudy_motion_15s_60fps.mp4
-```
+- Branche Git : `claude/install-openmontage-263px9` (la branche par défaut du dépôt est
+  une autre : `git fetch origin claude/install-openmontage-263px9 && git checkout claude/install-openmontage-263px9`).
+- Version livrée v1 figée par le tag **`russtudy-motion-15s-v1`**
+  (`git checkout russtudy-motion-15s-v1` pour la revoir telle quelle, ou
+  `git diff russtudy-motion-15s-v1 -- openmontage/projects/russtudy-motion-15s` pour voir
+  ce qui a changé depuis).
+- Dossier : `openmontage/projects/russtudy-motion-15s/`. Le kit de marque extrait du site
+  est dans `artifacts/brand-kit.md` (+ captures dans `artifacts/reference/`).
+
+## Retoucher en 3 étapes
+
+1. Modifier `hyperframes/index.html` (texte, couleurs, timings) et, si un timing visuel
+   bouge, le cue sonore correspondant dans `artifacts/sfx_cues.json` (`at`).
+2. Contrôler vite : `bash scripts/render_all.sh --draft` → `renders/draft.mp4` (≈ 40 s),
+   ou des images fixes : `cd hyperframes && npx --yes hyperframes@0.8.133 snapshot --at 1,3.5,6.3,8.2,9.8,11.6,14.9`.
+3. Livrer : `bash scripts/render_all.sh` → refait la bande-son, le lint, les rendus
+   60 fps et 30 fps, le remux audio, les couvertures et les artefacts (≈ 2 min 30).
+
+Prérequis d'un conteneur neuf : Node 22 + ffmpeg (déjà dans l'image) ; le script
+installe les dépendances Python (`scripts/requirements.txt`) et le Chrome de
+HyperFrames (`browser ensure`) si besoin. Retouche visuelle à la souris possible en
+local : `cd hyperframes && npx --yes hyperframes@0.8.133 preview` ouvre le Studio.
 
 Le remux final est volontaire : le pipeline audio de HyperFrames ressort le son
 ~1,4 dB trop bas (−15,4 LUFS) ; on remplace donc la piste par le master exact
 (synchro vérifiée par corrélation croisée : décalage 0 échantillon).
+
+## Où modifier quoi (`hyperframes/index.html` sauf mention)
+
+| Élément | Où | Attention |
+|---|---|---|
+| Couleurs | bloc CSS `:root` | garder les tokens du site (`artifacts/brand-kit.md`) |
+| « Bac en poche ? » | HTML `#s0-q` (spans `#q1`…`#q4`) | centré, libre |
+| Filières du rouleau + couleurs | JS `const PROG` | mot ≤ ~840 px à 158 px ; l'ordre des 4 mots montrés est fixé par les indices 4→1 |
+| Bandeaux défilants | JS `TKA`, `TKB` | décoratifs |
+| « en Russie. » | HTML `#s0-ru` | si le texte change : relancer `node scripts/measure_glyphs.js` (centre du portail) |
+| Prix (chiffres) | JS `ODO_TARGET` (+ `ODO_LAND` pour l'arrivée) | même nombre de chiffres, sinon recalculer la rétractation en carte (`#price-group` scale/x/y) |
+| « /an », sous-titre, kicker prix | HTML `#pr-an`, `#pr-sub`, `#pr-kicker` | |
+| Titre et cartes bento | HTML `#bn-title`, `#card-*` (`.t1` / `.t2`) | texte ≤ largeur de carte |
+| Trajet | HTML `#j-title`, `#lbl-tun`, `#lbl-mow`, `#j-sub` ; tracé `M210,1300 C240,810 600,510 850,680` (3 occurrences + pins) | |
+| Photos + légendes | HTML `#ph-a/b/c` (`img`, `.lbl`), fichiers dans `hyperframes/assets/img/` | |
+| Chiffres preuve | JS tweens `ca` (1200) et `cb` (40) + HTML `.lab` | |
+| « Étudie en Russie. » / « Change ta vie » | HTML `#h1a`…`#h1c`, JS `HL2` | si « Change ta vie » change : `measure_glyphs.js` → `DOT5` |
+| Signature, CTA, URL, urgence | JS `TAG_TXT`, HTML `#cta .ctt`, JS `URL_TXT`, HTML `#urg` | CTA ≤ ~640 px à 54 px |
+| Timings | positions GSAP (secondes) sous les bannières `S0 — HOOK` … `S5 — NIGHT CITY` du script | rester sur la grille de 0,5 s ; reporter dans `sfx_cues.json` |
+| Musique | `scripts/build_audio.py` → `SEGMENTS` | coupes 10 ms avant une attaque, sur un temps fort |
+| Volume / mix | `artifacts/sfx_cues.json` (`gain_db`), `build_audio.py` (ducking, limiteur) | cible −14 LUFS / ≤ −1,5 dBTP |
 
 ## Grille musicale (ne pas casser)
 
