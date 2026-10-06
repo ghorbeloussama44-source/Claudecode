@@ -275,6 +275,39 @@
       "user_visible": true,
       "user_approved": false,
       "confidence": 0.85
+    },
+    {
+      "decision_id": "d11",
+      "stage": "compose",
+      "category": "motion_commitment",
+      "subject": "Version au rythme moins accéléré (v4)",
+      "options_considered": [
+        {
+          "option_id": "ralenti-x1.5",
+          "label": "Même film rejoué 1,5 fois plus lentement (60 s), musique remontée",
+          "score": 0.85,
+          "reason": "scènes 1,5 fois plus longues et animations plus douces ; chaque image reste identique à celle de la version 40 s ; les retouches se propagent"
+        },
+        {
+          "option_id": "pauses",
+          "label": "Allonger seulement les temps de pause entre les animations",
+          "score": 0.6,
+          "reason": "animations aussi vives qu'avant",
+          "rejected_because": "réécriture complète de la timeline ; deux montages à maintenir"
+        },
+        {
+          "option_id": "moins-de-scenes",
+          "label": "Retirer des scènes pour garder 40 s",
+          "score": 0.3,
+          "reason": "plus court",
+          "rejected_because": "enlève des étapes du parcours demandé par le client"
+        }
+      ],
+      "selected": "ralenti-x1.5",
+      "reason": "Demande du client : « une version où le rythme est moins accéléré ». scripts/make_slow.py + build_audio.py --slow ; drop A à 1,5 s, drop B à 31,5 s, logo sur l'accord final à 55,5 s.",
+      "user_visible": true,
+      "user_approved": false,
+      "confidence": 0.8
     }
   ]
 }

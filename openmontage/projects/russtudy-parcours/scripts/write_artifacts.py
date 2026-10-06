@@ -11,6 +11,8 @@ ART = ROOT / "artifacts"
 P = "russtudy-parcours"
 NAME = "russtudy_parcours_40s"
 NAME16 = "russtudy_parcours_40s_youtube_16x9"
+NAME60 = "russtudy_parcours_60s"  # v4: same film 1.5x slower (scripts/make_slow.py)
+NAME60_16 = "russtudy_parcours_60s_youtube_16x9"
 DUR = 40.0
 
 brief = {
@@ -106,6 +108,10 @@ asset_manifest = {
               generation_summary="Composition écrite à la main (9:16, source unique), une seule timeline GSAP déterministe, 13 scènes + HUD de progression"),
         asset("composition-16x9", "animation", "hyperframes-16x9/index.html", "scripts/make_landscape.py", "all",
               generation_summary="Version YouTube 1920 x 1080 dérivée de la composition verticale : remplacements vérifiés, zones portrait mises à l'échelle à droite, titres à gauche, HUD en barre haute"),
+        asset("composition-60s", "animation", "hyperframes-60s/index.html", "scripts/make_slow.py", "all",
+              generation_summary="Version 60 s au rythme ralenti (v4) : la timeline de 40 s est rejouée 1,5 fois plus lentement par une timeline racine qui la parcourt ; data-start / data-duration x 1,5 ; idem pour hyperframes-60s-16x9/"),
+        asset("soundtrack-60s", "audio", "assets/audio-60s/soundtrack.wav", "scripts/build_audio.py --slow", "all", duration_seconds=DUR * 1.5, format="wav",
+              generation_summary="Même musique remontée sur 60 s (piste 14,526–40,026 puis 74,025–102,025 puis 62,025–68,525 : drop A à 1,5 s, drop B à 31,5 s, accord final à 55,5 s) ; cues SFX et sons synthétisés étirés x 1,5 ; -14 LUFS"),
     ],
 }
 
@@ -121,18 +127,21 @@ edit_decisions = {
 }
 
 
-def out(path, fmt, fps, platform, resolution="1080x1920"):
+def out(path, fmt, fps, platform, resolution="1080x1920", duration=DUR):
     f = ROOT / path
     return {"path": path, "format": fmt, "codec": "h264" if fmt == "mp4" else None, "audio_codec": "aac" if fmt == "mp4" else None,
-            "resolution": resolution, "fps": fps, "duration_seconds": DUR if fmt == "mp4" else 0,
+            "resolution": resolution, "fps": fps, "duration_seconds": duration if fmt == "mp4" else 0,
             "file_size_bytes": f.stat().st_size if f.exists() else 0, "platform_target": platform}
 
 
 render_report = {"version": "1.0", "render_grammar": "animation-first", "outputs": []}
 for o in [out(f"renders/{NAME}_60fps.mp4", "mp4", 60, "TikTok / YouTube Shorts / Reels (master)"),
           out(f"renders/{NAME}_30fps.mp4", "mp4", 30, "Instagram Reels / Facebook / Stories"),
-          out(f"renders/{NAME16}_60fps.mp4", "mp4", 60, "YouTube (16:9)", "1920x1080")]:
-    render_report["outputs"].append({k: v for k, v in o.items() if v is not None})
+          out(f"renders/{NAME16}_60fps.mp4", "mp4", 60, "YouTube (16:9)", "1920x1080"),
+          out(f"renders/{NAME60}_60fps.mp4", "mp4", 60, "Rythme ralenti 60 s — TikTok / Shorts / Reels", duration=DUR * 1.5),
+          out(f"renders/{NAME60_16}_60fps.mp4", "mp4", 60, "Rythme ralenti 60 s — YouTube (16:9)", "1920x1080", DUR * 1.5)]:
+    if o["file_size_bytes"]:  # list only the renders that exist
+        render_report["outputs"].append({k: v for k, v in o.items() if v is not None})
 
 
 def dec(i, stage, cat, subject, options, selected, reason, approved=False, conf=0.85):
@@ -193,6 +202,11 @@ decision_log = {
              opt("copie", "Copier et adapter la composition à la main", 0.5, "liberté totale de mise en page", "deux fichiers à maintenir, les retouches divergent"),
              opt("recadrage", "Recadrer / encadrer la vidéo verticale (bandes floues)", 0.2, "immédiat", "rendu amateur sur YouTube, texte trop petit")],
             "generateur", "scripts/make_landscape.py produit hyperframes-16x9/index.html ; le script s'arrête si un élément attendu a changé dans la version verticale.", False, 0.85),
+        dec("d11", "compose", "motion_commitment", "Version au rythme moins accéléré (v4)",
+            [opt("ralenti-x1.5", "Même film rejoué 1,5 fois plus lentement (60 s), musique remontée", 0.85, "scènes 1,5 fois plus longues et animations plus douces ; chaque image reste identique à celle de la version 40 s ; les retouches se propagent"),
+             opt("pauses", "Allonger seulement les temps de pause entre les animations", 0.6, "animations aussi vives qu'avant", "réécriture complète de la timeline ; deux montages à maintenir"),
+             opt("moins-de-scenes", "Retirer des scènes pour garder 40 s", 0.3, "plus court", "enlève des étapes du parcours demandé par le client")],
+            "ralenti-x1.5", "Demande du client : « une version où le rythme est moins accéléré ». scripts/make_slow.py + build_audio.py --slow ; drop A à 1,5 s, drop B à 31,5 s, logo sur l'accord final à 55,5 s.", False, 0.8),
     ],
 }
 

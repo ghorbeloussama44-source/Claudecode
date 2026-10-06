@@ -1,11 +1,13 @@
-# RusStudy — « Le parcours » (40 s, vertical + YouTube 16:9) — notes de reprise
+# RusStudy — « Le parcours » (40 s et 60 s, vertical + YouTube 16:9) — notes de reprise
 
 Deuxième spot RusStudy (russieetudes.com), suite du 15 s (`../russtudy-motion-15s`).
 Le film suit le prospect **du premier message WhatsApp jusqu'au premier jour à
 l'université**, en passant par les 5 étapes du site — dont, depuis la v3, le **transfert de
 Moscou vers la ville de l'université en train ou en voiture** — puis donne le prix de la
 1ère année et renvoie vers WhatsApp. Deux formats, une seule composition à retoucher :
-le vertical 9:16 (master) et la version **YouTube 16:9** qui en est générée.
+le vertical 9:16 (master) et la version **YouTube 16:9** qui en est générée. Depuis la v4,
+chaque format existe aussi en **version 60 s au rythme moins accéléré** (le même film joué
+1,5 fois plus lentement, sur une bande-son de 60 s).
 
 ## Livrables (versionnés)
 
@@ -14,6 +16,8 @@ le vertical 9:16 (master) et la version **YouTube 16:9** qui en est générée.
 | `renders/russtudy_parcours_40s_60fps.mp4` | **Master vertical** 1080×1920, 60 fps, H.264 + AAC 256k, −14 LUFS — TikTok, Shorts, Reels |
 | `renders/russtudy_parcours_40s_30fps.mp4` | Même montage en 30 fps (Instagram / Facebook si besoin) |
 | `renders/russtudy_parcours_40s_youtube_16x9_60fps.mp4` | **YouTube** 1920×1080, 60 fps, même bande-son |
+| `renders/russtudy_parcours_60s_60fps.mp4` | **Rythme ralenti** (v4) vertical 1080×1920, 60 s, 60 fps |
+| `renders/russtudy_parcours_60s_youtube_16x9_60fps.mp4` | **Rythme ralenti** (v4) YouTube 1920×1080, 60 s, 60 fps |
 | `renders/thumbnail_youtube.jpg` | Miniature YouTube 1280×720 (plan du prix) |
 | `renders/cover_hook.png`, `cover_transfert.png`, `cover_prix.png`, `cover_fin_cta.png` | Couvertures verticales (accroche, transfert, prix + ticket, plan final) |
 | `renders/cover_16x9_transfert.png`, `cover_16x9_prix.png`, `cover_16x9_fin_cta.png` | Les mêmes plans en 16:9 |
@@ -40,7 +44,8 @@ le vertical 9:16 (master) et la version **YouTube 16:9** qui en est générée.
 - Branche Git : `claude/install-openmontage-263px9`
   (`git fetch origin claude/install-openmontage-263px9 && git checkout claude/install-openmontage-263px9`).
 - Versions livrées : **v2** (37 s, vertical) = commit `c6acc34` ; **v3** (40 s, transfert +
-  YouTube 16:9) = commit `8fc0899`.
+  YouTube 16:9) = commit `8fc0899` ; **v4** (+ versions 60 s au rythme ralenti) = voir
+  `git log --oneline -- openmontage/projects/russtudy-parcours`.
   Revoir une version telle quelle : `git checkout <commit> -- openmontage/projects/russtudy-parcours` ;
   voir ce qui a changé depuis : `git diff <commit> -- openmontage/projects/russtudy-parcours`.
 - Dossier : `openmontage/projects/russtudy-parcours/`. Kit de marque :
@@ -62,6 +67,9 @@ le vertical 9:16 (master) et la version **YouTube 16:9** qui en est générée.
 4. Livrer : `bash scripts/render_all.sh` → bande-son, 16:9, lint des deux compositions,
    rendus 9:16 60 et 30 fps + 16:9 60 fps, remux du son master, couvertures, miniature
    YouTube, artefacts (≈ 15 min).
+5. Versions 60 s : `bash scripts/render_all.sh --60s` → bande-son 60 s, `make_slow.py`,
+   rendus 9:16 et 16:9 à 60 fps (≈ 15 min). Rien à retoucher à part : elles reprennent
+   la composition 40 s telle quelle.
 
 Prérequis d'un conteneur neuf : Node 22 + ffmpeg ; le script installe les dépendances
 Python (`scripts/requirements.txt`) et le Chrome de HyperFrames si besoin. Dans le dépôt,
@@ -116,6 +124,21 @@ Message « expected 1 occurrence(s), found 0 » : l'extrait cité a été modifi
 verticale. Mettre à jour la ligne correspondante du script (la valeur de gauche = nouvelle
 valeur verticale, celle de droite = son équivalent 16:9), puis relancer.
 
+## Versions 60 s au rythme ralenti (`scripts/make_slow.py`, v4)
+
+Le film n'est pas remonté à la main : la timeline de 40 s est **rejouée 1,5 fois plus
+lentement**. Le script copie `hyperframes/` et `hyperframes-16x9/` vers `hyperframes-60s/`
+et `hyperframes-60s-16x9/` en multipliant tous les `data-start` / `data-duration` par 1,5
+et en confiant au rendu une timeline racine de 60 s qui parcourt celle de 40 s
+(`slowTl`). Chaque image de la version 60 s à l'instant t × 1,5 est identique au pixel près
+à celle de la version 40 s à l'instant t (vérifié) : toute retouche de la version 40 s
+passe donc dans la version 60 s au prochain `render_all.sh --60s`.
+
+Pour un autre facteur (par ex. 1,25 → 50 s) : changer `K` dans `make_slow.py` **et** dans
+`build_audio.py` (`--slow`), puis refaire le montage musical `SEGMENTS` (`if SLOW:`) pour
+que le drop A, le drop B et l'accord final tombent toujours sur 1,0 × K, 21,0 × K et
+37,0 × K, et adapter l'automation `auto` (`if SLOW:`).
+
 ## Où modifier quoi (`hyperframes/index.html` sauf mention)
 
 Repères : bannières `/* === S1 — … */` (CSS), `<!-- === S1 — … -->` (HTML) et
@@ -156,6 +179,13 @@ Piste « Funky » (Pixabay, `assets/music/11_funky.mp3`), 120 BPM :
 - vidéo 17–35 ← piste 76,025–94,025 (break de batterie 17, montée de basse 19, **drop B à
   21,0**, groove pendant l'accueil, le transfert, le foyer et le prix)
 - vidéo 35–40 ← piste 62,025–67,025 (fill, **arrêt + accord de mi à 37,0**)
+
+Version 60 s (`build_audio.py --slow`, même tempo, coupes recalées × 1,5) :
+
+- vidéo 0–25,5 ← piste 14,526–40,026 (**drop A à 1,5**, groove)
+- vidéo 25,5–53,5 ← piste 74,025–102,025 (2 mesures de break de batterie, montée de basse
+  29,5, **drop B à 31,5**, groove)
+- vidéo 53,5–60 ← piste 62,025–68,525 (fill, **arrêt + accord de mi à 55,5**)
 
 Automation de gain : +6 dB sur le break (17–19), retour à 0 dB juste avant 21,0 ;
 accord final +14 dB puis +18 dB à la fin. Les SFX tonals sont accordés (pops mi→fa♯→

@@ -91,6 +91,24 @@
       "source_tool": "scripts/make_landscape.py",
       "scene_id": "all",
       "generation_summary": "Version YouTube 1920 x 1080 dérivée de la composition verticale : remplacements vérifiés, zones portrait mises à l'échelle à droite, titres à gauche, HUD en barre haute"
+    },
+    {
+      "id": "composition-60s",
+      "type": "animation",
+      "path": "hyperframes-60s/index.html",
+      "source_tool": "scripts/make_slow.py",
+      "scene_id": "all",
+      "generation_summary": "Version 60 s au rythme ralenti (v4) : la timeline de 40 s est rejouée 1,5 fois plus lentement par une timeline racine qui la parcourt ; data-start / data-duration x 1,5 ; idem pour hyperframes-60s-16x9/"
+    },
+    {
+      "id": "soundtrack-60s",
+      "type": "audio",
+      "path": "assets/audio-60s/soundtrack.wav",
+      "source_tool": "scripts/build_audio.py --slow",
+      "scene_id": "all",
+      "duration_seconds": 60.0,
+      "format": "wav",
+      "generation_summary": "Même musique remontée sur 60 s (piste 14,526–40,026 puis 74,025–102,025 puis 62,025–68,525 : drop A à 1,5 s, drop B à 31,5 s, accord final à 55,5 s) ; cues SFX et sons synthétisés étirés x 1,5 ; -14 LUFS"
     }
   ]
 }

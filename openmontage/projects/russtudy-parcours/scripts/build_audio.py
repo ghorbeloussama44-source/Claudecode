@@ -8,7 +8,14 @@ Attack transients sit ~18 ms before the librosa beat grid; every cut is placed
   video 17 - 35 <- track 76.025 - 94.025  (drum break 17, bass build 19, drop B at 21, groove)
   video 35 - 40 <- track 62.025 - 67.025  (fill, band stops on an E chord at video 37.0)
 
-Usage: python build_audio.py [--no-sfx]
+--slow builds the 60 s version (scripts/make_slow.py: the same film played 1.5x slower).
+Every SFX cue time and every synthesized timing is multiplied by K = 1.5; the music keeps
+its tempo and is re-edited so the big moments still land on downbeats (x 1.5):
+  video  0   - 25.5 <- track 14.526 - 40.026  (drop A at video 1.5, groove)
+  video 25.5 - 53.5 <- track 74.025 - 102.025 (2 bars of drum break, bass build 29.5, drop B 31.5)
+  video 53.5 - 60   <- track 62.025 - 68.525  (fill, band stops on the E chord at video 55.5)
+
+Usage: python build_audio.py [--no-sfx] [--slow]
 """
 
 from __future__ import annotations
@@ -26,15 +33,19 @@ from scipy import signal
 ROOT = Path(__file__).resolve().parents[1]
 MUSIC_SRC = ROOT / "assets/music/11_funky.mp3"
 SFX_DIR = ROOT.parents[1] / ".agents/skills/hyperframes-media/assets/sfx"
-OUT_DIR = ROOT / "assets/audio"
+SLOW = "--slow" in sys.argv
+K = 1.5 if SLOW else 1.0  # time scale of the slow (60 s) version
+OUT_DIR = ROOT / ("assets/audio-60s" if SLOW else "assets/audio")
 SR = 48000
-DURATION = 40.0
+DURATION = 40.0 * K
 
 SEGMENTS = [  # (video_start, track_start, length)
     (0.0, 15.026, 17.0),
     (17.0, 76.025, 18.0),
     (35.0, 62.025, 5.0),
 ]
+if SLOW:
+    SEGMENTS = [(0.0, 14.526, 25.5), (25.5, 74.025, 28.0), (53.5, 62.025, 6.5)]
 XFADE = 0.008
 
 
@@ -319,17 +330,17 @@ def synth_all(sfx_dir: Path) -> None:
 
     save("tick", tick(2000, rng=rng))
     # phone keyboard: one tap per character of "Salam ! Je veux étudier en Russie." (34 chars in 0.72 s)
-    taps = np.zeros(int(0.9 * SR), dtype=np.float32)
+    taps = np.zeros(int(0.9 * K * SR), dtype=np.float32)
     for k in range(1, 35):
         tap = tick(1600 + rng.uniform(0, 800), tau=0.003, noise=0.5, rng=rng) + 0.5 * tone(230, 0.03, d=0.008)
-        add_at(taps, tap, 0.72 * k / 34, rng.uniform(0.5, 0.9))
+        add_at(taps, tap, 0.72 * K * k / 34, rng.uniform(0.5, 0.9))
     save("kb_typing", taps)
     # UI: call connected (A5 -> E6), profile scan sweep, card-reader beep (E6 -> A6)
     con = np.zeros(int(0.3 * SR), dtype=np.float32)
     add_at(con, tone(880, 0.07, d=0.03), 0.0)
     add_at(con, tone(1318.51, 0.11, d=0.05), 0.085)
     save("connect", con, -3.0)
-    sc = sweep(600, 1300, 0.42) * (0.5 + 0.5 * np.sin(2 * np.pi * 28 * np.arange(int(0.42 * SR)) / SR))
+    sc = sweep(600, 1300, 0.42 * K) * (0.5 + 0.5 * np.sin(2 * np.pi * 28 * np.arange(int(0.42 * K * SR)) / SR))
     sc *= np.minimum(1, np.arange(len(sc)) / (0.08 * SR)) * np.minimum(1, (len(sc) - np.arange(len(sc))) / (0.05 * SR))
     save("scan", sc.astype(np.float32), -6.0)
     bp = np.zeros(int(0.3 * SR), dtype=np.float32)
@@ -344,31 +355,31 @@ def synth_all(sfx_dir: Path) -> None:
     save("slap", slap(rng))
     save("rip", rip(rng))
     # confetti: tiny pops thinning out
-    cp = np.zeros(int(0.7 * SR), dtype=np.float32)
-    for u in np.sort(rng.random(16) ** 1.8 * 0.55):
+    cp = np.zeros(int(0.7 * K * SR), dtype=np.float32)
+    for u in np.sort(rng.random(16) ** 1.8 * 0.55 * K):
         add_at(cp, tone(rng.uniform(1200, 3200), 0.02, d=0.005), u, rng.uniform(0.3, 0.8))
     save("confetti_pops", cp, -2.0)
     # travel: take-off, airport "ding-dong" (E5 -> C#5, in key), wind bed, riser into drop B
-    save("jet", jet(rng))
+    save("jet", jet(rng, 1.9 * K))
     dd = np.zeros(int(1.9 * SR), dtype=np.float32)
     add_at(dd, bell(659.26), 0.0)
     add_at(dd, bell(554.37), 0.42, 0.9)
     save("dingdong", dd, -2.0)
-    save("wind", wind(rng))
-    save("riser2", riser(rng))
+    save("wind", wind(rng, 4.0 * K))
+    save("riser2", riser(rng, 2.0 * K))
     # split-flap board: every flip of every cell, timed exactly like renderFlap() in index.html
     fr = mulberry32(2108)
     t0 = 20.96
-    clat = np.zeros(int(1.2 * SR), dtype=np.float32)
+    clat = np.zeros(int(1.2 * K * SR), dtype=np.float32)
     for r, word in enumerate(["BIENVENUE", "EN RUSSIE"]):
         for c in range(len(word)):
             start = 20.96 + c * 0.012 + r * 0.02
             settle = 21.02 + c * 0.07 + r * 0.16 + fr() * 0.04
             k = 0
             while start + k * 0.05 < settle:
-                add_at(clat, tick(rng.uniform(2200, 3600), tau=0.0025, noise=0.8, rng=rng), start + k * 0.05 - t0, rng.uniform(0.18, 0.32))
+                add_at(clat, tick(rng.uniform(2200, 3600), tau=0.0025, noise=0.8, rng=rng), (start + k * 0.05 - t0) * K, rng.uniform(0.18, 0.32))
                 k += 1
-            add_at(clat, tick(1300, tau=0.006, noise=0.9, rng=rng), settle - t0, 0.85)
+            add_at(clat, tick(1300, tau=0.006, noise=0.9, rng=rng), (settle - t0) * K, 0.85)
     save("flap_clatter", clat)
     # odometer 3 500: a click each time a digit column crosses a digit
     t_start, land, target = 27.15, [27.82, 27.88, 27.94, 28.0], [3, 5, 0, 0]
@@ -378,13 +389,14 @@ def synth_all(sfx_dir: Path) -> None:
         x = np.linspace(0, 1, 4000)
         pos = a_ + (b_ - a_) * bezier_ease(ODO_ROLL, x)
         crossings = np.where(np.diff(np.floor(pos)) > 0)[0]
-        tt += list(x[crossings] * (land[i] - t_start))
+        tt += list(x[crossings] * (land[i] - t_start) * K)
         ff += [2600 + i * 180] * len(crossings)
     order = np.argsort(tt)
-    save("odo_ticks", ticks_at(np.array(tt)[order], np.array(ff)[order], np.full(len(tt), 0.8), 0.95, 21))
+    save("odo_ticks", ticks_at(np.array(tt)[order], np.array(ff)[order], np.full(len(tt), 0.8), 0.95 * K, 21))
     # thermal printer: one feed burst per receipt line (relative to 28.5)
-    pr = np.zeros(int(2.4 * SR), dtype=np.float32)
+    pr = np.zeros(int(2.4 * K * SR), dtype=np.float32)
     for u, d in ((0, 0.14), (0.25, 0.12), (0.5, 0.12), (0.75, 0.12), (1.0, 0.12), (1.25, 0.12), (1.5, 0.12), (2.0, 0.12), (2.12, 0.1)):
+        u, d = u * K, d * K
         n = int(d * SR)
         tt_ = np.arange(n) / SR
         buzz = norm(bandnoise(n, 1200, 5200, rng)) * (0.55 + 0.45 * np.sign(np.sin(2 * np.pi * 120 * tt_)))
@@ -394,32 +406,32 @@ def synth_all(sfx_dir: Path) -> None:
         add_at(pr, tick(1800, rng=rng), u + d, 0.4)
     save("printer", pr)
     # sparkles arpeggio (A major, one note per pixel star)
-    arp = np.zeros(int(0.9 * SR), dtype=np.float32)
+    arp = np.zeros(int(0.9 * K * SR), dtype=np.float32)
     for k, f in enumerate([880.0, 1108.73, 1318.51, 1760.0, 2217.46, 2637.02]):
         d = 0.07
-        add_at(arp, pulse(f, d) * np.exp(-np.arange(int(d * SR)) / (0.035 * SR)), k * 0.12)
+        add_at(arp, pulse(f, d) * np.exp(-np.arange(int(d * SR)) / (0.035 * SR)), k * 0.12 * K)
     save("pixel_arp", arp, -3.0)
     # end card typing: phone number (15 chars, 22 ms) and URL (16 chars, 18 ms)
-    save("tel_ticks", ticks_at(np.arange(15) * 0.022, 1250 + rng.uniform(-150, 150, 15), rng.uniform(0.5, 0.9, 15), 0.45, 61))
-    save("url_ticks", ticks_at(np.arange(16) * 0.018, 1450 + rng.uniform(-150, 150, 16), rng.uniform(0.5, 0.9, 16), 0.4, 51))
+    save("tel_ticks", ticks_at(np.arange(15) * 0.022 * K, 1250 + rng.uniform(-150, 150, 15), rng.uniform(0.5, 0.9, 15), 0.45 * K, 61))
+    save("url_ticks", ticks_at(np.arange(16) * 0.018 * K, 1450 + rng.uniform(-150, 150, 16), rng.uniform(0.5, 0.9, 16), 0.4 * K, 51))
     # transfer: horn, rail joints "ta-dum" on every beat (fading as the train brakes),
     # car engine revving as it overtakes, pneumatic coach door
     save("horn", horn(), -2.0)
-    rails = np.zeros(int(4.2 * SR), dtype=np.float32)
+    rails = np.zeros(int(4.2 * K * SR), dtype=np.float32)
     for k in range(8):
         g = 1.0 if k < 6 else 0.75 - 0.2 * (k - 6)
         for dt, gg in ((0.0, 1.0), (0.09, 0.8)):
             n = int(0.06 * SR)
             thump = tone(95, 0.06, d=0.02) * 0.9 + 0.5 * norm(bandnoise(n, 2000, 6500, rng)) * env_ad(n, 0.0005, 0.006)
-            add_at(rails, thump.astype(np.float32), k * 0.5 + dt, g * gg)
+            add_at(rails, thump.astype(np.float32), (k * 0.5 + dt) * K, g * gg)
     save("rails", rails)
-    n = int(3.6 * SR)
+    n = int(3.6 * K * SR)
     tt = np.arange(n) / SR
-    f0 = 68 + 26 * np.clip(tt / 3.0, 0, 1) ** 1.5
+    f0 = 68 + 26 * np.clip(tt / (3.0 * K), 0, 1) ** 1.5
     ph = 2 * np.pi * np.cumsum(f0) / SR
     eng = sum(np.sin(k * ph) / k for k in range(1, 7)) * (0.75 + 0.25 * np.sin(2 * np.pi * 24 * tt))
     eng = signal.sosfilt(signal.butter(2, 900, btype="low", fs=SR, output="sos"), eng)
-    save("engine", norm(eng * np.minimum(1, tt / 0.4) * np.minimum(1, (3.6 - tt) / 0.5)))
+    save("engine", norm(eng * np.minimum(1, tt / 0.4) * np.minimum(1, (3.6 * K - tt) / 0.5)))
     n = int(0.32 * SR)
     hiss = signal.sosfilt(signal.butter(2, 1500, btype="high", fs=SR, output="sos"), rng.standard_normal(n))
     save("pshh", norm(hiss * env_ad(n, 0.01, 0.09)), -3.0)
@@ -444,8 +456,11 @@ def sfx_layer(cues: list[dict]) -> np.ndarray:
             clip = librosa.resample(clip, orig_sr=SR, target_sr=int(round(SR / cue["rate"])))
         # `lead` is the peak/attack offset in source-file seconds (after `offset`); it scales with varispeed
         lead = cue.get("lead", 0.0) / cue.get("rate", 1.0)
-        place(bus, clip, cue["at"] - lead, cue.get("gain_db", -12.0),
-              cue.get("fade_out"), cue.get("max_len"), cue.get("pan", 0.0), cue.get("pan_to"))
+        kl = K if name.startswith("whoosh") else 1.0
+        fade_out = cue.get("fade_out") and cue["fade_out"] * kl
+        max_len = cue.get("max_len") and cue["max_len"] * kl
+        place(bus, clip, cue["at"] * K - lead, cue.get("gain_db", -12.0),
+              fade_out, max_len, cue.get("pan", 0.0), cue.get("pan_to"))
     return bus
 
 
@@ -460,6 +475,9 @@ def main() -> None:
     #   opening the gain to +18 dB by the end so the decay does not fade under the CTA.
     auto = [(0.0, 0.0), (16.995, 0.0), (17.03, 6.0), (19.0, 6.0), (20.8, 3.0), (20.985, 0.0),
             (37.02, 0.0), (37.12, 14.0), (DURATION, 18.0)]
+    if SLOW:  # same moves at the slow version's times (two drum-break bars, longer chord)
+        auto = [(0.0, 0.0), (25.495, 0.0), (25.53, 6.0), (29.5, 6.0), (31.3, 3.0), (31.485, 0.0),
+                (55.52, 0.0), (55.62, 14.0), (DURATION, 20.0)]
     tt = np.arange(music.shape[1]) / SR
     g_db = np.interp(tt, [a for a, _ in auto], [b for _, b in auto])
     music = music * (10 ** (g_db / 20)).astype(np.float32)[None, :]

@@ -88,3 +88,13 @@ Même film, même bande-son, même timing ; mise en page repensée pour l'horizo
 
 La version 16:9 n'est jamais retouchée à la main : `scripts/make_landscape.py` la régénère
 depuis la verticale.
+
+## Version 60 s au rythme moins accéléré (v4)
+
+Demande du client : « une version où le rythme est moins accéléré ». Même film, mêmes
+images, joué **1,5 fois plus lentement** : chaque étape reste 1,5 fois plus longtemps à
+l'écran (3 s au lieu de 2 pour les étapes courtes, 9 s pour le prix, 4,5 s pour le CTA) et
+chaque mouvement est plus doux. La musique garde son tempo (120 BPM) et est remontée sur
+60 s : drop A sur l'envoi du message (1,5 s), break de batterie pendant le vol, drop B sur
+l'arrivée (31,5 s), arrêt sur l'accord final avec le logo (55,5 s). Les sons du parcours
+(frappe, volets, odomètre, imprimante, rails, moteur…) sont étirés au même rythme.
