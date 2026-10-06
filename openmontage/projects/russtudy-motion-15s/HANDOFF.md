@@ -30,10 +30,11 @@ cliquer vers le site pour la **1ère consultation gratuite**.
 
 - Branche Git : `claude/install-openmontage-263px9` (la branche par défaut du dépôt est
   une autre : `git fetch origin claude/install-openmontage-263px9 && git checkout claude/install-openmontage-263px9`).
-- Version livrée v1 figée par le tag **`russtudy-motion-15s-v1`**
-  (`git checkout russtudy-motion-15s-v1` pour la revoir telle quelle, ou
-  `git diff russtudy-motion-15s-v1 -- openmontage/projects/russtudy-motion-15s` pour voir
-  ce qui a changé depuis).
+- Version livrée **v1 = commit `5e5c6ea`** (vidéo + outils de retouche ; la vidéo seule
+  est déjà dans `5109da1`). Revoir la v1 telle quelle :
+  `git checkout 5e5c6ea -- openmontage/projects/russtudy-motion-15s` ; voir ce qui a
+  changé depuis : `git diff 5e5c6ea -- openmontage/projects/russtudy-motion-15s`.
+  (Les tags Git ne peuvent pas être poussés depuis cet environnement : refus HTTP 403.)
 - Dossier : `openmontage/projects/russtudy-motion-15s/`. Le kit de marque extrait du site
   est dans `artifacts/brand-kit.md` (+ captures dans `artifacts/reference/`).
 
