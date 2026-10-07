@@ -92,7 +92,7 @@
     {
       "id": "tr",
       "type": "animation",
-      "description": "Étape 05 (v3, enrichie en v5) : transfert Moscou → ville universitaire, en option. Canvas pixel en parallaxe (étoiles, soleil couchant, collines, forêt, caténaire, neige) : le train (passagers aux fenêtres) et une voiture orange qui le double, la ville universitaire qui se lève à l'horizon, panneau КАЗАНЬ / KAZAN, jauge MOSCOU → KAZAN ; freinage, la porte du wagon s'ouvre",
+      "description": "Étape 05 (v3, enrichie en v5) : transfert Moscou → ville universitaire, en option. Canvas pixel en parallaxe (étoiles, soleil couchant, collines, forêt, caténaire, neige) : le train (passagers aux fenêtres) et une voiture orange qui le double, la ville universitaire qui se lève à l'horizon, panneau ЛИПЕЦК / LIPETSK, jauge MOSCOU → LIPETSK ; freinage, la porte du wagon s'ouvre",
       "start_seconds": 23.0,
       "end_seconds": 27.05,
       "script_section_id": "tr",
@@ -125,7 +125,7 @@
     {
       "id": "s11",
       "type": "animation",
-      "description": "Prix : odomètre 12 000 DT (flou directionnel), pastille « études + installation », ticket de caisse imprimé ligne par ligne (6 postes inclus, total, puis « non inclus · en option sur demande » : billet d'avion, train ou voiture, hôtel & visites à Moscou — sur devis), tampon SANS FRAIS CACHÉS",
+      "description": "Prix : odomètre 12 000 DT (flou directionnel), pastille « études + installation », ticket de caisse imprimé ligne par ligne (7 postes inclus sans montant, total, puis « non inclus · en option sur demande » : billet d'avion, train ou voiture, hôtel & visites à Moscou — sur devis), tampon SANS FRAIS CACHÉS",
       "start_seconds": 31.0,
       "end_seconds": 37.05,
       "script_section_id": "s11",

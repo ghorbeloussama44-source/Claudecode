@@ -238,7 +238,7 @@
         }
       ],
       "selected": "train+voiture",
-      "reason": "Scène TR de 4 s (2 mesures) entre l'accueil et le foyer ; ville d'exemple Kazan (illustratif, comme Médecine générale) ; la musique gagne 2 mesures de groove et la fin passe de 4 à 3 s pour rester à 40 s.",
+      "reason": "Scène TR de 4 s (2 mesures) entre l'accueil et le foyer ; ville d'exemple Kazan, Lipetsk depuis la v7 (illustratif, comme Médecine générale) ; la musique gagne 2 mesures de groove et la fin passe de 4 à 3 s pour rester à 40 s.",
       "user_visible": true,
       "user_approved": false,
       "confidence": 0.8
@@ -396,10 +396,36 @@
         }
       ],
       "selected": "dt",
-      "reason": "Demande du client : « le prix en dinars tunisien soit équivalent 12000 tnd ». Compteur à 5 chiffres ; frais universitaires convertis au même taux (2 200 € x 12 000 / 3 500 ≈ 7 543 DT, affiché « dès 7 500 DT », à confirmer par le client) ; en derja « 12 000 د.ت ». Seules les versions 60 s sont rendues (« on garde les versions 60 s »).",
+      "reason": "Demande du client : « le prix en dinars tunisien soit équivalent 12000 tnd ». Compteur à 5 chiffres ; en derja « 12 000 د.ت ». Frais universitaires d'abord convertis au même taux (« dès 7 500 DT »), puis affichés « inclus » sans montant en v7 (voir d16). Seules les versions 60 s sont rendues (« on garde les versions 60 s »).",
       "user_visible": true,
       "user_approved": false,
       "confidence": 0.75
+    },
+    {
+      "decision_id": "d16",
+      "stage": "compose",
+      "category": "visual_accuracy_check",
+      "subject": "Montants sur le ticket (v7)",
+      "options_considered": [
+        {
+          "option_id": "inclus-sans-montant",
+          "label": "Toutes les lignes « inclus », seul le total est chiffré",
+          "score": 0.85,
+          "reason": "le client ne veut pas que l'on puisse déduire sa marge des frais universitaires"
+        },
+        {
+          "option_id": "frais-chiffres",
+          "label": "Garder « dès 7 500 DT » pour les frais universitaires",
+          "score": 0.3,
+          "reason": "plus de détail",
+          "rejected_because": "permet de calculer la marge de l'agence (refus du client)"
+        }
+      ],
+      "selected": "inclus-sans-montant",
+      "reason": "Demande du client : « prix université dans le devis on met inclus, pas la peine de mettre le prix universitaire pour que les clients ne calculent pas la marge » ; ajout de « Accompagnement administratif · inclus » ; ville d'exemple Lipetsk (panneau ЛИПЕЦК / LIPETSK). Même nombre de pas d'avance du ticket (l'en-tête sort avec la 1re ligne) : timing et son de l'imprimante inchangés.",
+      "user_visible": true,
+      "user_approved": true,
+      "confidence": 0.9
     },
     {
       "decision_id": "d15",

@@ -43,7 +43,7 @@
       "resolution": "1080x1920",
       "fps": 60,
       "duration_seconds": 60.0,
-      "file_size_bytes": 35091266,
+      "file_size_bytes": 35286024,
       "platform_target": "Rythme ralenti 60 s — TikTok / Shorts / Reels"
     },
     {
@@ -54,7 +54,7 @@
       "resolution": "1920x1080",
       "fps": 60,
       "duration_seconds": 60.0,
-      "file_size_bytes": 34517358,
+      "file_size_bytes": 34668368,
       "platform_target": "Rythme ralenti 60 s — YouTube (16:9)"
     },
     {
@@ -65,7 +65,7 @@
       "resolution": "1080x1920",
       "fps": 60,
       "duration_seconds": 60.0,
-      "file_size_bytes": 32152413,
+      "file_size_bytes": 32295486,
       "platform_target": "60 s en arabe tunisien — TikTok / Shorts / Reels"
     },
     {
@@ -76,7 +76,7 @@
       "resolution": "1920x1080",
       "fps": 60,
       "duration_seconds": 60.0,
-      "file_size_bytes": 31568070,
+      "file_size_bytes": 31724573,
       "platform_target": "60 s en arabe tunisien — YouTube (16:9)"
     }
   ]
