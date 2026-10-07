@@ -85,7 +85,7 @@ Z_S3 = (895, -421, 0.9)  # documents + folder
 Z_S4 = (863, -397, 0.92)  # envelope + letter
 Z_S5 = (810, -400, 0.95)  # passport + insurance card
 Z_S9 = (800, -364.8, 0.82)  # door, room, key card
-Z_RC = (954, -556, 0.86)  # price receipt (with the "non inclus" options it is 900 px tall)
+Z_RC = (954, -570, 0.86)  # price receipt (7 included lines + the "non inclus" options: 966 px tall)
 
 # ---------------------------------------------------------------- frame
 sub('<html lang="fr" data-resolution="portrait">', '<html lang="fr" data-resolution="landscape">')

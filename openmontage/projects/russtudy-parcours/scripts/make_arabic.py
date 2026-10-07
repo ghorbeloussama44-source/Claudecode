@@ -15,7 +15,7 @@ The French files stay the single source of truth: this script reads the vertical
   - aligns the Arabic text right-to-left: titles, captions and price column hug the right margin
     in 9:16 (the right edge of the text column in 16:9), the phone, the cards and the receipt are
     mirrored inside, the HUD fills from the right. Travel diagrams (boarding pass, flight map,
-    Moscow -> Kazan bar) keep the geography left to right; phone number and site stay LTR.
+    Moscow -> Lipetsk bar) keep the geography left to right; phone number and site stay LTR.
 
     python3 scripts/make_landscape.py && python3 scripts/make_arabic.py && python3 scripts/make_slow.py
 """
@@ -71,9 +71,9 @@ TEXTS = [
     ('<div class="pt1">Projet : Médecine</div>', '<div class="pt1">المشروع: الطب</div>', 1),
     ('<div class="pt2">Ta filière idéale</div>', '<div class="pt2">الشعبة اللي تناسبك</div>', 1),
     ('<div class="pt1">Ville &amp; budget</div>', '<div class="pt1">المدينة والميزانية</div>', 1),
-    ('<div class="pt2">Moscou, Saint-Pétersbourg, Kazan…</div>', '<div class="pt2">موسكو، سان بطرسبرغ، قازان…</div>', 1),
+    ('<div class="pt2">Moscou, Saint-Pétersbourg, Lipetsk…</div>', '<div class="pt2">موسكو، سان بطرسبرغ، ليبيتسك…</div>', 1),
     ('<div id="s2-pk">TON PLAN</div>', '<div id="s2-pk">البرنامج متاعك</div>', 1),
-    ('<div id="s2-pm">Médecine générale · Kazan</div>', '<div id="s2-pm">طب عام · قازان</div>', 1),
+    ('<div id="s2-pm">Médecine générale · Lipetsk</div>', '<div id="s2-pm">طب عام · ليبيتسك</div>', 1),
     ('<div id="s2-ps">Université d’État partenaire</div>', '<div id="s2-ps">جامعة حكومية شريكة</div>', 1),
     # S3 — 02 the file
     ('<span class="tw">On prépare</span>', '<span class="tw">نحضّرو</span>', 1),
@@ -128,7 +128,7 @@ TEXTS = [
     ('<span class="tw">Train ou voiture,</span>', '<span class="tw">تران ولا كرهبة،</span>', 1),
     ('<span class="tw">jusqu’à ta ville.</span>', '<span class="tw">حتى لمدينتك.</span>', 1),
     ('<div id="tr-a">MOSCOU</div>', '<div id="tr-a">موسكو</div>', 1),
-    ('<div id="tr-b">KAZAN<span id="tr-ok"></span></div>', '<div id="tr-b">قازان<span id="tr-ok"></span></div>', 1),
+    ('<div id="tr-b">LIPETSK<span id="tr-ok"></span></div>', '<div id="tr-b">ليبيتسك<span id="tr-ok"></span></div>', 1),
     ('<div id="tr-sub">Organisé sur demande · en option</div>', '<div id="tr-sub">حسب الطلب · اختياري</div>', 1),
     # S9 — dorm
     ('<span class="tw">Foyer</span>', '<span class="tw">المبيت</span>', 1),
@@ -142,7 +142,7 @@ TEXTS = [
     ('<span class="tw">à l’université.</span>', '<span class="tw">في الجامعة.</span>', 1),
     ("<span>CARTE D’ÉTUDIANT</span>", "<span>بطاقة طالب</span>", 1),
     ('<div class="k">FACULTÉ</div><div class="v">Médecine générale</div>', '<div class="k">الكلية</div><div class="v">طب عام</div>', 1),
-    ('<div class="k">UNIVERSITÉ</div><div class="v2">Université d’État · Kazan</div>', '<div class="k">الجامعة</div><div class="v2">جامعة حكومية · قازان</div>', 1),
+    ('<div class="k">UNIVERSITÉ</div><div class="v2">Université d’État · Lipetsk</div>', '<div class="k">الجامعة</div><div class="v2">جامعة حكومية · ليبيتسك</div>', 1),
     ('<div class="k">N° ÉTUDIANT</div>', '<div class="k">رقم الطالب</div>', 1),
     # S11 — price (12 000 DT = « 12 000 د.ت »)
     ('<div id="s11-deco" data-layout-ignore>DT</div>', '<div id="s11-deco" data-layout-ignore>د.ت</div>', 1),
@@ -151,14 +151,14 @@ TEXTS = [
     ('<div id="s11-cur">DT</div>', '<div id="s11-cur">د.ت</div>', 1),
     ('<div id="s11-pill">études + installation</div>', '<div id="s11-pill">القراية + الاستقرار</div>', 1),
     ("<span>1ÈRE ANNÉE</span></div>", "<span>العام الأوّل</span></div>", 1),
-    ('<span>Frais universitaires</span><i class="dt"></i><span class="v">dès 7 500 DT</span>',
-     f'<span>معاليم الجامعة</span><i class="dt"></i><span class="v">من 7{NB}500 د.ت</span>', 1),
+    ("<span>Frais universitaires</span>", "<span>معاليم الجامعة</span>", 1),
     ("<span>Consulting &amp; orientation</span>", "<span>الاستشارة والتوجيه</span>", 1),
+    ("<span>Accompagnement administratif</span>", "<span>المرافقة الإدارية</span>", 1),
     ("<span>Dossier visa</span>", "<span>ملف الفيزا</span>", 1),
     ("<span>Accueil aéroport</span>", "<span>الاستقبال في المطار</span>", 1),
     ("<span>Foyer universitaire · 1 an</span>", "<span>المبيت الجامعي · عام كامل</span>", 1),
     ("<span>Assurance médicale</span>", "<span>التأمين الصحّي</span>", 1),
-    ('<span class="v">inclus<i class="ok"></i></span>', '<span class="v">مشمول<i class="ok"></i></span>', 5),
+    ('<span class="v">inclus<i class="ok"></i></span>', '<span class="v">مشمول<i class="ok"></i></span>', 7),
     ('<span class="a">TOTAL 1ÈRE ANNÉE</span><span class="b">dès 12 000 DT</span>',
      f'<span class="a">المجموع للعام الأوّل</span><span class="b">من 12{NB}000 د.ت</span>', 1),
     ('<div class="rc-oh">NON INCLUS · EN OPTION SUR DEMANDE</div>', '<div class="rc-oh">موش مشمول · اختياري حسب الطلب</div>', 1),

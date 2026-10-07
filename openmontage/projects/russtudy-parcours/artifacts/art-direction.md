@@ -17,14 +17,16 @@ orientation + dossier visa + accueil aéroport + foyer 1 an + assurance médical
 (Lecture retenue du brief : 2 200 € = frais universitaires minimum, inclus dans les 3 500 €.)
 v5 : « tout compris » retiré, les options non incluses sont listées sur le ticket.
 **v6 : prix affiché en dinars tunisiens**, « dès 12 000 DT » (équivalent donné par le client),
-frais universitaires « dès 7 500 DT » (même taux, arrondi, à confirmer) ; en derja « 12 000 د.ت ».
+en derja « 12 000 د.ت ». **v7** : plus de montant par ligne sur le ticket (frais universitaires
+« inclus », choix du client pour ne pas laisser calculer la marge) et ligne « Accompagnement
+administratif · inclus ».
 
 ## Version en arabe tunisien (v6)
 
 Même film, mêmes plans et même musique, textes en derja (écriture arabe, tutoiement comme en
 français), police Cairo à côté de Space Grotesk, lecture de droite à gauche : titres et
 légendes calés à droite, cartes et téléphone en miroir, barre de progression qui se remplit
-depuis la droite ; la géographie (Tunis → Moscou → Kazan) reste de gauche à droite.
+depuis la droite ; la géographie (Tunis → Moscou → Lipetsk) reste de gauche à droite.
 Généré par `scripts/make_arabic.py` depuis les compositions françaises (détails dans
 HANDOFF.md).
 
@@ -41,7 +43,7 @@ mouvement continu sur un groove funk. Confiant, joueur, concret, rassurant.
 |---|---|---|
 | visual_variance | 8 | une technique et une couleur d'étape par scène (couleurs des 5 étapes du site) |
 | motion_intensity | 8 | transitions motivées par les objets, respiration sur le vol et sur le prix |
-| information_density | 4 | 1 titre + 1 objet par scène ; le reçu du prix est le seul moment dense (6 lignes, 6 s) |
+| information_density | 4 | 1 titre + 1 objet par scène ; le reçu du prix est le seul moment dense (7 lignes, 6 s) |
 
 - Palette : tokens du site uniquement. Couleurs d'étape = rangées « Votre parcours en 5
   étapes » du site : 01 blanc, 02 violet `#a855f7`, 03 or `#fbbb21`, 04 orange `#f97316`,
@@ -76,14 +78,14 @@ mouvement continu sur un groove funk. Confiant, joueur, concret, rassurant.
 | 6 | 15–17 | Départ | la carte d'embarquement se déchire et ouvre le ciel, avion pixel qui décolle, mur de nuages | « Bon voyage ! » |
 | 7 | 17–21 | En vol | carte en pixels (masque terre/mer réel) Tunis → Moscou, sillage doré, nuages en parallaxe, notification RusStudy, plongée sur Moscou | « Cap sur Moscou. » + « Ton tuteur t'attend à l'arrivée. Bon vol ! » |
 | 8 | 21–23 | 05 · Accueil | iris vert sur le **drop B** ; hall d'arrivée : par la baie vitrée, Moscou de nuit (tour Spasskaïa, dômes de Saint-Basile, fenêtres allumées, neige) et un avion qui atterrit ; panneau à volets BIENVENUE EN RUSSIE ; le tuteur (pixel art) se lève derrière la barrière avec la pancarte RusStudy, saute sur le temps, salue et la penche vers la sortie ; **travelling vers la droite** jusqu'au train | « Un tuteur bilingue t'attend à l'aéroport. » |
-| 9 | 23–27 | 05 · Transfert | le travelling arrive sur un canvas pixel en parallaxe (étoiles, soleil couchant, collines, forêt, poteaux de caténaire, neige) : le **train** (passagers aux fenêtres) et une **voiture** orange qui le double phares allumés ; la ville universitaire (bâtiment à colonnes et coupole) se lève à l'horizon ; jauge MOSCOU → KAZAN, panneau КАЗАНЬ / KAZAN, freinage, la porte du wagon s'ouvre | « Train ou voiture, jusqu'à ta ville. » + « Organisé sur demande · en option » |
+| 9 | 23–27 | 05 · Transfert | le travelling arrive sur un canvas pixel en parallaxe (étoiles, soleil couchant, collines, forêt, poteaux de caténaire, neige) : le **train** (passagers aux fenêtres) et une **voiture** orange qui le double phares allumés ; la ville universitaire (bâtiment à colonnes et coupole) se lève à l'horizon ; jauge MOSCOU → LIPETSK, panneau ЛИПЕЦК / LIPETSK, freinage, la porte du wagon s'ouvre | « Train ou voiture, jusqu'à ta ville. » + « Organisé sur demande · en option » |
 | 10 | 27–29 | 05 · Foyer | la scène s'ouvre **dans la porte du wagon** ; carte-clé, LED verte, porte 412 en 3D sur la chambre pixel, travelling dans la fenêtre | « Foyer universitaire. » + « 1 an inclus » |
 | 11 | 29–31 | Université | flash blanc ; photo de l'amphi en Ken Burns, typo lettre à lettre, carte d'étudiant en 3D avec reflet, étoiles pixel ; barre « Objectif atteint » | « Premier jour à l'université. » |
-| 12 | 31–37 | Prix | cut ; odomètre 12 000 DT, pastille « études + installation », ticket imprimé ligne à ligne : 6 postes inclus, total, puis « NON INCLUS · EN OPTION SUR DEMANDE » (billet d'avion, train ou voiture, hôtel & visites à Moscou : sur devis), tampon SANS FRAIS CACHÉS | « Budget 1ère année · dès 12 000 DT » |
+| 12 | 31–37 | Prix | cut ; odomètre 12 000 DT, pastille « études + installation », ticket imprimé ligne à ligne : 7 postes inclus (sans montant), total, puis « NON INCLUS · EN OPTION SUR DEMANDE » (billet d'avion, train ou voiture, hôtel & visites à Moscou : sur devis), tampon SANS FRAIS CACHÉS | « Budget 1ère année · dès 12 000 DT » |
 | 13 | 37–40 | CTA | logo sur l'accord final, ville pixel de nuit (rappel du spot 15 s), bouton WhatsApp, numéro et site tapés, tap | « Écris-nous sur WhatsApp · +7 996 433 4489 · russieetudes.com · 1ère consultation gratuite » |
 
-Ville universitaire d'exemple : **Kazan** (une des villes citées dans l'analyse de profil,
-« Moscou, Saint-Pétersbourg, Kazan… »). Comme « Médecine générale », c'est un cas illustratif.
+Ville universitaire d'exemple : **Lipetsk** depuis la v7, Kazan avant (une des villes citées dans
+l'analyse de profil, « Moscou, Saint-Pétersbourg, Lipetsk… »). Comme « Médecine générale », c'est un cas illustratif.
 
 ## Version YouTube 16:9 (1920×1080)
 

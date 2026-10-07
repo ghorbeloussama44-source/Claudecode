@@ -34,10 +34,10 @@ Les rendus `russtudy_parcours_40s_*` datent de la v5 (prix en euros) : relancer
 ## À valider par le client avant diffusion payante
 
 - **Prix (v6, en dinars tunisiens)** : « 1ère année dès 12 000 DT » (montant donné par le
-  client, équivalent de 3 500 €) + pastille « études + installation ». **Inclus** (lignes
-  cochées du ticket) : frais universitaires « dès 7 500 DT » (**conversion à confirmer** :
-  2 200 € au même taux que le total = 7 543 DT, arrondi), consulting / orientation, dossier
-  visa, accueil aéroport, foyer 1 an, assurance médicale. « DT » est l'abréviation courante en
+  client, équivalent de 3 500 €) + pastille « études + installation ». **Inclus** (7 lignes
+  cochées du ticket, **sans montant par ligne** depuis la v7 : le client ne veut pas que l'on
+  puisse calculer sa marge) : frais universitaires, consulting / orientation, accompagnement
+  administratif, dossier visa, accueil aéroport, foyer 1 an, assurance médicale. « DT » est l'abréviation courante en
   Tunisie (« TND » si le client préfère : `#s11-cur`, `.rc-l .v`, `.rc-tot .b` et `#s11-deco`) ;
   en derja : « د.ت ». **Non inclus**, imprimés en bas du ticket sous « NON INCLUS · EN
   OPTION SUR DEMANDE » avec la mention « sur devis » : billet d'avion, train ou voiture
@@ -50,9 +50,10 @@ Les rendus `russtudy_parcours_40s_*` datent de la v5 (prix en euros) : relancer
   options non incluses sont désormais listées à l'écran.
 - **Transfert** : « Train ou voiture, jusqu'à ta ville. » + « Organisé sur demande · en
   option » (`#tr-sub`), cohérent avec le ticket.
-- Le cas montré (Médecine générale à **Kazan**, chambre 412, dossier RS-2026-0412, vol
-  RS 2026) est **illustratif**, comme l'exemple de profil. Kazan fait partie des villes
-  citées dans l'analyse de profil (« Moscou, Saint-Pétersbourg, Kazan… »).
+- Le cas montré (Médecine générale à **Lipetsk** — Kazan jusqu'à la v6 —, chambre 412,
+  dossier RS-2026-0412, vol RS 2026) est **illustratif**, comme l'exemple de profil. Lipetsk
+  fait partie des villes citées dans l'analyse de profil (« Moscou, Saint-Pétersbourg,
+  Lipetsk… »).
 - **Textes en derja** (v6) : à faire relire par un locuteur tunisien avant diffusion (liste
   complète dans `scripts/make_arabic.py`, `TEXTS`). Choix à confirmer : « tuteur bilingue » →
   « مرافق يحكي لغتين » (accompagnateur qui parle deux langues), « sur devis » → « حسب الديفي »,
@@ -115,7 +116,7 @@ dans le script).
 | 15–17 | `#s6` Départ | décollage sur MotionPath, nuages pixel | mur de nuages (`#cw`) |
 | 17–21 | `#s7` En vol | carte en pixels Tunis → Moscou, notification RusStudy | plongée + iris vert sur le **drop B (21,0)** |
 | 21–23 | `#s8` 05 Accueil | hall d'arrivée : baie vitrée sur Moscou de nuit (tour Spasskaïa, dômes de Saint-Basile, avion qui atterrit, neige, balisage), panneau à volets BIENVENUE EN RUSSIE, tuteur pixel derrière la barrière avec la pancarte (saut sur le temps, salut, « par ici ») | travelling vers la droite (23,0) : le hall sort à gauche avec parallaxe, le transfert entre à droite |
-| 23–27 | `#tr` 05 Transfert | canvas pixel en parallaxe (fonction pure du temps) : train + voiture qui le double, neige, ville universitaire qui se lève à l'horizon, panneau КАЗАНЬ / KAZAN, jauge MOSCOU → KAZAN, freinage | la porte du wagon s'ouvre sur le foyer (clip-path) |
+| 23–27 | `#tr` 05 Transfert | canvas pixel en parallaxe (fonction pure du temps) : train + voiture qui le double, neige, ville universitaire qui se lève à l'horizon, panneau ЛИПЕЦК / LIPETSK, jauge MOSCOU → LIPETSK, freinage | la porte du wagon s'ouvre sur le foyer (clip-path) |
 | 27–29 | `#s9` 05 Foyer | carte-clé, porte 412 en 3D, chambre pixel, « 1 an inclus » | travelling dans la fenêtre + flash |
 | 29–31 | `#s10` Université | photo d'amphi, typo lettre à lettre, carte d'étudiant | cut |
 | 31–37 | `#s11` Prix | odomètre 12 000 DT, ticket imprimé ligne à ligne : inclus, total, puis « non inclus · en option », tampon | chute |
@@ -185,7 +186,7 @@ timing, même bande-son ; seuls changent :
    le bord droit de la colonne de texte (16:9, x = 840) ; téléphone, cartes, lettre, carte
    d'assurance, notification et ticket en miroir ; la barre de progression se remplit depuis
    la droite. Restent de gauche à droite : carte d'embarquement, carte du vol et jauge
-   Moscou → Kazan (géographie), numéro de téléphone, site, codes et montants. Les milliers
+   Moscou → Lipetsk (géographie), numéro de téléphone, site, codes et montants. Les milliers
    s'écrivent avec une espace insécable (`NB`) : une espace simple inverserait « 12 000 » au
    milieu d'un texte arabe.
 
@@ -207,13 +208,13 @@ Repères : bannières `/* === S1 — … */` (CSS), `<!-- === S1 — … -->` (H
 | Villes et trajet du vol | JS `MAP_ROWS` (régénérer avec `scripts/make_dotmap.py`), `R0…R3` + chemin `M220,1320 C420,1150 600,720 845,698` (3 occurrences) + épingles `#pin-*`, étiquettes `#lb-tun`, `#lb-mow` | la caméra (`#s7-cam`) vise Tunis puis Moscou : recalculer ses x/y si une ville bouge ; 16:9 : mêmes éléments dans `make_landscape.py` |
 | Notification en vol | HTML `#nt-b` | |
 | Panneau à volets | JS `FLAP` (2 mots de 9 cases) | le cue `s8-split-flap` est resynthétisé avec le même timing (`build_audio.py`) ; derja : `FLAP` dans `make_arabic.py` (2 phrases) |
-| **Transfert** (textes) | HTML `#tr-t .tw`, `#tr-a` (MOSCOU), `#tr-b` (KAZAN), `#tr-sub` | `#tr-sub` ≤ ~40 caractères |
-| **Ville de l'université** | `#tr-b`, `#s2-pm`, carte d'étudiant `.sc-f .v2`, panneau du transfert : JS `word("КАЗАНЬ", 8)` et `word("KAZAN", 26)` dans `signSpr` | lettres pixel 5×7 dans `PXF` : ajouter celles qui manquent pour un autre nom (ex. « Т », « О », « M ») ; ≤ 13 lettres par ligne |
+| **Transfert** (textes) | HTML `#tr-t .tw`, `#tr-a` (MOSCOU), `#tr-b` (LIPETSK), `#tr-sub` | `#tr-sub` ≤ ~40 caractères |
+| **Ville de l'université** | `#tr-b`, `#s2-pm`, carte d'étudiant `.sc-f .v2`, panneau du transfert : JS `word("ЛИПЕЦК", 8)` et `word("LIPETSK", 26)` dans `signSpr` | lettres pixel 5×7 dans `PXF` : ajouter celles qui manquent pour un autre nom (ex. « Т », « О », « M ») ; ≤ 13 lettres par ligne |
 | Mise en page du transfert | JS `TRL` (horizon, rails, route, positions du train et de la voiture, entrée du panneau) | 16:9 : `TRL` dans `make_landscape.py` |
 | Foyer | HTML `#d-plate`, `#kc-n`, puce `#s9-chip` | |
 | Carte d'étudiant | HTML `#scard` (`.sc-f`) | |
 | **Prix (gros chiffre)** | JS `ODO_TARGET` (chiffres) + `ODO_LAND` (arrivée), devise `#s11-cur` | 5 chiffres (12 000) ; pour un autre nombre de chiffres, ajouter/retirer une colonne `.odo` et mettre aussi à jour `odo_ticks` dans `build_audio.py` ; 16:9 : le chiffre est réduit à 92 % (`zoom`, `make_landscape.py`) pour laisser la place au ticket |
-| **Ticket** (postes, montants, total) | HTML `#rc-paper .rc-l`, `.rc-tot` | 6 lignes de 66 px ; si on en ajoute, allonger `#rc-paper`/`#rc-mask` et les pas d'avance (`paper feed`) |
+| **Ticket** (postes, montants, total) | HTML `#rc-paper .rc-l`, `.rc-tot` | 7 lignes de 66 px, toutes « inclus » (la 1re sort avec l'en-tête au 1er pas d'avance, pour garder le timing et le son de l'imprimante) ; une ligne de plus = +66 px à `#rc-paper`, `#rc-mask` et `top` de `#rc-slot`, un pas d'avance de plus (`paper feed`) et une rafale de plus dans `feeds` (`build_audio.py`) |
 | **Options non incluses** | HTML `.rc-oh` (titre) et `#rc-paper .rc-o` (3 lignes de 56 px, valeur « sur devis ») | pour un prix : remplacer « sur devis » ; une ligne de plus = +56 px à `#rc-paper`/`#rc-mask`, un pas d'avance de plus, et une rafale de plus dans `feeds` (`build_audio.py`) |
 | Pastille / tampon prix | HTML `#s11-pill`, `#st-tc` | pastille ≤ ~22 caractères à 44 px (le tampon est à sa droite) |
 | Hall d'arrivée (vue de Moscou) | JS `S8L` (baie vitrée, sol, positions de la tour, des dômes et de l'atterrissage) ; tuteur `TUTOR_HEAD` / `HAND` ; barrière `#s8-rail` | 16:9 : `S8L` et CSS dans `make_landscape.py` |
@@ -251,7 +252,7 @@ klaxon du train en la majeur) ; rails, moteur et souffle de porte accompagnent l
   « WhatsApp » n'apparaît que dans le texte du CTA et de l'appel (comme sur le site).
 - Drapeaux tunisien et russe dessinés en SVG (seules couleurs hors charte, pour la lisibilité).
 - Pas de visage : avatars et passagers en pixel art génériques.
-- Panneau КАЗАНЬ en lettres pixel dessinées (Space Grotesk n'a pas le cyrillique).
+- Panneau ЛИПЕЦК en lettres pixel dessinées (Space Grotesk n'a pas le cyrillique).
 - Photo de l'amphithéâtre : celle du site (Unsplash) ; recadrage 16:9 de la même photo.
   Carte : masque terre/mer GLOBE (via `global-land-mask`, MIT) converti en grille
   embarquée — aucune donnée chargée au rendu.

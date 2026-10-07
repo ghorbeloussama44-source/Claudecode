@@ -1869,7 +1869,7 @@
         position: absolute;
         left: 214px;
         top: 43px;
-        width: 500px;
+        width: 460px;
         height: 6px;
         border-radius: 3px;
         background: rgba(255, 255, 255, 0.2);
@@ -1879,7 +1879,7 @@
         position: absolute;
         left: 0;
         top: 0;
-        width: 500px;
+        width: 460px;
         height: 6px;
         background: var(--gold);
         transform-origin: 0% 50%;
@@ -2294,15 +2294,15 @@
         left: 100px;
         top: 786px;
         width: 880px;
-        height: 900px;
+        height: 966px;
         overflow: hidden;
       }
       #rc-paper {
         position: absolute;
         left: 0;
-        top: 900px;
+        top: 966px;
         width: 880px;
-        height: 890px;
+        height: 956px;
         background: #fff;
         padding: 12px 44px 0;
       }
@@ -2395,7 +2395,7 @@
       #rc-slot {
         position: absolute;
         left: 70px;
-        top: 1682px;
+        top: 1748px;
         width: 940px;
         height: 36px;
         border-radius: 18px;
@@ -3085,13 +3085,13 @@
               <i class="scan"></i>
               <div class="pic" style="background: var(--gold)" id="pic2"></div>
               <div class="pt1">المدينة والميزانية</div>
-              <div class="pt2">موسكو، سان بطرسبرغ، قازان…</div>
+              <div class="pt2">موسكو، سان بطرسبرغ، ليبيتسك…</div>
               <div class="pck"><svg width="30" height="30" viewBox="0 0 26 26"><path class="ckp" d="M5 13.5l5 5L21 7.5" fill="none" stroke="#0a0a0a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" /></svg></div>
             </div>
           </div>
           <div id="s2-plan">
             <div id="s2-pk">البرنامج متاعك</div>
-            <div id="s2-pm">طب عام · قازان</div>
+            <div id="s2-pm">طب عام · ليبيتسك</div>
             <div id="s2-ps">جامعة حكومية شريكة</div>
             <div id="s2-pa"></div>
           </div>
@@ -3363,7 +3363,7 @@
           <div id="tr-a">موسكو</div>
           <div id="tr-track"><i id="tr-fill"></i></div>
           <div id="tr-ic"></div>
-          <div id="tr-b">قازان<span id="tr-ok"></span></div>
+          <div id="tr-b">ليبيتسك<span id="tr-ok"></span></div>
         </div>
         <div id="tr-sub">حسب الطلب · اختياري</div>
       </section>
@@ -3419,7 +3419,7 @@
             <div id="sc-band"><span>بطاقة طالب</span><span>2026–2027</span></div>
             <div id="sc-photo"></div>
             <div class="sc-f" style="top: 122px"><div class="k">الكلية</div><div class="v">طب عام</div></div>
-            <div class="sc-f" style="top: 220px"><div class="k">الجامعة</div><div class="v2">جامعة حكومية · قازان</div></div>
+            <div class="sc-f" style="top: 220px"><div class="k">الجامعة</div><div class="v2">جامعة حكومية · ليبيتسك</div></div>
             <div class="sc-f" style="top: 306px"><div class="k">رقم الطالب</div><div class="v3">RS-2026-0412</div></div>
             <div id="sc-sheen"></div>
           </div>
@@ -3475,8 +3475,9 @@
           <div id="rc-mask">
             <div id="rc-paper">
               <div class="rc-h"><span class="wm">Rus<span class="acc">Study</span>.</span><span>العام الأوّل</span></div>
-              <div class="rc-l"><span>معاليم الجامعة</span><i class="dt"></i><span class="v">من 7 500 د.ت</span></div>
+              <div class="rc-l"><span>معاليم الجامعة</span><i class="dt"></i><span class="v">مشمول<i class="ok"></i></span></div>
               <div class="rc-l"><span>الاستشارة والتوجيه</span><i class="dt"></i><span class="v">مشمول<i class="ok"></i></span></div>
+              <div class="rc-l"><span>المرافقة الإدارية</span><i class="dt"></i><span class="v">مشمول<i class="ok"></i></span></div>
               <div class="rc-l"><span>ملف الفيزا</span><i class="dt"></i><span class="v">مشمول<i class="ok"></i></span></div>
               <div class="rc-l"><span>الاستقبال في المطار</span><i class="dt"></i><span class="v">مشمول<i class="ok"></i></span></div>
               <div class="rc-l"><span>المبيت الجامعي · عام كامل</span><i class="dt"></i><span class="v">مشمول<i class="ok"></i></span></div>
@@ -3686,7 +3687,7 @@
       }
       CustomEase.create("odoRoll", "M0,0 C0.08,0.42 0.24,0.86 0.5,0.97 0.7,1.01 0.86,1.003 1,1");
       // scene start times (s) after the airport: move a whole scene by editing one number
-      const T_TR = 23.0, // transfer Moscou -> Kazan (train or car)
+      const T_TR = 23.0, // transfer Moscou -> Lipetsk (train or car)
         T9 = 27.0, // dorm (opens through the train door)
         T10 = 29.0, // first day at university
         T11 = 31.0, // price
@@ -4583,7 +4584,7 @@
       // "par ici !": the sign tilts towards the exit just before the camera pans
       tl.to("#sign-pos", { rotation: 7, duration: 0.24, ease: "power2.out" }, 22.74);
 
-      // ================================================================ TR — TRANSFERT MOSCOU -> KAZAN (T_TR = 23.0 – 27.0)
+      // ================================================================ TR — TRANSFERT MOSCOU -> LIPETSK (T_TR = 23.0 – 27.0)
       // From Moscow the student travels on to the university city, by train or by car (an option,
       // organised on request). One canvas drawn as a pure function of time: dusk sky, setting sun,
       // parallax hills, the university city rising on the horizon, forest and catenary poles, the
@@ -4703,11 +4704,22 @@
         З: ["XXXX.", "....X", "....X", ".XXX.", "....X", "....X", "XXXX."],
         Н: ["X...X", "X...X", "X...X", "XXXXX", "X...X", "X...X", "X...X"],
         Ь: ["X....", "X....", "X....", "XXXX.", "X...X", "X...X", "XXXX."],
+        Л: [".XXXX", ".X..X", ".X..X", ".X..X", ".X..X", ".X..X", "XX..X"],
+        И: ["X...X", "X...X", "X..XX", "X.X.X", "XX..X", "X...X", "X...X"],
+        П: ["XXXXX", "X...X", "X...X", "X...X", "X...X", "X...X", "X...X"],
+        Е: ["XXXXX", "X....", "X....", "XXXX.", "X....", "X....", "XXXXX"],
+        Ц: ["X..X.", "X..X.", "X..X.", "X..X.", "X..X.", "X..X.", "XXXXX", "....X"],
         Z: ["XXXXX", "....X", "...X.", "..X..", ".X...", "X....", "XXXXX"],
         N: ["X...X", "XX..X", "X.X.X", "X..XX", "X...X", "X...X", "X...X"],
+        L: ["X....", "X....", "X....", "X....", "X....", "X....", "XXXXX"],
+        I: [".XXX.", "..X..", "..X..", "..X..", "..X..", "..X..", ".XXX."],
+        P: ["XXXX.", "X...X", "X...X", "XXXX.", "X....", "X....", "X...."],
+        T: ["XXXXX", "..X..", "..X..", "..X..", "..X..", "..X..", "..X.."],
+        S: [".XXXX", "X....", "X....", ".XXX.", "....X", "....X", "XXXX."],
       };
       PXF.K = PXF["К"];
       PXF.A = PXF["А"];
+      PXF.E = PXF["Е"];
       const signSpr = sprite(84, 80, (R) => {
         R(18, 44, 4, 36, "#71717a");
         R(62, 44, 4, 36, "#71717a");
@@ -4722,9 +4734,9 @@
             x += 6;
           }
         };
-        word("КАЗАНЬ", 8);
+        word("ЛИПЕЦК", 8);
         R(12, 20, 60, 1, "rgba(255,255,255,0.45)");
-        word("KAZAN", 26);
+        word("LIPETSK", 26);
       });
       // far hills (periodic heights) and a pine forest strip
       const hillH = [];
@@ -4946,7 +4958,7 @@
       tl.fromTo("#tr-trip", { y: -30, scale: 0.9, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.8)" }, T_TR + 0.42);
       tl.fromTo("#tr-sub", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, T_TR + 0.6);
       tl.fromTo("#tr-fill", { scaleX: 0 }, { scaleX: 1, duration: 3.15, ease: "power1.inOut" }, T_TR + 0.45);
-      tl.fromTo("#tr-ic", { x: 0 }, { x: 500, duration: 3.15, ease: "power1.inOut" }, T_TR + 0.45);
+      tl.fromTo("#tr-ic", { x: 0 }, { x: 460, duration: 3.15, ease: "power1.inOut" }, T_TR + 0.45);
       tl.fromTo("#tr-ok", { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(3)" }, T_TR + 3.6);
 
       // ================================================================ S9 — 05 FOYER UNIVERSITAIRE (T9 = 27.0 – 29.0)
@@ -5064,7 +5076,7 @@
       }
 
       // ================================================================ S11 — PRIX (T11 = 31.0 – 37.0)
-      // hard cut on T11; odometer lands on T11 + 1; the receipt prints what the 12 000 DT include,
+      // hard cut on T11; odometer lands on T11 + 1; the receipt prints what the 12 000 DT include (no amount per line),
       // then what they do not (flight, transfer to the university city, hotel & visits: options on request)
       tl.fromTo("#s11-k", { opacity: 0, y: -24 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, T11 + 0.05);
       tl.fromTo("#s11-des", { opacity: 0, x: -50 }, { opacity: 1, x: 0, duration: 0.45, ease: "expo.out" }, T11 + 0.1);
@@ -5088,24 +5100,24 @@
       {
         let pts = "0px 12px";
         for (let x = 20; x <= 880; x += 20) pts += `, ${x}px ${(x / 20) % 2 ? 0 : 12}px`;
-        $("#rc-paper").style.clipPath = `polygon(${pts}, 880px 890px, 0px 890px)`;
+        $("#rc-paper").style.clipPath = `polygon(${pts}, 880px 956px, 0px 956px)`;
         $$(".rc-l .ok").forEach((o) => (o.innerHTML = CHECK("#0a0a0a", 23, 4.5)));
       }
-      // paper feed (px emerged above the slot): header T11 + 1.5, one line per 8th note, total T11 + 3.25,
-      // then the "not included" options T11 + 3.5 - 4.25
-      tl.fromTo("#rc-paper", { y: 0 }, { y: -108, duration: 0.14, ease: "power1.out" }, T11 + 1.5);
-      tl.to("#rc-paper", { y: -174, duration: 0.12, ease: "power1.out" }, T11 + 1.75);
-      tl.to("#rc-paper", { y: -240, duration: 0.12, ease: "power1.out" }, T11 + 2);
-      tl.to("#rc-paper", { y: -306, duration: 0.12, ease: "power1.out" }, T11 + 2.25);
-      tl.to("#rc-paper", { y: -372, duration: 0.12, ease: "power1.out" }, T11 + 2.5);
-      tl.to("#rc-paper", { y: -438, duration: 0.12, ease: "power1.out" }, T11 + 2.75);
-      tl.to("#rc-paper", { y: -504, duration: 0.12, ease: "power1.out" }, T11 + 3);
-      tl.to("#rc-paper", { y: -624, duration: 0.12, ease: "power1.out" }, T11 + 3.25);
-      tl.to("#rc-paper", { y: -700, duration: 0.12, ease: "power1.out" }, T11 + 3.5);
-      tl.to("#rc-paper", { y: -756, duration: 0.12, ease: "power1.out" }, T11 + 3.75);
-      tl.to("#rc-paper", { y: -812, duration: 0.12, ease: "power1.out" }, T11 + 4);
-      tl.to("#rc-paper", { y: -868, duration: 0.12, ease: "power1.out" }, T11 + 4.25);
-      tl.to("#rc-paper", { y: -890, duration: 0.1, ease: "power1.out" }, T11 + 4.37);
+      // paper feed (px emerged above the slot): header + 1st line T11 + 1.5, then one line per 8th note
+      // (7 included lines), total T11 + 3.25, then the "not included" options T11 + 3.5 - 4.25
+      tl.fromTo("#rc-paper", { y: 0 }, { y: -174, duration: 0.14, ease: "power1.out" }, T11 + 1.5);
+      tl.to("#rc-paper", { y: -240, duration: 0.12, ease: "power1.out" }, T11 + 1.75);
+      tl.to("#rc-paper", { y: -306, duration: 0.12, ease: "power1.out" }, T11 + 2);
+      tl.to("#rc-paper", { y: -372, duration: 0.12, ease: "power1.out" }, T11 + 2.25);
+      tl.to("#rc-paper", { y: -438, duration: 0.12, ease: "power1.out" }, T11 + 2.5);
+      tl.to("#rc-paper", { y: -504, duration: 0.12, ease: "power1.out" }, T11 + 2.75);
+      tl.to("#rc-paper", { y: -570, duration: 0.12, ease: "power1.out" }, T11 + 3);
+      tl.to("#rc-paper", { y: -690, duration: 0.12, ease: "power1.out" }, T11 + 3.25);
+      tl.to("#rc-paper", { y: -766, duration: 0.12, ease: "power1.out" }, T11 + 3.5);
+      tl.to("#rc-paper", { y: -822, duration: 0.12, ease: "power1.out" }, T11 + 3.75);
+      tl.to("#rc-paper", { y: -878, duration: 0.12, ease: "power1.out" }, T11 + 4);
+      tl.to("#rc-paper", { y: -934, duration: 0.12, ease: "power1.out" }, T11 + 4.25);
+      tl.to("#rc-paper", { y: -956, duration: 0.1, ease: "power1.out" }, T11 + 4.37);
       stampIn("#st-tc", T11 + 4.5, -8);
       shake("#s11-wrap", T11 + 4.5, 10);
       tl.to("#s11-pill", { keyframes: [{ scale: 1.08, duration: 0.07 }, { scale: 1, duration: 0.3, ease: "back.out(3)" }] }, T11 + 4.5);
