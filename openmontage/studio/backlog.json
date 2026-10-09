@@ -1,0 +1,14 @@
+[
+  {"id": "a01", "projet_id": "russtudy-social", "projet": "RusStudy · série", "action": "Enregistrer les vraies voix des témoignages (vidéos 01, 02, 03), avec l'accord écrit des personnes", "priorite": "haute", "etat": "à faire"},
+  {"id": "a02", "projet_id": "russtudy-social", "projet": "RusStudy · série", "action": "Publier les 18 vidéos selon le calendrier de 20 jours (kit/00_pages.md)", "priorite": "haute", "etat": "à faire"},
+  {"id": "a03", "projet_id": "russtudy-parcours", "projet": "RusStudy · parcours", "action": "Harmoniser Lipetsk : le site dit université technique, le film montre Médecine générale", "priorite": "haute", "etat": "à faire"},
+  {"id": "a04", "projet_id": "russtudy-social", "projet": "RusStudy · série", "action": "Mettre la pub (100 €) sur la vidéo qui amène le plus de messages WhatsApp après 72 h", "priorite": "moyenne", "etat": "à faire"},
+  {"id": "a05", "projet_id": "russtudy-parcours", "projet": "RusStudy · parcours", "action": "Faire relire les textes en derja par un locuteur tunisien (film et série)", "priorite": "moyenne", "etat": "à faire"},
+  {"id": "a06", "projet_id": "russtudy-motion-15s", "projet": "RusStudy · spot 15 s", "action": "Passer le prix en dinars : le spot affiche encore « dès 2 200 €/an »", "priorite": "moyenne", "etat": "à faire"},
+  {"id": "a07", "projet_id": "russtudy-motion-15s", "projet": "RusStudy · spot 15 s", "action": "Revoir « Visa garanti » et « Logement garanti à 100 % » : promesses absolues", "priorite": "moyenne", "etat": "à faire"},
+  {"id": "a08", "projet_id": "medilearn", "projet": "MediLearn", "action": "Produire les sujets 2 et suivants : grades, étiologie, traitement", "priorite": "moyenne", "etat": "à faire"},
+  {"id": "a09", "projet_id": "russtudy-parcours", "projet": "RusStudy · parcours", "action": "Refaire les versions 40 s (encore en v5, prix en euros) si elles servent encore", "priorite": "basse", "etat": "à faire"},
+  {"id": "a10", "projet_id": "medilearn", "projet": "MediLearn", "action": "Synchroniser les lèvres des présentateurs, souhait du client pour la version finale", "priorite": "basse", "etat": "à faire"},
+  {"id": "a11", "projet_id": "mahdia-festival", "projet": "Festival de Mahdia", "action": "Archiver les sources (clips, voix off, logo) : seule la vidéo finale est gardée", "priorite": "basse", "etat": "à faire"},
+  {"id": "a12", "projet_id": "clip-chanson", "projet": "Clip chanson", "action": "Retrouver ou refaire le clip chanson néon : aucune vidéo n'a été archivée", "priorite": "basse", "etat": "à faire"}
+]
