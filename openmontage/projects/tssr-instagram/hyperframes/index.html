@@ -1,0 +1,786 @@
+<!doctype html>
+<html lang="ar" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>TSSR — Pub Instagram en derja (48 s)</title>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      @font-face {
+        font-family: "Montserrat";
+        src: url("assets/fonts/Montserrat-900-latin.woff2") format("woff2");
+        font-weight: 700 900;
+        font-display: block;
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2212;
+      }
+      @font-face {
+        font-family: "Cairo";
+        src: url("assets/fonts/Cairo-arabic.woff2") format("woff2");
+        font-weight: 400 900;
+        font-display: block;
+        unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0898-08E1, U+08E3-08FF, U+200C-200E, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC;
+      }
+      @font-face {
+        font-family: "Aref Ruqaa";
+        src: url("assets/fonts/ArefRuqaa-700-arabic.woff2") format("woff2");
+        font-weight: 700;
+        font-display: block;
+        unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0898-08E1, U+08E3-08FF, U+200C-200E, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC;
+      }
+      @font-face {
+        font-family: "Aref Ruqaa";
+        src: url("assets/fonts/ArefRuqaa-700-latin.woff2") format("woff2");
+        font-weight: 700;
+        font-display: block;
+        unicode-range: U+0000-00FF, U+2000-206F;
+      }
+      :root {
+        --blue: #1f3fbf;
+        --navy: #0b1f6b;
+        --sky: #3b82f6;
+        --red: #e31b23;
+        --gold: #ffd84d;
+        --flag-blue: #0039a6;
+        --flag-red: #d52b1e;
+        --white: #ffffff;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0b1f6b; }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; font-family: "Montserrat", "Cairo", sans-serif; color: #fff; }
+      .clip { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: hidden; }
+      .fill { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+      .ar { direction: rtl; unicode-bidi: isolate; font-family: "Cairo", "Montserrat", sans-serif; }
+      .ruqaa { font-family: "Aref Ruqaa", serif; font-weight: 700; }
+      .ltr { direction: ltr; unicode-bidi: isolate; display: inline-block; }
+      .mk { display: inline-block; overflow: hidden; vertical-align: top; padding: 0.25em 0.06em 0.3em; margin: -0.25em -0.06em -0.3em; }
+      .mk > span { display: inline-block; }
+      .box {
+        display: inline-block; overflow: hidden; background: var(--red); padding: 0 38px 10px; border-radius: 18px;
+        font-weight: 900; line-height: 1.3; transform-origin: 100% 50%; box-shadow: 0 16px 40px rgba(227, 27, 35, 0.45);
+      }
+      .spark { position: absolute; width: 70px; height: 70px; margin: -35px 0 0 -35px; }
+
+      /* ---------- persistent brand chip (TSSR · Study in Russia) */
+      #chip {
+        position: absolute; left: 72px; top: 196px; height: 74px; padding: 0 30px 0 14px;
+        display: flex; align-items: center; gap: 16px; border-radius: 999px; background: #fff;
+        box-shadow: 0 10px 30px rgba(11, 31, 107, 0.35); direction: ltr;
+      }
+      #chip .dot { width: 50px; height: 50px; border-radius: 50%; background: var(--blue); display: flex; align-items: center; justify-content: center; }
+      #chip .t { font-weight: 900; font-size: 34px; letter-spacing: -0.02em; color: var(--blue); }
+      #chip .bar { width: 3px; height: 34px; background: rgba(11, 31, 107, 0.2); }
+      #chip .s { font-weight: 700; font-size: 26px; color: #0f172a; letter-spacing: -0.01em; }
+
+      /* ---------- S1 : القراية في روسيا */
+      #s1-photo { background: url("assets/img/saint_basile.jpg") center 30% / cover no-repeat; transform-origin: 50% 40%; }
+      #s1-tint {
+        background: linear-gradient(180deg, rgba(31, 63, 191, 0.55) 0%, rgba(31, 63, 191, 0.05) 32%, rgba(11, 31, 107, 0) 50%, rgba(11, 31, 107, 0.82) 78%, rgba(11, 31, 107, 0.95) 100%);
+      }
+      #flag { position: absolute; left: 0; top: 0; }
+      #s1-glint {
+        background: linear-gradient(115deg, rgba(255, 255, 255, 0) 38%, rgba(255, 255, 255, 0.55) 50%, rgba(255, 255, 255, 0) 62%);
+        mix-blend-mode: overlay; opacity: 0;
+      }
+      #s1-title { position: absolute; right: 132px; top: 1090px; text-align: right; transform-origin: 100% 50%; }
+      #s1-title .l1 { font-weight: 900; font-size: 206px; line-height: 1.12; text-shadow: 0 10px 40px rgba(0, 0, 0, 0.45); }
+      #s1-title .l2 { margin-top: 4px; }
+      #s1-title .box { font-size: 150px; }
+
+      /* ---------- transition stripes (white / blue / red) */
+      .stripe { position: absolute; width: 2600px; height: 760px; left: -760px; transform-origin: 50% 50%; }
+      #st-w { top: 260px; background: #fff; }
+      #st-b { top: 600px; background: var(--flag-blue); }
+      #st-r { top: 940px; background: var(--flag-red); }
+
+      /* ---------- S2 : حلمك ممكن */
+      #s2-bg { background: radial-gradient(90% 60% at 50% 35%, #4f8cff 0%, #1f3fbf 55%, #0b1f6b 100%); }
+      #s2-rays, #s7-rays {
+        position: absolute; left: -420px; top: -200px; width: 1920px; height: 1920px; opacity: 0.22;
+        background: repeating-conic-gradient(from 0deg at 50% 50%, rgba(255, 255, 255, 0.9) 0deg 6deg, rgba(255, 255, 255, 0) 6deg 18deg);
+        -webkit-mask: radial-gradient(circle at 50% 50%, #000 0%, rgba(0, 0, 0, 0) 62%); mask: radial-gradient(circle at 50% 50%, #000 0%, rgba(0, 0, 0, 0) 62%);
+      }
+      #s2-card {
+        position: absolute; left: 110px; top: 360px; width: 860px; height: 600px; border-radius: 40px; overflow: hidden;
+        border: 14px solid #fff; box-shadow: 0 40px 80px rgba(5, 14, 50, 0.55); transform: rotate(-4deg);
+      }
+      #s2-card img { width: 100%; height: 100%; object-fit: cover; transform-origin: 50% 50%; }
+      #s2-t1 { position: absolute; right: 132px; top: 1010px; font-weight: 900; font-size: 230px; line-height: 1.2; text-shadow: 0 10px 40px rgba(0, 0, 0, 0.35); }
+      #s2-t2 { position: absolute; right: 150px; top: 1250px; font-size: 220px; line-height: 1.3; color: var(--gold); text-shadow: 0 8px 30px rgba(0, 0, 0, 0.35); }
+      #s2-swash { position: absolute; right: 110px; top: 1530px; }
+
+      /* ---------- S3 : جامعات معروفة في العالم الكل */
+      #s3-bg { background: radial-gradient(80% 50% at 50% 64%, #3a6bff 0%, #1f3fbf 42%, #0b1f6b 100%); }
+      #s3-grid {
+        opacity: 0.18;
+        background-image: radial-gradient(circle, rgba(255, 255, 255, 0.9) 2px, rgba(255, 255, 255, 0) 3px);
+        background-size: 54px 54px;
+        -webkit-mask: radial-gradient(70% 45% at 50% 62%, #000 0%, rgba(0, 0, 0, 0) 100%); mask: radial-gradient(70% 45% at 50% 62%, #000 0%, rgba(0, 0, 0, 0) 100%);
+      }
+      #s3-world { transform-origin: 540px 1300px; }
+      #globe { position: absolute; left: 0; top: 0; }
+      #msu { position: absolute; left: 160px; top: 720px; overflow: visible; }
+      #msu .ln { fill: none; stroke: #fff; stroke-width: 6; stroke-linejoin: round; stroke-linecap: round; }
+      #msu .dt { fill: none; stroke: rgba(255, 255, 255, 0.85); stroke-width: 4; stroke-linejoin: round; stroke-linecap: round; }
+      #msu-fill { fill: rgba(255, 255, 255, 0.1); stroke: none; }
+      #msu .win { fill: var(--gold); }
+      #orbit { position: absolute; left: 0; top: 0; overflow: visible; }
+      #s3-title { position: absolute; right: 84px; top: 320px; text-align: right; }
+      #s3-title .l1 { font-weight: 900; font-size: 124px; line-height: 1.15; white-space: nowrap; text-shadow: 0 10px 40px rgba(0, 0, 0, 0.35); }
+      #s3-title .l2 { margin-top: 10px; }
+      #s3-title .box { font-size: 100px; }
+
+      /* ---------- iris ring between S2 and S3 */
+      #iris { position: absolute; left: 0; top: 0; }
+
+      /* ---------- S4 : طب، هندسة، إعلامية */
+      #s4-bg {
+        background:
+          repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.045) 0 26px, rgba(255, 255, 255, 0) 26px 70px),
+          linear-gradient(165deg, #2a4fd6 0%, #1f3fbf 40%, #0b1f6b 100%);
+      }
+      #s4-prog { position: absolute; left: 90px; top: 316px; width: 900px; height: 12px; display: flex; flex-direction: row-reverse; gap: 14px; }
+      #s4-prog .seg { flex: 1; height: 12px; border-radius: 6px; background: rgba(255, 255, 255, 0.28); overflow: hidden; }
+      #s4-prog .seg i { display: block; width: 100%; height: 100%; background: #fff; transform-origin: 100% 50%; transform: scaleX(0); }
+      .sp-card {
+        position: absolute; left: 90px; top: 380px; width: 900px; height: 1080px; border-radius: 48px; overflow: hidden;
+        border: 12px solid #fff; box-shadow: 0 40px 90px rgba(5, 14, 50, 0.55); background: #0b1f6b; transform-origin: 50% 50%;
+      }
+      .sp-card img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; transform-origin: 50% 50%; }
+      .sp-card .shade { position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(11, 31, 107, 0) 45%, rgba(11, 31, 107, 0.55) 70%, rgba(11, 31, 107, 0.92) 100%); }
+      .sp-card .dim { position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: #050e32; opacity: 0; }
+      .sp-card .lbl { position: absolute; right: 56px; bottom: 34px; font-weight: 900; font-size: 210px; line-height: 1.25; text-shadow: 0 10px 40px rgba(0, 0, 0, 0.45); }
+      .sp-card .ico { position: absolute; left: 44px; top: 44px; width: 150px; height: 150px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 14px 34px rgba(5, 14, 50, 0.35); }
+      .sp-card .ico svg path, .sp-card .ico svg circle { fill: none; stroke: var(--blue); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+      #s4-more { position: absolute; left: 0; right: 0; top: 905px; text-align: center; }
+      #s4-more .l1 { font-size: 210px; line-height: 1.3; color: var(--gold); text-shadow: 0 8px 30px rgba(0, 0, 0, 0.35); }
+      #s4-more .l2 { font-weight: 900; font-size: 116px; line-height: 1.2; margin-top: -10px; text-shadow: 0 10px 40px rgba(0, 0, 0, 0.35); }
+
+      /* ---------- seam between S4 and S5 during the push */
+      #seam { position: absolute; left: 0; top: 0; width: 260px; height: 1920px; background: linear-gradient(90deg, #fff 0 44px, var(--flag-red) 44px 100%); }
+
+      /* ---------- S5 : نرافقوك من الأول للآخر */
+      #s5-bg {
+        background:
+          radial-gradient(60% 40% at 80% 20%, rgba(79, 140, 255, 0.45) 0%, rgba(79, 140, 255, 0) 100%),
+          linear-gradient(180deg, #13308f 0%, #0b1f6b 100%);
+      }
+      #s5-grid {
+        opacity: 0.16;
+        background-image: radial-gradient(circle, rgba(255, 255, 255, 0.9) 2px, rgba(255, 255, 255, 0) 3px);
+        background-size: 48px 48px;
+      }
+      #s5-title { position: absolute; right: 90px; top: 300px; text-align: right; }
+      #s5-title .l1 { font-weight: 900; font-size: 168px; line-height: 1.15; text-shadow: 0 10px 40px rgba(0, 0, 0, 0.35); }
+      #s5-title .l2 { font-size: 128px; line-height: 1.35; color: var(--gold); margin-top: -6px; }
+      #s5-swash { position: absolute; right: 80px; top: 640px; }
+      #s5-line { position: absolute; left: 0; top: 0; overflow: visible; }
+      .step { position: absolute; right: 90px; height: 140px; width: 900px; }
+      .step .ic {
+        position: absolute; right: 0; top: 0; width: 140px; height: 140px; border-radius: 50%; background: #fff;
+        display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.16), 0 16px 40px rgba(5, 14, 50, 0.45);
+      }
+      .step .ic svg path { fill: none; stroke: var(--blue); stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+      .step .pill {
+        position: absolute; right: 170px; top: 15px; height: 110px; padding: 0 34px 0 44px; border-radius: 55px; background: #fff;
+        display: flex; align-items: center; gap: 22px; color: var(--navy); white-space: nowrap;
+        box-shadow: 0 16px 40px rgba(5, 14, 50, 0.35); transform-origin: 100% 50%;
+      }
+      .step .num { width: 62px; height: 62px; border-radius: 50%; background: var(--red); color: #fff; display: flex; align-items: center; justify-content: center; font-family: "Montserrat"; font-weight: 900; font-size: 34px; flex: none; }
+      .step .tx { font-weight: 800; font-size: 58px; line-height: 1; padding-bottom: 8px; }
+      .step .ok { position: absolute; left: -50px; top: 16px; width: 78px; height: 78px; border-radius: 50%; background: #16a34a; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 24px rgba(5, 14, 50, 0.35); }
+      .step .ok svg path { fill: none; stroke: #fff; stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
+
+      /* ---------- S6 : مستقبلك في روسيا */
+      #s6-photo { background: url("assets/img/etudiants_groupe.jpg") 50% 70% / cover no-repeat; transform-origin: 50% 60%; }
+      #s6-tint {
+        background: linear-gradient(180deg, rgba(11, 31, 107, 0.86) 0%, rgba(11, 31, 107, 0.55) 30%, rgba(11, 31, 107, 0) 52%, rgba(11, 31, 107, 0) 78%, rgba(11, 31, 107, 0.55) 100%);
+      }
+      #s6-sweep { background: linear-gradient(110deg, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.35) 50%, rgba(255, 255, 255, 0) 60%); mix-blend-mode: overlay; }
+      #s6-title { position: absolute; right: 96px; top: 250px; text-align: right; transform-origin: 100% 0%; }
+      #s6-title .l1 { font-size: 232px; line-height: 1.3; text-shadow: 0 10px 40px rgba(0, 0, 0, 0.45); }
+      #s6-title .l2 { font-size: 196px; line-height: 1.3; color: var(--gold); margin-top: -30px; margin-right: 40px; text-shadow: 0 10px 40px rgba(0, 0, 0, 0.45); }
+      #s6-swash { position: absolute; right: 90px; top: 830px; }
+      #flash { background: #fff; opacity: 0; }
+
+      /* ---------- S7 : appel à l'action */
+      #s7-bg { background: radial-gradient(90% 55% at 50% 30%, #ffffff 0%, #eef3ff 55%, #d7e2ff 100%); }
+      #s7-rays { opacity: 0.5; background: repeating-conic-gradient(from 0deg at 50% 50%, rgba(31, 63, 191, 0.07) 0deg 6deg, rgba(31, 63, 191, 0) 6deg 18deg); }
+      #s7-msu { position: absolute; left: 198px; top: 1040px; opacity: 0.08; }
+      #s7-in { transform-origin: 540px 900px; }
+      #s7-cap { position: absolute; left: 465px; top: 290px; width: 150px; height: 150px; border-radius: 50%; background: var(--blue); display: flex; align-items: center; justify-content: center; box-shadow: 0 18px 40px rgba(31, 63, 191, 0.35); }
+      #s7-tssr { position: absolute; left: 0; right: 0; top: 432px; text-align: center; font-weight: 900; font-size: 236px; line-height: 1.1; letter-spacing: -0.03em; color: var(--blue); }
+      #s7-sub { position: absolute; left: 0; right: 0; top: 700px; text-align: center; font-weight: 700; font-size: 70px; color: var(--navy); letter-spacing: -0.01em; }
+      #s7-under { position: absolute; left: 290px; top: 790px; }
+      #s7-btn {
+        position: absolute; left: 160px; top: 890px; width: 760px; height: 156px; border-radius: 78px; background: var(--red);
+        display: flex; align-items: center; justify-content: center; gap: 26px; box-shadow: 0 24px 50px rgba(227, 27, 35, 0.45); overflow: hidden;
+      }
+      #s7-btn .tx { font-weight: 900; font-size: 88px; line-height: 1; padding-bottom: 12px; color: #fff; }
+      #s7-btn svg path { fill: none; stroke: #fff; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+      #s7-shine { position: absolute; left: -300px; top: 0; width: 220px; height: 156px; background: linear-gradient(100deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.55) 50%, rgba(255, 255, 255, 0) 100%); }
+      #s7-ripple { position: absolute; left: 540px; top: 968px; overflow: visible; }
+      #s7-tap { position: absolute; left: 0; top: 0; width: 70px; height: 70px; margin: -35px 0 0 -35px; border-radius: 50%; background: rgba(255, 255, 255, 0.9); border: 6px solid rgba(11, 31, 107, 0.85); box-shadow: 0 10px 24px rgba(5, 14, 50, 0.35); }
+      #s7-list { position: absolute; left: 50%; top: 1106px; transform: translateX(-50%); display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
+      #s7-list .row { display: flex; align-items: center; gap: 24px; white-space: nowrap; }
+      #s7-list .ck { width: 64px; height: 64px; border-radius: 50%; background: var(--blue); display: flex; align-items: center; justify-content: center; flex: none; }
+      #s7-list .ck svg path { fill: none; stroke: #fff; stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
+      #s7-list .tx { font-weight: 800; font-size: 62px; line-height: 1; padding-bottom: 8px; color: var(--navy); }
+      #s7-handle {
+        position: absolute; left: 50%; top: 1438px; height: 96px; transform: translateX(-50%); padding: 0 36px 0 18px; border-radius: 48px; background: #fff;
+        display: flex; align-items: center; gap: 18px; box-shadow: 0 16px 40px rgba(31, 63, 191, 0.22); direction: ltr; white-space: nowrap;
+      }
+      #s7-handle .ig { width: 62px; height: 62px; border-radius: 18px; background: linear-gradient(45deg, #feda75 0%, #fa7e1e 25%, #d62976 55%, #962fbf 80%, #4f5bd5 100%); display: flex; align-items: center; justify-content: center; }
+      #s7-handle .h { font-weight: 800; font-size: 44px; color: var(--navy); letter-spacing: -0.01em; }
+      #s7-handle .sep { width: 3px; height: 44px; background: rgba(11, 31, 107, 0.2); }
+      #s7-handle .dm { font-weight: 800; font-size: 46px; color: var(--red); padding-bottom: 6px; }
+      #s7-sparks .spark { width: 80px; height: 80px; margin: -40px 0 0 -40px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="48" data-width="1080" data-height="1920" data-fps="30">
+      <audio id="music" src="assets/audio/soundtrack.wav" data-start="0" data-duration="48" data-track-index="0" data-volume="1"></audio>
+
+      <!-- S1 : القراية في روسيا (0 – 4.3) -->
+      <section id="s1" class="clip" data-start="0" data-duration="4.3" data-track-index="1" style="z-index: 10">
+        <div id="s1-photo" class="fill"></div>
+        <div id="s1-tint" class="fill"></div>
+        <canvas id="flag" width="1080" height="1920"></canvas>
+        <div id="s1-glint" class="fill"></div>
+        <div id="s1-title" class="ar">
+          <div class="l1"><span class="mk"><span>القراية</span></span></div>
+          <div class="l2"><span class="box"><span class="mk"><span>في روسيا</span></span></span></div>
+        </div>
+      </section>
+
+      <!-- S2 : حلمك ممكن! (4 – 7.6) -->
+      <section id="s2" class="clip" data-start="4" data-duration="3.6" data-track-index="2" style="z-index: 20">
+        <div id="s2-bg" class="fill"></div>
+        <div id="s2-rays"></div>
+        <div id="s2-card"><img src="assets/img/diplomes_toques.jpg" alt="" /></div>
+        <div id="s2-t1" class="ar"><span class="mk"><span>حلمك</span></span></div>
+        <div id="s2-t2" class="ar ruqaa">ممكن!</div>
+        <svg id="s2-swash" width="620" height="90" viewBox="0 0 620 90"><path id="swash-p" style="opacity: 0" d="M610 52 C 470 18, 300 70, 150 40 S 30 30, 10 66" fill="none" stroke="#e31b23" stroke-width="16" stroke-linecap="round" /></svg>
+        <div id="sparks"></div>
+      </section>
+
+      <!-- S3 : جامعات معروفة في العالم الكل (7 – 14.5), opened by an iris -->
+      <section id="s3" class="clip" data-start="7" data-duration="7.5" data-track-index="3" style="z-index: 30">
+        <div id="s3-bg" class="fill"></div>
+        <div id="s3-grid" class="fill"></div>
+        <div id="s3-world" class="fill">
+          <canvas id="globe" width="1080" height="1920"></canvas>
+          <svg id="msu" width="760" height="1000" viewBox="0 0 760 1000">
+            <path id="msu-fill" d="" />
+            <g id="msu-win"></g>
+            <path id="msu-out" class="ln" d="" />
+            <path class="dt det" d="M236 470 H524 M290 360 H470 M316 260 H444 M336 170 H424" />
+            <path class="dt det" d="M150 680 H250 M510 680 H610 M40 800 H150 M610 800 H720" />
+            <path class="dt det" d="M300 360 V328 M460 360 V328 M325 260 V238 M435 260 V238" />
+            <path class="dt det" d="M408 312 A28 28 0 1 1 352 312 A28 28 0 1 1 408 312 M380 312 V294 M380 312 L392 320" />
+            <path class="dt det" d="M296 905 L380 868 L464 905 Z M316 905 V980 M348 905 V980 M380 905 V980 M412 905 V980 M444 905 V980" />
+            <path class="dt det" d="M-60 980 H820" />
+            <g id="msu-star" transform="translate(380 34)"><circle r="44" fill="rgba(255,216,77,0.25)" /><path d="M0 -30 L8.8 -12.1 28.5 -9.3 14.3 4.6 17.6 24.3 0 15 -17.6 24.3 -14.3 4.6 -28.5 -9.3 -8.8 -12.1 Z" fill="#ffd84d" /></g>
+          </svg>
+          <svg id="orbit" width="1080" height="1920" viewBox="0 0 1080 1920">
+            <g transform="rotate(-8 540 1340)">
+              <path id="orbit-p" d="M70 1340 A470 118 0 1 0 1010 1340 A470 118 0 1 0 70 1340" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="4" stroke-dasharray="2 14" stroke-linecap="round" style="opacity: 0" />
+              <g id="trail"></g>
+              <g id="cap" style="opacity: 0">
+                <circle r="46" fill="#fff" />
+                <path d="M-28 -6 L0 -20 L28 -6 L0 8 Z M-17 1 V14 C-10 22 10 22 17 14 V1 M28 -6 V12" fill="none" stroke="#1f3fbf" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" />
+              </g>
+            </g>
+          </svg>
+        </div>
+        <div id="s3-title" class="ar">
+          <div class="l1"><span class="mk"><span>جامعات معروفة</span></span></div>
+          <div class="l2"><span class="box"><span class="mk"><span>في العالم الكل</span></span></span></div>
+        </div>
+      </section>
+
+      <!-- iris ring over the S2 -> S3 cut -->
+      <section id="tr2" class="clip" data-start="7" data-duration="0.9" data-track-index="4" style="z-index: 35">
+        <svg id="iris" width="1080" height="1920" viewBox="0 0 1080 1920"><circle id="iris-c" cx="540" cy="1330" r="0" fill="none" stroke="#fff" stroke-width="26" /></svg>
+      </section>
+
+      <!-- S4 : طب، هندسة، إعلامية… وبرشا اختصاصات أخرى (14 – 21.5) -->
+      <section id="s4" class="clip" data-start="14" data-duration="7.5" data-track-index="5" style="z-index: 40">
+        <div id="s4-bg" class="fill"></div>
+        <div id="s4-prog"><span class="seg"><i></i></span><span class="seg"><i></i></span><span class="seg"><i></i></span></div>
+        <div id="c1" class="sp-card">
+          <img src="assets/img/medecin.jpg" alt="" style="object-position: 50% 30%" />
+          <div class="shade"></div><div class="dim"></div>
+          <div class="ico"><svg width="92" height="92" viewBox="0 0 24 24"><path d="M6.5 3H5a1 1 0 0 0-1 1v4.5a5 5 0 0 0 10 0V4a1 1 0 0 0-1-1h-1.5 M9 13.5V16a5 5 0 0 0 10 0v-3 M21 11a2 2 0 1 1-4 0a2 2 0 0 1 4 0z" /></svg></div>
+          <div class="lbl ar"><span class="mk"><span>طب</span></span></div>
+        </div>
+        <div id="c2" class="sp-card">
+          <img src="assets/img/ingenierie.jpg" alt="" style="object-position: 56% 50%" />
+          <div class="shade"></div><div class="dim"></div>
+          <div class="ico"><svg width="92" height="92" viewBox="0 0 24 24"><path id="gear-p" d="" /><circle cx="12" cy="12" r="3" /></svg></div>
+          <div class="lbl ar"><span class="mk"><span>هندسة</span></span></div>
+        </div>
+        <div id="c3" class="sp-card">
+          <img src="assets/img/informatique.jpg" alt="" style="object-position: 86% 50%" />
+          <div class="shade"></div><div class="dim"></div>
+          <div class="ico"><svg width="92" height="92" viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5 M16 7l5 5-5 5 M14 4.5l-4 15" /></svg></div>
+          <div class="lbl ar"><span class="mk"><span>إعلامية</span></span></div>
+        </div>
+        <div id="s4-more" class="ar">
+          <div class="l1 ruqaa"><span class="mk"><span>وبرشا</span></span></div>
+          <div class="l2"><span class="mk"><span>اختصاصات أخرى</span></span></div>
+        </div>
+        <div id="s4-sparks"></div>
+      </section>
+
+      <!-- white / red seam between S4 and S5 during the push -->
+      <section id="tr3" class="clip" data-start="20.7" data-duration="0.6" data-track-index="6" style="z-index: 46">
+        <div id="seam"></div>
+      </section>
+
+      <!-- S5 : نرافقوك من الأول للآخر (21 – 31.8) -->
+      <section id="s5" class="clip" data-start="20.7" data-duration="11.1" data-track-index="7" style="z-index: 44">
+        <div id="s5-bg" class="fill"></div>
+        <div id="s5-grid" class="fill"></div>
+        <div id="s5-title" class="ar">
+          <div class="l1"><span class="mk"><span>نرافقوك</span></span></div>
+          <div class="l2 ruqaa">من الأول للآخر</div>
+        </div>
+        <svg id="s5-swash" width="660" height="80" viewBox="0 0 660 80"><path id="s5-swash-p" style="opacity: 0" d="M650 40 C 500 12, 320 62, 170 34 S 40 30, 12 56" fill="none" stroke="#e31b23" stroke-width="14" stroke-linecap="round" /></svg>
+        <svg id="s5-line" width="1080" height="1920" viewBox="0 0 1080 1920">
+          <path class="seg-l" d="M920 866 V914" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="8" stroke-linecap="round" />
+          <path class="seg-l" d="M920 1066 V1114" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="8" stroke-linecap="round" />
+          <path class="seg-l" d="M920 1266 V1314" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="8" stroke-linecap="round" />
+        </svg>
+        <div id="steps">
+          <div class="step" style="top: 720px">
+            <div class="ic"><svg width="84" height="84" viewBox="0 0 24 24"><path d="M4 4.5h16a1 1 0 0 1 1 1V15a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5.5a1 1 0 0 1 1-1z M9 20h6 M12 16v4 M7.5 10.5l2.5 2 4.5-4.5" /></svg></div>
+            <div class="pill ar"><span class="num">1</span><span class="tx">الطلب أونلاين</span></div>
+          </div>
+          <div class="step" style="top: 920px">
+            <div class="ic"><svg width="84" height="84" viewBox="0 0 24 24"><path class="plane" d="M12 2.2c.8 0 1.4 1 1.4 2.4v4.3l7.4 4.4v2.2l-7.4-2.3v4.2l2 1.5v1.6L12 19.6l-3.4.9v-1.6l2-1.5v-4.2l-7.4 2.3v-2.2l7.4-4.4V4.6c0-1.4.6-2.4 1.4-2.4z" /></svg></div>
+            <div class="pill ar"><span class="num">2</span><span class="tx">الاستقبال في المطار</span></div>
+          </div>
+          <div class="step" style="top: 1120px">
+            <div class="ic"><svg width="84" height="84" viewBox="0 0 24 24"><path d="M2 9.5 12 5l10 4.5-10 4.5z M6 11.6V16c0 1.4 2.7 3 6 3s6-1.6 6-3v-4.4 M22 9.5v5" /></svg></div>
+            <div class="pill ar"><span class="num">3</span><span class="tx">التسجيل في الجامعة</span></div>
+          </div>
+          <div class="step" style="top: 1320px">
+            <div class="ic"><svg width="84" height="84" viewBox="0 0 24 24"><path d="M3 11.2 12 4l9 7.2 M5.2 9.6V20h13.6V9.6 M10 20v-5.2h4V20" /></svg></div>
+            <div class="pill ar"><span class="num">4</span><span class="tx">المبيت والمرافقة</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- S6 : مستقبلك في روسيا! (31.2 – 38.6) -->
+      <section id="s6" class="clip" data-start="31.2" data-duration="7.15" data-track-index="8" style="z-index: 50">
+        <div id="s6-photo" class="fill"></div>
+        <div id="s6-tint" class="fill"></div>
+        <div id="s6-sweep" class="fill"></div>
+        <div id="s6-txt" class="fill">
+          <div id="s6-title" class="ar ruqaa">
+            <div class="l1">مستقبلك</div>
+            <div class="l2">في روسيا!</div>
+          </div>
+          <svg id="s6-swash" width="760" height="110" viewBox="0 0 760 110"><path id="s6-swash-p" style="opacity: 0" d="M748 46 C 560 12, 380 86, 200 50 S 50 40, 14 82" fill="none" stroke="#e31b23" stroke-width="20" stroke-linecap="round" /></svg>
+        </div>
+        <div id="s6-sparks"></div>
+      </section>
+
+      <!-- S7 : TSSR · سجّل توّا (38.2 – 48) -->
+      <section id="s7" class="clip" data-start="38.2" data-duration="9.8" data-track-index="9" style="z-index: 45">
+        <div id="s7-bg" class="fill"></div>
+        <div id="s7-rays"></div>
+        <svg id="s7-msu" width="684" height="900" viewBox="0 0 760 1000"><path id="s7-msu-p" d="" fill="#1f3fbf" /></svg>
+        <div id="s7-in" class="fill">
+          <div id="s7-cap"><svg width="84" height="84" viewBox="0 0 24 24"><path d="M12 3l9 4.5-9 4.5-9-4.5z M6 10.2v4.3c0 1.7 2.7 3.5 6 3.5s6-1.8 6-3.5v-4.3" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" /></svg></div>
+          <div id="s7-tssr">TSSR</div>
+          <div id="s7-sub"><span class="mk"><span>Study in Russia</span></span></div>
+          <svg id="s7-under" width="500" height="60" viewBox="0 0 500 60"><path id="s7-under-p" style="opacity: 0" d="M490 22 C 380 8, 240 44, 120 26 S 30 20, 10 44" fill="none" stroke="#e31b23" stroke-width="12" stroke-linecap="round" /></svg>
+          <div id="s7-btn" class="ar">
+            <span class="tx">سجّل توّا</span>
+            <svg width="64" height="64" viewBox="0 0 24 24"><path d="M14.5 6l-6 6 6 6" /></svg>
+            <div id="s7-shine"></div>
+          </div>
+          <svg id="s7-ripple" width="10" height="10"><circle id="rp1" cx="0" cy="0" r="0" fill="none" stroke="#e31b23" stroke-width="10" /><circle id="rp2" cx="0" cy="0" r="0" fill="none" stroke="#e31b23" stroke-width="6" /></svg>
+          <div id="s7-list" class="ar">
+            <div class="row"><span class="ck"><svg width="40" height="40" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg></span><span class="tx">مرافقة على قياسك</span></div>
+            <div class="row"><span class="ck"><svg width="40" height="40" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg></span><span class="tx">نصايح خبراء</span></div>
+            <div class="row"><span class="ck"><svg width="40" height="40" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg></span><span class="tx">تسجيل آمن</span></div>
+          </div>
+          <div id="s7-handle">
+            <span class="ig"><svg width="40" height="40" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="#fff" stroke-width="2.2" /><circle cx="12" cy="12" r="4.2" fill="none" stroke="#fff" stroke-width="2.2" /><circle cx="17.3" cy="6.7" r="1.2" fill="#fff" /></svg></span>
+            <span class="h">tssr.study.ru</span>
+            <span class="sep"></span>
+            <span class="dm ar">ابعثلنا ميساج</span>
+          </div>
+          <div id="s7-tap"></div>
+          <div id="s7-sparks"></div>
+        </div>
+      </section>
+
+      <!-- transition stripes over the cut at 4.0 -->
+      <section id="tr" class="clip" data-start="3.6" data-duration="0.8" data-track-index="10" style="z-index: 60">
+        <div id="st-w" class="stripe"></div>
+        <div id="st-b" class="stripe"></div>
+        <div id="st-r" class="stripe"></div>
+      </section>
+
+      <!-- white flash over the cut to the call to action (38.29) -->
+      <section id="tr4" class="clip" data-start="37.8" data-duration="1.0" data-track-index="12" style="z-index: 70">
+        <div id="flash" class="fill"></div>
+      </section>
+
+      <!-- brand chip (S1 – S6) -->
+      <section id="brand" class="clip" data-start="0" data-duration="38.4" data-track-index="11" style="z-index: 80">
+        <div id="chip"><span class="dot"><svg width="30" height="30" viewBox="0 0 24 24"><path d="M12 3l9 4.5-9 4.5-9-4.5z M6 10.2v4.3c0 1.7 2.7 3.5 6 3.5s6-1.8 6-3.5v-4.3" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></svg></span><span class="t">TSSR</span><span class="bar"></span><span class="s">Study in Russia</span></div>
+      </section>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const $ = (s) => document.querySelector(s);
+      const $$ = (s) => Array.from(document.querySelectorAll(s));
+      // music grid: drop 1 at 4.0 s, 140 BPM (one beat = 0.428571 s)
+      const BEAT = 0.428571;
+      const B = (n) => +(4 + n * BEAT).toFixed(3);
+      function driver(t0, dur, paint) {
+        const p = { t: 0 };
+        tl.fromTo(p, { t: 0 }, { t: dur, duration: dur, ease: "none", onUpdate: () => paint(p.t) }, t0);
+      }
+      function rng(seed) {
+        return () => {
+          seed = (seed + 0x6d2b79f5) | 0;
+          let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+          t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+          return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+        };
+      }
+      function draw(el, t, dur, ease = "power2.inOut") {
+        const L = el.getTotalLength();
+        el.style.strokeDasharray = `${L} ${L}`;
+        tl.fromTo(el, { strokeDashoffset: L }, { strokeDashoffset: 0, duration: dur, ease }, t);
+      }
+      function drawOnce(el, t, dur, ease = "power2.out") {
+        // element hidden by CSS (opacity 0) until it starts drawing
+        const L = el.getTotalLength();
+        el.style.strokeDasharray = `${L} ${L}`;
+        tl.fromTo(el, { strokeDashoffset: L, opacity: 1 }, { strokeDashoffset: 0, opacity: 1, duration: dur, ease, immediateRender: false }, t);
+      }
+      const SPARK = (c) => `<svg width="100%" height="100%" viewBox="0 0 24 24"><path d="M12 0 C13 8 16 11 24 12 C16 13 13 16 12 24 C11 16 8 13 0 12 C8 11 11 8 12 0Z" fill="${c}"/></svg>`;
+      function sparkles(container, list, t0) {
+        list.forEach(([x, y, d, c]) => {
+          const el = document.createElement("div");
+          el.className = "spark";
+          el.style.left = x + "px"; el.style.top = y + "px";
+          el.innerHTML = SPARK(c);
+          $(container).appendChild(el);
+          tl.fromTo(el, { scale: 0, rotation: 0 }, { keyframes: [{ scale: 1.2, rotation: 45, duration: 0.25, ease: "back.out(3)" }, { scale: 0.75, rotation: 90, duration: 0.6, ease: "sine.inOut" }, { scale: 0, rotation: 135, duration: 0.35, ease: "power2.in" }] }, t0 + d);
+        });
+      }
+
+      // ---------------- brand chip
+      tl.fromTo("#chip", { y: -120, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, ease: "back.out(1.8)" }, 0.25);
+      tl.to("#chip", { y: -120, opacity: 0, duration: 0.3, ease: "power2.in" }, 37.9);
+
+      // ================= S1 : photo push-in, waving flag unfurls, title (0 – 4.3)
+      tl.fromTo("#s1-photo", { scale: 1.32, filter: "blur(14px)" }, { scale: 1.06, filter: "blur(0px)", duration: 1.1, ease: "expo.out" }, 0);
+      tl.to("#s1-photo", { scale: 1.0, duration: 1.186, ease: "none" }, 1.1);
+      tl.to("#s1-photo", { scale: 1.12, duration: 1.714, ease: "power2.in" }, B(-4)); // sub-bass dive before the drop
+
+      const cv = $("#flag");
+      const ctx = cv.getContext("2d");
+      const FX = 96, FY = 360, FW = 660, FH = 430;
+      const unfurlEase = gsap.parseEase("power3.out");
+      driver(0, 4.3, (t) => {
+        ctx.clearRect(0, 0, 1080, 1920);
+        const g = ctx.createLinearGradient(FX - 18, 0, FX + 2, 0);
+        g.addColorStop(0, "#9aa3b5"); g.addColorStop(0.5, "#f4f6fb"); g.addColorStop(1, "#7d8597");
+        ctx.fillStyle = g;
+        ctx.fillRect(FX - 18, FY - 40, 16, 900);
+        ctx.beginPath(); ctx.arc(FX - 10, FY - 44, 14, 0, Math.PI * 2); ctx.fillStyle = "#e9c46a"; ctx.fill();
+        const w = FW * unfurlEase(Math.min(1, Math.max(0, (t - 0.12) / 0.9)));
+        const cols = [["#ffffff", 0], ["#0039a6", 1], ["#d52b1e", 2]];
+        for (let x = 0; x < w; x += 3) {
+          const k = x / FW;
+          const ph = (x / 330) * Math.PI * 2 - t * 2 * Math.PI * 1.15;
+          const amp = 8 + 34 * k;
+          const dy = amp * Math.sin(ph);
+          const slope = Math.cos(ph) * (0.25 + 0.75 * k);
+          const sx = FX + x;
+          for (const [c, i] of cols) {
+            ctx.fillStyle = c;
+            ctx.fillRect(sx, FY + dy + (i * FH) / 3, 3.6, FH / 3 + 1);
+          }
+          ctx.fillStyle = slope > 0 ? `rgba(255,255,255,${0.16 * slope})` : `rgba(0,0,0,${-0.28 * slope})`;
+          ctx.fillRect(sx, FY + dy, 3.6, FH);
+        }
+      });
+      tl.fromTo("#flag", { x: -140, rotation: -4 }, { x: 0, rotation: 0, duration: 0.9, ease: "expo.out" }, 0.12);
+      tl.fromTo("#s1-glint", { opacity: 1, xPercent: -60 }, { opacity: 1, xPercent: 60, duration: 0.9, ease: "power2.inOut", immediateRender: false }, 1.0);
+      tl.set("#s1-glint", { opacity: 0 }, 1.9);
+      tl.fromTo("#s1-title .l1 .mk > span", { yPercent: 150 }, { yPercent: 0, duration: 0.7, ease: "expo.out" }, B(-7));
+      tl.fromTo("#s1-title .box", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "expo.inOut" }, B(-6) - 0.2);
+      tl.fromTo("#s1-title .box .mk > span", { yPercent: 150 }, { yPercent: 0, duration: 0.6, ease: "expo.out" }, B(-6));
+      tl.fromTo("#s1-title", { scale: 1 }, { scale: 1.07, duration: 2.1, ease: "power1.in" }, 1.9);
+
+      // flag bands sweep right -> left over the cut (4.0)
+      ["#st-w", "#st-b", "#st-r"].forEach((s, i) => {
+        tl.fromTo(s, { x: 2200, rotation: -18 }, { x: -2600, rotation: -18, duration: 0.75, ease: "power2.inOut" }, 3.62 + i * 0.05);
+      });
+
+      // ================= S2 : photo card flies in on the drop, حلمك ممكن! (4 – 7.6)
+      tl.fromTo("#s2-rays", { rotation: 0 }, { rotation: 36, duration: 3.6, ease: "none" }, 4.0);
+      tl.fromTo("#s2-card", { y: 1100, rotation: 14 }, { y: 0, rotation: -4, duration: 0.8, ease: "back.out(1.4)" }, B(0) - 0.05);
+      tl.fromTo("#s2-card img", { scale: 1.25 }, { scale: 1.0, duration: 3.6, ease: "power1.out" }, 4.0);
+      tl.fromTo("#s2-t1 .mk > span", { yPercent: 150, scale: 0.9 }, { yPercent: 0, scale: 1, duration: 0.65, ease: "expo.out" }, B(1));
+      tl.fromTo("#s2-t2", { clipPath: "inset(-30% 0% -30% 100%)" }, { clipPath: "inset(-30% 0% -30% 0%)", duration: 0.7, ease: "power2.inOut" }, B(2));
+      drawOnce($("#swash-p"), B(3), 0.5);
+      sparkles("#sparks", [[185, 365, 0, "#ffffff"], [935, 335, 0.1, "#ffd84d"], [995, 935, 0.2, "#ffffff"], [135, 1035, 0.15, "#ffd84d"], [245, 1285, 0.3, "#ffffff"], [895, 1515, 0.25, "#ffd84d"]], B(3) + 0.05);
+      tl.to("#s2-card", { y: -18, duration: 1.3, ease: "sine.inOut", yoyo: true, repeat: 1 }, B(2));
+
+      // ================= iris S2 -> S3 (7.0 – 7.43)
+      tl.fromTo("#s3", { clipPath: "circle(0px at 540px 1330px)" }, { clipPath: "circle(1500px at 540px 1330px)", duration: B(8) - 7.0, ease: "power2.in" }, 7.0);
+      tl.fromTo("#iris-c", { attr: { r: 0 }, opacity: 1 }, { attr: { r: 1500 }, opacity: 1, duration: B(8) - 7.0, ease: "power2.in" }, 7.0);
+      tl.to("#iris-c", { opacity: 0, duration: 0.2 }, B(8));
+
+      // ================= S3 : globe + university drawn in light (7 – 14.5)
+      // building outline (left half up to the spire, mirrored down the right)
+      const half = [[0, 980], [0, 860], [40, 860], [40, 760], [70, 760], [70, 690], [82, 690], [95, 600], [108, 690], [120, 690], [120, 760], [150, 760], [150, 640], [250, 640], [250, 470], [300, 470], [300, 360], [325, 360], [325, 260], [345, 260], [345, 170], [372, 170]];
+      const pts = [...half, [380, 66], ...half.slice().reverse().map(([x, y]) => [760 - x, y])];
+      const outline = "M" + pts.map((p) => p.join(" ")).join(" L");
+      $("#msu-out").setAttribute("d", outline);
+      $("#msu-fill").setAttribute("d", outline + " Z");
+      $("#s7-msu-p").setAttribute("d", outline + " Z");
+      // windows: central block, inner and outer wings (seeded so every render is identical)
+      const R1 = rng(7);
+      const wins = [];
+      const addWin = (x, y) => { if (R1() < 0.72) wins.push([x, y]); };
+      for (let j = 0; j < 10; j++) for (let i = 0; i < 12; i++) addWin(266 + i * 19.5, 500 + j * 38);
+      for (let j = 0; j < 6; j++) for (let i = 0; i < 4; i++) { addWin(164 + i * 21, 700 + j * 40); addWin(526 + i * 21, 700 + j * 40); }
+      for (let j = 0; j < 4; j++) for (let i = 0; i < 4; i++) { addWin(52 + i * 22, 820 + j * 38); addWin(626 + i * 22, 820 + j * 38); }
+      const NS = "http://www.w3.org/2000/svg";
+      const winEls = wins.map(([x, y]) => {
+        const r = document.createElementNS(NS, "rect");
+        r.setAttribute("x", x); r.setAttribute("y", y); r.setAttribute("width", 9); r.setAttribute("height", 16); r.setAttribute("rx", 2);
+        r.setAttribute("class", "win");
+        $("#msu-win").appendChild(r);
+        return r;
+      });
+      winEls.forEach((el, i) => {
+        const y = +el.getAttribute("y");
+        tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 0.12, ease: "none" }, B(12) + ((980 - y) / 500) * 0.9 + R1() * 0.25);
+      });
+      tl.fromTo("#s3-world", { scale: 0.94 }, { scale: 1.04, duration: 7.0, ease: "power1.out" }, 7.2);
+      tl.fromTo("#globe", { opacity: 0, scale: 0.8, transformOrigin: "540px 1240px" }, { opacity: 1, scale: 1, duration: 1.0, ease: "expo.out" }, B(8));
+      draw($("#msu-out"), B(8) - 0.1, 1.5, "power2.inOut");
+      $$("#msu .det").forEach((el, i) => draw(el, B(10) + i * 0.08, 0.7, "power2.out"));
+      tl.fromTo("#msu-fill", { opacity: 0 }, { opacity: 1, duration: 0.6 }, B(11));
+      tl.fromTo("#msu-star", { scale: 0, rotation: -90, transformOrigin: "50% 50%" }, { scale: 1, rotation: 0, duration: 0.6, ease: "back.out(2.6)" }, B(12) - 0.05);
+      tl.to("#msu-star", { rotation: 360, duration: 4.5, ease: "none" }, B(14));
+
+      // globe: rotating wire sphere drawn on canvas
+      const gx = $("#globe").getContext("2d");
+      const GC = { x: 540, y: 1240, r: 480 }, TILT = 0.32;
+      const R2 = rng(11);
+      const cities = Array.from({ length: 14 }, () => [Math.asin(R2() * 1.6 - 0.8), R2() * Math.PI * 2]);
+      function proj(lat, lon) {
+        const x = Math.cos(lat) * Math.sin(lon), y = Math.sin(lat), z = Math.cos(lat) * Math.cos(lon);
+        const y2 = y * Math.cos(TILT) - z * Math.sin(TILT), z2 = y * Math.sin(TILT) + z * Math.cos(TILT);
+        return [GC.x + GC.r * x, GC.y - GC.r * y2, z2];
+      }
+      driver(7.0, 7.5, (t) => {
+        gx.clearRect(0, 0, 1080, 1920);
+        const rot = t * 0.35;
+        const grad = gx.createRadialGradient(GC.x - 120, GC.y - 160, 40, GC.x, GC.y, GC.r);
+        grad.addColorStop(0, "rgba(120,170,255,0.30)"); grad.addColorStop(1, "rgba(31,63,191,0.05)");
+        gx.fillStyle = grad; gx.beginPath(); gx.arc(GC.x, GC.y, GC.r, 0, Math.PI * 2); gx.fill();
+        gx.lineWidth = 3;
+        const seg = (a, b) => { const za = (a[2] + b[2]) / 2; gx.strokeStyle = `rgba(255,255,255,${za > 0 ? 0.42 : 0.1})`; gx.beginPath(); gx.moveTo(a[0], a[1]); gx.lineTo(b[0], b[1]); gx.stroke(); };
+        for (let m = 0; m < 12; m++) {
+          const lon = (m / 12) * Math.PI * 2 + rot;
+          let prev = null;
+          for (let k = 0; k <= 36; k++) { const p = proj(-Math.PI / 2 + (k / 36) * Math.PI, lon); if (prev) seg(prev, p); prev = p; }
+        }
+        for (let l = -2; l <= 2; l++) {
+          const lat = (l * Math.PI) / 6;
+          let prev = null;
+          for (let k = 0; k <= 72; k++) { const p = proj(lat, (k / 72) * Math.PI * 2 + rot); if (prev) seg(prev, p); prev = p; }
+        }
+        gx.strokeStyle = "rgba(255,255,255,0.55)"; gx.lineWidth = 4;
+        gx.beginPath(); gx.arc(GC.x, GC.y, GC.r, 0, Math.PI * 2); gx.stroke();
+        cities.forEach(([lat, lon], i) => {
+          const p = proj(lat, lon + rot);
+          if (p[2] <= 0.05) return;
+          const pulse = 0.5 + 0.5 * Math.sin(t * 4 + i);
+          gx.fillStyle = `rgba(255,216,77,${0.35 + 0.5 * p[2]})`;
+          gx.beginPath(); gx.arc(p[0], p[1], 7 + 5 * pulse * p[2], 0, Math.PI * 2); gx.fill();
+        });
+      });
+
+      // orbit with a graduation cap travelling on it
+      const orb = $("#orbit-p");
+      const OL = orb.getTotalLength();
+      tl.fromTo(orb, { opacity: 0 }, { opacity: 1, duration: 0.4, immediateRender: false }, B(16) - 0.1);
+      tl.fromTo("#cap", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)", immediateRender: false }, B(16));
+      const trail = Array.from({ length: 6 }, (_, i) => {
+        const c = document.createElementNS(NS, "circle");
+        c.setAttribute("r", 9 - i); c.setAttribute("fill", `rgba(255,216,77,${0.8 - i * 0.12})`);
+        $("#trail").appendChild(c);
+        return c;
+      });
+      // sample the orbit once at build time; the callback only reads this table
+      const ON = 720;
+      const OP = Array.from({ length: ON }, (_, i) => { const q = orb.getPointAtLength((i / ON) * OL); return [q.x, q.y]; });
+      const at = (f) => { const u = ((((f % 1) + 1) % 1) * ON), i = Math.floor(u) % ON, j = (i + 1) % ON, k = u - Math.floor(u); return [OP[i][0] + (OP[j][0] - OP[i][0]) * k, OP[i][1] + (OP[j][1] - OP[i][1]) * k]; };
+      driver(B(16), 14.5 - B(16), (t) => {
+        const f = 0.62 + t / 3.3;
+        const [x, y] = at(f);
+        $("#cap").setAttribute("transform", `translate(${x.toFixed(2)} ${y.toFixed(2)})`);
+        trail.forEach((c, i) => {
+          const [qx, qy] = at(f - (i + 1) * 0.012);
+          c.setAttribute("cx", qx.toFixed(2)); c.setAttribute("cy", qy.toFixed(2));
+          c.setAttribute("opacity", t > 0.15 ? 1 : 0);
+        });
+      });
+
+      // title
+      tl.fromTo("#s3-title .l1 .mk > span", { yPercent: 150 }, { yPercent: 0, duration: 0.7, ease: "expo.out" }, B(9));
+      tl.fromTo("#s3-title .box", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "expo.inOut" }, B(10) - 0.15);
+      tl.fromTo("#s3-title .box .mk > span", { yPercent: 150 }, { yPercent: 0, duration: 0.6, ease: "expo.out" }, B(10) + 0.05);
+
+      // ================= S3 -> S4 : S4 pushes up from below (14.0 – 14.29)
+      tl.fromTo("#s4", { yPercent: 100 }, { yPercent: 0, duration: B(24) - 14.0, ease: "power3.in" }, 14.0);
+      tl.to("#s3-title, #s3-world", { y: -420, duration: B(24) - 14.0, ease: "power3.in" }, 14.0);
+
+      // ================= S4 : three specialty cards, then the deck becomes three tiles (14 – 21.5)
+      const SEGS = $$("#s4-prog .seg i");
+      const cards = ["#c1", "#c2", "#c3"];
+      cards.forEach((c, i) => {
+        const t = B(24 + i * 4);
+        tl.fromTo(c, { x: -1180, rotation: -12, opacity: 1 }, { x: 0, rotation: i % 2 ? 2 : -2, duration: 0.55, ease: "power4.out" }, t - 0.12);
+        tl.fromTo(`${c} img`, { scale: 1.3 }, { scale: 1.05, duration: 2.0, ease: "power2.out" }, t - 0.12);
+        tl.fromTo(`${c} .lbl .mk > span`, { yPercent: 150 }, { yPercent: 0, duration: 0.6, ease: "expo.out" }, B(25 + i * 4));
+        tl.fromTo(`${c} .ico`, { scale: 0, rotation: -30 }, { scale: 1, rotation: 0, duration: 0.5, ease: "back.out(2.4)" }, B(25 + i * 4) + 0.05);
+        tl.fromTo(SEGS[i], { scaleX: 0 }, { scaleX: 1, duration: 1.714, ease: "none" }, t);
+        // earlier cards step back into the deck
+        for (let k = 0; k < i; k++) {
+          const depth = i - k;
+          tl.to(cards[k], { x: 64 * depth, y: 34 * depth, rotation: 4 * depth, scale: 1 - 0.07 * depth, duration: 0.45, ease: "power3.out" }, t - 0.05);
+          tl.to(`${cards[k]} .dim`, { opacity: 0.25 * depth, duration: 0.45 }, t - 0.05);
+        }
+      });
+      // gear path (8 teeth) built in code
+      (function gear() {
+        const n = 8, r1 = 6.6, r2 = 9.2, d = [];
+        for (let i = 0; i < n; i++) {
+          const a0 = (i / n) * Math.PI * 2, w = (Math.PI * 2) / n;
+          const pts = [[r1, a0 + w * 0.0], [r2, a0 + w * 0.12], [r2, a0 + w * 0.38], [r1, a0 + w * 0.5]];
+          pts.forEach(([r, a], j) => d.push(`${i === 0 && j === 0 ? "M" : "L"}${(12 + r * Math.cos(a)).toFixed(2)} ${(12 + r * Math.sin(a)).toFixed(2)}`));
+          const a1 = a0 + w * 0.5, a2 = a0 + w;
+          d.push(`A${r1} ${r1} 0 0 1 ${(12 + r1 * Math.cos(a2)).toFixed(2)} ${(12 + r1 * Math.sin(a2)).toFixed(2)}`);
+        }
+        $("#gear-p").setAttribute("d", d.join(" ") + "Z");
+      })();
+      tl.to("#c2 .ico svg", { rotation: 90, duration: 1.6, ease: "power2.out", transformOrigin: "50% 50%" }, B(29));
+      // B(36): the deck turns into three tiles, first specialty on the right
+      const TILE = [[300, -300, 5], [0, -340, -3], [-300, -300, 4]];
+      cards.forEach((c, i) => {
+        tl.to(c, { x: TILE[i][0], y: TILE[i][1], rotation: TILE[i][2], scale: 0.3, duration: 0.6, ease: "expo.inOut" }, B(36) - 0.2);
+        tl.to(`${c} .dim`, { opacity: 0, duration: 0.4 }, B(36) - 0.2);
+      });
+      tl.to("#s4-prog", { opacity: 0, y: -30, duration: 0.3 }, B(36) - 0.2);
+      tl.fromTo("#s4-more .l1 .mk > span", { yPercent: 150 }, { yPercent: 0, duration: 0.7, ease: "expo.out" }, B(37));
+      tl.fromTo("#s4-more .l2 .mk > span", { yPercent: 150 }, { yPercent: 0, duration: 0.7, ease: "expo.out" }, B(38));
+      sparkles("#s4-sparks", [[150, 960, 0, "#ffd84d"], [940, 1000, 0.12, "#ffffff"], [210, 1420, 0.24, "#ffffff"], [880, 1390, 0.18, "#ffd84d"]], B(37) + 0.1);
+
+      // ================= S4 -> S5 : S5 pushes in from the right behind a white / red seam (lands on B(40))
+      const PUSH = { duration: 0.46, ease: "power3.inOut" };
+      tl.fromTo("#s5", { x: 1340 }, { x: 0, ...PUSH }, B(40) - 0.4);
+      tl.fromTo("#seam", { x: 1080 }, { x: -260, ...PUSH }, B(40) - 0.4);
+      tl.to("#s4", { x: -1340, ...PUSH }, B(40) - 0.4);
+
+      // ================= S5 : نرافقوك من الأول للآخر — four steps on the bars (21 – 31.8)
+      tl.fromTo("#s5-title .l1 .mk > span", { yPercent: 150 }, { yPercent: 0, duration: 0.7, ease: "expo.out" }, B(41));
+      tl.fromTo("#s5-title .l2", { clipPath: "inset(-30% 0% -30% 100%)" }, { clipPath: "inset(-30% 0% -30% 0%)", duration: 0.8, ease: "power2.inOut" }, B(42));
+      tl.fromTo("#steps", { y: 30 }, { y: -20, duration: 10, ease: "none" }, 21.2);
+      tl.fromTo("#s5-line", { y: 30 }, { y: -20, duration: 10, ease: "none" }, 21.2);
+      const steps = $$(".step");
+      const segL = $$("#s5-line .seg-l");
+      steps.forEach((st, i) => {
+        const t = B(44 + i * 4);
+        if (i > 0) draw(segL[i - 1], t - 0.35, 0.3, "power1.in");
+        tl.fromTo(st.querySelector(".ic"), { scale: 0, rotation: -40 }, { scale: 1, rotation: 0, duration: 0.5, ease: "back.out(2.2)" }, t);
+        st.querySelectorAll(".ic svg path").forEach((p) => draw(p, t + 0.08, 0.55, "power2.out"));
+        tl.fromTo(st.querySelector(".pill"), { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.45, ease: "expo.out" }, t + 0.1);
+        tl.fromTo(st.querySelector(".tx"), { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, t + 0.3);
+      });
+      // plane takes off inside its circle
+      tl.to(".step .plane", { keyframes: [{ x: 3, y: -3, duration: 0.5, ease: "power2.in" }, { x: 0, y: 0, duration: 0.5, ease: "power2.out" }] }, B(48) + 0.7);
+      // B(60): every step gets its tick, the slogan gets its red swash
+      steps.forEach((st, i) => {
+        const ok = document.createElement("div");
+        ok.className = "ok";
+        ok.innerHTML = '<svg width="48" height="48" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>';
+        st.querySelector(".pill").appendChild(ok);
+        tl.fromTo(ok, { scale: 0, rotation: -60 }, { scale: 1, rotation: 0, duration: 0.45, ease: "back.out(2.6)" }, B(60) + i * 0.11);
+        draw(ok.querySelector("path"), B(60) + i * 0.11 + 0.1, 0.3, "power2.out");
+      });
+      drawOnce($("#s5-swash-p"), B(60) + 0.2, 0.55);
+      tl.to("#s5-title", { scale: 1.05, duration: 0.25, yoyo: true, repeat: 1, ease: "power2.out", transformOrigin: "100% 50%" }, B(60));
+
+      // ================= S6 : مستقبلك في روسيا! on the breakdown, then the build (31.2 – 38.6)
+      tl.fromTo("#s6", { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power1.out" }, 31.25);
+      tl.fromTo("#s6-photo", { scale: 1.18 }, { scale: 1.0, duration: 3.65, ease: "power2.out" }, 31.2);
+      tl.to("#s6-photo", { scale: 1.06, duration: 1.714, ease: "none" }, B(72));
+      tl.to("#s6-photo", { scale: 1.3, duration: 1.714, ease: "power2.in" }, B(76));
+      tl.fromTo("#s6-photo", { filter: "brightness(1)" }, { filter: "brightness(1.35)", duration: 1.714, ease: "power2.in", immediateRender: false }, B(76));
+      tl.fromTo("#s6-title .l1", { clipPath: "inset(-30% 0% -30% 100%)" }, { clipPath: "inset(-30% 0% -30% 0%)", duration: 0.75, ease: "power2.inOut" }, B(65));
+      tl.fromTo("#s6-title .l2", { clipPath: "inset(-30% 0% -30% 100%)" }, { clipPath: "inset(-30% 0% -30% 0%)", duration: 0.7, ease: "power2.inOut" }, B(66));
+      drawOnce($("#s6-swash-p"), B(67), 0.55);
+      tl.fromTo("#s6-sweep", { xPercent: -100 }, { xPercent: 100, duration: 1.2, ease: "power2.inOut" }, B(72));
+      sparkles("#s6-sparks", [[150, 300, 0, "#ffd84d"], [980, 470, BEAT, "#ffffff"], [170, 820, 2 * BEAT, "#ffffff"], [960, 900, 3 * BEAT, "#ffd84d"]], B(72));
+      tl.to("#s6-txt", { scale: 1.12, duration: 1.714, ease: "power2.in", transformOrigin: "980px 300px" }, B(76));
+      tl.fromTo("#flash", { opacity: 0 }, { opacity: 1, duration: B(80) - B(79), ease: "power2.in", immediateRender: false }, B(79));
+      tl.to("#flash", { opacity: 0, duration: 0.45, ease: "power2.out" }, B(80));
+
+      // ================= S7 : TSSR · سجّل توّا (38.2 – 48)
+      tl.fromTo("#s7-rays", { rotation: 0 }, { rotation: 30, duration: 9.8, ease: "none" }, 38.2);
+      tl.fromTo("#s7-msu", { y: 120, opacity: 0 }, { y: 0, opacity: 0.08, duration: 1.2, ease: "power2.out" }, B(80));
+      tl.fromTo("#s7-tssr", { scale: 2.4, opacity: 0, filter: "blur(18px)" }, { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.5, ease: "expo.out" }, B(80) - 0.06);
+      tl.fromTo("#s7-in", { x: 0 }, { keyframes: [{ x: -14, duration: 0.05 }, { x: 12, duration: 0.06 }, { x: -8, duration: 0.06 }, { x: 5, duration: 0.07 }, { x: 0, duration: 0.08 }] }, B(80) + 0.12);
+      tl.fromTo("#s7-cap", { scale: 0, rotation: -120 }, { scale: 1, rotation: 0, duration: 0.55, ease: "back.out(2.2)" }, B(80) + 0.2);
+      tl.fromTo("#s7-sub .mk > span", { yPercent: 150 }, { yPercent: 0, duration: 0.6, ease: "expo.out" }, B(81));
+      drawOnce($("#s7-under-p"), B(81) + 0.25, 0.45);
+      tl.fromTo("#s7-btn", { scale: 0 }, { scale: 1, duration: 0.55, ease: "back.out(2)" }, B(82));
+      tl.fromTo("#s7-btn .tx", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, B(82) + 0.12);
+      // tap on the button
+      tl.fromTo("#s7-tap", { x: 930, y: 1720, opacity: 0, scale: 1 }, { x: 600, y: 990, opacity: 1, scale: 1, duration: 0.55, ease: "power3.out" }, B(84) - 0.62);
+      tl.to("#s7-tap", { scale: 0.7, duration: 0.08, ease: "power2.in" }, B(84) - 0.06);
+      tl.to("#s7-tap", { scale: 1, opacity: 0, duration: 0.45, ease: "power2.out" }, B(84) + 0.05);
+      tl.to("#s7-btn", { scale: 0.93, duration: 0.07, ease: "power2.in" }, B(84) - 0.05);
+      tl.to("#s7-btn", { scale: 1, duration: 0.5, ease: "elastic.out(1, 0.4)" }, B(84) + 0.02);
+      tl.fromTo("#rp1", { attr: { r: 60 }, opacity: 0.9 }, { attr: { r: 520 }, opacity: 0, duration: 0.9, ease: "power2.out", immediateRender: false }, B(84));
+      tl.fromTo("#rp2", { attr: { r: 60 }, opacity: 0.7 }, { attr: { r: 420 }, opacity: 0, duration: 0.9, ease: "power2.out", immediateRender: false }, B(84) + 0.12);
+      // benefits
+      $$("#s7-list .row").forEach((row, i) => {
+        const t = B(85 + i);
+        tl.fromTo(row.querySelector(".ck"), { scale: 0, rotation: -90 }, { scale: 1, rotation: 0, duration: 0.45, ease: "back.out(2.6)" }, t);
+        draw(row.querySelector(".ck path"), t + 0.1, 0.3, "power2.out");
+        tl.fromTo(row.querySelector(".tx"), { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, t + 0.05);
+      });
+      tl.fromTo("#s7-handle", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.55, ease: "back.out(1.6)" }, B(88));
+      // button life: shine sweeps and a pulse on the bars
+      [B(89) + 0.1, B(93)].forEach((t) => tl.fromTo("#s7-shine", { x: 0 }, { x: 1300, duration: 0.7, ease: "power2.inOut", immediateRender: false }, t));
+      tl.to("#s7-btn", { scale: 1.06, duration: 0.18, yoyo: true, repeat: 1, ease: "power2.out" }, B(92));
+      // final hit
+      tl.to("#s7-btn", { scale: 1.08, duration: 0.2, yoyo: true, repeat: 1, ease: "power2.out" }, B(96));
+      tl.to("#s7-tssr", { scale: 1.06, duration: 0.2, yoyo: true, repeat: 1, ease: "power2.out" }, B(96));
+      sparkles("#s7-sparks", [[150, 470, 0, "#1f3fbf"], [930, 430, 0.06, "#e31b23"], [110, 760, 0.12, "#e31b23"], [970, 760, 0.1, "#1f3fbf"], [200, 1080, 0.16, "#ffd84d"], [880, 1090, 0.2, "#ffd84d"]], B(96));
+      tl.to("#s7-in", { y: -10, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 1 }, B(96) + 0.4);
+
+      tl.set({}, {}, 48);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

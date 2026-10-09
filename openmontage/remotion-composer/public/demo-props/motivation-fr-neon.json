@@ -1,0 +1,337 @@
+{
+  "words": [
+    {
+      "word": "N'abandonne",
+      "startMs": 59,
+      "endMs": 500
+    },
+    {
+      "word": "jamais.",
+      "startMs": 560,
+      "endMs": 939
+    },
+    {
+      "word": "Chaque",
+      "startMs": 1679,
+      "endMs": 1919
+    },
+    {
+      "word": "défi",
+      "startMs": 2000,
+      "endMs": 2500
+    },
+    {
+      "word": "que",
+      "startMs": 2539,
+      "endMs": 2619
+    },
+    {
+      "word": "tu",
+      "startMs": 2720,
+      "endMs": 2799
+    },
+    {
+      "word": "affrontes",
+      "startMs": 2839,
+      "endMs": 3359
+    },
+    {
+      "word": "aujourd'hui",
+      "startMs": 3399,
+      "endMs": 4000
+    },
+    {
+      "word": "forge",
+      "startMs": 4779,
+      "endMs": 5099
+    },
+    {
+      "word": "la",
+      "startMs": 5159,
+      "endMs": 5219
+    },
+    {
+      "word": "force",
+      "startMs": 5400,
+      "endMs": 5719
+    },
+    {
+      "word": "dont",
+      "startMs": 5799,
+      "endMs": 6000
+    },
+    {
+      "word": "tu",
+      "startMs": 6079,
+      "endMs": 6159
+    },
+    {
+      "word": "auras",
+      "startMs": 6199,
+      "endMs": 6440
+    },
+    {
+      "word": "besoin",
+      "startMs": 6500,
+      "endMs": 6859
+    },
+    {
+      "word": "demain.",
+      "startMs": 6940,
+      "endMs": 7259
+    },
+    {
+      "word": "Le",
+      "startMs": 8639,
+      "endMs": 8760
+    },
+    {
+      "word": "chemin",
+      "startMs": 8819,
+      "endMs": 9179
+    },
+    {
+      "word": "n'est",
+      "startMs": 9279,
+      "endMs": 9440
+    },
+    {
+      "word": "pas",
+      "startMs": 9479,
+      "endMs": 9559
+    },
+    {
+      "word": "facile,",
+      "startMs": 9639,
+      "endMs": 10179
+    },
+    {
+      "word": "mais",
+      "startMs": 10840,
+      "endMs": 10939
+    },
+    {
+      "word": "chaque",
+      "startMs": 11079,
+      "endMs": 11300
+    },
+    {
+      "word": "pas",
+      "startMs": 11340,
+      "endMs": 11579
+    },
+    {
+      "word": "te",
+      "startMs": 11639,
+      "endMs": 11739
+    },
+    {
+      "word": "rapproche",
+      "startMs": 11819,
+      "endMs": 12399
+    },
+    {
+      "word": "de",
+      "startMs": 12439,
+      "endMs": 12500
+    },
+    {
+      "word": "ton",
+      "startMs": 12619,
+      "endMs": 12779
+    },
+    {
+      "word": "rêve.",
+      "startMs": 12859,
+      "endMs": 13359
+    },
+    {
+      "word": "Crois",
+      "startMs": 14899,
+      "endMs": 15099
+    },
+    {
+      "word": "en",
+      "startMs": 15119,
+      "endMs": 15279
+    },
+    {
+      "word": "toi,",
+      "startMs": 15359,
+      "endMs": 15559
+    },
+    {
+      "word": "tu",
+      "startMs": 15759,
+      "endMs": 15819
+    },
+    {
+      "word": "es",
+      "startMs": 15880,
+      "endMs": 16039
+    },
+    {
+      "word": "plus",
+      "startMs": 16100,
+      "endMs": 16279
+    },
+    {
+      "word": "fort",
+      "startMs": 16379,
+      "endMs": 16600
+    },
+    {
+      "word": "que",
+      "startMs": 16699,
+      "endMs": 16760
+    },
+    {
+      "word": "tu",
+      "startMs": 16879,
+      "endMs": 16959
+    },
+    {
+      "word": "ne",
+      "startMs": 17039,
+      "endMs": 17100
+    },
+    {
+      "word": "le",
+      "startMs": 17139,
+      "endMs": 17279
+    },
+    {
+      "word": "penses.",
+      "startMs": 17340,
+      "endMs": 17979
+    },
+    {
+      "word": "Le",
+      "startMs": 18979,
+      "endMs": 19059
+    },
+    {
+      "word": "succès",
+      "startMs": 19139,
+      "endMs": 19500
+    },
+    {
+      "word": "n'est",
+      "startMs": 19559,
+      "endMs": 19739
+    },
+    {
+      "word": "pas",
+      "startMs": 19799,
+      "endMs": 19979
+    },
+    {
+      "word": "un",
+      "startMs": 20059,
+      "endMs": 20159
+    },
+    {
+      "word": "hasard,",
+      "startMs": 20199,
+      "endMs": 20799
+    },
+    {
+      "word": "c'est",
+      "startMs": 21760,
+      "endMs": 21939
+    },
+    {
+      "word": "le",
+      "startMs": 22000,
+      "endMs": 22079
+    },
+    {
+      "word": "résultat",
+      "startMs": 22199,
+      "endMs": 22779
+    },
+    {
+      "word": "d'une",
+      "startMs": 22819,
+      "endMs": 22979
+    },
+    {
+      "word": "persévérance",
+      "startMs": 23100,
+      "endMs": 24159
+    },
+    {
+      "word": "qui",
+      "startMs": 25039,
+      "endMs": 25119
+    },
+    {
+      "word": "ne",
+      "startMs": 25199,
+      "endMs": 25340
+    },
+    {
+      "word": "connaît",
+      "startMs": 25399,
+      "endMs": 25659
+    },
+    {
+      "word": "pas",
+      "startMs": 25719,
+      "endMs": 25799
+    },
+    {
+      "word": "l'abandon.",
+      "startMs": 25859,
+      "endMs": 26619
+    },
+    {
+      "word": "Relève-toi,",
+      "startMs": 27799,
+      "endMs": 28579
+    },
+    {
+      "word": "et",
+      "startMs": 28599,
+      "endMs": 28619
+    },
+    {
+      "word": "continue,",
+      "startMs": 28619,
+      "endMs": 28620
+    },
+    {
+      "word": "l'avenir",
+      "startMs": 28620,
+      "endMs": 28639
+    },
+    {
+      "word": "attend",
+      "startMs": 28659,
+      "endMs": 28739
+    },
+    {
+      "word": "celui",
+      "startMs": 28760,
+      "endMs": 28799
+    },
+    {
+      "word": "qui",
+      "startMs": 28799,
+      "endMs": 28800
+    },
+    {
+      "word": "ose",
+      "startMs": 28799,
+      "endMs": 28800
+    },
+    {
+      "word": "rêver.",
+      "startMs": 28800,
+      "endMs": 28859
+    }
+  ],
+  "fontSize": 130,
+  "neonColor": "#FFC94A",
+  "rtl": false
+}

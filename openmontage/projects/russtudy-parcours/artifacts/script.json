@@ -1,0 +1,98 @@
+{
+  "version": "1.0",
+  "title": "RusStudy — Le parcours : du premier message WhatsApp au premier jour à l'université (40 s)",
+  "total_duration_seconds": 40.0,
+  "sections": [
+    {
+      "id": "s1",
+      "label": "Le message",
+      "text": "Tout commence par un message. — « Salam ! Je veux étudier en Russie. » — « Bienvenue ! On s'occupe de tout, de A à Z. » — Appel d'orientation · 15 min · gratuit · sans engagement — Réserver un appel gratuit",
+      "start_seconds": 0.0,
+      "end_seconds": 3.0
+    },
+    {
+      "id": "s2",
+      "label": "01 Consultation gratuite",
+      "text": "On analyse ton profil. — Appel d'orientation · 15 min · Zoom, téléphone ou WhatsApp · GRATUIT — Notes du Bac · Projet : Médecine · Ville & budget — Ton plan : Médecine générale · Lipetsk · Université d'État partenaire",
+      "start_seconds": 3.0,
+      "end_seconds": 7.0
+    },
+    {
+      "id": "s3",
+      "label": "02 Préparation du dossier",
+      "text": "On prépare ton dossier. Traduction assermentée + légalisation — Passeport · Diplôme du Bac · Relevés de notes · Acte de naissance — TRADUIT · LÉGALISÉ",
+      "start_seconds": 7.0,
+      "end_seconds": 9.0
+    },
+    {
+      "id": "s4",
+      "label": "03 Admission officielle",
+      "text": "Admission officielle. — Lettre d'invitation d'État · Admission confirmée · Médecine générale 2026–2027 — ADMIS",
+      "start_seconds": 9.0,
+      "end_seconds": 11.0
+    },
+    {
+      "id": "s5",
+      "label": "04 Visa & assurance",
+      "text": "Visa d'études + assurance. — Visa d'études Russie · Assurance médicale, couverture 1 an · Carte d'embarquement TUN → MOW",
+      "start_seconds": 11.0,
+      "end_seconds": 15.0
+    },
+    {
+      "id": "s6",
+      "label": "Départ",
+      "text": "Bon voyage !",
+      "start_seconds": 15.0,
+      "end_seconds": 17.0
+    },
+    {
+      "id": "s7",
+      "label": "En vol",
+      "text": "Cap sur Moscou. — Notification RusStudy : « Ton tuteur t'attend à l'arrivée. Bon vol ! »",
+      "start_seconds": 17.0,
+      "end_seconds": 21.0
+    },
+    {
+      "id": "s8",
+      "label": "05 Accueil",
+      "text": "ARRIVÉES · BIENVENUE EN RUSSIE — pancarte RusStudy · ACCUEIL ÉTUDIANTS — Un tuteur bilingue t'attend à l'aéroport.",
+      "start_seconds": 21.0,
+      "end_seconds": 23.0
+    },
+    {
+      "id": "tr",
+      "label": "05 Transfert",
+      "text": "Train ou voiture, jusqu'à ta ville. — MOSCOU → LIPETSK — Organisé sur demande · en option — panneau ЛИПЕЦК / LIPETSK",
+      "start_seconds": 23.0,
+      "end_seconds": 27.0
+    },
+    {
+      "id": "s9",
+      "label": "05 Foyer",
+      "text": "Foyer universitaire. — 1 an inclus — Chambre 412",
+      "start_seconds": 27.0,
+      "end_seconds": 29.0
+    },
+    {
+      "id": "s10",
+      "label": "Université",
+      "text": "Premier jour à l'université. — Carte d'étudiant · Médecine générale · Université d'État · Lipetsk · Objectif atteint",
+      "start_seconds": 29.0,
+      "end_seconds": 31.0
+    },
+    {
+      "id": "s11",
+      "label": "Prix",
+      "text": "Budget 1ère année : dès 12 000 DT · études + installation — Frais universitaires · Consulting & orientation · Accompagnement administratif · Dossier visa · Accueil aéroport · Foyer universitaire 1 an · Assurance médicale : inclus — Total 1ère année dès 12 000 DT — Non inclus · en option sur demande : billet d'avion, train ou voiture jusqu'à ta ville, hôtel & visites à Moscou (sur devis) — Sans frais cachés",
+      "start_seconds": 31.0,
+      "end_seconds": 37.0
+    },
+    {
+      "id": "s12",
+      "label": "CTA",
+      "text": "RusStudy. Études en Russie — Écris-nous sur WhatsApp — +7 996 433 4489 — russieetudes.com — 1ère consultation gratuite",
+      "start_seconds": 37.0,
+      "end_seconds": 40.0
+    }
+  ]
+}

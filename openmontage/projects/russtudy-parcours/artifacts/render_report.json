@@ -1,0 +1,83 @@
+{
+  "version": "1.0",
+  "render_grammar": "animation-first",
+  "outputs": [
+    {
+      "path": "renders/russtudy_parcours_40s_60fps.mp4",
+      "format": "mp4",
+      "codec": "h264",
+      "audio_codec": "aac",
+      "resolution": "1080x1920",
+      "fps": 60,
+      "duration_seconds": 40.0,
+      "file_size_bytes": 25075157,
+      "platform_target": "TikTok / YouTube Shorts / Reels (master)"
+    },
+    {
+      "path": "renders/russtudy_parcours_40s_30fps.mp4",
+      "format": "mp4",
+      "codec": "h264",
+      "audio_codec": "aac",
+      "resolution": "1080x1920",
+      "fps": 30,
+      "duration_seconds": 40.0,
+      "file_size_bytes": 20727765,
+      "platform_target": "Instagram Reels / Facebook / Stories"
+    },
+    {
+      "path": "renders/russtudy_parcours_40s_youtube_16x9_60fps.mp4",
+      "format": "mp4",
+      "codec": "h264",
+      "audio_codec": "aac",
+      "resolution": "1920x1080",
+      "fps": 60,
+      "duration_seconds": 40.0,
+      "file_size_bytes": 24803019,
+      "platform_target": "YouTube (16:9)"
+    },
+    {
+      "path": "renders/russtudy_parcours_60s_60fps.mp4",
+      "format": "mp4",
+      "codec": "h264",
+      "audio_codec": "aac",
+      "resolution": "1080x1920",
+      "fps": 60,
+      "duration_seconds": 60.0,
+      "file_size_bytes": 35286024,
+      "platform_target": "Rythme ralenti 60 s — TikTok / Shorts / Reels"
+    },
+    {
+      "path": "renders/russtudy_parcours_60s_youtube_16x9_60fps.mp4",
+      "format": "mp4",
+      "codec": "h264",
+      "audio_codec": "aac",
+      "resolution": "1920x1080",
+      "fps": 60,
+      "duration_seconds": 60.0,
+      "file_size_bytes": 34668368,
+      "platform_target": "Rythme ralenti 60 s — YouTube (16:9)"
+    },
+    {
+      "path": "renders/russtudy_parcours_60s_derja_60fps.mp4",
+      "format": "mp4",
+      "codec": "h264",
+      "audio_codec": "aac",
+      "resolution": "1080x1920",
+      "fps": 60,
+      "duration_seconds": 60.0,
+      "file_size_bytes": 32295486,
+      "platform_target": "60 s en arabe tunisien — TikTok / Shorts / Reels"
+    },
+    {
+      "path": "renders/russtudy_parcours_60s_derja_youtube_16x9_60fps.mp4",
+      "format": "mp4",
+      "codec": "h264",
+      "audio_codec": "aac",
+      "resolution": "1920x1080",
+      "fps": 60,
+      "duration_seconds": 60.0,
+      "file_size_bytes": 31724573,
+      "platform_target": "60 s en arabe tunisien — YouTube (16:9)"
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "version": "1.0",
+  "assets": [
+    {
+      "id": "img-saint-basile",
+      "type": "image",
+      "path": "hyperframes/assets/img/saint_basile.jpg",
+      "source_tool": "russieetudes.com (Unsplash)",
+      "scene_id": "s4",
+      "license": "Unsplash License",
+      "original_url": "https://images.unsplash.com/photo-1513326738677-b964603b136d"
+    },
+    {
+      "id": "img-amphitheatre",
+      "type": "image",
+      "path": "hyperframes/assets/img/amphitheatre.jpg",
+      "source_tool": "russieetudes.com (Unsplash)",
+      "scene_id": "s4",
+      "license": "Unsplash License",
+      "original_url": "https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0"
+    },
+    {
+      "id": "img-diplomes",
+      "type": "image",
+      "path": "hyperframes/assets/img/diplomes_toques.jpg",
+      "source_tool": "russieetudes.com (Unsplash)",
+      "scene_id": "s4",
+      "license": "Unsplash License",
+      "original_url": "https://images.unsplash.com/photo-1541339907198-e08756dedf3f",
+      "generation_summary": "Photo prise à Singapour : légendée « Objectif : ton diplôme » (comme sur le site), jamais présentée comme la Russie"
+    },
+    {
+      "id": "font-space-grotesk",
+      "type": "font",
+      "path": "hyperframes/assets/fonts/SpaceGrotesk-latin.woff2",
+      "source_tool": "Google Fonts",
+      "scene_id": "all",
+      "license": "SIL Open Font License 1.1"
+    },
+    {
+      "id": "music-funky",
+      "type": "music",
+      "path": "assets/music/candidates/11_funky.mp3",
+      "source_tool": "pixabay_music",
+      "scene_id": "all",
+      "provider": "pixabay",
+      "license": "Pixabay Content License",
+      "original_url": "https://cdn.pixabay.com/audio/2026/01/06/audio_437fcd7b2d.mp3",
+      "duration_seconds": 139.8,
+      "generation_summary": "120 BPM mesuré ; montage sur mesures : piste 15,026–24,026 s puis 60,025–66,025 s (drop à 1,0 s, accord final à 13,0 s)"
+    },
+    {
+      "id": "sfx-bundled",
+      "type": "sfx",
+      "path": "../../.agents/skills/hyperframes-media/assets/sfx",
+      "source_tool": "hyperframes-media bundled library",
+      "scene_id": "all",
+      "provider": "pixabay",
+      "license": "Pixabay Content License"
+    },
+    {
+      "id": "sfx-synth",
+      "type": "sfx",
+      "path": "assets/audio/sfx",
+      "source_tool": "scripts/build_audio.py",
+      "scene_id": "all",
+      "generation_summary": "Cliquetis de rouleau, odomètre, compteurs, arpège 8-bit, bloop/fwip du point — synthèse déterministe numpy"
+    },
+    {
+      "id": "soundtrack",
+      "type": "audio",
+      "path": "hyperframes/assets/audio/soundtrack.wav",
+      "source_tool": "scripts/build_audio.py",
+      "scene_id": "all",
+      "duration_seconds": 15.0,
+      "format": "wav",
+      "generation_summary": "Musique + 53 cues SFX, ducking 3 dB, limiteur, -14 LUFS / -1,9 dBTP"
+    },
+    {
+      "id": "composition",
+      "type": "animation",
+      "path": "hyperframes/index.html",
+      "source_tool": "hyperframes (atelier, GSAP 3.14)",
+      "scene_id": "all",
+      "generation_summary": "Composition écrite à la main, une seule timeline GSAP déterministe"
+    }
+  ]
+}

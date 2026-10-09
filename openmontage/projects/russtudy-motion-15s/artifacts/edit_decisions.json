@@ -1,0 +1,64 @@
+{
+  "version": "1.0",
+  "render_runtime": "hyperframes",
+  "composition_mode": "atelier",
+  "renderer_family": "animation-first",
+  "cuts": [
+    {
+      "id": "s0",
+      "source": "hyperframes/index.html#s0",
+      "in_seconds": 0.0,
+      "out_seconds": 3.6,
+      "transition_in": "cut",
+      "transition_out": "iris circulaire depuis le point doré de « Russie. »"
+    },
+    {
+      "id": "s1",
+      "source": "hyperframes/index.html#s1",
+      "in_seconds": 3.15,
+      "out_seconds": 5.4,
+      "transition_in": "iris circulaire (portail clip-path)",
+      "transition_out": "rétractation clip-path en carte or du bento"
+    },
+    {
+      "id": "s2",
+      "source": "hyperframes/index.html#s2",
+      "in_seconds": 4.9,
+      "out_seconds": 7.5,
+      "transition_in": "FLIP clip-path depuis la scène prix",
+      "transition_out": "zoom-through dans la carte verte"
+    },
+    {
+      "id": "s3",
+      "source": "hyperframes/index.html#s3",
+      "in_seconds": 7.2,
+      "out_seconds": 9.3,
+      "transition_in": "zoom-through",
+      "transition_out": "volet diagonal tricolore dans l'axe du vol"
+    },
+    {
+      "id": "s4",
+      "source": "hyperframes/index.html#s4",
+      "in_seconds": 8.8,
+      "out_seconds": 11.4,
+      "transition_in": "volet diagonal (masque le raccord musical)",
+      "transition_out": "dissolution en pixels"
+    },
+    {
+      "id": "s5",
+      "source": "hyperframes/index.html#s5",
+      "in_seconds": 11.02,
+      "out_seconds": 13.0,
+      "transition_in": "dissolution en pixels",
+      "transition_out": "le point de « vie. » s'envole vers le logo"
+    },
+    {
+      "id": "s6",
+      "source": "hyperframes/index.html#s5",
+      "in_seconds": 13.0,
+      "out_seconds": 15.0,
+      "transition_in": "match-cut sur le point",
+      "transition_out": "fin (boucle vers le hook)"
+    }
+  ]
+}

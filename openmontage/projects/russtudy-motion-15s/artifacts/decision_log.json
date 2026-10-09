@@ -1,0 +1,209 @@
+{
+  "version": "1.0",
+  "project_id": "russtudy-motion-15s",
+  "decisions": [
+    {
+      "decision_id": "d1",
+      "stage": "proposal",
+      "category": "pipeline_selection",
+      "subject": "Pipeline OpenMontage",
+      "options_considered": [
+        {
+          "option_id": "animation",
+          "label": "animation (motion graphics / typo cinétique)",
+          "score": 0.95,
+          "reason": "spot non narré où la motion est le message"
+        },
+        {
+          "option_id": "animated-explainer",
+          "label": "animated-explainer",
+          "score": 0.4,
+          "reason": "pensé pour un récit narré",
+          "rejected_because": "pas de narration dans un spot musical de 15 s"
+        },
+        {
+          "option_id": "cinematic",
+          "label": "cinematic",
+          "score": 0.2,
+          "reason": "montage de plans tournés/générés",
+          "rejected_because": "aucun fournisseur vidéo IA configuré ; le brief demande du motion design"
+        }
+      ],
+      "selected": "animation",
+      "reason": "Demande « vas-y à fond » = exécution de bout en bout autorisée par l'utilisateur (pas d'arrêt aux portes d'approbation intermédiaires).",
+      "user_visible": true,
+      "user_approved": true,
+      "confidence": 0.9
+    },
+    {
+      "decision_id": "d2",
+      "stage": "proposal",
+      "category": "render_runtime_selection",
+      "subject": "Moteur de composition",
+      "options_considered": [
+        {
+          "option_id": "hyperframes",
+          "label": "HyperFrames (HTML/CSS/GSAP)",
+          "score": 0.9,
+          "reason": "typo cinétique, masques clip-path, MotionPath, synchro beat ; moteur recommandé pour les promos de marque"
+        },
+        {
+          "option_id": "remotion",
+          "label": "Remotion (React)",
+          "score": 0.75,
+          "reason": "déjà utilisé dans ce dépôt (MediLearn), rendu image par image fiable",
+          "rejected_because": "les animations GSAP de ce concept s'écrivent plus naturellement en HTML/GSAP"
+        },
+        {
+          "option_id": "ffmpeg",
+          "label": "FFmpeg seul",
+          "score": 0.05,
+          "reason": "assemblage simple",
+          "rejected_because": "pas de motion design possible"
+        }
+      ],
+      "selected": "hyperframes",
+      "reason": "Les deux moteurs étaient disponibles (preflight) ; choix fait par l'agent, à confirmer par l'utilisateur.",
+      "user_visible": true,
+      "user_approved": false,
+      "confidence": 0.8
+    },
+    {
+      "decision_id": "d3",
+      "stage": "proposal",
+      "category": "composition_mode",
+      "subject": "Mode d'écriture",
+      "options_considered": [
+        {
+          "option_id": "atelier",
+          "label": "atelier (composition écrite à la main)",
+          "score": 0.95,
+          "reason": "pièce vitrine de marque, direction artistique propre"
+        },
+        {
+          "option_id": "templated",
+          "label": "scènes types",
+          "score": 0.2,
+          "reason": "rapide",
+          "rejected_because": "rendu générique, ne démontre pas l'expertise motion"
+        }
+      ],
+      "selected": "atelier",
+      "reason": "Voir artifacts/art-direction.md.",
+      "user_visible": true,
+      "user_approved": false,
+      "confidence": 0.9
+    },
+    {
+      "decision_id": "d4",
+      "stage": "assets",
+      "category": "music_source",
+      "subject": "Musique",
+      "options_considered": [
+        {
+          "option_id": "pixabay-funky",
+          "label": "Pixabay « Funky » (120 BPM, la mixolydien)",
+          "score": 0.85,
+          "reason": "très percussive (0,83), build→drop net et accord final tenu"
+        },
+        {
+          "option_id": "pixabay-other",
+          "label": "11 autres pistes Pixabay analysées",
+          "score": 0.55,
+          "reason": "tempo/énergie mesurés",
+          "rejected_because": "moins percussives ou sans fin naturelle"
+        },
+        {
+          "option_id": "magnific-music",
+          "label": "Génération Magnific (Lyria / ElevenLabs)",
+          "score": 0.0,
+          "reason": "musique sur mesure",
+          "rejected_because": "compte gratuit, 0 crédit"
+        },
+        {
+          "option_id": "higgsfield-audio",
+          "label": "Génération Higgsfield",
+          "score": 0.0,
+          "reason": "musique sur mesure",
+          "rejected_because": "service indisponible pendant la session"
+        }
+      ],
+      "selected": "pixabay-funky",
+      "reason": "Montage sur mesures : drop à 1,0 s, raccord masqué à 9,0 s, accord final à 13,0 s.",
+      "user_visible": true,
+      "user_approved": false,
+      "confidence": 0.75
+    },
+    {
+      "decision_id": "d5",
+      "stage": "assets",
+      "category": "provider_selection",
+      "subject": "Sound design",
+      "options_considered": [
+        {
+          "option_id": "bundled+synth",
+          "label": "SFX HyperFrames (Pixabay) + synthèse maison",
+          "score": 0.85,
+          "reason": "gratuit, déterministe, accordé à la musique"
+        },
+        {
+          "option_id": "magnific-sfx",
+          "label": "SFX Magnific",
+          "score": 0.0,
+          "reason": "SFX génératifs",
+          "rejected_because": "non disponible sur le plan du compte"
+        }
+      ],
+      "selected": "bundled+synth",
+      "reason": "53 cues calés sur les événements GSAP ; sons tonals accordés (mi tenu, résolution sur la).",
+      "user_visible": true,
+      "user_approved": false,
+      "confidence": 0.8
+    },
+    {
+      "decision_id": "d6",
+      "stage": "compose",
+      "category": "visual_accuracy_check",
+      "subject": "Fidélité marque et honnêteté",
+      "options_considered": [
+        {
+          "option_id": "faithful",
+          "label": "Logo officiel, légendes honnêtes, pas de faux témoignages",
+          "score": 1.0,
+          "reason": "conforme au site et non trompeur"
+        }
+      ],
+      "selected": "faithful",
+      "reason": "Point du logo blanc sur fond sombre comme dans le code du site ; photo des diplômés (Singapour) légendée « Objectif : ton diplôme » ; visages stock des témoignages non utilisés ; chiffres repris du site.",
+      "user_visible": true,
+      "user_approved": false,
+      "confidence": 0.95
+    },
+    {
+      "decision_id": "d7",
+      "stage": "compose",
+      "category": "motion_commitment",
+      "subject": "Cadence de rendu",
+      "options_considered": [
+        {
+          "option_id": "60fps",
+          "label": "Master 60 fps",
+          "score": 0.85,
+          "reason": "mouvements rapides plus nets (rouleau, zoom-through)"
+        },
+        {
+          "option_id": "30fps",
+          "label": "Variante 30 fps",
+          "score": 0.75,
+          "reason": "cadence la plus sûre pour Instagram/Facebook",
+          "rejected_because": "fournie en variante, pas en master"
+        }
+      ],
+      "selected": "60fps",
+      "reason": "Les deux versions sont livrées.",
+      "user_visible": true,
+      "user_approved": false,
+      "confidence": 0.85
+    }
+  ]
+}

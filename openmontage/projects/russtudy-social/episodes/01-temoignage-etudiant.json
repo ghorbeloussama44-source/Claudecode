@@ -1,0 +1,40 @@
+{
+  "slug": "01-temoignage-etudiant",
+  "title": {"fr": "Témoignage étudiant — 4 questions", "ar": "شهادة طالب — 4 أسئلة"},
+  "series": "temoignage",
+  "theme": "night",
+  "bed": "hope_piano",
+  "bed_offset": 0.0,
+  "top": {"fr": "TÉMOIGNAGE", "ar": "شهادة"},
+  "cta": "student",
+  "cover_at": 2.6,
+  "scenes": [
+    {"type": "hook", "dur": 3.5, "bg": "#2460e8", "icon": "chat",
+     "fr": {"kicker": "TÉMOIGNAGE", "title": ["Étudier en Russie :", "4 questions à un", "étudiant tunisien."]},
+     "ar": {"kicker": "شهادة", "title": ["القراية في روسيا:", "4 أسئلة", "لطالب تونسي."]},
+     "vo": {"fr": "(silence ou musique : le titre se lit à l'écran)", "ar": "(بلا كلام : العنوان مكتوب)"}},
+    {"type": "question", "dur": 8, "n": 1, "of": 4,
+     "fr": {"label": "QUESTION", "text": ["Pourquoi tu as", "choisi la Russie ?"]},
+     "ar": {"label": "سؤال", "text": ["علاش", "اخترت روسيا؟"]},
+     "vo": {"fr": "Réponse de l'étudiant, 1 à 2 phrases (8 s max).", "ar": "جواب الطالب، جملة ولا زوز (8 ثواني)."}},
+    {"type": "question", "dur": 8, "n": 2, "of": 4,
+     "fr": {"label": "QUESTION", "text": ["Le dossier, c'était", "compliqué ?"]},
+     "ar": {"label": "سؤال", "text": ["الدوسي،", "كان صعيب؟"]},
+     "vo": {"fr": "Réponse de l'étudiant (8 s max).", "ar": "جواب الطالب (8 ثواني)."}},
+    {"type": "question", "dur": 8, "n": 3, "of": 4,
+     "fr": {"label": "QUESTION", "text": ["Tes premiers jours", "là-bas, ça s'est", "passé comment ?"]},
+     "ar": {"label": "سؤال", "text": ["أول أيامك غادي،", "كيفاش عدّيتهم؟"]},
+     "vo": {"fr": "Réponse de l'étudiant (8 s max).", "ar": "جواب الطالب (8 ثواني)."}},
+    {"type": "question", "dur": 8, "n": 4, "of": 4,
+     "fr": {"label": "QUESTION", "text": ["Ton conseil à ceux", "qui hésitent ?"]},
+     "ar": {"label": "سؤال", "text": ["شنوة تقول", "للّي متردّد؟"]},
+     "vo": {"fr": "Réponse de l'étudiant (8 s max).", "ar": "جواب الطالب (8 ثواني)."}},
+    {"type": "cta", "dur": 5,
+     "vo": {"fr": "(l'étudiant ou vous) « Écris-leur sur WhatsApp, la première consultation est gratuite. »", "ar": "« ابعثلهم على WhatsApp، أول استشارة بلاش. »"}}
+  ],
+  "caption": {
+    "fr": "4 questions à un étudiant tunisien parti étudier en Russie avec RusStudy 🇹🇳➡️🇷🇺 Tu hésites encore ? Pose-nous tes questions sur WhatsApp (lien en bio), la 1ère consultation est gratuite.",
+    "ar": "4 أسئلة لطالب تونسي يقرا في روسيا مع RusStudy 🇹🇳➡️🇷🇺 مازلت متردّد؟ ابعثلنا على WhatsApp (الرابط في البيو)، أول استشارة بلاش."
+  },
+  "hashtags": "#etudierenrussie #russie #tunisie #bac2026 #etudiantstunisiens #medecine #القراية_في_روسيا #تونس"
+}

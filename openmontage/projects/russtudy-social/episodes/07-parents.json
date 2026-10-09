@@ -1,0 +1,37 @@
+{
+  "slug": "07-parents",
+  "title": {"fr": "Parents : qui s'occupe de votre enfant ?", "ar": "يا ولي: شكون يتلهّى بولدك؟"},
+  "series": "conseil",
+  "theme": "cream",
+  "bed": "hope_piano",
+  "bed_offset": 60.0,
+  "top": {"fr": "PARENTS", "ar": "للأولياء"},
+  "cta": "parent",
+  "cover_at": 2.6,
+  "scenes": [
+    {"type": "hook", "dur": 3.5, "bg": "#22c55e", "ink": true, "icon": "shield",
+     "fr": {"kicker": "PARENTS", "title": ["Qui s'occupe", "de votre enfant", "là-bas ?"]},
+     "ar": {"kicker": "للأولياء", "title": ["شكون يتلهّى", "بولدك", "غادي؟"]},
+     "vo": {"fr": "Parents, qui s'occupe de votre enfant en Russie ?", "ar": "يا ولي، شكون يتلهّى بولدك في روسيا؟"}},
+    {"type": "points", "dur": 17.5,
+     "fr": {"items": [["plane", "Accueil à l'aéroport par un tuteur bilingue"],
+                      ["key", "Une chambre réservée au foyer universitaire"],
+                      ["shield", "Assurance médicale incluse"],
+                      ["doc", "Aide pour la banque et les papiers"],
+                      ["pin", "Une communauté de Tunisiens sur place"]]},
+     "ar": {"items": [["plane", "مرافق يستقبلو في المطار"],
+                      ["key", "بيت محجوز في المبيت الجامعي"],
+                      ["shield", "التأمين الصحّي مشمول"],
+                      ["doc", "يعاونوه في البنكة والأوراق"],
+                      ["pin", "جالية تونسية غادي"]]},
+     "vo": {"fr": "Dès l'arrivée, un tuteur bilingue l'accueille à l'aéroport. Sa chambre au foyer universitaire est réservée. L'assurance médicale est incluse. On l'aide pour la banque et les papiers. Et il retrouve une communauté de Tunisiens sur place.",
+            "ar": "من أول ما يوصل، مرافق يستقبلو في المطار. بيتو في المبيت محجوز. التأمين الصحّي مشمول. نعاونوه في البنكة والأوراق. ويلقى جالية تونسية غادي."}},
+    {"type": "cta", "dur": 5,
+     "vo": {"fr": "Vos questions, posez-les-nous sur WhatsApp.", "ar": "أسئلتك، ابعثهالنا على WhatsApp."}}
+  ],
+  "caption": {
+    "fr": "Parents : accueil à l'aéroport, foyer réservé, assurance, aide sur place, communauté tunisienne. Votre enfant n'est jamais seul. Posez vos questions sur WhatsApp (lien en bio).",
+    "ar": "يا ولي: استقبال في المطار، بيت محجوز، تأمين، معاونة غادي وجالية تونسية. ولدك ما يكونش وحدو. ابعثلنا أسئلتك على WhatsApp (الرابط في البيو)."
+  },
+  "hashtags": "#parents #etudierenrussie #securite #tunisie #bac2026 #أولياء #القراية_في_روسيا"
+}

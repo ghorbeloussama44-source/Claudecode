@@ -1,0 +1,122 @@
+{
+  "words": [
+    {
+      "word": "لا",
+      "startMs": 44720,
+      "endMs": 45000
+    },
+    {
+      "word": "تستسلمْ",
+      "startMs": 45020,
+      "endMs": 45870
+    },
+    {
+      "word": "أبدًا",
+      "startMs": 45960,
+      "endMs": 46380
+    },
+    {
+      "word": "مهما",
+      "startMs": 46600,
+      "endMs": 47080
+    },
+    {
+      "word": "كانَ",
+      "startMs": 47200,
+      "endMs": 47580
+    },
+    {
+      "word": "الصراعْ",
+      "startMs": 47620,
+      "endMs": 49240
+    },
+    {
+      "word": "في",
+      "startMs": 49300,
+      "endMs": 49540
+    },
+    {
+      "word": "قلبِ",
+      "startMs": 49660,
+      "endMs": 50060
+    },
+    {
+      "word": "الظلالِ",
+      "startMs": 50080,
+      "endMs": 51000
+    },
+    {
+      "word": "سأجدُ",
+      "startMs": 51180,
+      "endMs": 51820
+    },
+    {
+      "word": "الضياءَ",
+      "startMs": 52060,
+      "endMs": 52720
+    },
+    {
+      "word": "والشراعْ",
+      "startMs": 52730,
+      "endMs": 54520
+    },
+    {
+      "word": "أحلامٌ",
+      "startMs": 54560,
+      "endMs": 54890
+    },
+    {
+      "word": "تكسَّرتْ",
+      "startMs": 55180,
+      "endMs": 55820
+    },
+    {
+      "word": "لكني",
+      "startMs": 56100,
+      "endMs": 56480
+    },
+    {
+      "word": "سأبقى",
+      "startMs": 56880,
+      "endMs": 57870
+    },
+    {
+      "word": "قويًا",
+      "startMs": 57940,
+      "endMs": 59000
+    },
+    {
+      "word": "الحريةُ",
+      "startMs": 59010,
+      "endMs": 59970
+    },
+    {
+      "word": "تناديني،",
+      "startMs": 59971,
+      "endMs": 61100
+    },
+    {
+      "word": "وسأعبرُ",
+      "startMs": 61160,
+      "endMs": 61920
+    },
+    {
+      "word": "كلَّ",
+      "startMs": 61960,
+      "endMs": 62320
+    },
+    {
+      "word": "شيءٍ",
+      "startMs": 62420,
+      "endMs": 62980
+    },
+    {
+      "word": "نقيًا",
+      "startMs": 63000,
+      "endMs": 64080
+    }
+  ],
+  "fontSize": 140,
+  "neonColor": "#FFC94A",
+  "rtl": true
+}

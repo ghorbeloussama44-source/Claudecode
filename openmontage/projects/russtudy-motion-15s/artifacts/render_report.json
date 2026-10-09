@@ -1,0 +1,28 @@
+{
+  "version": "1.0",
+  "render_grammar": "animation-first",
+  "outputs": [
+    {
+      "path": "renders/russtudy_motion_15s_60fps.mp4",
+      "format": "mp4",
+      "codec": "h264",
+      "audio_codec": "aac",
+      "resolution": "1080x1920",
+      "fps": 60,
+      "duration_seconds": 15.0,
+      "file_size_bytes": 16840007,
+      "platform_target": "TikTok / YouTube Shorts / Reels (master)"
+    },
+    {
+      "path": "renders/russtudy_motion_15s_30fps.mp4",
+      "format": "mp4",
+      "codec": "h264",
+      "audio_codec": "aac",
+      "resolution": "1080x1920",
+      "fps": 30,
+      "duration_seconds": 15.0,
+      "file_size_bytes": 12379988,
+      "platform_target": "Instagram Reels / Facebook / Stories"
+    }
+  ]
+}

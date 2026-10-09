@@ -1,0 +1,19 @@
+{
+  "version": "1.0",
+  "title": "RusStudy — Le parcours : du premier message WhatsApp au premier jour à l'université (40 s)",
+  "hook": "Tout commence par un message : le prospect écrit à RusStudy sur WhatsApp, envoie sur le drop, reçoit une réponse et réserve son appel d'orientation gratuit.",
+  "key_points": [
+    "Les 5 étapes du site : 01 consultation gratuite (appel de 15 min) · 02 dossier (traduction assermentée + légalisation) · 03 admission (lettre d'invitation d'État) · 04 visa & assurance · 05 accueil & installation (tuteur bilingue à l'aéroport, transfert, foyer)",
+    "v3 (demande client) : transport interne de Moscou vers la ville de l'université, en train ou en voiture, avec le tuteur (exemple illustratif : Lipetsk, Kazan avant la v7)",
+    "Prix fourni par le client : 1ère année dès 3 500 € = frais universitaires dès 2 200 € + consulting/orientation + dossier visa + accueil aéroport + foyer 1 an + assurance médicale",
+    "v6 (demande client) : prix affiché en dinars tunisiens, dès 12 000 DT, et version en arabe tunisien (derja) 9:16 + 16:9",
+    "v7 (demande client) : ville d'exemple Lipetsk au lieu de Kazan ; ticket sans montant par ligne (frais universitaires « inclus ») et accompagnement administratif inclus",
+    "Non inclus (précision du client, v5) : billet d'avion, transport Moscou → ville universitaire (train ou voiture, au choix), hôtel et visites à Moscou — en option, sur devis",
+    "Sans frais cachés (engagement « Transparence sur les coûts » du site)",
+    "CTA : Écris-nous sur WhatsApp · +7 996 433 4489 · russieetudes.com · 1ère consultation gratuite"
+  ],
+  "tone": "Confiant, joueur, concret et rassurant",
+  "style": "Atelier motion design aux tokens du site : un objet et une technique d'animation par étape, fil WhatsApp de bout en bout, PIXEL SYSTEM",
+  "target_platform": "instagram",
+  "target_duration_seconds": 40
+}

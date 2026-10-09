@@ -1,0 +1,669 @@
+<style>
+  .st { display: grid; gap: var(--cds-gap-xl); font-family: var(--font-anthropic-sans); color: var(--color-fg); padding-block: var(--cds-pad-md); }
+  .st-head { display: grid; gap: var(--cds-gap-sm); max-width: 62rem; }
+  .st-h1 { margin: 0; font-family: var(--font-anthropic-serif); font-weight: 400; font-size: calc(var(--cds-font-size-title) * 1.45); line-height: 1.1; text-wrap: balance; }
+  .st-lede { margin: 0; font-size: var(--cds-font-size-body); line-height: 1.55; color: var(--color-fg-muted); max-width: 46rem; }
+  .st-lede .st-em { color: var(--color-fg); font-weight: var(--cds-font-weight-medium); }
+  .st-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: var(--cds-gap-md); }
+  .st-kpi { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); display: grid; gap: var(--cds-gap-xs); align-content: start; }
+  .st-kpi-l { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+  .st-kpi-v { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: calc(var(--cds-font-size-title) * 1.6); line-height: 1.05; font-variant-numeric: tabular-nums; min-height: 1.05em; }
+  .st-kpi-n { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); font-variant-numeric: tabular-nums; }
+  .st-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); gap: var(--cds-gap-md); }
+  .st-card { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); display: grid; gap: var(--cds-gap-sm); min-width: 0; align-content: start; }
+  .st-card-h { display: flex; align-items: baseline; justify-content: space-between; gap: var(--cds-gap-sm); flex-wrap: wrap; }
+  .st-h2 { margin: 0; font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); }
+  .st-note { margin: 0; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); line-height: 1.5; }
+  .st-chart { position: relative; min-height: 14rem; }
+  .st-chart svg { display: block; overflow: visible; }
+  .st-axis text, .st-lab { fill: var(--color-fg-muted); font-size: var(--cds-font-size-caption); font-family: var(--font-anthropic-sans); }
+  .st-name-t { fill: var(--color-fg); font-size: var(--cds-font-size-caption); font-family: var(--font-anthropic-sans); }
+  .st-axis path, .st-axis line { stroke: var(--cds-chart-axis); }
+  .st-gridline { stroke: var(--cds-chart-grid); stroke-width: 1; }
+  .st-today { stroke: var(--cds-chart-reference); stroke-width: 1.5; stroke-dasharray: 4 4; }
+  .st-hit { cursor: pointer; }
+  .st-tip { position: absolute; pointer-events: none; background: var(--cds-surface-popover); border: 1px solid var(--cds-border); border-radius: var(--cds-radius); box-shadow: var(--cds-shadow-popover); padding: var(--cds-pad-xs) var(--cds-pad-sm); font-size: var(--cds-font-size-caption); white-space: nowrap; z-index: 2; }
+  .st-tip .k { color: var(--cds-text-secondary); }
+  .st-legend { display: flex; gap: var(--cds-gap-md); flex-wrap: wrap; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+  .st-sw { display: inline-block; width: 0.65rem; height: 0.65rem; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+  .st-scroll { overflow-x: auto; }
+  .st-box { max-height: 28rem; overflow: auto; }
+  .st-table { width: 100%; border-collapse: collapse; font-size: var(--cds-font-size-body); font-variant-numeric: tabular-nums; }
+  .st-table th { position: sticky; top: 0; z-index: 1; text-align: left; font-weight: var(--cds-font-weight-medium); font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); padding: var(--cds-pad-xs) var(--cds-pad-sm); border-bottom: 1px solid var(--color-border-line); background: var(--color-panel); white-space: nowrap; }
+  .st-table td { padding: var(--cds-pad-sm); border-bottom: 1px solid var(--color-border-line); vertical-align: top; line-height: 1.45; }
+  .st-table .st-num { text-align: right; white-space: nowrap; }
+  .st-table .st-nw { white-space: nowrap; }
+  .st-table tr.st-click { cursor: pointer; }
+  .st-table tr.st-click:hover td { background: color-mix(in srgb, var(--color-fg) 4%, transparent); }
+  .st-table tr.st-on td { background: color-mix(in srgb, var(--color-fg) 8%, transparent); }
+  .st-table tr.st-click:focus-visible { outline: 2px solid var(--color-fg); outline-offset: -2px; }
+  .st-strong { font-weight: var(--cds-font-weight-medium); }
+  .st-sub { display: block; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+  .st-pill { display: inline-flex; align-items: center; padding: 1px 10px; border-radius: 999px; font-size: var(--cds-font-size-caption); white-space: nowrap; border: 1px solid currentColor; }
+  .st-ok { color: var(--color-ok); }
+  .st-warn { color: var(--color-warn); }
+  .st-bad { color: var(--color-bad); }
+  .st-mute { color: var(--color-fg-muted); }
+  .st-bar { display: flex; gap: var(--cds-gap-sm); align-items: center; flex-wrap: wrap; }
+  .st-search { font: inherit; font-size: var(--cds-font-size-body); padding: var(--cds-pad-xs) var(--cds-pad-sm); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); background: var(--color-bg); color: var(--color-fg); min-width: 0; flex: 1 1 12rem; max-width: 22rem; }
+  .st-chip { font: inherit; font-size: var(--cds-font-size-caption); padding: 3px 12px; border-radius: 999px; border: 1px solid var(--color-fg); background: transparent; color: var(--color-fg); cursor: pointer; }
+  .st-chip:focus-visible, .st-search:focus-visible { outline: 2px solid var(--color-fg); outline-offset: 2px; }
+  .st-err { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 8rem; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
+  .st-err::before { content: ""; width: 0.375rem; height: 0.375rem; border-radius: 50%; background: var(--color-bad); }
+  .st-how { display: grid; gap: var(--cds-gap-xs); margin: 0; padding-left: 1.2rem; font-size: var(--cds-font-size-body); line-height: 1.55; color: var(--color-fg-muted); }
+  .st-how li::marker { color: var(--color-fg-muted); }
+  .st-chips { display: flex; gap: var(--cds-gap-xs); flex-wrap: wrap; }
+  .st-chip[aria-pressed="true"] { background: var(--color-fg); color: var(--color-bg); }
+  .st-cat { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); white-space: nowrap; }
+  .st-link { color: inherit; text-decoration: underline; text-decoration-color: var(--color-border-line); text-underline-offset: 3px; }
+  .st-link:hover { text-decoration-color: currentColor; }
+  .st-table tr.st-first td { border-top: 2px solid var(--color-border-line); }
+  .st-code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); word-break: break-all; }
+  [data-dash-source-state=empty] { color: transparent; }
+  [data-dash-source-state=refreshing] { opacity: 0.5; transition: opacity var(--cds-dur-slow); }
+  @media (max-width: 760px) { .st-hide-sm { display: none; } }
+</style>
+
+<div class="st" id="studio">
+  <header class="st-head" id="resume">
+    <h1 class="st-h1">Studio OpenMontage</h1>
+    <p class="st-lede">
+      <span class="st-em dash-skeleton" data-source="kpis" data-field="projets" data-row="0">—</span> projets archivés,
+      <span class="st-em dash-skeleton" data-source="kpis" data-field="videos" data-row="0">—</span> vidéos livrées
+      (<span class="st-em dash-skeleton" data-source="kpis" data-field="minutes" data-row="0">—</span> min).
+      À faire en premier :
+      <span class="st-em dash-skeleton" id="st-first" data-source="backlog" data-field="action">—</span>.
+    </p>
+  </header>
+
+  <section class="st-kpis" id="chiffres" aria-label="Chiffres du studio">
+    <div class="st-kpi">
+      <div class="st-kpi-l">Projets archivés</div>
+      <div class="st-kpi-v dash-skeleton" data-source="kpis" data-field="projets" data-row="0">—</div>
+      <div class="st-kpi-n">dossiers dans openmontage/projects</div>
+    </div>
+    <div class="st-kpi">
+      <div class="st-kpi-l">Vidéos livrées</div>
+      <div class="st-kpi-v dash-skeleton" data-source="kpis" data-field="videos" data-row="0">—</div>
+      <div class="st-kpi-n"><span data-source="kpis" data-field="a_jour" data-row="0">—</span> dans leur dernière version</div>
+    </div>
+    <div class="st-kpi">
+      <div class="st-kpi-l">Minutes de vidéo</div>
+      <div class="st-kpi-v dash-skeleton" data-source="kpis" data-field="minutes" data-row="0">—</div>
+      <div class="st-kpi-n">toutes les vidéos livrées</div>
+    </div>
+    <div class="st-kpi">
+      <div class="st-kpi-l">Actions à faire</div>
+      <div class="st-kpi-v dash-skeleton" data-source="kpis" data-field="actions" data-row="0">—</div>
+      <div class="st-kpi-n"><span data-source="kpis" data-field="haute" data-row="0">—</span> en priorité haute</div>
+    </div>
+    <div class="st-kpi">
+      <div class="st-kpi-l">Outils et bibliothèques</div>
+      <div class="st-kpi-v dash-skeleton" data-source="kpis" data-field="outils" data-row="0">—</div>
+      <div class="st-kpi-n">utilisés dans les projets</div>
+    </div>
+    <div class="st-kpi">
+      <div class="st-kpi-l">Recettes automatiques</div>
+      <div class="st-kpi-v dash-skeleton" data-source="kpis" data-field="recettes_auto" data-row="0">—</div>
+      <div class="st-kpi-n">sur <span data-source="kpis" data-field="recettes" data-row="0">—</span> méthodes rejouables</div>
+    </div>
+  </section>
+
+  <div class="st-grid">
+    <section class="st-card" id="chronologie">
+      <div class="st-card-h"><h2 class="st-h2">Chronologie</h2></div>
+      <p class="st-note">Du premier jour à la dernière livraison de chaque projet. Cliquez une barre pour filtrer les vidéos et les actions.</p>
+      <div class="st-chart dash-skeleton" id="chronologie-chart" data-source="projects"></div>
+    </section>
+    <section class="st-card" id="videos-par-projet">
+      <div class="st-card-h"><h2 class="st-h2">Vidéos par projet</h2></div>
+      <div class="st-legend" aria-hidden="true">
+        <span><span class="st-sw" id="sw-a"></span>dernière version</span>
+        <span><span class="st-sw" id="sw-b"></span>ancienne version</span>
+      </div>
+      <div class="st-chart dash-skeleton" id="videos-chart" data-source="by_project"></div>
+    </section>
+  </div>
+
+  <section class="st-card" id="projets">
+    <div class="st-card-h">
+      <h2 class="st-h2">Projets</h2>
+      <button class="st-chip" id="st-clear" type="button" hidden></button>
+    </div>
+    <p class="st-note">Le plus récent en haut. Cliquez une ligne pour voir ses outils, ses actions et ses vidéos.</p>
+    <div class="st-scroll">
+      <table class="st-table" id="projets-table" data-source="projects" data-row-key="id">
+        <thead>
+          <tr>
+            <th data-field="projet">Projet</th>
+            <th class="st-hide-sm" data-field="client">Client</th>
+            <th data-field="diffusion">Diffusion</th>
+            <th data-field="statut">Statut</th>
+            <th data-field="version">Version</th>
+            <th class="st-num" data-source="by_project" data-field="videos">Vidéos</th>
+            <th data-field="maj">Mise à jour</th>
+            <th class="st-hide-sm" data-field="langues">Langues</th>
+            <th data-field="prochaine">Prochaine étape</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="st-card" id="fiche-technique">
+    <div class="st-card-h"><h2 class="st-h2" id="fiche-titre">Outils du projet</h2></div>
+    <p class="st-note">Les logiciels, bibliothèques et ressources qui ont servi à réaliser le projet choisi, et ce que chacun a fait.</p>
+    <div class="st-chips" id="fiche-chips" data-source="projects" role="group" aria-label="Choisir un projet"></div>
+    <div class="st-scroll">
+      <table class="st-table" id="fiche-table" data-source="usages" data-row-key="id">
+        <thead>
+          <tr>
+            <th data-field="categorie">Catégorie</th>
+            <th data-field="outil">Outil</th>
+            <th data-field="usage">Ce qu'il a fait dans ce projet</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="st-card" id="recettes">
+    <div class="st-card-h"><h2 class="st-h2">Recettes du studio</h2></div>
+    <p class="st-note">Chaque méthode qui a marché, prête à servir pour un nouveau client ou une nouvelle chaîne. La recette du projet choisi est surlignée.</p>
+    <div class="st-scroll">
+      <table class="st-table" id="recettes-table" data-source="recettes" data-row-key="id">
+        <thead>
+          <tr>
+            <th data-field="recette">Recette</th>
+            <th data-field="pour">Pour qui</th>
+            <th class="st-hide-sm" data-field="entrees">À fournir</th>
+            <th data-field="automatisation">Automatisation</th>
+            <th class="st-hide-sm" data-field="commande">Commande</th>
+            <th class="st-hide-sm" data-field="origine">Projet d'origine</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="st-card" id="a-faire">
+    <div class="st-card-h"><h2 class="st-h2">À faire</h2></div>
+    <p class="st-note">Les améliorations et vérifications à reprendre, de la plus urgente à la moins urgente.</p>
+    <div class="st-scroll">
+      <table class="st-table" id="actions-table" data-source="backlog" data-row-key="id">
+        <thead>
+          <tr>
+            <th data-field="priorite">Priorité</th>
+            <th data-field="action">Action</th>
+            <th data-field="projet">Projet</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="st-card" id="outils">
+    <div class="st-card-h"><h2 class="st-h2">Boîte à outils du studio</h2></div>
+    <p class="st-note">Tout ce qui a servi au moins une fois, rangé par famille. Le nom d'un outil ouvre son site.</p>
+    <div class="st-scroll">
+      <table class="st-table" id="outils-table" data-source="toolbox" data-row-key="id">
+        <thead>
+          <tr>
+            <th data-field="categorie">Catégorie</th>
+            <th data-field="outil">Outil</th>
+            <th data-field="role">Ce que ça fait</th>
+            <th class="st-hide-sm" data-field="acces">Accès</th>
+            <th class="st-num" data-field="projets">Projets</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="st-card" id="videos">
+    <div class="st-card-h">
+      <h2 class="st-h2">Toutes les vidéos</h2>
+      <div class="st-bar"><input class="st-search" id="st-q" type="search" placeholder="Chercher un fichier, une langue…" aria-label="Chercher une vidéo"></div>
+    </div>
+    <p class="st-note">Chaque fichier vidéo rangé dans le dossier renders d'un projet.</p>
+    <div class="st-box">
+      <table class="st-table" id="videos-table" data-source="videos" data-row-key="fichier">
+        <thead>
+          <tr>
+            <th data-field="fichier">Fichier</th>
+            <th class="st-hide-sm" data-field="projet">Dossier</th>
+            <th data-field="format">Format</th>
+            <th class="st-num" data-field="duree_s">Durée</th>
+            <th data-field="langue">Langue</th>
+            <th data-field="version">Version</th>
+            <th class="st-hide-sm" data-field="etat">État</th>
+            <th class="st-num st-hide-sm" data-field="taille_mo">Taille</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="st-card" id="mode-emploi">
+    <div class="st-card-h"><h2 class="st-h2">Faire vivre le studio</h2></div>
+    <ol class="st-how">
+      <li>À la fin d'un projet, demandez à Claude : « mets à jour le studio ». Le projet, ses vidéos et ses actions s'ajoutent ici.</li>
+      <li>Pour reprendre un projet, ouvrez son dossier (colonne Dossier) et lisez sa note de reprise (HANDOFF.md ou README.md).</li>
+      <li>Quand une action est faite, dites-le : elle sort de la liste « À faire ».</li>
+      <li>Pour un nouveau client ou une nouvelle chaîne, partez d'une recette : donnez ce qu'elle demande, Claude lance la commande et range le projet ici.</li>
+    </ol>
+  </section>
+</div>
+
+<script>
+  dash.calc('kpis', {
+    inputs: ['projects', 'videos', 'backlog', 'outils', 'recettes'],
+    title: 'Chiffres du studio',
+    description: 'Projets archivés (hors projets non archivés), vidéos livrées et à jour, minutes de vidéo, actions à faire, outils utilisés, recettes automatiques.',
+    fn: (projects, videos, backlog, outils, recettes) => [{
+      projets: projects.filter((p) => p.statut !== 'Non archivé').length,
+      videos: videos.length,
+      a_jour: videos.filter((v) => v.etat !== 'ancienne').length,
+      minutes: Math.round(videos.reduce((s, v) => s + Number(v.duree_s), 0) / 6) / 10,
+      actions: backlog.filter((a) => a.etat === 'à faire').length,
+      haute: backlog.filter((a) => a.etat === 'à faire' && a.priorite === 'haute').length,
+      outils: outils.length,
+      recettes: recettes.length,
+      recettes_auto: recettes.filter((r) => r.automatisation === 'Automatique').length,
+    }],
+  });
+
+  dash.calc('toolbox', {
+    inputs: ['outils', 'usages'],
+    title: 'Boîte à outils',
+    description: 'Chaque outil du catalogue avec le nombre de projets qui l’ont utilisé.',
+    fn: (outils, usages) => outils.map((o) => ({
+      id: o.id,
+      outil: o.outil,
+      categorie: o.categorie,
+      role: o.role,
+      acces: o.acces,
+      lien: o.lien,
+      projets: new Set(usages.filter((u) => u.outil_id === o.id).map((u) => u.projet_id)).size,
+    })),
+  });
+
+  dash.calc('by_project', {
+    inputs: ['projects', 'videos'],
+    title: 'Vidéos par projet',
+    description: 'Pour chaque projet : nombre de vidéos, dont dernière version et anciennes versions, et minutes.',
+    fn: (projects, videos) => projects.map((p) => {
+      const mine = videos.filter((v) => v.projet === p.id);
+      return {
+        id: p.id,
+        projet: p.projet,
+        videos: mine.length,
+        a_jour: mine.filter((v) => v.etat !== 'ancienne').length,
+        anciennes: mine.filter((v) => v.etat === 'ancienne').length,
+        minutes: Math.round(mine.reduce((s, v) => s + Number(v.duree_s), 0) / 6) / 10,
+      };
+    }),
+  });
+</script>
+
+<script>
+  (() => {
+    const nf = new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 1 });
+    const dayFmt = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'short', timeZone: 'UTC' });
+    const fullFmt = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+    const toDate = (iso) => new Date(iso + 'T00:00:00Z');
+    const fmtDay = (iso) => (iso ? dayFmt.format(toDate(iso)) : '—');
+    const statusClass = (s) => (s === 'Livré' ? 'st-ok' : s.startsWith('Livré') ? 'st-warn' : s === 'Non archivé' ? 'st-bad' : 'st-mute');
+    const prioClass = (p) => (p === 'haute' ? 'st-bad' : p === 'moyenne' ? 'st-warn' : 'st-mute');
+    const prioRank = { haute: 0, moyenne: 1, basse: 2 };
+    const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; };
+    const pill = (text, cls) => el('span', 'st-pill ' + cls, text);
+    const failLine = (box) => { const n = el('div', 'st-err', 'Failed to load'); box.appendChild(n); };
+    const picked = () => dash.params().projet || null;
+    const pick = (id) => dash.setParams({ projet: picked() === id ? null : id });
+
+    document.getElementById('sw-a').style.background = dash.colors[0];
+    document.getElementById('sw-b').style.background = 'var(--cds-chart-muted)';
+
+    const clearBtn = document.getElementById('st-clear');
+    clearBtn.addEventListener('click', () => dash.setParams({ projet: null }));
+    const q = document.getElementById('st-q');
+    let query = '';
+    q.addEventListener('input', () => { query = q.value.trim().toLowerCase(); drawVideosTable(); });
+
+    // ---------------------------------------------------------------- figures in the header and the tiles
+    function drawFigures() {
+      const k = dash.data('kpis');
+      document.querySelectorAll('[data-source="kpis"]').forEach((n) => {
+        n.classList.toggle('dash-skeleton', k.status === 'loading');
+        n.textContent = k.status === 'ok' && k.data.length ? nf.format(k.data[0][n.dataset.field]) : '—';
+      });
+      const b = dash.data('backlog');
+      const first = document.getElementById('st-first');
+      first.classList.toggle('dash-skeleton', b.status === 'loading');
+      const top = b.status === 'ok' ? b.data.filter((a) => a.etat === 'à faire').sort((x, y) => prioRank[x.priorite] - prioRank[y.priorite])[0] : null;
+      if (top) {
+        first.setAttribute('data-where', 'id=' + encodeURIComponent(top.id));
+        first.textContent = top.action;
+      } else {
+        first.removeAttribute('data-where');
+        first.textContent = '—';
+      }
+    }
+
+    // ---------------------------------------------------------------- tooltip
+    function tipFor(box) {
+      let t = box.querySelector('.st-tip');
+      if (!t) { t = el('div', 'st-tip'); t.hidden = true; box.appendChild(t); }
+      return t;
+    }
+    function showTip(box, t, lines, mx, my) {
+      t.replaceChildren(...lines.map(([k, v], i) => { const d = el('div', i ? '' : 'k', k); if (v != null) { d.textContent = k + ' · ' + v; } return d; }));
+      t.hidden = false;
+      const bw = box.clientWidth;
+      const tw = t.offsetWidth;
+      t.style.left = Math.max(0, Math.min(bw - tw, mx + 12)) + 'px';
+      t.style.top = Math.max(0, my - t.offsetHeight - 10) + 'px';
+    }
+
+    // ---------------------------------------------------------------- timeline
+    function drawTimeline() {
+      const box = document.getElementById('chronologie-chart');
+      box.querySelectorAll('svg, .st-err').forEach((n) => n.remove());
+      const d = dash.data('projects');
+      box.classList.toggle('dash-skeleton', d.status === 'loading');
+      if (d.status !== 'ok') { if (d.status !== 'loading') failLine(box); return; }
+      const rows = d.data.filter((r) => r.debut && r.maj)
+        .map((r) => ({ ...r, a: toDate(r.debut), b: d3.utcDay.offset(toDate(r.maj), 1) }))
+        .sort((x, y) => x.a - y.a);
+      const W = Math.max(280, box.clientWidth);
+      const rowH = 48;
+      const axisH = 30;
+      const H = 18 + rows.length * rowH + axisH;
+      box.style.minHeight = H + 'px';
+      const now = new Date();
+      const today = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
+      const lo = d3.utcDay.offset(d3.min(rows, (r) => r.a), -2);
+      const hi = d3.utcDay.offset(d3.max([d3.max(rows, (r) => r.b), today]), 2);
+      const x = d3.scaleUtc([lo, hi], [10, W - 10]);
+      const svg = d3.select(box).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img').attr('aria-label', 'Chronologie des projets');
+      const weeks = x.ticks(d3.utcWeek.every(W < 520 ? 2 : 1));
+      svg.append('g').selectAll('line').data(weeks).join('line').attr('class', 'st-gridline')
+        .attr('x1', (t) => x(t)).attr('x2', (t) => x(t)).attr('y1', 14).attr('y2', H - axisH);
+      const ax = svg.append('g').attr('class', 'st-axis').attr('transform', `translate(0,${H - axisH})`)
+        .call(d3.axisBottom(x).tickValues(weeks).tickFormat((t) => dayFmt.format(t)).tickSizeOuter(0));
+      ax.attr('font-size', null).attr('font-family', null);
+      if (today >= lo && today <= hi) {
+        svg.append('line').attr('class', 'st-today').attr('x1', x(today)).attr('x2', x(today)).attr('y1', 12).attr('y2', H - axisH);
+        const lab = svg.append('text').attr('class', 'st-lab').attr('y', 10).text("aujourd'hui");
+        const lw = lab.node().getComputedTextLength();
+        lab.attr('x', Math.min(W - lw - 2, Math.max(2, x(today) - lw / 2)));
+      }
+      const tip = tipFor(box);
+      const g = svg.append('g').selectAll('g').data(rows).join('g').attr('transform', (r, i) => `translate(0,${18 + i * rowH})`);
+      g.append('rect').attr('class', 'st-hit').attr('x', 0).attr('y', 0).attr('width', W).attr('height', rowH).attr('fill', 'transparent');
+      g.append('rect')
+        .attr('x', (r) => x(r.a)).attr('y', 22).attr('height', 14).attr('rx', 4)
+        .attr('width', (r) => Math.max(8, x(r.b) - x(r.a)))
+        .style('fill', (r) => (r.statut === 'En pause' ? 'var(--cds-chart-muted)' : dash.colors[0]))
+        .style('opacity', (r) => (picked() && picked() !== r.id ? 0.35 : 1));
+      g.append('text').attr('class', 'st-name-t').attr('y', 15).text((r) => r.projet)
+        .each(function (r) {
+          const w = this.getComputedTextLength();
+          const left = x(r.a);
+          this.setAttribute('x', left + w <= W - 4 ? left : Math.max(2, x(r.b) - w));
+        });
+      g.on('mousemove', (event, r) => {
+        const [mx, my] = d3.pointer(event, box);
+        showTip(box, tip, [[r.projet], ['Du ' + fullFmt.format(r.a) + ' au ' + fullFmt.format(toDate(r.maj))], ['Version ' + r.version + ' · ' + r.statut]], mx, my);
+      })
+        .on('mouseleave', () => { tip.hidden = true; })
+        .on('click', (event, r) => pick(r.id))
+        .style('cursor', 'pointer');
+    }
+
+    // ---------------------------------------------------------------- videos per project
+    function drawVideoBars() {
+      const box = document.getElementById('videos-chart');
+      box.querySelectorAll('svg, .st-err').forEach((n) => n.remove());
+      const d = dash.data('by_project');
+      box.classList.toggle('dash-skeleton', d.status === 'loading');
+      if (d.status !== 'ok') { if (d.status !== 'loading') failLine(box); return; }
+      const rows = d.data.filter((r) => r.videos > 0).sort((a, b) => b.videos - a.videos);
+      const W = Math.max(280, box.clientWidth);
+      const rowH = 48;
+      const H = 8 + rows.length * rowH;
+      box.style.minHeight = H + 'px';
+      const svg = d3.select(box).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img').attr('aria-label', 'Vidéos par projet');
+      const probe = svg.append('text').attr('class', 'st-lab').text(nf.format(d3.max(rows, (r) => r.videos)));
+      const endW = probe.node().getComputedTextLength() + 10;
+      probe.remove();
+      const x = d3.scaleLinear([0, d3.max(rows, (r) => r.videos)], [0, W - endW]);
+      const tip = tipFor(box);
+      const g = svg.append('g').selectAll('g').data(rows).join('g').attr('transform', (r, i) => `translate(0,${8 + i * rowH})`)
+        .style('cursor', 'pointer').style('opacity', (r) => (picked() && picked() !== r.id ? 0.35 : 1));
+      g.append('rect').attr('x', 0).attr('y', 0).attr('width', W).attr('height', rowH).attr('fill', 'transparent');
+      g.append('text').attr('class', 'st-name-t').attr('x', 0).attr('y', 13).text((r) => r.projet);
+      g.append('rect').attr('x', 0).attr('y', 21).attr('height', 16).attr('rx', 4)
+        .attr('width', (r) => Math.max(r.a_jour ? 4 : 0, x(r.a_jour))).style('fill', dash.colors[0]);
+      g.filter((r) => r.anciennes > 0).append('rect').attr('y', 21).attr('height', 16).attr('rx', 4)
+        .attr('x', (r) => x(r.a_jour) + 2).attr('width', (r) => Math.max(4, x(r.anciennes) - 2)).style('fill', 'var(--cds-chart-muted)');
+      g.append('text').attr('class', 'st-lab').attr('y', 34).attr('x', (r) => x(r.videos) + 6).text((r) => nf.format(r.videos));
+      g.on('mousemove', (event, r) => {
+        const [mx, my] = d3.pointer(event, box);
+        showTip(box, tip, [[r.projet], [nf.format(r.a_jour) + ' en dernière version, ' + nf.format(r.anciennes) + ' anciennes'], [nf.format(r.minutes) + ' min de vidéo']], mx, my);
+      })
+        .on('mouseleave', () => { tip.hidden = true; })
+        .on('click', (event, r) => pick(r.id));
+    }
+
+    // ---------------------------------------------------------------- projects table
+    function drawProjects() {
+      const tb = document.querySelector('#projets-table tbody');
+      const d = dash.data('projects');
+      const c = dash.data('by_project');
+      tb.replaceChildren();
+      if (d.status !== 'ok') {
+        const tr = el('tr'); const td = el('td', d.status === 'loading' ? 'dash-skeleton' : 'st-mute', d.status === 'loading' ? '' : 'Failed to load'); td.colSpan = 9; tr.appendChild(td); tb.appendChild(tr);
+        return;
+      }
+      const counts = new Map((c.status === 'ok' ? c.data : []).map((r) => [r.id, r]));
+      const rows = [...d.data].sort((a, b) => (b.maj || '').localeCompare(a.maj || ''));
+      for (const r of rows) {
+        const tr = el('tr', 'st-click' + (picked() === r.id ? ' st-on' : ''));
+        tr.dataset.key = r.id;
+        tr.tabIndex = 0;
+        const name = el('td', 'st-strong', r.projet);
+        const st = el('td'); st.appendChild(pill(r.statut, statusClass(r.statut)));
+        const n = counts.get(r.id);
+        tr.append(
+          name,
+          el('td', 'st-hide-sm', r.client),
+          el('td', '', r.diffusion || '—'),
+          st,
+          el('td', 'st-nw', r.version),
+          el('td', 'st-num', n ? nf.format(n.videos) : '—'),
+          el('td', 'st-nw', fmtDay(r.maj)),
+          el('td', 'st-hide-sm st-nw', r.langues),
+          el('td', '', r.prochaine),
+        );
+        tr.addEventListener('click', () => pick(r.id));
+        tr.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(r.id); } });
+        tb.appendChild(tr);
+      }
+      const p = picked();
+      const sel = p && d.data.find((r) => r.id === p);
+      clearBtn.hidden = !sel;
+      clearBtn.textContent = sel ? sel.projet + '  ×' : '';
+    }
+
+    // ---------------------------------------------------------------- actions table
+    function drawActions() {
+      const tb = document.querySelector('#actions-table tbody');
+      const d = dash.data('backlog');
+      tb.replaceChildren();
+      if (d.status !== 'ok') {
+        const tr = el('tr'); const td = el('td', d.status === 'loading' ? 'dash-skeleton' : 'st-mute', d.status === 'loading' ? '' : 'Failed to load'); td.colSpan = 3; tr.appendChild(td); tb.appendChild(tr);
+        return;
+      }
+      const p = picked();
+      const rows = d.data.filter((a) => a.etat === 'à faire' && (!p || a.projet_id === p))
+        .sort((x, y) => prioRank[x.priorite] - prioRank[y.priorite] || x.id.localeCompare(y.id));
+      for (const a of rows) {
+        const tr = el('tr');
+        tr.dataset.key = a.id;
+        const pr = el('td'); pr.appendChild(pill(a.priorite, prioClass(a.priorite)));
+        tr.append(pr, el('td', '', a.action), el('td', 'st-nw', a.projet));
+        tb.appendChild(tr);
+      }
+      if (!rows.length) { const tr = el('tr'); const td = el('td', 'st-mute', 'Rien à faire pour ce projet.'); td.colSpan = 3; tr.appendChild(td); tb.appendChild(tr); }
+    }
+
+    // ---------------------------------------------------------------- videos table
+    function drawVideosTable() {
+      const tb = document.querySelector('#videos-table tbody');
+      const d = dash.data('videos');
+      const pj = dash.data('projects');
+      tb.replaceChildren();
+      if (d.status !== 'ok') {
+        const tr = el('tr'); const td = el('td', d.status === 'loading' ? 'dash-skeleton' : 'st-mute', d.status === 'loading' ? '' : 'Failed to load'); td.colSpan = 8; tr.appendChild(td); tb.appendChild(tr);
+        return;
+      }
+      const recency = new Map((pj.status === 'ok' ? pj.data : []).map((r) => [r.id, r.maj || '']));
+      const p = picked();
+      const rows = d.data
+        .filter((v) => !p || v.projet === p)
+        .filter((v) => !query || [v.fichier, v.projet, v.langue, v.format, v.version, v.etat].join(' ').toLowerCase().includes(query))
+        .sort((a, b) => (recency.get(b.projet) || '').localeCompare(recency.get(a.projet) || '') || a.fichier.localeCompare(b.fichier));
+      for (const v of rows) {
+        const tr = el('tr');
+        tr.dataset.key = v.fichier;
+        const et = el('td', 'st-hide-sm'); et.appendChild(pill(v.etat, v.etat === 'ancienne' ? 'st-mute' : 'st-ok'));
+        tr.append(
+          el('td', 'st-strong', v.fichier),
+          el('td', 'st-hide-sm st-nw', v.projet),
+          el('td', 'st-nw', v.format),
+          el('td', 'st-num', nf.format(v.duree_s) + ' s'),
+          el('td', 'st-nw', v.langue),
+          el('td', 'st-nw', v.version),
+          et,
+          el('td', 'st-num st-hide-sm', nf.format(v.taille_mo) + ' Mo'),
+        );
+        tb.appendChild(tr);
+      }
+      if (!rows.length) { const tr = el('tr'); const td = el('td', 'st-mute', 'Aucune vidéo ne correspond.'); td.colSpan = 8; tr.appendChild(td); tb.appendChild(tr); }
+    }
+
+    const CAT_ORDER = ['Rendu vidéo', 'Animation', 'Images', 'IA générative', 'Audio', 'Analyse', 'Typographie', 'Outils'];
+    const catRank = (c) => { const i = CAT_ORDER.indexOf(c); return i < 0 ? CAT_ORDER.length : i; };
+    const statusRow = (tb, d, span) => {
+      const tr = el('tr'); const td = el('td', d.status === 'loading' ? 'dash-skeleton' : 'st-mute', d.status === 'loading' ? '' : 'Failed to load'); td.colSpan = span; tr.appendChild(td); tb.appendChild(tr);
+    };
+
+    // ---------------------------------------------------------------- tools of one project
+    function drawToolSheet() {
+      const pj = dash.data('projects');
+      const us = dash.data('usages');
+      const chips = document.getElementById('fiche-chips');
+      const tb = document.querySelector('#fiche-table tbody');
+      const title = document.getElementById('fiche-titre');
+      tb.replaceChildren();
+      chips.replaceChildren();
+      if (pj.status !== 'ok') { statusRow(tb, pj, 3); return; }
+      const ordered = [...pj.data].sort((a, b) => (b.maj || '').localeCompare(a.maj || ''));
+      const current = picked() && ordered.find((r) => r.id === picked()) ? picked() : ordered[0].id;
+      for (const r of ordered) {
+        const b = el('button', 'st-chip', r.projet);
+        b.type = 'button';
+        b.setAttribute('aria-pressed', String(r.id === current));
+        b.addEventListener('click', () => dash.setParams({ projet: r.id }));
+        chips.appendChild(b);
+      }
+      const proj = ordered.find((r) => r.id === current);
+      title.textContent = 'Outils du projet · ' + proj.projet;
+      if (us.status !== 'ok') { statusRow(tb, us, 3); return; }
+      const rows = us.data.filter((u) => u.projet_id === current)
+        .sort((a, b) => catRank(a.categorie) - catRank(b.categorie));
+      let cat = null;
+      for (const u of rows) {
+        const tr = el('tr', u.categorie !== cat ? 'st-first' : '');
+        cat = u.categorie;
+        tr.dataset.key = u.id;
+        tr.append(el('td', 'st-cat', u.categorie), el('td', 'st-strong st-nw', u.outil), el('td', '', u.usage));
+        tb.appendChild(tr);
+      }
+      if (!rows.length) { const tr = el('tr'); const td = el('td', 'st-mute', 'Aucun outil noté pour ce projet.'); td.colSpan = 3; tr.appendChild(td); tb.appendChild(tr); }
+    }
+
+    // ---------------------------------------------------------------- studio toolbox
+    function drawToolbox() {
+      const tb = document.querySelector('#outils-table tbody');
+      const d = dash.data('toolbox');
+      tb.replaceChildren();
+      if (d.status !== 'ok') { statusRow(tb, d, 5); return; }
+      const rows = [...d.data].sort((a, b) => catRank(a.categorie) - catRank(b.categorie) || b.projets - a.projets || a.outil.localeCompare(b.outil));
+      let cat = null;
+      for (const o of rows) {
+        const tr = el('tr', o.categorie !== cat ? 'st-first' : '');
+        cat = o.categorie;
+        tr.dataset.key = o.id;
+        const name = el('td', 'st-strong st-nw');
+        if (typeof o.lien === 'string' && o.lien.startsWith('https://')) {
+          const a = el('a', 'st-link', o.outil);
+          a.href = o.lien;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          name.appendChild(a);
+        } else {
+          name.textContent = o.outil;
+        }
+        tr.append(el('td', 'st-cat', o.categorie), name, el('td', '', o.role), el('td', 'st-hide-sm st-cat', o.acces), el('td', 'st-num', nf.format(o.projets)));
+        tb.appendChild(tr);
+      }
+    }
+
+    // ---------------------------------------------------------------- recipes
+    function drawRecipes() {
+      const tb = document.querySelector('#recettes-table tbody');
+      const d = dash.data('recettes');
+      const pj = dash.data('projects');
+      tb.replaceChildren();
+      if (d.status !== 'ok') { statusRow(tb, d, 6); return; }
+      const p = picked();
+      const proj = p && pj.status === 'ok' ? pj.data.find((r) => r.id === p) : null;
+      const autoClass = (a) => (a === 'Automatique' ? 'st-ok' : a === 'Semi-automatique' ? 'st-warn' : 'st-mute');
+      for (const r of d.data) {
+        const tr = el('tr', proj && proj.recette === r.id ? 'st-on' : '');
+        tr.dataset.key = r.id;
+        const auto = el('td'); auto.appendChild(pill(r.automatisation, autoClass(r.automatisation)));
+        tr.append(el('td', 'st-strong', r.recette), el('td', '', r.pour), el('td', 'st-hide-sm', r.entrees), auto,
+          el('td', 'st-hide-sm st-code', r.commande), el('td', 'st-hide-sm st-nw', r.origine));
+        tb.appendChild(tr);
+      }
+    }
+
+    let jumped = false;
+    dash.onData(() => {
+      drawFigures();
+      drawTimeline();
+      drawVideoBars();
+      drawProjects();
+      drawToolSheet();
+      drawRecipes();
+      drawActions();
+      drawToolbox();
+      drawVideosTable();
+      if (!jumped && dash.data('projects').status === 'ok') {
+        jumped = true;
+        const named = location.hash && document.getElementById(location.hash.slice(1));
+        if (named) named.scrollIntoView();
+      }
+    });
+  })();
+</script>

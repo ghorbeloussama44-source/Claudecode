@@ -1,0 +1,82 @@
+{
+  "version": "1.0",
+  "scenes": [
+    {
+      "id": "s0",
+      "type": "animation",
+      "description": "Machine à filières : carte-rouleau colorée (couleurs des filières du site) en rotation floutée dès la frame 0, verrouillage avec rebond sur le drop (1,0 s), un mot par temps ; « en Russie. » claque sur le temps fort de 3,0 s",
+      "start_seconds": 0.0,
+      "end_seconds": 3.6,
+      "script_section_id": "s0",
+      "transition_in": "cut",
+      "transition_out": "iris circulaire depuis le point doré de « Russie. »",
+      "narrative_role": "introduce_subject"
+    },
+    {
+      "id": "s1",
+      "type": "animation",
+      "description": "Odomètre du prix sur fond or : chiffres qui roulent (flou directionnel SVG) et se posent sur le temps à 4,0 s, pastille « /an »",
+      "start_seconds": 3.15,
+      "end_seconds": 5.4,
+      "script_section_id": "s1",
+      "transition_in": "iris circulaire (portail clip-path)",
+      "transition_out": "rétractation clip-path en carte or du bento",
+      "narrative_role": "deliver_payload"
+    },
+    {
+      "id": "s2",
+      "type": "animation",
+      "description": "Bento « Accompagnement total » : 4 cartes aux couleurs du site qui éclosent à la croche, icônes pixel-art animées",
+      "start_seconds": 4.9,
+      "end_seconds": 7.5,
+      "script_section_id": "s2",
+      "transition_in": "FLIP clip-path depuis la scène prix",
+      "transition_out": "zoom-through dans la carte verte",
+      "narrative_role": "deliver_payload"
+    },
+    {
+      "id": "s3",
+      "type": "animation",
+      "description": "Trajet Tunis → Moscou : avion pixel sur arc (MotionPath), traînée pointillée qui se dessine, check d'arrivée",
+      "start_seconds": 7.2,
+      "end_seconds": 9.3,
+      "script_section_id": "s3",
+      "transition_in": "zoom-through",
+      "transition_out": "volet diagonal tricolore dans l'axe du vol",
+      "narrative_role": "emotional_beat"
+    },
+    {
+      "id": "s4",
+      "type": "broll",
+      "description": "La Russie en vrai : photos du site (Saint-Basile, amphithéâtre, diplômés) révélées par masques, cartes stats noires avec compteurs",
+      "start_seconds": 8.8,
+      "end_seconds": 11.4,
+      "script_section_id": "s4",
+      "transition_in": "volet diagonal (masque le raccord musical)",
+      "transition_out": "dissolution en pixels",
+      "narrative_role": "evidence"
+    },
+    {
+      "id": "s5",
+      "type": "animation",
+      "description": "Ville pixel de nuit (hero du site) + tour Spasskaïa et coupoles de Saint-Basile aux couleurs RusStudy, fenêtres qui s'allument, neige ; « Étudie en Russie. Change ta vie. »",
+      "start_seconds": 11.02,
+      "end_seconds": 13.0,
+      "script_section_id": "s5",
+      "transition_in": "dissolution en pixels",
+      "transition_out": "le point de « vie. » s'envole vers le logo",
+      "narrative_role": "resolution"
+    },
+    {
+      "id": "s6",
+      "type": "text_card",
+      "description": "Logo RusStudy. assemblé sur l'accord final, signature, CTA « 1ère consultation gratuite », URL tapée, puce d'urgence, tap du curseur pixel",
+      "start_seconds": 13.0,
+      "end_seconds": 15.0,
+      "script_section_id": "s6",
+      "transition_in": "match-cut sur le point",
+      "transition_out": "fin (boucle vers le hook)",
+      "narrative_role": "call_to_action"
+    }
+  ]
+}

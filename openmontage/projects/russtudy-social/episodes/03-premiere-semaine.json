@@ -1,0 +1,39 @@
+{
+  "slug": "03-premiere-semaine",
+  "title": {"fr": "Ma première semaine en Russie", "ar": "أول جمعة متاعي في روسيا"},
+  "series": "temoignage",
+  "theme": "night",
+  "bed": "hope_piano",
+  "bed_offset": 40.0,
+  "top": {"fr": "MA 1ÈRE SEMAINE", "ar": "أول جمعة"},
+  "cta": "student",
+  "cover_at": 2.6,
+  "scenes": [
+    {"type": "hook", "dur": 3.5, "bg": "#0a0a0a", "icon": "plane",
+     "fr": {"kicker": "RÉCIT", "title": ["Ma première", "semaine", "en Russie."]},
+     "ar": {"kicker": "حكاية", "title": ["أول جمعة", "متاعي", "في روسيا."]},
+     "vo": {"fr": "« Je vous raconte ma première semaine en Russie. »", "ar": "« نحكيلكم أول جمعة متاعي في روسيا. »"}},
+    {"type": "day", "dur": 5.5, "n": 1, "icon": "plane",
+     "fr": {"label": "JOUR", "text": "L'arrivée"}, "ar": {"label": "النهار", "text": "الوصول"},
+     "vo": {"fr": "L'étudiant raconte son arrivée (5 s).", "ar": "الطالب يحكي على الوصول (5 ثواني)."}},
+    {"type": "day", "dur": 5.5, "n": 2, "icon": "key",
+     "fr": {"label": "JOUR", "text": "Le foyer"}, "ar": {"label": "النهار", "text": "المبيت"},
+     "vo": {"fr": "Sa chambre, le foyer (5 s).", "ar": "البيت والمبيت (5 ثواني)."}},
+    {"type": "day", "dur": 5.5, "n": 3, "icon": "card",
+     "fr": {"label": "JOUR", "text": "Les papiers"}, "ar": {"label": "النهار", "text": "الأوراق"},
+     "vo": {"fr": "Banque, carte de séjour, inscription (5 s).", "ar": "البنكة، الإقامة، التسجيل (5 ثواني)."}},
+    {"type": "day", "dur": 5.5, "n": 5, "icon": "city",
+     "fr": {"label": "JOUR", "text": "La ville"}, "ar": {"label": "النهار", "text": "المدينة"},
+     "vo": {"fr": "La découverte de la ville (5 s).", "ar": "أول دورة في المدينة (5 ثواني)."}},
+    {"type": "day", "dur": 5.5, "n": 7, "icon": "cap",
+     "fr": {"label": "JOUR", "text": "La fac"}, "ar": {"label": "النهار", "text": "الفاك"},
+     "vo": {"fr": "Le premier cours (5 s).", "ar": "أول قراية (5 ثواني)."}},
+    {"type": "cta", "dur": 5,
+     "vo": {"fr": "« Si tu veux vivre ça, écris à RusStudy sur WhatsApp. »", "ar": "« إذا تحب تعيش هذا، ابعث لـ RusStudy على WhatsApp. »"}}
+  ],
+  "caption": {
+    "fr": "Arrivée, foyer, papiers, ville, premier cours : la première semaine d'un étudiant tunisien en Russie, racontée par lui. Ton dossier commence sur WhatsApp (lien en bio).",
+    "ar": "الوصول، المبيت، الأوراق، المدينة، أول قراية: أول جمعة لطالب تونسي في روسيا، يحكيها بنفسو. الدوسي متاعك يبدا على WhatsApp (الرابط في البيو)."
+  },
+  "hashtags": "#vlog #etudierenrussie #vieetudiante #russie #tunisie #القراية_في_روسيا #طلبة_تونسيين"
+}

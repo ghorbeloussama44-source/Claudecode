@@ -1,0 +1,35 @@
+{
+  "slug": "08-whatsapp",
+  "title": {"fr": "Tu nous écris sur WhatsApp, et après ?", "ar": "تبعثلنا على WhatsApp، ومن بعد؟"},
+  "series": "conseil",
+  "theme": "cream",
+  "bed": "lofi_chill",
+  "bed_offset": 90.0,
+  "top": {"fr": "COMMENT ÇA MARCHE", "ar": "كيفاش تمشي"},
+  "cta": "student",
+  "cover_at": 2.4,
+  "scenes": [
+    {"type": "hook", "dur": 3, "bg": "#0a0a0a", "icon": "chat",
+     "fr": {"kicker": "COMMENT ÇA MARCHE", "title": ["Tu nous écris", "sur WhatsApp.", "Et après ?"]},
+     "ar": {"kicker": "كيفاش تمشي", "title": ["تبعثلنا", "على WhatsApp.", "ومن بعد؟"]},
+     "vo": {"fr": "Tu nous écris sur WhatsApp. Et après ?", "ar": "تبعثلنا على WhatsApp... ومن بعد؟"}},
+    {"type": "chat", "dur": 14,
+     "fr": {"status": "en ligne", "out": "Salam ! Je veux étudier en Russie.", "in1": "Bienvenue ! Un conseiller te répond.",
+            "card_t": "Appel d'orientation", "card_s": "15 min · gratuit · sans engagement", "in2": "On analyse ton profil et on te propose un plan."},
+     "ar": {"status": "متّصل", "out": "سلام! نحب نقرا في روسيا.", "in1": "مرحبا بيك! مستشار يجاوبك.",
+            "card_t": "مكالمة توجيه", "card_s": "15 دقيقة · بلاش · بلا التزام", "in2": "ندرسو البروفيل متاعك ونقترحولك برنامج."},
+     "vo": {"fr": "Un conseiller te répond sous 24 heures. On te propose un appel d'orientation de quinze minutes, gratuit et sans engagement. On analyse ton profil, et tu repars avec un plan clair.",
+            "ar": "مستشار يجاوبك في أقل من 24 ساعة. نعملو معاك مكالمة توجيه ربع ساعة، بلاش وبلا التزام. ندرسو البروفيل متاعك وتخرج بخطّة واضحة."}},
+    {"type": "recap", "dur": 4,
+     "fr": {"items": ["Tu écris", "Appel gratuit de 15 min", "Ton plan personnalisé"]},
+     "ar": {"items": ["تبعث ميساج", "مكالمة بلاش 15 دقيقة", "برنامج على قياسك"]},
+     "vo": {"fr": "Simple, gratuit, sans engagement.", "ar": "ساهل، بلاش، وبلا التزام."}},
+    {"type": "cta", "dur": 5,
+     "vo": {"fr": "Envoie ton premier message aujourd'hui.", "ar": "ابعث أول ميساج اليوم."}}
+  ],
+  "caption": {
+    "fr": "Tu nous écris sur WhatsApp → un conseiller te répond → appel d'orientation gratuit de 15 min → ton plan personnalisé. Sans engagement. Lien en bio.",
+    "ar": "تبعثلنا على WhatsApp ← مستشار يجاوبك ← مكالمة توجيه بلاش ربع ساعة ← برنامج على قياسك. بلا التزام. الرابط في البيو."
+  },
+  "hashtags": "#whatsapp #orientation #etudierenrussie #tunisie #bac2026 #القراية_في_روسيا #توجيه"
+}
