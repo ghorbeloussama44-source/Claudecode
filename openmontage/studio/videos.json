@@ -382,5 +382,29 @@
   "langue": "français",
   "version": "v1",
   "etat": "actuelle"
+ },
+ {
+  "fichier": "tssr_apercu_0-8s_derja.mp4",
+  "projet": "tssr-instagram",
+  "format": "9:16",
+  "resolution": "1080×1920",
+  "fps": 30,
+  "duree_s": 8.0,
+  "taille_mo": 15.3,
+  "langue": "derja",
+  "version": "aperçu",
+  "etat": "ancienne"
+ },
+ {
+  "fichier": "tssr_pub_instagram_48s_derja_v1.mp4",
+  "projet": "tssr-instagram",
+  "format": "9:16",
+  "resolution": "1080×1920",
+  "fps": 30,
+  "duree_s": 48.0,
+  "taille_mo": 20.2,
+  "langue": "derja",
+  "version": "v1",
+  "etat": "actuelle"
  }
 ]

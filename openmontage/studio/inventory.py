@@ -27,8 +27,10 @@ RULES = [
     ("russtudy-parcours", r"_60s_", "v7", "actuelle"),
     ("russtudy-social", r"", "v1", "actuelle"),
     ("clip-paroles-neon", r"_v3", "v3", "actuelle"),
+    ("tssr-instagram", r"apercu", "aperçu", "ancienne"),
+    ("tssr-instagram", r"_v1", "v1", "actuelle"),
 ]
-LANGUAGE = {"mahdia-festival": "arabe", "medilearn": "français", "clip-paroles-neon": "arabe"}
+LANGUAGE = {"mahdia-festival": "arabe", "medilearn": "français", "clip-paroles-neon": "arabe", "tssr-instagram": "derja"}
 
 
 def probe(f):
@@ -45,7 +47,7 @@ def main():
     rows = []
     for f in sorted(PROJECTS.glob("*/renders/*.mp4")):
         project = f.parent.parent.name
-        if f.name.startswith("_") or "draft" in f.name:
+        if f.name.startswith("_") or "draft" in f.name or "_leger" in f.name:  # temp, drafts, light copies
             continue
         w, h, fps, dur = probe(f)
         version, state = "—", "livrée"

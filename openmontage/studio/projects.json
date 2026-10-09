@@ -1,5 +1,22 @@
 [
   {
+    "id": "tssr-instagram",
+    "projet": "TSSR — pub Instagram en derja",
+    "client": "TSSR · Study in Russia",
+    "type": "Pub motion design de 48 s d'après le storyboard du client",
+    "moteur": "HyperFrames (moteur maison)",
+    "statut": "Livré v1 · à valider",
+    "version": "v1",
+    "debut": "2026-10-09",
+    "maj": "2026-10-09",
+    "formats": "9:16",
+    "langues": "derja",
+    "dossier": "openmontage/projects/tssr-instagram",
+    "prochaine": "Recevoir le logo HD, faire valider les textes en derja et le compte Instagram",
+    "diffusion": "Instagram (Reels, Stories)",
+    "recette": "pub-storyboard"
+  },
+  {
     "id": "russtudy-social",
     "projet": "RusStudy — série réseaux sociaux",
     "client": "RusStudy (russieetudes.com)",

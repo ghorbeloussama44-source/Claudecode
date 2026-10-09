@@ -13,5 +13,9 @@
   {"id": "a12", "projet_id": "clip-paroles-neon", "projet": "Clip paroles néon", "action": "Retrouver et archiver le clip paroles néon avec sa méthode", "priorite": "basse", "etat": "fait"},
   {"id": "a13", "projet_id": "studio", "projet": "Studio", "action": "Ranger les clés API dans les variables de l'environnement (PEXELS_API_KEY, SUNO_API_KEY, HF_TOKEN…) pour qu'elles ne se perdent plus d'une session à l'autre", "priorite": "haute", "etat": "à faire"},
   {"id": "a14", "projet_id": "clip-paroles-neon", "projet": "Clip paroles néon", "action": "Lancer la recette sur une nouvelle chanson complète et valider le rendu ensemble", "priorite": "moyenne", "etat": "à faire"},
-  {"id": "a15", "projet_id": "clip-paroles-neon", "projet": "Clip paroles néon", "action": "Tester la recette en 9:16 pour Shorts, TikTok et Reels", "priorite": "basse", "etat": "à faire"}
+  {"id": "a15", "projet_id": "clip-paroles-neon", "projet": "Clip paroles néon", "action": "Tester la recette en 9:16 pour Shorts, TikTok et Reels", "priorite": "basse", "etat": "à faire"},
+  {"id": "a16", "projet_id": "tssr-instagram", "projet": "TSSR · pub Instagram", "action": "Recevoir le logo HD de TSSR et remplacer le logo provisoire (pastille du haut et scène finale)", "priorite": "haute", "etat": "à faire"},
+  {"id": "a17", "projet_id": "tssr-instagram", "projet": "TSSR · pub Instagram", "action": "Faire valider les textes en derja et le compte Instagram affiché (tssr.study.ru)", "priorite": "haute", "etat": "à faire"},
+  {"id": "a18", "projet_id": "tssr-instagram", "projet": "TSSR · pub Instagram", "action": "Remplacer les photos de banque par de vraies photos d'étudiants TSSR, avec leur accord", "priorite": "moyenne", "etat": "à faire"},
+  {"id": "a19", "projet_id": "tssr-instagram", "projet": "TSSR · pub Instagram", "action": "Décliner la pub en 4:5 pour le fil Instagram", "priorite": "basse", "etat": "à faire"}
 ]
