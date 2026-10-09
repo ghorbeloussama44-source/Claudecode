@@ -2,7 +2,7 @@
 
 Tableau de bord : https://claude.ai/artifact/7hSVzQ669qDXh7dj6ucj1H (artifact privé de type Dashboard).
 
-Il lit trois fichiers JSON de ce dossier, joints à l'artifact :
+Il lit cinq fichiers JSON de ce dossier, joints à l'artifact :
 
 | Fichier | Contenu | Mise à jour |
 |---|---|---|
