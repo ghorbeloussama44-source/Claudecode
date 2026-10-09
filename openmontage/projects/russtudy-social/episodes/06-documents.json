@@ -1,0 +1,31 @@
+{
+  "slug": "06-documents",
+  "title": {"fr": "Les 4 documents à préparer", "ar": "الأربعة وثايق اللي تحضّرهم"},
+  "series": "conseil",
+  "theme": "cream",
+  "bed": "lofi_chill",
+  "bed_offset": 60.0,
+  "top": {"fr": "DOSSIER", "ar": "الدوسي"},
+  "cta": "student",
+  "cover_at": 2.4,
+  "scenes": [
+    {"type": "hook", "dur": 3, "bg": "#2460e8", "icon": "doc",
+     "fr": {"kicker": "DOSSIER", "title": ["Les 4 documents", "à préparer", "dès maintenant."]},
+     "ar": {"kicker": "الدوسي", "title": ["4 وثايق", "حضّرهم", "من توّا."]},
+     "vo": {"fr": "Prépare ces quatre documents dès maintenant.", "ar": "حضّر الأربعة وثايق هاذوما من توّا."}},
+    {"type": "checklist", "dur": 11.5,
+     "fr": {"items": ["Passeport", "Diplôme du bac", "Relevés de notes", "Acte de naissance"],
+            "note": "Traduction assermentée et légalisation : on s'en occupe."},
+     "ar": {"items": ["جواز السفر", "شهادة الباك", "كشف الأعداد", "مضمون الولادة"],
+            "note": "الترجمة المحلّفة والمصادقة: علينا."},
+     "vo": {"fr": "Ton passeport. Ton diplôme du bac. Tes relevés de notes. Et ton acte de naissance. La traduction et la légalisation, on s'en occupe.",
+            "ar": "جواز السفر. شهادة الباك. كشف الأعداد. ومضمون الولادة. الترجمة والمصادقة علينا."}},
+    {"type": "cta", "dur": 5,
+     "vo": {"fr": "Envoie-nous un message sur WhatsApp pour vérifier ton dossier.", "ar": "ابعثلنا على WhatsApp نثبّتولك في الدوسي."}}
+  ],
+  "caption": {
+    "fr": "Tu veux étudier en Russie en 2026–2027 ? Prépare ces 4 documents dès maintenant. Traduction et légalisation : on s'en occupe. On vérifie ton dossier sur WhatsApp (lien en bio).",
+    "ar": "تحب تقرا في روسيا 2026–2027؟ حضّر الأربعة وثايق هاذوما من توّا. الترجمة والمصادقة علينا. نثبّتولك في الدوسي على WhatsApp (الرابط في البيو)."
+  },
+  "hashtags": "#dossier #etudierenrussie #bac2026 #tunisie #visa #القراية_في_روسيا #الباك"
+}

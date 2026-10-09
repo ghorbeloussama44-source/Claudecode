@@ -1,0 +1,36 @@
+{
+  "slug": "02-temoignage-parent",
+  "title": {"fr": "Parole de parent — 3 questions", "ar": "كلمة ولي — 3 أسئلة"},
+  "series": "temoignage",
+  "theme": "cream",
+  "bed": "hope_piano",
+  "bed_offset": 20.0,
+  "top": {"fr": "PAROLE DE PARENT", "ar": "كلمة ولي"},
+  "cta": "parent",
+  "cover_at": 2.6,
+  "scenes": [
+    {"type": "hook", "dur": 3.5, "bg": "#a855f7", "icon": "shield",
+     "fr": {"kicker": "PAROLE DE PARENT", "title": ["Envoyer son enfant", "étudier en Russie ?", "Un parent répond."]},
+     "ar": {"kicker": "كلمة ولي", "title": ["تبعث ولدك يقرا", "في روسيا؟", "ولي يجاوبك."]},
+     "vo": {"fr": "(le titre se lit à l'écran)", "ar": "(العنوان مكتوب)"}},
+    {"type": "question", "dur": 8, "n": 1, "of": 3,
+     "fr": {"label": "QUESTION", "text": ["Qu'est-ce qui vous", "inquiétait le plus ?"]},
+     "ar": {"label": "سؤال", "text": ["شنوة اللي كان", "مقلقك أكثر؟"]},
+     "vo": {"fr": "Réponse du parent, 1 à 2 phrases (8 s max).", "ar": "جواب الولي، جملة ولا زوز (8 ثواني)."}},
+    {"type": "question", "dur": 8, "n": 2, "of": 3,
+     "fr": {"label": "QUESTION", "text": ["Comment vous avez", "suivi son parcours ?"]},
+     "ar": {"label": "سؤال", "text": ["كيفاش كنت", "تتبّع في أخبارو؟"]},
+     "vo": {"fr": "Réponse du parent (8 s max).", "ar": "جواب الولي (8 ثواني)."}},
+    {"type": "question", "dur": 8, "n": 3, "of": 3,
+     "fr": {"label": "QUESTION", "text": ["Aujourd'hui, vous", "en pensez quoi ?"]},
+     "ar": {"label": "سؤال", "text": ["توّا،", "شنوة رايك؟"]},
+     "vo": {"fr": "Réponse du parent (8 s max).", "ar": "جواب الولي (8 ثواني)."}},
+    {"type": "cta", "dur": 5,
+     "vo": {"fr": "« Parents, posez vos questions sur WhatsApp. »", "ar": "« يا ولي، ابعث أسئلتك على WhatsApp. »"}}
+  ],
+  "caption": {
+    "fr": "Envoyer son enfant étudier en Russie, ça inquiète. Un parent répond à nos 3 questions. Parents, posez-nous vos questions sur WhatsApp (lien en bio).",
+    "ar": "تبعث ولدك يقرا في روسيا، طبيعي تقلق. ولي يجاوب على 3 أسئلة. يا ولي، ابعثلنا أسئلتك على WhatsApp (الرابط في البيو)."
+  },
+  "hashtags": "#parents #etudierenrussie #tunisie #etudesalétranger #bac2026 #أولياء #القراية_في_روسيا"
+}

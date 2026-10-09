@@ -1,0 +1,33 @@
+{
+  "slug": "09-rentree-2026",
+  "title": {"fr": "Rentrée 2026–2027 : places limitées", "ar": "العودة الجامعية 2026–2027: البلايص محدودة"},
+  "series": "conseil",
+  "theme": "night",
+  "bed": "funky",
+  "bed_offset": 15.0,
+  "top": {"fr": "RENTRÉE 2026–2027", "ar": "العودة 2026–2027"},
+  "cta": "student",
+  "cover_at": 2.4,
+  "scenes": [
+    {"type": "hook", "dur": 3, "bg": "#f97316", "icon": "star",
+     "fr": {"kicker": "RENTRÉE 2026–2027", "title": ["Les places d'État", "sont limitées."]},
+     "ar": {"kicker": "العودة الجامعية 2026–2027", "title": ["البلايص في الجامعات", "الحكومية محدودة."]},
+     "vo": {"fr": "Rentrée 2026–2027 : les places d'État sont limitées.", "ar": "العودة الجامعية 2026–2027: البلايص في الجامعات الحكومية محدودة."}},
+    {"type": "stats", "dur": 7.5,
+     "fr": {"items": [["+1 200", "étudiants tunisiens placés"], ["40+", "universités d'État partenaires"], ["7 ans", "d'expérience, depuis 2018"]]},
+     "ar": {"items": [["+1 200", "طالب تونسي في روسيا"], ["+40", "جامعة حكومية شريكة"], ["7 سنين", "خبرة، من 2018"]]},
+     "vo": {"fr": "Plus de 1 200 étudiants tunisiens placés, plus de 40 universités d'État partenaires, sept ans d'expérience.",
+            "ar": "أكثر من 1200 طالب تونسي، أكثر من 40 جامعة حكومية شريكة، وسبعة سنين خبرة."}},
+    {"type": "chips", "dur": 3,
+     "fr": {"items": ["1ère consultation gratuite", "Réponse sous 24 h"]},
+     "ar": {"items": ["أوّل استشارة بلاش", "جواب في 24 ساعة"]},
+     "vo": {"fr": "La première consultation est gratuite.", "ar": "أوّل استشارة بلاش."}},
+    {"type": "cta", "dur": 5,
+     "vo": {"fr": "Commence ton dossier sur WhatsApp.", "ar": "ابدا الدوسي متاعك على WhatsApp."}}
+  ],
+  "caption": {
+    "fr": "Rentrée 2026–2027 : les places dans les universités d'État russes sont limitées. +1 200 étudiants tunisiens placés depuis 2018. Commence ton dossier sur WhatsApp (lien en bio).",
+    "ar": "العودة الجامعية 2026–2027: البلايص في الجامعات الحكومية في روسيا محدودة. أكثر من 1200 طالب تونسي من 2018. ابدا الدوسي متاعك على WhatsApp (الرابط في البيو)."
+  },
+  "hashtags": "#rentree2026 #etudierenrussie #bac2026 #tunisie #universite #القراية_في_روسيا #العودة_الجامعية"
+}

@@ -1,0 +1,41 @@
+{
+  "slug": "04-le-vrai-prix",
+  "title": {"fr": "Le vrai prix de la 1ère année", "ar": "السوم الحقيقي للعام الأول"},
+  "series": "conseil",
+  "theme": "ink",
+  "bed": "lofi_chill",
+  "bed_offset": 0.0,
+  "top": {"fr": "LE VRAI PRIX", "ar": "السوم الحقيقي"},
+  "cta": "student",
+  "cover_at": 2.4,
+  "scenes": [
+    {"type": "hook", "dur": 3, "bg": "#fbbb21", "ink": true, "icon": "coin",
+     "fr": {"kicker": "LE VRAI PRIX", "title": ["Étudier en Russie,", "ça coûte combien", "vraiment ?"]},
+     "ar": {"kicker": "السوم الحقيقي", "title": ["القراية في روسيا،", "قدّاش تكلّف", "بالحق؟"]},
+     "vo": {"fr": "Étudier en Russie, ça coûte combien, vraiment ?", "ar": "القراية في روسيا، قدّاش تكلّف بالحق؟"}},
+    {"type": "price", "dur": 4,
+     "fr": {"kicker": "1ÈRE ANNÉE", "des": "dès", "cur": "DT", "pill": "études + installation"},
+     "ar": {"kicker": "العام الأوّل", "des": "ابتداءً من", "cur": "د.ت", "pill": "القراية + الاستقرار"},
+     "vo": {"fr": "La première année, c'est à partir de 12 000 dinars.", "ar": "العام الأول يبدا من 12 ألف دينار."}},
+    {"type": "receipt", "dur": 14,
+     "fr": {"head": "1ÈRE ANNÉE", "inc": "inclus",
+            "lines": ["Frais universitaires", "Consulting & orientation", "Accompagnement administratif", "Dossier visa", "Accueil aéroport", "Foyer universitaire · 1 an", "Assurance médicale"],
+            "total": "TOTAL 1ÈRE ANNÉE", "total_v": "dès 12 000 DT",
+            "opt_head": "NON INCLUS · EN OPTION SUR DEMANDE", "opt_v": "sur devis",
+            "opts": ["Billet d'avion", "Train ou voiture jusqu'à ta ville", "Hôtel & visites à Moscou"]},
+     "ar": {"head": "العام الأوّل", "inc": "مشمول",
+            "lines": ["معاليم الجامعة", "الاستشارة والتوجيه", "المرافقة الإدارية", "ملف الفيزا", "الاستقبال في المطار", "المبيت الجامعي · عام كامل", "التأمين الصحّي"],
+            "total": "المجموع للعام الأوّل", "total_v": "من 12 000 د.ت",
+            "opt_head": "موش مشمول · اختياري حسب الطلب", "opt_v": "حسب الديفي",
+            "opts": ["تذكرة الطيارة", "تران ولا كرهبة حتى لمدينتك", "أوتيل وزيارات في موسكو"]},
+     "vo": {"fr": "Ça comprend les frais de l'université, l'orientation, l'accompagnement administratif, le visa, l'accueil à l'aéroport, le foyer pendant un an et l'assurance. Le billet d'avion et le transport, c'est en option, sur devis.",
+            "ar": "وفيها معاليم الجامعة، التوجيه، المرافقة في الأوراق، الفيزا، الاستقبال في المطار، المبيت عام كامل والتأمين. تذكرة الطيارة والتنقّل حسب الطلب."}},
+    {"type": "cta", "dur": 5,
+     "vo": {"fr": "Pour ton devis, écris-nous sur WhatsApp. La première consultation est gratuite.", "ar": "باش تعرف السوم متاعك، ابعثلنا على WhatsApp. أول استشارة بلاش."}}
+  ],
+  "caption": {
+    "fr": "Le vrai prix de la 1ère année en Russie : dès 12 000 DT, avec l'université, le visa, l'accueil, le foyer et l'assurance. Sans frais cachés. Ton devis sur WhatsApp (lien en bio).",
+    "ar": "السوم الحقيقي للعام الأول في روسيا: من 12 ألف دينار، فيه الجامعة، الفيزا، الاستقبال، المبيت والتأمين. بلا مصاريف مخفية. اطلب الديفي على WhatsApp (الرابط في البيو)."
+  },
+  "hashtags": "#prix #etudierenrussie #budget #tunisie #bac2026 #medecine #القراية_في_روسيا #السوم"
+}

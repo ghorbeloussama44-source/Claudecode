@@ -1,0 +1,37 @@
+{
+  "slug": "05-les-5-etapes",
+  "title": {"fr": "De Tunis à ta fac : 5 étapes", "ar": "من تونس للفاك: 5 مراحل"},
+  "series": "conseil",
+  "theme": "cream",
+  "bed": "lofi_chill",
+  "bed_offset": 30.0,
+  "top": {"fr": "5 ÉTAPES", "ar": "5 مراحل"},
+  "cta": "student",
+  "cover_at": 2.4,
+  "scenes": [
+    {"type": "hook", "dur": 3, "bg": "#a855f7", "icon": "plane",
+     "fr": {"kicker": "LA MÉTHODE", "title": ["De Tunis à ta fac", "en Russie :", "5 étapes."]},
+     "ar": {"kicker": "الطريقة", "title": ["من تونس", "للفاك في روسيا:", "5 مراحل."]},
+     "vo": {"fr": "De Tunis jusqu'à ta fac en Russie, il y a cinq étapes.", "ar": "من تونس للفاك في روسيا، فما خمسة مراحل."}},
+    {"type": "steps", "dur": 22.5,
+     "fr": {"items": [["Consultation gratuite", "On analyse ton profil et tes notes du bac."],
+                      ["Préparation du dossier", "Traduction assermentée et légalisation."],
+                      ["Admission officielle", "Ta lettre d'invitation de l'université."],
+                      ["Visa & assurance", "Dossier de visa et assurance médicale."],
+                      ["Accueil & installation", "Aéroport, foyer et démarches sur place."]]},
+     "ar": {"items": [["استشارة بلاش", "ندرسو البروفيل متاعك وأعداد الباك."],
+                      ["تحضير الدوسي", "ترجمة محلّفة ومصادقة."],
+                      ["القبول الرسمي", "رسالة الدعوة من الجامعة."],
+                      ["الفيزا والتأمين", "ملف الفيزا والتأمين الصحّي."],
+                      ["الاستقبال والسكنى", "المطار، المبيت والأوراق غادي."]]},
+     "vo": {"fr": "Un : la consultation gratuite, on étudie ton profil et ton bac. Deux : on prépare ton dossier, avec la traduction et la légalisation. Trois : l'université t'envoie ta lettre d'invitation officielle. Quatre : le visa et l'assurance médicale. Cinq : on t'accueille à l'aéroport et on t'installe au foyer.",
+            "ar": "واحد: الاستشارة بلاش، ندرسو البروفيل متاعك والباك. زوز: نحضّرو الدوسي، الترجمة والمصادقة. ثلاثة: الجامعة تبعثلك رسالة الدعوة الرسمية. أربعة: الفيزا والتأمين الصحّي. خمسة: نستقبلوك في المطار ونسكّنوك في المبيت."}},
+    {"type": "cta", "dur": 5,
+     "vo": {"fr": "Et tout commence par un message sur WhatsApp.", "ar": "والكل يبدا بميساج على WhatsApp."}}
+  ],
+  "caption": {
+    "fr": "De Tunis à ta fac en Russie en 5 étapes : consultation gratuite, dossier, admission, visa, accueil. On s'occupe de tout. Commence sur WhatsApp (lien en bio).",
+    "ar": "من تونس للفاك في روسيا في 5 مراحل: استشارة بلاش، الدوسي، القبول، الفيزا، الاستقبال. نتلهاو بكل شي. ابدا على WhatsApp (الرابط في البيو)."
+  },
+  "hashtags": "#etudierenrussie #visa #admission #tunisie #bac2026 #القراية_في_روسيا #الفيزا"
+}
