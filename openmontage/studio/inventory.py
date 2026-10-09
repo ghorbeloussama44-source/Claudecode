@@ -26,8 +26,9 @@ RULES = [
     ("russtudy-parcours", r"_40s_", "v5", "ancienne"),
     ("russtudy-parcours", r"_60s_", "v7", "actuelle"),
     ("russtudy-social", r"", "v1", "actuelle"),
+    ("clip-paroles-neon", r"_v3", "v3", "actuelle"),
 ]
-LANGUAGE = {"mahdia-festival": "arabe", "medilearn": "français"}
+LANGUAGE = {"mahdia-festival": "arabe", "medilearn": "français", "clip-paroles-neon": "arabe"}
 
 
 def probe(f):

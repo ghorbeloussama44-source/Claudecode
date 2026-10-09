@@ -1,5 +1,17 @@
 [
  {
+  "fichier": "clip_paroles_neon_v3.mp4",
+  "projet": "clip-paroles-neon",
+  "format": "16:9",
+  "resolution": "1280×720",
+  "fps": 30,
+  "duree_s": 240.0,
+  "taille_mo": 24.1,
+  "langue": "arabe",
+  "version": "v3",
+  "etat": "actuelle"
+ },
+ {
   "fichier": "mahdia_final_montage_v8.mp4",
   "projet": "mahdia-festival",
   "format": "16:9",

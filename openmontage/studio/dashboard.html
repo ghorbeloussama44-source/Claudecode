@@ -58,6 +58,7 @@
   .st-link { color: inherit; text-decoration: underline; text-decoration-color: var(--color-border-line); text-underline-offset: 3px; }
   .st-link:hover { text-decoration-color: currentColor; }
   .st-table tr.st-first td { border-top: 2px solid var(--color-border-line); }
+  .st-code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); word-break: break-all; }
   [data-dash-source-state=empty] { color: transparent; }
   [data-dash-source-state=refreshing] { opacity: 0.5; transition: opacity var(--cds-dur-slow); }
   @media (max-width: 760px) { .st-hide-sm { display: none; } }
@@ -101,6 +102,11 @@
       <div class="st-kpi-v dash-skeleton" data-source="kpis" data-field="outils" data-row="0">—</div>
       <div class="st-kpi-n">utilisés dans les projets</div>
     </div>
+    <div class="st-kpi">
+      <div class="st-kpi-l">Recettes automatiques</div>
+      <div class="st-kpi-v dash-skeleton" data-source="kpis" data-field="recettes_auto" data-row="0">—</div>
+      <div class="st-kpi-n">sur <span data-source="kpis" data-field="recettes" data-row="0">—</span> méthodes rejouables</div>
+    </div>
   </section>
 
   <div class="st-grid">
@@ -130,11 +136,12 @@
         <thead>
           <tr>
             <th data-field="projet">Projet</th>
+            <th class="st-hide-sm" data-field="client">Client</th>
+            <th data-field="diffusion">Diffusion</th>
             <th data-field="statut">Statut</th>
             <th data-field="version">Version</th>
             <th class="st-num" data-source="by_project" data-field="videos">Vidéos</th>
             <th data-field="maj">Mise à jour</th>
-            <th class="st-hide-sm" data-field="moteur">Outils</th>
             <th class="st-hide-sm" data-field="langues">Langues</th>
             <th data-field="prochaine">Prochaine étape</th>
           </tr>
@@ -155,6 +162,26 @@
             <th data-field="categorie">Catégorie</th>
             <th data-field="outil">Outil</th>
             <th data-field="usage">Ce qu'il a fait dans ce projet</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="st-card" id="recettes">
+    <div class="st-card-h"><h2 class="st-h2">Recettes du studio</h2></div>
+    <p class="st-note">Chaque méthode qui a marché, prête à servir pour un nouveau client ou une nouvelle chaîne. La recette du projet choisi est surlignée.</p>
+    <div class="st-scroll">
+      <table class="st-table" id="recettes-table" data-source="recettes" data-row-key="id">
+        <thead>
+          <tr>
+            <th data-field="recette">Recette</th>
+            <th data-field="pour">Pour qui</th>
+            <th class="st-hide-sm" data-field="entrees">À fournir</th>
+            <th data-field="automatisation">Automatisation</th>
+            <th class="st-hide-sm" data-field="commande">Commande</th>
+            <th class="st-hide-sm" data-field="origine">Projet d'origine</th>
           </tr>
         </thead>
         <tbody></tbody>
@@ -229,16 +256,17 @@
       <li>À la fin d'un projet, demandez à Claude : « mets à jour le studio ». Le projet, ses vidéos et ses actions s'ajoutent ici.</li>
       <li>Pour reprendre un projet, ouvrez son dossier (colonne Dossier) et lisez sa note de reprise (HANDOFF.md ou README.md).</li>
       <li>Quand une action est faite, dites-le : elle sort de la liste « À faire ».</li>
+      <li>Pour un nouveau client ou une nouvelle chaîne, partez d'une recette : donnez ce qu'elle demande, Claude lance la commande et range le projet ici.</li>
     </ol>
   </section>
 </div>
 
 <script>
   dash.calc('kpis', {
-    inputs: ['projects', 'videos', 'backlog', 'outils'],
+    inputs: ['projects', 'videos', 'backlog', 'outils', 'recettes'],
     title: 'Chiffres du studio',
-    description: 'Projets archivés (hors projets non archivés), vidéos livrées et à jour, minutes de vidéo, actions à faire, outils utilisés.',
-    fn: (projects, videos, backlog, outils) => [{
+    description: 'Projets archivés (hors projets non archivés), vidéos livrées et à jour, minutes de vidéo, actions à faire, outils utilisés, recettes automatiques.',
+    fn: (projects, videos, backlog, outils, recettes) => [{
       projets: projects.filter((p) => p.statut !== 'Non archivé').length,
       videos: videos.length,
       a_jour: videos.filter((v) => v.etat !== 'ancienne').length,
@@ -246,6 +274,8 @@
       actions: backlog.filter((a) => a.etat === 'à faire').length,
       haute: backlog.filter((a) => a.etat === 'à faire' && a.priorite === 'haute').length,
       outils: outils.length,
+      recettes: recettes.length,
+      recettes_auto: recettes.filter((r) => r.automatisation === 'Automatique').length,
     }],
   });
 
@@ -440,7 +470,7 @@
       const c = dash.data('by_project');
       tb.replaceChildren();
       if (d.status !== 'ok') {
-        const tr = el('tr'); const td = el('td', d.status === 'loading' ? 'dash-skeleton' : 'st-mute', d.status === 'loading' ? '' : 'Failed to load'); td.colSpan = 8; tr.appendChild(td); tb.appendChild(tr);
+        const tr = el('tr'); const td = el('td', d.status === 'loading' ? 'dash-skeleton' : 'st-mute', d.status === 'loading' ? '' : 'Failed to load'); td.colSpan = 9; tr.appendChild(td); tb.appendChild(tr);
         return;
       }
       const counts = new Map((c.status === 'ok' ? c.data : []).map((r) => [r.id, r]));
@@ -454,11 +484,12 @@
         const n = counts.get(r.id);
         tr.append(
           name,
+          el('td', 'st-hide-sm', r.client),
+          el('td', '', r.diffusion || '—'),
           st,
           el('td', 'st-nw', r.version),
           el('td', 'st-num', n ? nf.format(n.videos) : '—'),
           el('td', 'st-nw', fmtDay(r.maj)),
-          el('td', 'st-hide-sm', r.moteur),
           el('td', 'st-hide-sm st-nw', r.langues),
           el('td', '', r.prochaine),
         );
@@ -597,6 +628,26 @@
       }
     }
 
+    // ---------------------------------------------------------------- recipes
+    function drawRecipes() {
+      const tb = document.querySelector('#recettes-table tbody');
+      const d = dash.data('recettes');
+      const pj = dash.data('projects');
+      tb.replaceChildren();
+      if (d.status !== 'ok') { statusRow(tb, d, 6); return; }
+      const p = picked();
+      const proj = p && pj.status === 'ok' ? pj.data.find((r) => r.id === p) : null;
+      const autoClass = (a) => (a === 'Automatique' ? 'st-ok' : a === 'Semi-automatique' ? 'st-warn' : 'st-mute');
+      for (const r of d.data) {
+        const tr = el('tr', proj && proj.recette === r.id ? 'st-on' : '');
+        tr.dataset.key = r.id;
+        const auto = el('td'); auto.appendChild(pill(r.automatisation, autoClass(r.automatisation)));
+        tr.append(el('td', 'st-strong', r.recette), el('td', '', r.pour), el('td', 'st-hide-sm', r.entrees), auto,
+          el('td', 'st-hide-sm st-code', r.commande), el('td', 'st-hide-sm st-nw', r.origine));
+        tb.appendChild(tr);
+      }
+    }
+
     let jumped = false;
     dash.onData(() => {
       drawFigures();
@@ -604,6 +655,7 @@
       drawVideoBars();
       drawProjects();
       drawToolSheet();
+      drawRecipes();
       drawActions();
       drawToolbox();
       drawVideosTable();

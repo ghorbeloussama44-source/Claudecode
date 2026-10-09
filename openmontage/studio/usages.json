@@ -56,6 +56,13 @@
   {"id": "u55", "projet_id": "mahdia-festival", "projet": "Festival de Mahdia", "outil_id": "ltx", "outil": "LTX-2.5 (Lightricks)", "categorie": "IA générative", "usage": "Clips de roches générés par IA (d'après les notes de session)"},
   {"id": "u56", "projet_id": "mahdia-festival", "projet": "Festival de Mahdia", "outil_id": "voixia", "outil": "Voix off IA en arabe", "categorie": "IA générative", "usage": "Narration arabe du texte officiel"},
   {"id": "u57", "projet_id": "mahdia-festival", "projet": "Festival de Mahdia", "outil_id": "ffmpeg", "outil": "FFmpeg", "categorie": "Outils", "usage": "Montage final, découpes, compression"},
-  {"id": "u58", "projet_id": "clip-chanson", "projet": "Clip chanson", "outil_id": "remotion", "outil": "Remotion", "categorie": "Rendu vidéo", "usage": "Paroles mot par mot en néon"},
-  {"id": "u59", "projet_id": "clip-chanson", "projet": "Clip chanson", "outil_id": "ltx", "outil": "LTX-2.5 (Lightricks)", "categorie": "IA générative", "usage": "Clips vidéo IA prévus"}
+  {"id": "u58", "projet_id": "clip-paroles-neon", "projet": "Clip paroles néon", "outil_id": "suno", "outil": "Suno", "categorie": "IA générative", "usage": "La chanson"},
+  {"id": "u59", "projet_id": "clip-paroles-neon", "projet": "Clip paroles néon", "outil_id": "whisper", "outil": "faster-whisper", "categorie": "Analyse", "usage": "Heure de chaque mot chanté, corrigée avec vos paroles exactes"},
+  {"id": "u60", "projet_id": "clip-paroles-neon", "projet": "Clip paroles néon", "outil_id": "stock", "outil": "Pexels et Pixabay (vidéos)", "categorie": "Images", "usage": "Plans d'ambiance : bougie, lune, nuages, montagne, feu, mer, théâtre vide"},
+  {"id": "u61", "projet_id": "clip-paroles-neon", "projet": "Clip paroles néon", "outil_id": "ffmpeg", "outil": "FFmpeg", "categorie": "Outils", "usage": "Montage, étalonnage chaud, vignettage, export et version légère"},
+  {"id": "u62", "projet_id": "clip-paroles-neon", "projet": "Clip paroles néon", "outil_id": "remotion", "outil": "Remotion", "categorie": "Rendu vidéo", "usage": "Rendu des mots en néon sur fond transparent"},
+  {"id": "u63", "projet_id": "clip-paroles-neon", "projet": "Clip paroles néon", "outil_id": "neonoverlay", "outil": "NeonWordOverlay (Remotion)", "categorie": "Animation", "usage": "Le style du clip : mot doré au centre, halo qui respire"},
+  {"id": "u64", "projet_id": "clip-paroles-neon", "projet": "Clip paroles néon", "outil_id": "notokufi", "outil": "Noto Kufi Arabic", "categorie": "Typographie", "usage": "Les mots en néon"},
+  {"id": "u65", "projet_id": "clip-paroles-neon", "projet": "Clip paroles néon", "outil_id": "recetteneon", "outil": "Recette clip_paroles_neon.py", "categorie": "Outils", "usage": "Refaire un clip de ce type en une commande"},
+  {"id": "u66", "projet_id": "clip-paroles-neon", "projet": "Clip paroles néon", "outil_id": "python", "outil": "Python", "categorie": "Outils", "usage": "Script de la recette"}
 ]

@@ -12,7 +12,9 @@
     "formats": "9:16",
     "langues": "français + derja",
     "dossier": "openmontage/projects/russtudy-social",
-    "prochaine": "Enregistrer les vraies voix des témoignages, puis publier selon le calendrier de 20 jours"
+    "prochaine": "Enregistrer les vraies voix des témoignages, puis publier selon le calendrier de 20 jours",
+    "diffusion": "TikTok · Instagram · Facebook",
+    "recette": "serie-voix-off"
   },
   {
     "id": "russtudy-parcours",
@@ -27,7 +29,9 @@
     "formats": "9:16 + 16:9",
     "langues": "français + derja",
     "dossier": "openmontage/projects/russtudy-parcours",
-    "prochaine": "Harmoniser Lipetsk : le site dit université technique, le film montre Médecine générale"
+    "prochaine": "Harmoniser Lipetsk : le site dit université technique, le film montre Médecine générale",
+    "diffusion": "TikTok · Reels · YouTube",
+    "recette": "spot-motion"
   },
   {
     "id": "russtudy-motion-15s",
@@ -42,7 +46,9 @@
     "formats": "9:16",
     "langues": "français",
     "dossier": "openmontage/projects/russtudy-motion-15s",
-    "prochaine": "Passer le prix en dinars et retirer les promesses « garanti »"
+    "prochaine": "Passer le prix en dinars et retirer les promesses « garanti »",
+    "diffusion": "TikTok · Shorts · Reels",
+    "recette": "spot-motion"
   },
   {
     "id": "medilearn",
@@ -57,7 +63,9 @@
     "formats": "16:9",
     "langues": "français",
     "dossier": "openmontage/projects/medilearn",
-    "prochaine": "Produire les sujets 2 et suivants : grades, étiologie, traitement"
+    "prochaine": "Produire les sujets 2 et suivants : grades, étiologie, traitement",
+    "diffusion": "À définir",
+    "recette": "podcast-tv"
   },
   {
     "id": "mahdia-festival",
@@ -72,21 +80,25 @@
     "formats": "16:9",
     "langues": "arabe",
     "dossier": "openmontage/projects/mahdia-festival",
-    "prochaine": "Archiver les sources (clips, voix, logo) avant toute nouvelle version"
+    "prochaine": "Archiver les sources (clips, voix, logo) avant toute nouvelle version",
+    "diffusion": "À définir",
+    "recette": "video-evenement"
   },
   {
-    "id": "clip-chanson",
-    "projet": "Clip chanson — paroles néon",
+    "id": "clip-paroles-neon",
+    "projet": "Clip paroles néon (août 2026)",
     "client": "Votre chanson",
-    "type": "Clip musical : paroles mot par mot, effet néon",
-    "moteur": "Remotion + LTX (IA)",
-    "statut": "Non archivé",
-    "version": "—",
+    "type": "Clip musical : chaque mot chanté s'allume en néon doré",
+    "moteur": "Remotion + ffmpeg",
+    "statut": "Livré",
+    "version": "v3",
     "debut": null,
     "maj": null,
-    "formats": "—",
-    "langues": "—",
-    "dossier": "aucun (composants Remotion seulement)",
-    "prochaine": "Retrouver les fichiers ou refaire le clip : aucune vidéo n'a été gardée"
+    "formats": "16:9",
+    "langues": "arabe",
+    "dossier": "openmontage/projects/clip-paroles-neon",
+    "prochaine": "Rejouer la recette automatique sur une nouvelle chanson",
+    "diffusion": "Chaîne YouTube à définir",
+    "recette": "clip-paroles-neon"
   }
 ]

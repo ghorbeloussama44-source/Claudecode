@@ -10,5 +10,8 @@
   {"id": "a09", "projet_id": "russtudy-parcours", "projet": "RusStudy · parcours", "action": "Refaire les versions 40 s (encore en v5, prix en euros) si elles servent encore", "priorite": "basse", "etat": "à faire"},
   {"id": "a10", "projet_id": "medilearn", "projet": "MediLearn", "action": "Synchroniser les lèvres des présentateurs, souhait du client pour la version finale", "priorite": "basse", "etat": "à faire"},
   {"id": "a11", "projet_id": "mahdia-festival", "projet": "Festival de Mahdia", "action": "Archiver les sources (clips, voix off, logo) : seule la vidéo finale est gardée", "priorite": "basse", "etat": "à faire"},
-  {"id": "a12", "projet_id": "clip-chanson", "projet": "Clip chanson", "action": "Retrouver ou refaire le clip chanson néon : aucune vidéo n'a été archivée", "priorite": "basse", "etat": "à faire"}
+  {"id": "a12", "projet_id": "clip-paroles-neon", "projet": "Clip paroles néon", "action": "Retrouver et archiver le clip paroles néon avec sa méthode", "priorite": "basse", "etat": "fait"},
+  {"id": "a13", "projet_id": "studio", "projet": "Studio", "action": "Ranger les clés API dans les variables de l'environnement (PEXELS_API_KEY, SUNO_API_KEY, HF_TOKEN…) pour qu'elles ne se perdent plus d'une session à l'autre", "priorite": "haute", "etat": "à faire"},
+  {"id": "a14", "projet_id": "clip-paroles-neon", "projet": "Clip paroles néon", "action": "Lancer la recette sur une nouvelle chanson complète et valider le rendu ensemble", "priorite": "moyenne", "etat": "à faire"},
+  {"id": "a15", "projet_id": "clip-paroles-neon", "projet": "Clip paroles néon", "action": "Tester la recette en 9:16 pour Shorts, TikTok et Reels", "priorite": "basse", "etat": "à faire"}
 ]
